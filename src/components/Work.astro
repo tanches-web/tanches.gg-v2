@@ -1,0 +1,87 @@
+---
+// Selected builds. Each one sits on a sweep lit in the client's own colours.
+import Icon from './Icon.astro';
+export interface WorkItem {
+  title: string; meta: string; body: string; href: string;
+  img: string; alt: string; pos?: string; logo: string; a: string; b: string; deep: string;
+  /** e.g. "In progress": shown as a badge on the photo. */
+  status?: string;
+  /** Link label; defaults to "View project". */
+  cta?: string;
+  /** The client's colours by name, e.g. "Spartans · Scarlet & Gold" (shown with two dots). */
+  colorName?: string;
+  /** Mascot word set in outline on the photo, e.g. "SPARTANS". */
+  mascot?: string | null;
+}
+interface Props { items: WorkItem[] }
+const { items } = Astro.props;
+---
+<ul class="work" role="list">
+  {items.map((w, i) => (
+    <li class:list={['item', { lead: i === 0 }]} style={`--ca:${w.a};--cb:${w.b};--cd:${w.deep}`} data-reveal>
+      <a href={w.href} class="tile" aria-label={`${w.title}: view project`}>
+        <div class="plate">
+          <img src={w.img} alt={w.alt} style={w.pos ? `object-position:${w.pos}` : undefined} loading="lazy" decoding="async" />
+          <img class="mark" src={w.logo} alt="" aria-hidden="true" loading="lazy" />
+          {w.mascot && <span class="mascot" aria-hidden="true">{w.mascot}</span>}
+          {w.colorName && <span class="colorway label-glass"><span class="dots" aria-hidden="true"><i style="background:var(--ca)"></i><i style="background:var(--cb)"></i></span>{w.colorName}</span>}
+          {w.status && <span class="status label-glass"><span class="pulse" aria-hidden="true"></span>{w.status}</span>}
+        </div>
+        <div class="txt">
+          <h3 class="h3">{w.title}</h3>
+          <span class="spec meta">{w.meta}</span>
+          <p class="small">{w.body}</p>
+          <span class="go">{w.cta ?? 'View project'} <Icon name="arrow-right" size={16} /></span>
+        </div>
+      </a>
+    </li>
+  ))}
+  {Astro.slots.has('extra') && <li class="item extra" data-reveal><slot name="extra" /></li>}
+</ul>
+
+<style>
+  .work { list-style: none; padding: 0; display: grid; grid-template-columns: 1.35fr 1fr; grid-auto-rows: auto; gap: clamp(1.25rem, 2.5vw, 2rem); }
+  .lead { grid-row: span 2; }
+  .tile { display: grid; gap: 1.25rem; text-decoration: none; height: 100%; align-content: start; }
+  .plate {
+    position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 10;
+    background: var(--cd);
+    box-shadow: 0 40px 60px -34px color-mix(in srgb, var(--ca) 70%, transparent), var(--shadow-float);
+    transition: transform .7s var(--ease-out), box-shadow .7s var(--ease-out);
+  }
+  .lead .plate { aspect-ratio: 4 / 3.35; }
+  .plate::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, color-mix(in srgb, var(--cd) 88%, transparent)); }
+  .plate::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; z-index: 2; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  .plate img:first-child { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+  .mark { position: absolute; z-index: 2; left: 1.25rem; bottom: 1.25rem; height: 2.75rem; width: auto; max-width: 45%; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.4)); }
+  .mascot {
+    position: absolute; z-index: 2; right: 1.25rem; bottom: .6rem; font-weight: 820; font-variation-settings: 'wdth' 72;
+    font-size: clamp(2.5rem, 4.2vw, 4rem); line-height: 1; letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1.25px rgba(255, 255, 255, .55);
+  }
+  .lead .mascot { font-size: clamp(3rem, 6.5vw, 6rem); }
+  .colorway { position: absolute; z-index: 3; left: 1rem; top: 1.25rem; font-size: .75rem; }
+  .dots { display: inline-flex; padding-left: .2rem; }
+  .dots i { width: .75rem; height: .75rem; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255, 255, 255, .8); }
+  .dots i + i { margin-left: -.25rem; }
+  .tile:hover .plate { transform: translateY(-4px); box-shadow: 0 50px 70px -30px color-mix(in srgb, var(--ca) 80%, transparent), var(--shadow-float); }
+  .tile:hover .plate img:first-child { transform: scale(1.03); }
+  .status { position: absolute; z-index: 3; right: 1rem; top: 1.25rem; font-size: .75rem; }
+  .pulse { width: .55rem; height: .55rem; border-radius: 50%; margin-left: .25rem; background: var(--ca); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ca) 30%, transparent); }
+  @media (prefers-reduced-motion: no-preference) { .pulse { animation: pulse 2s ease-in-out infinite; } }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--ca) 0%, transparent); } }
+  .extra { display: grid; }
+  .txt { display: grid; gap: .5rem; }
+  .meta { color: var(--ink-3); }
+  .txt .small { max-width: 52ch; }
+  .go { display: inline-flex; align-items: center; gap: .4rem; font-weight: 620; color: var(--accent); margin-top: .25rem; }
+  .go :global(svg) { transition: transform .35s var(--ease-out); }
+  .tile:hover .go :global(svg) { transform: translateX(3px); }
+  @media (max-width: 860px) {
+    .work { grid-template-columns: 1fr; }
+    .lead { grid-row: auto; }
+    .lead .plate { aspect-ratio: 16 / 10; }
+  }
+  @media (max-width: 560px) {
+    .mascot, .lead .mascot { font-size: 2.25rem; }
+  }
+</style>

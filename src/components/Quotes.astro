@@ -1,0 +1,39 @@
+---
+import Icon from './Icon.astro';
+export interface Quote { quote: string; name: string; role: string; org: string; logo: string; logoDark: string; href?: string; a: string; b: string }
+interface Props { items: Quote[] }
+const { items } = Astro.props;
+---
+<ul class="quotes" role="list">
+  {items.map((q) => (
+    <li style={`--ca:${q.a};--cb:${q.b}`} data-reveal>
+      <figure>
+        <span class="bar" aria-hidden="true"></span>
+        <blockquote><p>“{q.quote}”</p></blockquote>
+        <figcaption>
+          <span class="logo"><img class="lg-l" src={q.logo} alt={q.org} loading="lazy" /><img class="lg-d" src={q.logoDark} alt="" aria-hidden="true" loading="lazy" /></span>
+          <span><strong>{q.name}</strong><span class="role">{q.role}, {q.org}</span></span>
+          {q.href && <a class="cs" href={q.href} aria-label={`Read the ${q.org} case study`}>Case study <Icon name="arrow-right" size={16} /></a>}
+        </figcaption>
+      </figure>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .quotes { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem); }
+  figure { height: 100%; display: flex; flex-direction: column; gap: 1.5rem; padding-top: 1.5rem; }
+  .bar { display: block; height: 4px; width: 3rem; border-radius: 4px; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  blockquote { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.5; letter-spacing: -0.01em; flex: 1; }
+  figcaption { display: grid; gap: .3rem; font-size: var(--t-small); padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  .logo { display: block; margin-bottom: .6rem; }
+  .logo img { height: 2.5rem; width: auto; max-width: 12rem; object-fit: contain; object-position: left center; }
+  .lg-d { display: none; }
+  :global([data-theme='dark']) .lg-l { display: none; }
+  :global([data-theme='dark']) .lg-d { display: block; }
+  strong { display: block; font-weight: 640; }
+  .role { color: var(--ink-2); }
+  .cs { display: inline-flex; align-items: center; gap: .35rem; color: var(--accent); font-weight: 600; text-decoration: none; margin-top: .25rem; }
+  .cs:hover { text-decoration: underline; }
+  @media (max-width: 900px) { .quotes { grid-template-columns: 1fr; } }
+</style>

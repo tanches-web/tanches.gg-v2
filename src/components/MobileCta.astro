@@ -1,0 +1,53 @@
+---
+// Phone-only bar that keeps the main action one tap away. It appears after the first screen
+// and steps aside when the page's own contact form (#start) or the footer is on screen.
+---
+<a class="mcta" href="/Contact" data-mcta aria-hidden="true" tabindex="-1">
+  <span class="q">Ready to plan your lab?</span>
+  <span class="btn btn-primary btn-sm">Book a call</span>
+</a>
+
+<style>
+  .mcta { display: none; }
+  @media (max-width: 760px) {
+    .mcta {
+      position: fixed; z-index: 40; left: .5rem; right: .5rem; bottom: max(.5rem, env(safe-area-inset-bottom));
+      display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+      padding: .5rem .5rem .5rem 1.1rem; border-radius: 999px; text-decoration: none;
+      background: var(--glass-hi); border: 1px solid var(--glass-line); color: var(--ink);
+      backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6);
+      box-shadow: var(--shadow-float);
+      transform: translateY(150%); opacity: 0; visibility: hidden;
+      transition: transform .5s var(--ease-out), opacity .35s var(--ease-out), visibility 0s .5s;
+    }
+    .mcta.is-on { transform: none; opacity: 1; visibility: visible; transition: transform .5s var(--ease-out), opacity .35s var(--ease-out); }
+    .q { font-weight: 620; font-size: .9375rem; letter-spacing: -0.005em; }
+  }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-mcta]');
+  if (bar) {
+    const stops = [...document.querySelectorAll<HTMLElement>('#start, footer, [data-cform], form[data-netlify]')].filter((el) => el.offsetParent !== null);
+    let blocked = false;
+    if ('IntersectionObserver' in window && stops.length) {
+      const seen = new Set<Element>();
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
+        blocked = seen.size > 0;
+        update();
+      });
+      stops.forEach((el) => io.observe(el));
+    }
+    let raf = 0;
+    function update() {
+      raf = 0;
+      const on = !blocked && scrollY > innerHeight * 0.85;
+      bar!.classList.toggle('is-on', on);
+      bar!.setAttribute('aria-hidden', String(!on));
+      bar!.tabIndex = on ? 0 : -1;
+    }
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    update();
+  }
+</script>

@@ -1,0 +1,63 @@
+---
+// A team portrait in a 4:5 frame. The real photo shows first (we are a vendor first);
+// the character art (each person drawn into their favourite game) sits underneath and
+// is revealed on hover, or with the small frosted toggle on any device.
+// Framing offsets come from the source data (percent of the frame width).
+import Icon from '../Icon.astro';
+export interface Frame { pl: string; pt: string; pw: string; dl: string; dt: string; dw: string }
+interface Props { name: string; photo: string; toon?: string; frame?: Frame; eager?: boolean; sizes?: string }
+const { name, photo, toon, frame, eager = false } = Astro.props;
+const at = (l?: string, t?: string, w?: string) => (l ? `left:${l};top:${t};width:${w}` : undefined);
+---
+<div class="pt" data-portrait>
+  <div class="frame">
+    <img class="ph" src={'/' + photo} alt={name} style={at(frame?.pl, frame?.pt, frame?.pw)} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    {toon && <img class="tn" src={'/' + toon} alt="" style={at(frame?.dl, frame?.dt, frame?.dw)} loading="lazy" decoding="async" />}
+  </div>
+  {toon && (
+    <button class="flip" type="button" aria-pressed="false" aria-label={`Show character art of ${name}`} data-name={name} hidden>
+      <Icon name="gamepad" size={18} />
+    </button>
+  )}
+</div>
+
+<style>
+  .pt { position: relative; }
+  .frame {
+    position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius);
+    background: var(--surface-2); box-shadow: var(--shadow-object); isolation: isolate;
+  }
+  .frame img { position: absolute; left: -12.5%; top: 0; width: 125%; max-width: none; height: auto; }
+  .ph { z-index: 1; transition: opacity .5s var(--ease-out), transform .9s var(--ease-out); }
+  .tn { z-index: 2; opacity: 0; transform: scale(1.04); transition: opacity .5s var(--ease-out), transform .9s var(--ease-out); }
+  .pt.is-toon .tn { opacity: 1; transform: none; }
+  @media (hover: hover) {
+    .pt:hover .tn { opacity: 1; transform: none; }
+    .pt.is-photo:hover .tn { opacity: 0; }
+  }
+  .flip {
+    position: absolute; right: .75rem; bottom: .75rem; z-index: 3;
+    width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--glass); border: 1px solid var(--glass-line); color: var(--ink);
+    backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    box-shadow: var(--shadow-float); transition: background-color .25s, transform .4s var(--ease-out);
+  }
+  .flip:hover { background: var(--glass-hi); transform: scale(1.05); }
+  .flip[aria-pressed='true'] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-portrait]').forEach((pt) => {
+    const btn = pt.querySelector<HTMLButtonElement>('.flip');
+    if (!btn) return;
+    btn.hidden = false;
+    const name = btn.dataset.name;
+    btn.addEventListener('click', () => {
+      const on = btn.getAttribute('aria-pressed') !== 'true';
+      btn.setAttribute('aria-pressed', String(on));
+      btn.setAttribute('aria-label', (on ? 'Show photo of ' : 'Show character art of ') + name);
+      pt.classList.toggle('is-toon', on);
+      pt.classList.toggle('is-photo', !on);
+    });
+  });
+</script>

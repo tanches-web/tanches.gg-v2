@@ -1,0 +1,167 @@
+---
+// Contact opening: statement on the sweep, the tabbed card (message or assessment) floating beside it,
+// the Stafford room as the object with a frosted "Pictured" label, then the direct lines.
+import Icon from '../Icon.astro';
+import ContactPageForm from './ContactPageForm.astro';
+import page from '../../content/pages/Contact.json';
+const top = page.sections.find((s: any) => s.id === 'ct-top') as any;
+const ix = top.interactive;
+const reach = top.reach;
+const icon: Record<string, string> = { Call: 'phone', Email: 'mail', Visit: 'map-pin' };
+---
+<section class="ct-hero sweep" aria-labelledby="page-title">
+  <div class="wrap grid">
+    <div class="copy">
+      <h1 id="page-title" class="display">Let’s plan your <strong>esports lab.</strong></h1>
+      <p class="lede">{top.lede}</p>
+    </div>
+
+    <div class="cardcol">
+      <div class="card" id="assessment" data-ct-card>
+        <div class="tabs" role="tablist" aria-label={ix.tablistAriaLabel} hidden data-tabs>
+          {ix.tabs.map((t: any, i: number) => (
+            <button type="button" role="tab" id={t.id} aria-controls={t.id.replace('tab', 'panel')} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? undefined : '-1'}>{t.label}</button>
+          ))}
+        </div>
+
+        <div class="panel" id="ct-panel-msg" role="tabpanel" aria-labelledby="ct-tab-msg">
+          <ContactPageForm />
+        </div>
+
+        <div class="panel asm" id="ct-panel-asm" role="tabpanel" aria-labelledby="ct-tab-asm">
+          <h2 class="h3">{ix.assessmentPanel.heading}</h2>
+          <p class="body">{ix.assessmentPanel.body}</p>
+          <ul class="points" role="list">
+            {ix.assessmentPanel.points.map((p: string) => <li><span class="tick" aria-hidden="true"><Icon name="check" size={16} /></span>{p}</li>)}
+          </ul>
+          <a class="btn btn-primary full" href={ix.assessmentPanel.cta.href}>{ix.assessmentPanel.cta.label} <Icon name="arrow-right" /></a>
+          <p class="note spec">{ix.assessmentPanel.formNote}</p>
+        </div>
+
+        <div class="done" role="status" hidden tabindex="-1" data-done>
+          <span class="chip"><span class="dot"></span>{ix.sentPanel.chip}</span>
+          <h2 class="h2">{ix.sentPanel.heading}</h2>
+          <p class="body">{ix.sentPanel.body}</p>
+          <a class="link" href={ix.sentPanel.link.href}>{ix.sentPanel.link.label} <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+      <script is:inline>
+        (function () {
+          var c = document.querySelector('[data-ct-card]'); if (!c) return;
+          var sent = /[?&]sent=1\b/.test(location.search);
+          var asm = location.hash === '#assessment';
+          var tabs = c.querySelector('[data-tabs]');
+          var msgP = c.querySelector('#ct-panel-msg'), asmP = c.querySelector('#ct-panel-asm'), done = c.querySelector('[data-done]');
+          if (sent) { tabs.hidden = true; msgP.hidden = true; asmP.hidden = true; done.hidden = false; c.classList.add('is-sent'); return; }
+          tabs.hidden = false;
+          msgP.hidden = asm; asmP.hidden = !asm;
+          c.querySelector('#ct-tab-msg').setAttribute('aria-selected', String(!asm));
+          c.querySelector('#ct-tab-asm').setAttribute('aria-selected', String(asm));
+          c.querySelector('#ct-tab-msg').tabIndex = asm ? -1 : 0;
+          c.querySelector('#ct-tab-asm').tabIndex = asm ? 0 : -1;
+        })();
+      </script>
+    </div>
+
+    <figure class="shot">
+      <div class="photo"><img src={'/' + top.images[0].src} alt={top.images[0].alt} fetchpriority="high" /></div>
+      <a class="label-glass pictured" href={top.pictured.href} aria-label={top.pictured.ariaLabel}>
+        <span class="plogo"><img src={'/' + top.pictured.logo} alt="" width="22" height="22" /></span>
+        <span><small>{top.pictured.small}</small>{top.pictured.text}</span>
+        <Icon name="arrow-up-right" size={14} />
+      </a>
+    </figure>
+  </div>
+
+  <div class="wrap reach">
+    <h2 class="sr-only">{reach.srHeading}</h2>
+    <ul class="promise" role="list">
+      {reach.promises.map((p: string) => <li><Icon name="check" size={18} />{p}</li>)}
+    </ul>
+    <ul class="ways" role="list">
+      {reach.channels.map((c: any) => (
+        <li>
+          <a class="way" href={c.href} target={c.target === '_blank' ? '_blank' : undefined} rel={c.target === '_blank' ? 'noopener' : undefined}>
+            <span class="way-ic" aria-hidden="true"><Icon name={icon[c.k]} size={20} /></span>
+            <span class="spec">{c.k}</span>
+            <span class="way-v">{c.v}</span>
+            <Icon name="arrow-up-right" size={18} class="way-go" />
+            {c.target === '_blank' && <span class="sr-only">(opens in a new tab)</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a class="league" href={reach.leagueLink.href}><span class="live" aria-hidden="true"></span>{reach.leagueLink.label}<Icon name="arrow-up-right" size={16} /></a>
+  </div>
+</section>
+
+<script>
+  import './contact';
+</script>
+
+<style>
+  .ct-hero { padding-top: clamp(7.5rem, 5rem + 5vw, 10rem); padding-bottom: clamp(3.5rem, 7vw, 6rem); }
+  .grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); grid-template-areas: 'copy card' 'shot card';
+    gap: clamp(2rem, 4vw, 3rem) clamp(2.5rem, 5vw, 5rem); align-items: start;
+  }
+  .copy { grid-area: copy; display: grid; gap: 1.25rem; }
+  h1 { max-width: 12ch; }
+  h1 :global(strong) { font-weight: 720; }
+  .cardcol { grid-area: card; }
+  .shot { grid-area: shot; position: relative; align-self: end; }
+  .shot .photo { aspect-ratio: 4 / 3; }
+  .shot .photo img { object-position: center 40%; }
+  .pictured { position: absolute; left: 1rem; bottom: 1rem; text-decoration: none; gap: .6rem; padding: .4rem .9rem .4rem .4rem; }
+  .pictured small { display: block; font: 500 .625rem var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
+  .pictured > span:nth-child(2) { line-height: 1.25; }
+  .plogo { width: 2rem; height: 2rem; border-radius: 50%; background: #FFFFFF; display: grid; place-items: center; flex: none; }
+  .plogo img { width: 1.25rem; height: 1.25rem; object-fit: contain; }
+  .pictured:hover { background: var(--glass-hi); }
+
+  .card { padding: clamp(1.25rem, 3vw, 2.25rem); border-radius: 28px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-object); }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface-2); margin-bottom: 1.5rem; }
+  .tabs[hidden] { display: none; }
+  .tabs button { min-height: 2.75rem; border-radius: 999px; font-weight: 620; font-size: .9375rem; color: var(--ink-2); transition: background-color .25s, color .25s, box-shadow .25s; }
+  .tabs button:hover { color: var(--ink); }
+  .tabs button[aria-selected='true'] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-float); }
+  .panel[hidden], .done[hidden] { display: none; }
+  .panel + .panel:not([hidden]) { margin-top: 0; }
+  .asm { display: grid; gap: 1rem; }
+  .points { list-style: none; padding: 0; display: grid; gap: .7rem; margin: .5rem 0 .75rem; }
+  .points li { display: grid; grid-template-columns: auto 1fr; gap: .75rem; align-items: start; font-weight: 560; }
+  .tick { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--on-ink); margin-top: .05rem; }
+  .full { width: 100%; }
+  .note { text-align: center; }
+  .done { display: grid; gap: 1rem; justify-items: start; padding: clamp(1rem, 3vw, 2rem) 0; }
+  .done:focus { outline: none; }
+  .chip { display: inline-flex; align-items: center; gap: .5rem; padding: .3rem .75rem; border-radius: 999px; border: 1px solid var(--line-2); font: 500 var(--t-spec) var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .chip .dot { width: .5rem; height: .5rem; border-radius: 50%; background: #1FA35B; }
+
+  .reach { margin-top: clamp(3rem, 6vw, 5rem); padding-top: 1.75rem; border-top: 1px solid var(--line-2); display: grid; gap: 1.5rem; }
+  .promise { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 2rem; }
+  .promise li { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; }
+  .promise :global(svg) { color: #1E9E5A; }
+  :global([data-theme='dark']) .promise :global(svg) { color: #4CC987; }
+  .ways { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ways li + li { border-left: 1px solid var(--line); }
+  .way { height: 100%; display: grid; grid-template-columns: auto 1fr auto; grid-template-rows: auto auto; gap: .2rem .9rem; align-items: center; padding: 1.1rem clamp(1rem, 2vw, 1.75rem); text-decoration: none; border-radius: 18px; transition: background-color .25s; }
+  .way:hover { background: var(--surface); }
+  .way-ic { grid-row: span 2; width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--ink); }
+  .way-v { grid-column: 2; font-size: 1.125rem; font-weight: 620; letter-spacing: -0.01em; white-space: pre-line; line-height: 1.35; }
+  .way .spec { grid-column: 2; }
+  .way :global(.way-go) { grid-column: 3; grid-row: 1 / span 2; color: var(--ink-3); transition: transform .35s var(--ease-out), color .25s; }
+  .way:hover :global(.way-go) { color: var(--accent); transform: translate(2px, -2px); }
+  .league { justify-self: start; display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; font-size: var(--t-small); color: var(--ink-2); text-decoration: none; padding: .55rem 1rem; min-height: 2.75rem; border-radius: 999px; border: 1px solid var(--line-2); }
+  .league:hover { color: var(--ink); border-color: var(--ink-3); }
+  .live { width: .55rem; height: .55rem; border-radius: 50%; background: var(--rose); box-shadow: 0 0 0 4px rgba(226, 56, 105, .25); }
+
+  @media (max-width: 420px) { .tabs button { font-size: .875rem; padding: 0 .5rem; line-height: 1.2; } }
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; grid-template-areas: 'copy' 'card' 'shot'; }
+    .ways { grid-template-columns: 1fr; }
+    .ways li + li { border-left: 0; border-top: 1px solid var(--line); }
+    .way { padding: 1rem 0; }
+    .way:hover { background: none; }
+  }
+</style>

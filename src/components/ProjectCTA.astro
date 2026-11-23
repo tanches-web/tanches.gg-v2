@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import ContactForm from './ContactForm.astro';
+interface Props { heading?: string; strong?: string; lede?: string }
+const {
+  heading = 'Tell us about',
+  strong = 'your project.',
+  lede = 'Share your space, goals, and budget. The first consultation is free.',
+} = Astro.props;
+const steps = [
+  { title: 'We reply', body: 'Within one business day.' },
+  { title: 'Consultation', body: 'A free call about your space, goals, and budget.' },
+  { title: 'Your plan', body: 'A scoped proposal with funding options.' },
+];
+---
+<section class="cta sweep" id="start" aria-labelledby="start-title">
+  <div class="wrap grid">
+    <div class="intro">
+      <img class="mark" src="/assets/brand-kit/tanches-gg-icon-color.svg" alt="" width="56" height="56" loading="lazy" />
+      <h2 id="start-title" class="h2">{heading}{strong && <> <strong>{strong}</strong></>}</h2>
+      <p class="lede">{lede}</p>
+      <ol class="next" aria-label="What happens next">
+        {steps.map((s) => (
+          <li><strong>{s.title}</strong><span>{s.body}</span></li>
+        ))}
+      </ol>
+      <a class="assess" href="/Assessment">
+        <span><strong>Not sure what you need? Try the readiness assessment.</strong><span>It takes about 5 minutes, and you get a free report.</span></span>
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+    <div class="form-shell">
+      <ContactForm name="project-cta" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta { padding-block: var(--section); border-top: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .mark { width: 3.5rem; height: 3.5rem; margin-bottom: 1.75rem; }
+  .lede { margin-top: 1.25rem; }
+  .next { list-style: none; padding: 0; margin: 2.25rem 0 0; display: grid; gap: 0; counter-reset: n; border-top: 1px solid var(--line); }
+  .next li { counter-increment: n; display: grid; grid-template-columns: 2.5rem 1fr; column-gap: .75rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .next li::before { content: counter(n, decimal-leading-zero); font: 500 var(--t-spec) var(--mono); letter-spacing: .08em; color: var(--ink-3); grid-row: span 2; padding-top: .3rem; }
+  .next strong { font-weight: 640; }
+  .next span { color: var(--ink-2); font-size: var(--t-small); }
+  .assess { margin-top: 1.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.25rem; border-radius: 18px; border: 1px solid var(--line-2); text-decoration: none; transition: background-color .25s, border-color .25s; }
+  .assess:hover { background: var(--surface); border-color: var(--ink-3); }
+  .assess strong { display: block; font-weight: 640; }
+  .assess > span > span { color: var(--ink-2); font-size: var(--t-small); }
+  .assess :global(svg) { flex: none; transition: transform .35s var(--ease-out); }
+  .assess:hover :global(svg) { transform: translateX(3px); }
+  .form-shell { padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-object); }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+</style>

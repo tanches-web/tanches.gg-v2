@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import page from '../content/pages/Projects.json';
+
+const sec = (id: string) => (page.sections as any[]).find((s) => s.id === id);
+const head = sec('pj-head');
+const cards = sec('case-studies').cards as any[];
+const other = sec('more');
+const logos = (other.interactive.logos as any[]).map((l) => ({ name: l.name, light: '/' + l.light, dark: '/' + l.dark, h: l.maxHeight }));
+const seo = { title: page.seo.title, description: page.seo.description, canonical: (page.seo as any).canonical, jsonLd: (page.seo as any).jsonLd };
+const a = (p: string) => '/' + p;
+---
+<Base seo={seo}>
+  <PageHero title="Our work," strong="client by client." lede={head.lede} />
+
+  <section class="wrap grid-sec" aria-label="Case studies">
+    <ul class="cases" role="list">
+      {cards.map((c, i) => (
+        <li class:list={['case', { feature: c.feature, soon: c.soon }]} style={`--ca:${c.colors['--a']};--cb:${c.colors['--b']};--cd:${c.colors.deep}`} data-reveal>
+          <a href={c.href} class="tile">
+            <div class="plate">
+              <img class="ph" src={a(c.image.src)} alt={c.image.alt} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+              <span class="mascot" aria-hidden="true">{c.mascot}</span>
+              <img class="mark" src={a(c.logo.src)} alt="" aria-hidden="true" loading="lazy" />
+              {c.soon && <span class="status label-glass"><span class="pulse" aria-hidden="true"></span>In progress</span>}
+              <span class="colorway label-glass"><span class="dots" aria-hidden="true"><i style="background:var(--ca)"></i><i style="background:var(--cb)"></i></span>{c.colorName}</span>
+            </div>
+            <div class="txt">
+              <h2 class="h3">{c.title}</h2>
+              <span class="spec">{c.meta}</span>
+              <p class="small">{c.body}</p>
+              <span class="go">{c.links[0].label} <Icon name="arrow-right" size={16} /></span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section others" aria-labelledby="others-title">
+    <div class="wrap oth">
+      <div>
+        <h2 id="others-title" class="h2" data-reveal>{other.heading}</h2>
+        <p class="lede" data-reveal>{other.lede}</p>
+        <a class="btn btn-ghost" href="/Contact" data-reveal>Ask for a reference <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+    <div class="roster-wrap">
+      <LogoMarquee logos={logos} label="Other clients" />
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  .grid-sec { padding-bottom: var(--section); }
+  .cases { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(2rem, 3vw, 2.75rem) clamp(1.25rem, 2.5vw, 2rem); }
+  .case { grid-column: span 3; }
+  .case.feature { grid-column: 1 / -1; }
+  .tile { display: grid; gap: 1.25rem; text-decoration: none; }
+  .plate {
+    position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--cd); isolation: isolate;
+    box-shadow: 0 44px 60px -36px color-mix(in srgb, var(--ca) 70%, transparent), var(--shadow-float);
+    transition: transform .7s var(--ease-out), box-shadow .7s var(--ease-out);
+  }
+  .feature .plate { aspect-ratio: 21 / 9; }
+  .plate::before { content: ''; position: absolute; inset: 0 0 auto; height: 6px; z-index: 3; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  .plate::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--cd) 90%, transparent)); }
+  .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+  .soon .ph { filter: saturate(.6); }
+  .mascot {
+    position: absolute; z-index: 2; right: 1.25rem; bottom: .6rem; font-weight: 820; font-variation-settings: 'wdth' 72;
+    font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; color: transparent; -webkit-text-stroke: 1.25px rgba(255,255,255,.55);
+  }
+  .feature .mascot { font-size: clamp(3.5rem, 8vw, 7.5rem); }
+  .mark { position: absolute; z-index: 2; left: 1.25rem; bottom: 1.25rem; height: 2.75rem; width: auto; max-width: 45%; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.4)); }
+  .colorway { position: absolute; z-index: 2; left: 1rem; top: 1.25rem; font-size: .75rem; }
+  .dots { display: inline-flex; padding-left: .2rem; }
+  .dots i { width: .75rem; height: .75rem; border-radius: 50%; box-shadow: 0 0 0 2px rgba(255,255,255,.8); }
+  .dots i + i { margin-left: -.25rem; }
+  .tile:hover .plate { transform: translateY(-4px); }
+  .tile:hover .ph { transform: scale(1.03); }
+  .txt { display: grid; gap: .5rem; }
+  .txt .small { max-width: 56ch; }
+  .go { display: inline-flex; align-items: center; gap: .4rem; font-weight: 620; color: var(--accent); }
+  .go :global(svg) { transition: transform .35s var(--ease-out); }
+  .tile:hover .go :global(svg) { transform: translateX(3px); }
+
+  .others { border-top: 1px solid var(--line); padding-top: var(--section) !important; }
+  .oth { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .oth > div { display: grid; gap: 1.25rem; justify-items: start; }
+  .oth > div { max-width: 46rem; }
+  .roster-wrap { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+  .status { position: absolute; z-index: 3; right: 1rem; top: 1.25rem; font-size: .75rem; }
+  .pulse { width: .55rem; height: .55rem; border-radius: 50%; background: var(--ca); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ca) 30%, transparent); margin-left: .25rem; }
+  @media (prefers-reduced-motion: no-preference) { .pulse { animation: pulse 2s ease-in-out infinite; } }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--ca) 0%, transparent); } }
+
+  @media (max-width: 960px) {
+    .cases { grid-template-columns: 1fr; }
+    .case, .case.feature { grid-column: auto; }
+    .feature .plate { aspect-ratio: 4 / 3; }
+  }
+</style>

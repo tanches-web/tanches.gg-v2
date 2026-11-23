@@ -1,0 +1,102 @@
+{
+  "slug": "404",
+  "sourceFile": "404.html",
+  "url": "https://tanches.gg/404",
+  "components": [
+    { "name": "SiteNav", "props": { "tone": "dark" } },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Page Not Found | TANCHES.GG",
+    "description": "Page not found.",
+    "robots": "noindex",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Page Not Found | TANCHES.GG",
+    "ogDescription": "Page not found.",
+    "ogUrl": "https://tanches.gg/404",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Page Not Found | TANCHES.GG",
+    "twitterDescription": "Page not found.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Page Not Found | TANCHES.GG",
+    "jsonLd": [],
+    "noscript": {
+      "h1": "Page Not Found",
+      "p": [
+        "Page not found.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "htmlLang": "en",
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeBootstrap": "inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>",
+      "note": "No canonical link, no JSON-LD, no mobile.css (it does include the inline .dc.html link-fixer script). Served by Netlify for forced 404 rules in _redirects (/shop, /hub, /internal/*, etc.)."
+    }
+  },
+  "sections": [
+    {
+      "id": "nf-hero",
+      "heading": "We can’t find that page.",
+      "headingHtml": "We can’t find <span class=\"tg-grad\">that page.</span>",
+      "lede": "It may have moved, or the link may be wrong. Head back home, or tell us what you were looking for and we’ll point you to it.",
+      "ctas": [
+        { "label": "Back to home", "href": "/", "style": "primary" },
+        { "label": "Contact us", "href": "/Contact", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/opt/home-room-inside.webp", "alt": "An empty TANCHES.GG esports room with the lights on and nobody playing" }
+      ],
+      "interactive": {
+        "type": "decorative-code",
+        "bigText": "404",
+        "ariaHidden": true
+      },
+      "lists": [
+        {
+          "title": "Or go straight to",
+          "ariaLabel": "Popular pages",
+          "items": [
+            { "label": "Education", "href": "/Education" },
+            { "label": "Community", "href": "/Community" },
+            { "label": "Commercial", "href": "/Commercial" },
+            { "label": "Projects", "href": "/Projects" },
+            { "label": "Esports League", "href": "/League" }
+          ]
+        }
+      ]
+    },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

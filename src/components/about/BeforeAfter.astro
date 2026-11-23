@@ -1,0 +1,61 @@
+---
+// Before/after comparison. A native range input drives the split, so it is keyboard and
+// screen-reader operable; without JavaScript the frame rests at the halfway point.
+interface Img { src: string; alt: string }
+interface Props { before: Img; after: Img; caption?: string }
+const { before, after, caption } = Astro.props;
+---
+<figure class="ba" data-ba style="--pos:50%">
+  <div class="frame photo">
+    <img class="before" src={before.src} alt={before.alt} fetchpriority="high" />
+    <img class="after" src={after.src} alt={after.alt} fetchpriority="high" />
+    <span class="tag label-glass t-before" aria-hidden="true">Before</span>
+    <span class="tag label-glass t-after" aria-hidden="true">After</span>
+    <span class="divider" aria-hidden="true"><span class="knob"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/></svg></span></span>
+    <input class="range" type="range" min="2" max="98" step="1" value="50" aria-label="Before and after comparison" aria-valuetext="50% of the image shows the room before" />
+  </div>
+  {caption && <figcaption class="small cap">{caption}</figcaption>}
+</figure>
+
+<style>
+  .ba { width: min(1180px, 92vw); margin: clamp(2.5rem, 5vw, 4rem) auto 0; }
+  .frame { position: relative; aspect-ratio: 16 / 9; }
+  .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .after { clip-path: inset(0 0 0 var(--pos)); }
+  .tag { position: absolute; top: 1rem; padding: .4rem .85rem; font-size: .8125rem; transition: opacity .3s; }
+  .t-before { left: 1rem; }
+  .t-after { right: 1rem; }
+  .ba.hide-before .t-before, .ba.hide-after .t-after { opacity: 0; }
+  .divider { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; translate: -1px 0; background: rgba(255, 255, 255, .9); box-shadow: 0 0 0 1px rgba(14, 16, 22, .15); pointer-events: none; }
+  .knob {
+    position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: 3rem; height: 3rem; border-radius: 50%;
+    display: grid; place-items: center; color: var(--ink);
+    background: var(--glass-hi); border: 1px solid var(--glass-line); box-shadow: var(--shadow-float);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    transition: transform .3s var(--ease-out);
+  }
+  .range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none; }
+  .ba:has(.range:focus-visible) .knob { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .ba:has(.range:active) .knob { transform: scale(1.08); }
+  .cap { text-align: center; padding-top: 1rem; color: var(--ink-3); }
+  @media (prefers-reduced-motion: no-preference) {
+    .frame { animation: rise 1.4s var(--ease-out) both .1s; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(32px) scale(.98); filter: blur(6px); } }
+  @media (max-width: 760px) { .frame { aspect-ratio: 4 / 3; } .tag { top: .75rem; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-ba]').forEach((fig) => {
+    const r = fig.querySelector<HTMLInputElement>('.range')!;
+    const set = () => {
+      const v = Number(r.value);
+      fig.style.setProperty('--pos', v + '%');
+      r.setAttribute('aria-valuetext', `${Math.round(v)}% of the image shows the room before`);
+      fig.classList.toggle('hide-before', v < 16);
+      fig.classList.toggle('hide-after', v > 84);
+    };
+    r.addEventListener('input', set);
+    set();
+  });
+</script>

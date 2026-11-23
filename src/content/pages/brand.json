@@ -1,0 +1,407 @@
+{
+  "slug": "brand",
+  "sourceFile": "brand.html",
+  "url": "https://tanches.gg/brand",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "brand" } },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Brand Center | TANCHES.GG",
+    "description": "Official TANCHES.GG logos, colors, and type. Download the brand kit and follow the guidelines for partners, press, and sponsors.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/brand",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Brand Center | TANCHES.GG",
+    "ogDescription": "Official TANCHES.GG logos, colors, and type. Download the brand kit and follow the guidelines for partners, press, and sponsors.",
+    "ogUrl": "https://tanches.gg/brand",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Brand Center | TANCHES.GG",
+    "twitterDescription": "Official TANCHES.GG logos, colors, and type. Download the brand kit and follow the guidelines for partners, press, and sponsors.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Brand Center | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/brand",
+            "url": "https://tanches.gg/brand",
+            "name": "Brand Center | TANCHES.GG",
+            "description": "Official TANCHES.GG logos, colors, and type. Download the brand kit and follow the guidelines for partners, press, and sponsors.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Brand Center", "item": "https://tanches.gg/brand" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Brand Center",
+      "p": [
+        "Official TANCHES.GG logos, colors, and type. Download the brand kit and follow the guidelines for partners, press, and sponsors.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeBootstrap": "localStorage key \"tg-theme-v2\" (default \"light\"); sets data-theme=\"light\" on <html>",
+      "note": "No ProjectCTA on this page. Does not load mobile.css."
+    }
+  },
+  "sections": [
+    {
+      "id": "page-header",
+      "ariaLabelledby": "br-title",
+      "heading": "The TANCHES.GG mark, ready to use.",
+      "headingHtml": "The TANCHES.GG mark, <span class=\"tg-grad\">ready to use.</span>",
+      "lede": "Official logos, colors, and type for partners, districts, press, and sponsors. Download what you need, then follow the guidelines below so the brand looks the same on screen and in print.",
+      "ctas": [
+        { "label": "Download Brand Kit", "href": "assets/brand-kit/tanches-gg-brand-kit.zip", "download": "tanches-gg-brand-kit.zip", "style": "primary", "meta": "ZIP · 11 logos · SVG + PNG · 2.1 MB" }
+      ],
+      "interactive": {
+        "jumpNav": {
+          "ariaLabel": "On this page",
+          "items": [
+            { "label": "Logos", "target": "#logos" },
+            { "label": "Usage", "target": "#usage" },
+            { "label": "Color", "target": "#color" },
+            { "label": "Typography", "target": "#type" },
+            { "label": "Story", "target": "#story" },
+            { "label": "Why a lion", "target": "#mark" }
+          ],
+          "behaviour": "Buttons (not links) that smooth-scroll to the section, offset 100px."
+        }
+      }
+    },
+    {
+      "id": "logos",
+      "ariaLabelledby": "br-logos-title",
+      "heading": "Logo files for light and dark.",
+      "headingHtml": "Logo files for <span class=\"tg-grad\">light and dark.</span>",
+      "lede": "Every logo comes in SVG and PNG. Use SVG for print and PNG for screen.",
+      "ctas": [
+        { "label": "Download all as ZIP", "href": "assets/brand-kit/tanches-gg-brand-kit.zip", "download": "tanches-gg-brand-kit.zip", "style": "link" }
+      ],
+      "downloads": [
+        {
+          "group": "Lockups",
+          "note": "The primary signature. Use these first.",
+          "items": [
+            { "id": "lockup-color-light", "name": "Full color · light", "use": "White and pale backgrounds", "tileBg": "#FFFFFF", "tileLabel": "On light", "maxHeight": "100%", "alt": "TANCHES.GG Full color light preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "download": "tanches-gg-lockup-color-light.svg", "ariaLabel": "Download Full color · light SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-lockup-color-light.png", "download": "tanches-gg-lockup-color-light.png", "ariaLabel": "Download Full color · light PNG" }
+              ] },
+            { "id": "lockup-color-dark", "name": "Full color · dark", "use": "Near-black backgrounds", "tileBg": "#08080A", "tileLabel": "On dark", "maxHeight": "100%", "alt": "TANCHES.GG Full color dark preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-lockup-color-dark.svg", "download": "tanches-gg-lockup-color-dark.svg", "ariaLabel": "Download Full color · dark SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-lockup-color-dark.png", "download": "tanches-gg-lockup-color-dark.png", "ariaLabel": "Download Full color · dark PNG" }
+              ] },
+            { "id": "lockup-black", "name": "One-ink black", "use": "Single-color print, etching", "tileBg": "#FFFFFF", "tileLabel": "On light", "maxHeight": "100%", "alt": "TANCHES.GG One-ink black preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-lockup-black.svg", "download": "tanches-gg-lockup-black.svg", "ariaLabel": "Download One-ink black SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-lockup-black.png", "download": "tanches-gg-lockup-black.png", "ariaLabel": "Download One-ink black PNG" }
+              ] },
+            { "id": "lockup-white", "name": "One-ink white", "use": "Photography, apparel on dark", "tileBg": "#08080A", "tileLabel": "On dark", "maxHeight": "100%", "alt": "TANCHES.GG One-ink white preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-lockup-white.svg", "download": "tanches-gg-lockup-white.svg", "ariaLabel": "Download One-ink white SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-lockup-white.png", "download": "tanches-gg-lockup-white.png", "ariaLabel": "Download One-ink white PNG" }
+              ] }
+          ]
+        },
+        {
+          "group": "Icon",
+          "note": "The lion on its plate. Use below 120px wide.",
+          "items": [
+            { "id": "icon-color", "name": "Icon · color", "use": "Avatars, app icons, any background", "tileBg": "#FFFFFF", "tileLabel": "On light", "maxHeight": "78%", "alt": "TANCHES.GG Icon color preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-icon-color.svg", "download": "tanches-gg-icon-color.svg", "ariaLabel": "Download Icon · color SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-icon-color.png", "download": "tanches-gg-icon-color.png", "ariaLabel": "Download Icon · color PNG" }
+              ] },
+            { "id": "icon-white", "name": "Icon · white", "use": "Single-ink on dark", "tileBg": "#08080A", "tileLabel": "On dark", "maxHeight": "78%", "alt": "TANCHES.GG Icon white preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-icon-white.svg", "download": "tanches-gg-icon-white.svg", "ariaLabel": "Download Icon · white SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-icon-white.png", "download": "tanches-gg-icon-white.png", "ariaLabel": "Download Icon · white PNG" }
+              ] },
+            { "id": "icon-black", "name": "Icon · black", "use": "Single-ink on light", "tileBg": "#FFFFFF", "tileLabel": "On light", "maxHeight": "78%", "alt": "TANCHES.GG Icon black preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-icon-black.svg", "download": "tanches-gg-icon-black.svg", "ariaLabel": "Download Icon · black SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-icon-black.png", "download": "tanches-gg-icon-black.png", "ariaLabel": "Download Icon · black PNG" }
+              ] }
+          ]
+        },
+        {
+          "group": "Wordmark",
+          "note": "Type only, for tight horizontal spaces.",
+          "items": [
+            { "id": "wordmark-color-light", "name": "Wordmark · light", "use": "White and pale backgrounds", "tileBg": "#FFFFFF", "tileLabel": "On light", "maxHeight": "100%", "alt": "TANCHES.GG Wordmark light preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-wordmark-color-light.svg", "download": "tanches-gg-wordmark-color-light.svg", "ariaLabel": "Download Wordmark · light SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-wordmark-color-light.png", "download": "tanches-gg-wordmark-color-light.png", "ariaLabel": "Download Wordmark · light PNG" }
+              ] },
+            { "id": "wordmark-color-dark", "name": "Wordmark · dark", "use": "Near-black backgrounds", "tileBg": "#08080A", "tileLabel": "On dark", "maxHeight": "100%", "alt": "TANCHES.GG Wordmark dark preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-wordmark-color-dark.svg", "download": "tanches-gg-wordmark-color-dark.svg", "ariaLabel": "Download Wordmark · dark SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-wordmark-color-dark.png", "download": "tanches-gg-wordmark-color-dark.png", "ariaLabel": "Download Wordmark · dark PNG" }
+              ] },
+            { "id": "wordmark-black", "name": "Wordmark · black", "use": "Single-color print", "tileBg": "#FFFFFF", "tileLabel": "On light", "maxHeight": "100%", "alt": "TANCHES.GG Wordmark black preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-wordmark-black.svg", "download": "tanches-gg-wordmark-black.svg", "ariaLabel": "Download Wordmark · black SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-wordmark-black.png", "download": "tanches-gg-wordmark-black.png", "ariaLabel": "Download Wordmark · black PNG" }
+              ] },
+            { "id": "wordmark-white", "name": "Wordmark · white", "use": "Single-ink on dark", "tileBg": "#08080A", "tileLabel": "On dark", "maxHeight": "100%", "alt": "TANCHES.GG Wordmark white preview",
+              "files": [
+                { "format": "SVG", "href": "assets/brand-kit/tanches-gg-wordmark-white.svg", "download": "tanches-gg-wordmark-white.svg", "ariaLabel": "Download Wordmark · white SVG" },
+                { "format": "PNG", "href": "assets/brand-kit/tanches-gg-wordmark-white.png", "download": "tanches-gg-wordmark-white.png", "ariaLabel": "Download Wordmark · white PNG" }
+              ] }
+          ]
+        }
+      ],
+      "_source": {
+        "downloads[].items[]": "mk(id, name, use, bg, mh): alt = 'TANCHES.GG ' + name.replace(' · ', ' ') + ' preview'; svg/png = 'assets/brand-kit/tanches-gg-' + id + '.svg|.png'; tileCls = bg === '#FFFFFF' ? 'is-light' : 'is-dark'; bgLabel = 'On light' | 'On dark'; svgLabel = 'Download ' + name + ' SVG'"
+      },
+      "notes": "Each tile previews the SVG (img src = the .svg file). Brand kit ZIP contents: SVG/ and PNG/ folders with the same 11 logos plus README.txt (see notes-F.md)."
+    },
+    {
+      "id": "usage",
+      "ariaLabelledby": "br-usage-title",
+      "heading": "Give it room.",
+      "headingHtml": "Give it <span class=\"tg-grad\">room.</span>",
+      "body": [
+        "Keep clear space around the lockup equal to at least half the icon’s height on all sides. Don’t crowd it with text, edges, or other marks."
+      ],
+      "images": [
+        { "src": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "alt": "TANCHES.GG lockup shown with its clear-space margin", "overlayLabel": "½ icon" }
+      ],
+      "stats": [
+        { "label": "Min width · screen", "value": "120", "unit": "px" },
+        { "label": "Min width · print", "value": "1", "unit": "in" }
+      ],
+      "footnote": "Below the minimum, use the icon on its own.",
+      "interactive": {
+        "rules": {
+          "do": {
+            "title": "Do",
+            "items": [
+              { "label": "Full color on near-black", "src": "assets/brand-kit/tanches-gg-lockup-color-dark.svg", "tile": "is-dark", "effect": "" },
+              { "label": "Full color on white", "src": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "tile": "is-light", "effect": "" },
+              { "label": "One-ink white on photography", "src": "assets/brand-kit/tanches-gg-lockup-white.svg", "tile": "is-photo", "effect": "", "backgroundPhoto": "assets/hero-room.jpeg" }
+            ]
+          },
+          "dont": {
+            "title": "Don’t",
+            "items": [
+              { "label": "Stretch or distort", "src": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "tile": "is-light", "effect": "fx-stretch" },
+              { "label": "Rotate or tilt", "src": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "tile": "is-light", "effect": "fx-rotate" },
+              { "label": "Place on clashing color", "src": "assets/brand-kit/tanches-gg-lockup-color-dark.svg", "tile": "is-clash", "effect": "" },
+              { "label": "Use the black version on dark", "src": "assets/brand-kit/tanches-gg-lockup-black.svg", "tile": "is-dark", "effect": "" },
+              { "label": "Recolor the mark", "src": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "tile": "is-light", "effect": "fx-recolor" },
+              { "label": "Add shadows or effects", "src": "assets/brand-kit/tanches-gg-lockup-color-light.svg", "tile": "is-light", "effect": "fx-shadow" }
+            ]
+          },
+          "notes": "Example images have alt=\"\". Effects (fx-*) and tile classes are CSS in the design system."
+        }
+      }
+    },
+    {
+      "id": "color",
+      "ariaLabelledby": "br-color-title",
+      "heading": "Six colors, sampled from the lion.",
+      "headingHtml": "Six colors, <span class=\"tg-grad\">sampled from the lion.</span>",
+      "body": [
+        "The flame-to-violet spectrum comes straight from the mark and sits against a deep, cool near-black. Use it on one focal element per view so it always stands out."
+      ],
+      "meta": "Click a swatch to copy its hex value",
+      "swatches": [
+        { "name": "Flame", "hex": "#F53F1D", "rgb": "RGB 245 63 29", "tag": "Start", "ariaLabel": "Copy Flame #F53F1D" },
+        { "name": "Ember", "hex": "#EE3C37", "rgb": "RGB 238 60 55", "tag": "", "ariaLabel": "Copy Ember #EE3C37" },
+        { "name": "Rose", "hex": "#E23869", "rgb": "RGB 226 56 105", "tag": "Signature", "ariaLabel": "Copy Rose #E23869" },
+        { "name": "Magenta", "hex": "#DA358B", "rgb": "RGB 218 53 139", "tag": "", "ariaLabel": "Copy Magenta #DA358B" },
+        { "name": "Fuchsia", "hex": "#D031B2", "rgb": "RGB 208 49 178", "tag": "", "ariaLabel": "Copy Fuchsia #D031B2" },
+        { "name": "Violet", "hex": "#C92FD1", "rgb": "RGB 201 47 209", "tag": "End", "ariaLabel": "Copy Violet #C92FD1" }
+      ],
+      "spectrum": {
+        "label": "Spectrum · linear-gradient 105° · #F53F1D → #C92FD1",
+        "from": "#F53F1D",
+        "to": "#C92FD1",
+        "angle": "105deg"
+      },
+      "inks": {
+        "title": "Neutral ink",
+        "note": "Cool and near-black. Never warm gray, and never pure #000 surfaces.",
+        "items": [
+          { "hex": "#08080A", "rgb": "RGB 8 8 10", "ariaLabel": "Copy #08080A #08080A" },
+          { "hex": "#131318", "rgb": "RGB 19 19 24", "ariaLabel": "Copy #131318 #131318" },
+          { "hex": "#1A1A21", "rgb": "RGB 26 26 33", "ariaLabel": "Copy #1A1A21 #1A1A21" },
+          { "hex": "#22222B", "rgb": "RGB 34 34 43", "ariaLabel": "Copy #22222B #22222B" },
+          { "hex": "#2D2D38", "rgb": "RGB 45 45 56", "ariaLabel": "Copy #2D2D38 #2D2D38" },
+          { "hex": "#565666", "rgb": "RGB 86 86 102", "ariaLabel": "Copy #565666 #565666" },
+          { "hex": "#7A7A8C", "rgb": "RGB 122 122 140", "ariaLabel": "Copy #7A7A8C #7A7A8C" },
+          { "hex": "#9B9BAC", "rgb": "RGB 155 155 172", "ariaLabel": "Copy #9B9BAC #9B9BAC" },
+          { "hex": "#C2C2CE", "rgb": "RGB 194 194 206", "ariaLabel": "Copy #C2C2CE #C2C2CE" },
+          { "hex": "#E7E7EE", "rgb": "RGB 231 231 238", "ariaLabel": "Copy #E7E7EE #E7E7EE" },
+          { "hex": "#FFFFFF", "rgb": "RGB 255 255 255", "ariaLabel": "Copy #FFFFFF #FFFFFF" }
+        ],
+        "notes": "Ink chips display only the hex; rgb is computed but not rendered for inks."
+      },
+      "_source": {
+        "swatches[].rgb": "'RGB ' + [n >> 16, (n >> 8) & 255, n & 255].join(' ') where n = parseInt(hex.slice(1), 16)",
+        "swatches[].ariaLabel": "'Copy ' + name + ' ' + hex (inks use hex as name)"
+      },
+      "interactive": {
+        "copyToClipboard": "Clicking a swatch/ink copies its hex via navigator.clipboard.writeText and shows a toast 'Copied <hex>' (with a dot in that colour) for 1600ms in a role=status aria-live=polite slot."
+      }
+    },
+    {
+      "id": "type",
+      "ariaLabelledby": "br-type-title",
+      "heading": "Two typefaces, both free.",
+      "lede": "Sora carries everything people read. JetBrains Mono is for labels, stats, and data.",
+      "cards": [
+        {
+          "title": "Sora",
+          "meta": "Display & UI",
+          "weights": "300–800",
+          "specimen": "Aa Bb Cc Dd Ee 0123456789",
+          "body": "Geometric, confident, and modern. Use it for everything from hero headlines to body copy.",
+          "links": [{ "label": "Get Sora on Google Fonts", "href": "https://fonts.google.com/specimen/Sora", "target": "_blank", "rel": "noopener" }]
+        },
+        {
+          "title": "Mono",
+          "family": "JetBrains Mono",
+          "meta": "Labels · stats · data",
+          "weights": "400–600",
+          "specimen": "OVERLINE · 68% WIN RATE",
+          "body": "JetBrains Mono, set in capitals with wide tracking. Pair it with large Sora headlines, and keep it for labels, tags, and numbers.",
+          "links": [{ "label": "Get JetBrains Mono on Google Fonts", "href": "https://fonts.google.com/specimen/JetBrains+Mono", "target": "_blank", "rel": "noopener" }]
+        }
+      ],
+      "typeScale": [
+        { "label": "Display · 88 / 700", "sample": "Compete" },
+        { "label": "H1 · 38 / 700", "sample": "Build the platform" },
+        { "label": "H3 · 24 / 600", "sample": "Subsection title" },
+        { "label": "Body · 16 / 400", "sample": "The quick brown fox runs the program." },
+        { "label": "Micro · 11 mono", "sample": "OVERLINE LABEL" }
+      ]
+    },
+    {
+      "id": "story",
+      "ariaLabelledby": "br-story-title",
+      "heading": "From TanChes to TANCHES.GG.",
+      "headingHtml": "From TanChes to <span class=\"tg-grad\">TANCHES.GG.</span>",
+      "lede": "TANCHES.GG didn’t start as an esports company. It started as the IT partner that schools, cities, and businesses already trusted. The red seal became the lion.",
+      "lists": [
+        {
+          "title": "timeline",
+          "items": [
+            { "year": "1998", "meta": "TanChes · S.M.A.R.T IT Solutions", "body": "Tanaz and Chesley Choudhury found TanChes. Enterprise networks, infrastructure, and support for the public sector." },
+            { "year": "Today", "meta": "TANCHES.GG · Esports vertical of TanChes Global", "body": "The same team and 28 years of infrastructure work, now designing, building, and running esports programs." }
+          ]
+        }
+      ],
+      "ctas": [
+        { "label": "Why a lion", "href": "#mark", "style": "link", "notes": "button; smooth-scrolls to #mark; down-arrow icon" }
+      ],
+      "images": [
+        { "src": "assets/story/tanches-seal.png", "alt": "", "role": "animation layer (seal)" },
+        { "src": "assets/story/tanches-gg-icon.svg", "alt": "", "role": "animation layer (lion)" }
+      ],
+      "interactive": {
+        "sealToLionAnimation": {
+          "ariaLabel": "The TanChes seal transforms into the TANCHES.GG lion mark",
+          "role": "img",
+          "timeline": "10s loop: seal 0–3s, glitch 3–5s (swap at 4s), lion 5–10s; short glitch seam (280ms) at the wrap back to the seal",
+          "sealLayer": { "src": "assets/story/tanches-seal.png", "box": "left 12%, top 12%, 76% x 76%", "ghostFilters": ["hue-rotate(180deg) saturate(1.6)", "hue-rotate(250deg) saturate(1.6)"] },
+          "lionLayer": { "src": "assets/story/tanches-gg-icon.svg", "box": "centered, height 74%, aspect-ratio 205.6 / 237", "ghostFilters": ["hue-rotate(-50deg) saturate(1.4)", "hue-rotate(70deg) saturate(1.4)"] },
+          "scanlines": "repeating-linear-gradient(0deg, rgba(128,128,140,0.12) 0 1px, transparent 1px 3px)",
+          "timelineSync": "Timeline item 1998 is full opacity during seal phase (else 0.5); 'Today' is full opacity during lion phase.",
+          "reducedMotion": "Static frame at t=7000ms (lion)",
+          "playsOnlyInView": "IntersectionObserver threshold 0.2"
+        }
+      }
+    },
+    {
+      "id": "mark",
+      "ariaLabelledby": "br-mark-title",
+      "heading": "The lion was never random.",
+      "lede": "It carries our history, what we believe about students, and the kind of partner we want to be.",
+      "cards": [
+        { "title": "The lion was always ours.", "body": "The lion has been a quiet symbol inside TanChes for years, part spirit animal and part reminder of how we want to show up. Putting it at the center of TANCHES.GG carried that history into everything we build next." },
+        { "title": "Choosing to lead.", "body": "Esports is a crowded field, full of gear and promises. We didn’t want to be one more voice in it. The lion is our commitment to lead from the front, stay accountable, and keep showing up long after install day." },
+        { "title": "Cubs learn through play.", "body": "Young lions learn everything through play: timing, focus, how to move as a team. Students do too. Game-based learning is how a lot of real skills get built." },
+        { "title": "Raising leaders.", "body": "For many students, esports is the first time they captain a team, call a play, or run a broadcast. The lion is who we hope every student becomes: someone who leads on the screen and off it." },
+        { "title": "Guarding the den.", "body": "Lions protect their young. We build safe, supervised, well-run spaces, from network security to coach training, so families and administrators can trust the room their kids walk into." }
+      ],
+      "images": [
+        { "src": "assets/brand-kit/tanches-gg-icon-color.svg", "alt": "TANCHES.GG lion mark" }
+      ],
+      "interactive": {
+        "hiddenTC": {
+          "buttonAriaLabel": "Reveal the hidden T and C in the lion mark",
+          "trigger": "hover/focus on hover-capable devices; tap toggles on touch devices (aria-pressed reflects state)",
+          "overlay": "Inline SVG over the icon: rounded rect (rx 48) fill #0B0B0F opacity 0.78, with white T polygon and clipped white C polygon from the lion artwork (viewBox 0 0 205.6 237; inner svg x=26 y=26 w=153.6 h=185 viewBox 0 0 617.40002 743.59998)",
+          "chips": [
+            { "letter": "C", "name": "Chesley" },
+            { "letter": "T", "name": "Tanaz" }
+          ],
+          "secretButton": {
+            "title": "There’s a hidden T and C in the mark.",
+            "body": "They stand for Tanaz and Chesley Choudhury, the founders of TanChes. Hover to find them.",
+            "condition": "Final sentence is 'Hover to find them.' when (hover: hover) matches, otherwise 'Tap to find them.'",
+            "bodyTouch": "They stand for Tanaz and Chesley Choudhury, the founders of TanChes. Tap to find them.",
+            "_source": { "body": "'They stand for Tanaz and Chesley Choudhury, the founders of TanChes. ' + (hover() ? 'Hover to find them.' : 'Tap to find them.')" }
+          }
+        }
+      }
+    },
+    {
+      "id": "contact",
+      "ariaLabelledby": "br-contact-title",
+      "heading": "Need a format that isn’t here?",
+      "body": ["Co-branding, press, and sponsor requests go straight to our team."],
+      "ctas": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg?subject=Brand%20request", "style": "ghost" }
+      ]
+    },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

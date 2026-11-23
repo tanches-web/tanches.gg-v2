@@ -1,0 +1,82 @@
+---
+// Interior page opening: statement on the sweep, then the page's object (photo or render)
+// floating beneath it with optional frosted spec labels. Same world as the home hero, quieter.
+import Icon from './Icon.astro';
+export interface HeroLabel { text: string; x: number; y: number; left?: boolean }
+interface Props {
+  title: string;          // plain part
+  strong?: string;        // emphasised continuation (heavier weight)
+  lede?: string;
+  ctas?: { label: string; href: string; primary?: boolean }[];
+  image?: { src: string; alt: string; pos?: string };
+  objectSrc?: string;     // a cut-out render (transparent PNG) instead of a photo
+  objectAlt?: string;
+  labels?: HeroLabel[];
+  crumb?: { label: string; href: string };
+  caption?: string;
+  align?: 'center' | 'left';
+}
+const { title, strong, lede, ctas = [], image, objectSrc, objectAlt = '', labels = [], crumb, caption, align = 'center' } = Astro.props;
+---
+<section class:list={['phero sweep', align]} aria-labelledby="page-title">
+  <div class="wrap copy">
+    {crumb && <a class="crumb" href={crumb.href}><Icon name="chevron-left" size={16} />{crumb.label}</a>}
+    <h1 id="page-title" class="display">{title}{strong && <> <strong>{strong}</strong></>}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    {ctas.length > 0 && (
+      <div class="ctas">
+        {ctas.map((c) => <a class:list={['btn', c.primary ? 'btn-primary' : 'btn-ghost']} href={c.href}>{c.label}{c.primary && <Icon name="arrow-right" />}</a>)}
+      </div>
+    )}
+    <slot name="after-copy" />
+  </div>
+  {(image || objectSrc) && (
+    <figure class:list={['stage', { cutout: !!objectSrc }]}>
+      <div class="obj">
+        {image && <div class="photo plate"><img src={image.src} alt={image.alt} style={image.pos ? `object-position:${image.pos}` : undefined} fetchpriority="high" /></div>}
+        {objectSrc && <img class="object cut" src={objectSrc} alt={objectAlt} fetchpriority="high" />}
+        {labels.length > 0 && (
+          <ul class="labels" role="list">
+            {labels.map((l, i) => <li class:list={['label-glass', { left: l.left }]} style={`--x:${l.x}%;--y:${l.y}%;--i:${i}`}><span class="dot" aria-hidden="true"></span>{l.text}</li>)}
+          </ul>
+        )}
+      </div>
+      {caption && <figcaption class="spec cap">{caption}</figcaption>}
+    </figure>
+  )}
+  <slot />
+</section>
+
+<style>
+  /* Interior pages: a tighter opening than the home stage, so the page's photo is on screen from the start */
+  .phero { padding-top: clamp(6.75rem, 4.5rem + 3.6vw, 8.25rem); padding-bottom: clamp(3rem, 6vw, 5.5rem); overflow: clip; }
+  .copy { display: grid; gap: 1.25rem; }
+  .center .copy { justify-items: center; text-align: center; }
+  .left .copy { justify-items: start; }
+  .crumb { display: inline-flex; align-items: center; gap: .3rem; font-size: .875rem; font-weight: 600; color: var(--ink-2); text-decoration: none; padding: .35rem .75rem .35rem .5rem; border-radius: 999px; border: 1px solid var(--line-2); }
+  .crumb:hover { color: var(--ink); border-color: var(--ink-3); }
+  h1 { max-width: 21ch; font-size: clamp(2.5rem, 1.1rem + 4vw, 4.5rem); }
+  h1 :global(strong) { font-weight: 720; }
+  .lede { max-width: 60ch; }
+  .ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
+  .center .ctas { justify-content: center; }
+  .stage { width: min(1180px, 92vw); margin: clamp(2rem, 3.5vw, 3rem) auto 0; }
+  .obj { position: relative; }
+  .plate { aspect-ratio: 21 / 9; }
+  .cut { width: 100%; height: auto; }
+  .labels { list-style: none; padding: 0; margin: 0; position: absolute; inset: 0; }
+  .labels li { position: absolute; left: var(--x); top: var(--y); translate: -1.125rem -50%; }
+  .labels li.left { flex-direction: row-reverse; padding: .45rem .5rem .45rem .9rem; translate: calc(-100% + 1.125rem) -50%; }
+  .cap { text-align: center; padding-top: 1rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    .obj { animation: rise 1.4s var(--ease-out) both .1s; }
+    .labels li { animation: pop .9s var(--ease-out) both; animation-delay: calc(.9s + var(--i) * 120ms); }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(32px) scale(.98); filter: blur(6px); } }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.94); } }
+  @media (max-width: 760px) {
+    .plate { aspect-ratio: 4 / 3; }
+    .labels li { font-size: .75rem; }
+    .labels li:nth-child(n+3) { display: none; }
+  }
+</style>

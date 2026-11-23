@@ -1,0 +1,55 @@
+# Send www to the main domain
+https://www.tanches.gg/*  https://tanches.gg/:splat  301!
+
+# Old design-file URLs
+/TANCHES%20Home.dc.html  /  301
+/index.html  /  301
+/About.dc.html  /About  301
+/Assessment.dc.html  /Assessment  301
+/Commercial.dc.html  /Commercial  301
+/Community.dc.html  /Community  301
+/Contact.dc.html  /Contact  301
+/Education.dc.html  /Education  301
+/League.dc.html  /League  301
+/Procurement.dc.html  /Procurement  301
+/Project-Alvin.dc.html  /Project-Alvin  301
+/Project-Longview.dc.html  /Project-Longview  301
+/Project-Muskogee.dc.html  /Project-Muskogee  301
+/Project-Stafford.dc.html  /Project-Stafford  301
+/Project-Swampy.dc.html  /Project-Swampy  301
+/Project-fortbend.dc.html  /Project-fortbend  301
+/Project-navarro.dc.html  /Project-navarro  301
+/Project-pleasantgrove.dc.html  /Project-pleasantgrove  301
+/Project-samsat.dc.html  /Project-samsat  301
+/Project-uh.dc.html  /Project-uh  301
+/Project-uhsl.dc.html  /Project-uhsl  301
+/Project-ust.dc.html  /Project-ust  301
+/Projects.dc.html  /Projects  301
+/Team.dc.html  /Team  301
+/Technology.dc.html  /Technology  301
+/Lab%20Tour.dc.html  /Technology  301
+/Lab-Tour  /Technology  301
+/Brand.dc.html  /brand  301
+
+# Old addresses of unlisted pages show the 404 page (forced, so leftover copies of the files can't be reached).
+# Nothing points visitors to /prod_site/.
+/shop  /404.html  404!
+/shop/*  /404.html  404!
+/shop.html  /404.html  404!
+/hub  /404.html  404!
+/hub.html  /404.html  404!
+/internal/*  /404.html  404!
+/shop-store.js  /404.html  404!
+# Setup notes and config files stay private (they mention unlisted folders).
+/DEPLOY.md  /404.html  404!
+/netlify.toml  /404.html  404!
+
+# v3: old component files no longer exist
+/support.js  /404.html  404!
+/image-slot.js  /404.html  404!
+/mobile.css  /404.html  404!
+/_ds/*  /404.html  404!
+
+# Lowercase links (the assessment PDF links to /contact)
+/contact  /Contact  301
+/sitemap.xml  /sitemap-index.xml  301

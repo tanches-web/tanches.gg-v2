@@ -1,0 +1,146 @@
+---
+// Netlify form. Works as a plain POST without JavaScript; with JavaScript it sends in place
+// and falls back to a ready-made email if the request fails.
+import Icon from './Icon.astro';
+interface Props { name?: string; subject?: string; showPhone?: boolean; interest?: string }
+const { name = 'project-cta', subject = 'New project inquiry', showPhone = false, interest } = Astro.props;
+const programs = ['K-12 Education', 'Higher Education', 'Community / Government', 'Commercial'];
+const interests = ['Full facility build', 'Hardware & equipment', 'Technology & infrastructure', 'Funding & procurement', 'Managed services', 'Esports League', 'Not sure yet'];
+const id = (f: string) => `${name}-${f}`;
+---
+<form class="cform" name={name} method="POST" action="/Contact?sent=1" data-netlify="true" netlify-honeypot="bot-field" data-cform>
+  <input type="hidden" name="form-name" value={name} />
+  <input type="hidden" name="subject" value={subject} />
+  <input type="hidden" name="page" value={Astro.url.pathname} data-page />
+  <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  <div class="fields">
+    <div class="f">
+      <label for={id('name')}>Full name</label>
+      <input id={id('name')} name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="f">
+      <label for={id('email')}>Work email</label>
+      <input id={id('email')} name="email" type="email" autocomplete="email" required />
+    </div>
+    <div class="f">
+      <label for={id('org')}>Organization</label>
+      <input id={id('org')} name="organization" type="text" autocomplete="organization" required />
+    </div>
+    {showPhone && (
+      <div class="f">
+        <label for={id('phone')}>Phone <span class="opt">(optional)</span></label>
+        <input id={id('phone')} name="phone" type="tel" autocomplete="tel" />
+      </div>
+    )}
+    <div class="f">
+      <label for={id('program')}>Program type</label>
+      <div class="sel">
+        <select id={id('program')} name="program" required>
+          <option value="" selected disabled>Select one</option>
+          {programs.map((p) => <option>{p}</option>)}
+        </select>
+        <Icon name="chevron-down" size={18} />
+      </div>
+    </div>
+    <div class="f">
+      <label for={id('interest')}>I’m interested in</label>
+      <div class="sel">
+        <select id={id('interest')} name="interest" required>
+          <option value="" selected={!interest} disabled>Select one</option>
+          {interests.map((p) => <option selected={p === interest}>{p}</option>)}
+        </select>
+        <Icon name="chevron-down" size={18} />
+      </div>
+    </div>
+    <div class="f wide">
+      <label for={id('details')}>What are you looking to build?</label>
+      <textarea id={id('details')} name="details" rows="4"></textarea>
+    </div>
+  </div>
+
+  <div class="foot">
+    <button class="btn btn-primary" type="submit"><span class="lbl">Request my consultation</span><Icon name="arrow-right" /></button>
+    <p class="note">By submitting this form, you agree to our Terms &amp; Privacy Policy.</p>
+  </div>
+  <p class="err" role="alert" hidden></p>
+
+  <div class="done" hidden tabindex="-1">
+    <span class="chip"><span class="dot"></span>Received</span>
+    <p class="h3">Thank you.</p>
+    <p class="small">Your submission has been received. We'll reach out to schedule your no-cost consultation.</p>
+  </div>
+</form>
+
+<style>
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; }
+  .f { display: grid; gap: .45rem; }
+  .f.wide { grid-column: 1 / -1; }
+  label { font-size: .875rem; font-weight: 600; }
+  .opt { color: var(--ink-3); font-weight: 500; }
+  input, select, textarea {
+    width: 100%; min-height: 3rem; padding: .75rem .95rem; border-radius: 14px; font-size: 1rem;
+    background: var(--bg); border: 1px solid var(--line-2); color: var(--ink);
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+  }
+  textarea { resize: vertical; min-height: 7rem; line-height: 1.5; }
+  input:hover, select:hover, textarea:hover { border-color: var(--ink-3); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); background: var(--surface); }
+  input:user-invalid, select:user-invalid { border-color: #C2261B; }
+  .sel { position: relative; }
+  .sel select { appearance: none; padding-right: 2.5rem; cursor: pointer; }
+  .sel select:invalid { color: var(--ink-3); }
+  .sel option { color: var(--ink); }
+  .sel :global(svg) { position: absolute; right: .9rem; top: 50%; translate: 0 -50%; pointer-events: none; color: var(--ink-3); }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.5rem; }
+  .note { font-size: .8125rem; color: var(--ink-3); }
+  .err { margin-top: 1rem; padding: .9rem 1rem; border-radius: 14px; background: color-mix(in srgb, #C2261B 10%, var(--surface)); border: 1px solid color-mix(in srgb, #C2261B 40%, transparent); font-size: var(--t-small); }
+  .err a { color: var(--accent); font-weight: 600; }
+  button[aria-busy='true'] { opacity: .7; pointer-events: none; }
+  .done { display: grid; gap: .75rem; justify-items: start; padding: 1rem 0; }
+  .done[hidden], .err[hidden] { display: none; }
+  .done:focus { outline: none; }
+  .chip { display: inline-flex; align-items: center; gap: .5rem; padding: .3rem .75rem; border-radius: 999px; border: 1px solid var(--line-2); font: 500 var(--t-spec) var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .chip .dot { width: .5rem; height: .5rem; border-radius: 50%; background: #1FA35B; }
+  .cform.is-done .fields, .cform.is-done .foot { display: none; }
+  @media (max-width: 560px) { .fields { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-cform]').forEach((form) => {
+    const page = form.querySelector<HTMLInputElement>('[data-page]');
+    if (page) page.value = location.pathname;
+    const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const err = form.querySelector<HTMLElement>('.err')!;
+    const done = form.querySelector<HTMLElement>('.done')!;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      err.hidden = true;
+      btn.setAttribute('aria-busy', 'true');
+      btn.querySelector('.lbl')!.textContent = 'Sending…';
+      const data = new FormData(form);
+      // Keep the details field self-contained for the inbox.
+      const extra = ['program', 'interest'].map((k) => data.get(k) ? `${k === 'program' ? 'Program type' : 'Interested in'}: ${data.get(k)}` : '').filter(Boolean).join('\n');
+      if (extra) data.set('details', `${extra}\n\n${data.get('details') ?? ''}`.trim());
+      try {
+        const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data as any).toString() });
+        if (!r.ok) throw new Error(String(r.status));
+        const w = window as any;
+        try { w.gtag?.('event', 'generate_lead', { form_name: form.name }); w.fbq?.('track', 'Lead', { content_name: form.name }); if (w.lintrk && w.TG_LI_LEAD) w.lintrk('track', { conversion_id: Number(w.TG_LI_LEAD) }); } catch {}
+        form.classList.add('is-done');
+        done.hidden = false;
+        done.focus();
+      } catch {
+        const lines = [...data.entries()].filter(([k]) => !['form-name', 'bot-field'].includes(k)).map(([k, v]) => `${k}: ${v}`).join('\n');
+        const href = `mailto:contact@tanches.gg?subject=${encodeURIComponent(String(data.get('subject') || 'Website inquiry'))}&body=${encodeURIComponent(lines.slice(0, 1800))}`;
+        err.innerHTML = `Your message didn’t go through. Please email us at contact@tanches.gg or call (281) 826-2437. <a href="${href}">Email it instead</a>`;
+        err.hidden = false;
+      } finally {
+        btn.removeAttribute('aria-busy');
+        btn.querySelector('.lbl')!.textContent = 'Request my consultation';
+      }
+    });
+  });
+</script>

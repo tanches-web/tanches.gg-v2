@@ -1,0 +1,469 @@
+---
+// One template for Education, Community and Commercial, driven by each page's JSON.
+// Order follows the source SolutionPage: hero, who it is for, why, client case, curriculum (if any),
+// funding, league, questions, then the shared contact block.
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import SectionHead from '../SectionHead.astro';
+import Faq from '../Faq.astro';
+import ProjectCTA from '../ProjectCTA.astro';
+import Icon from '../Icon.astro';
+import LogoMarquee from '../LogoMarquee.astro';
+import edu from '../../content/pages/Education.json';
+import { splitHeading, asset } from './heading';
+
+interface Props { page: any }
+const { page } = Astro.props;
+const kind = page.slug.toLowerCase();
+const sec = (id: string) => page.sections.find((s: any) => s.id === id) as any;
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+
+// Hero
+const hero = sec('sp-hero');
+const hh = splitHeading(hero);
+// Each page opens on a finished TANCHES.GG build rather than a stock banner.
+// (A photo may appear only once per page: run node scripts/check-images.mjs after changing these.)
+const HERO: Record<string, { src: string; alt: string; pos?: string; caption: string }> = {
+  education: { src: '/assets/arena-longview.jpg', alt: 'Longview ISD esports arena', pos: '50% 58%', caption: '[ Pictured · Longview ISD esports arena ]' },
+  community: { src: '/assets/commercial-event.jpg', alt: 'Community members seated at an event inside an esports arena', pos: '50% 40%', caption: '[ Pictured · a community event inside a TANCHES.GG-built arena ]' },
+  commercial: { src: '/assets/hero-room-3.jpg', alt: 'A finished esports arena with a wall of screens, lit in the client’s colors', pos: '50% 60%', caption: '[ Pictured · a finished arena, lit in the client’s colors ]' },
+};
+const heroImg = HERO[kind] ?? { src: asset(hero.images[0].src), alt: hero.images[0].alt, pos: hero.images[0].objectPosition, caption: undefined };
+const switchNav = hero.interactive;
+
+// Who it is for
+const built = sec('sp-built');
+
+// Why
+const why = sec('sp-why');
+const wh = splitHeading(why);
+const pillars = why.lists[0];
+const whyLink = why.ctas[0];
+
+// Client case, lit in the client's colours
+const cs = sec('sp-case');
+const ch = splitHeading(cs);
+const cc = cs.interactive.clientColors;
+const csStyle = `--ca:${cc['--a']};--cb:${cc['--b']};--chi:${cc['--hi']};--cd:${cc['--deep']}`;
+const [csPhoto, csLogo] = cs.images;
+const [csBody, csAsk] = cs.body;
+const csQuote = cs.testimonials[0];
+const csStat = cs.stats[0];
+
+// Curriculum (Education and Community only)
+const cur = sec('sp-curriculum');
+
+// Funding
+const fund = sec('sp-fund');
+const fh = splitHeading(fund);
+const contractList = fund.lists.find((l: any) => l.items.some((i: any) => i.logo));
+const ways = fund.lists.find((l: any) => !l.items.some((i: any) => i.logo));
+const contracts = contractList?.items.map((c: any) => ({ ...c, key: c.logo.match(/proc-([a-z]+)/)[1] })) ?? [];
+const partnerCaption = fund.interactive.caption;
+const partners = (fund.interactive.logos ?? (edu.sections.find((s: any) => s.id === 'sp-fund') as any).interactive.logos) as any[];
+const partnerLogos = partners.map((p) => ({ name: p.name, light: asset(p.srcLight), dark: asset(p.srcDark) }));
+const fundLink = fund.ctas[0];
+
+// League
+const lg = sec('league');
+const lgImg = lg.images[0];
+const lgList = lg.lists?.[0];
+
+// Questions
+const faq = sec('sp-faq');
+const assess = faq.cards[0];
+---
+<Base seo={seo}>
+  <PageHero
+    title={hh.title}
+    strong={hh.strong}
+    lede={hero.lede}
+    ctas={hero.ctas.map((c: any) => ({ label: c.label, href: c.href, primary: c.style === 'primary' }))}
+    image={{ src: heroImg.src, alt: heroImg.alt, pos: heroImg.pos }}
+    caption={heroImg.caption}
+    labels={[{ text: hero.tags[0], x: 4.5, y: 87 }]}
+  >
+    <nav slot="after-copy" class="switch" aria-label={switchNav.ariaLabel}>
+      <ul role="list">
+        {switchNav.tabs.map((t: any) => (
+          <li><a href={t.href} aria-current={t.current ? 'page' : undefined}>{t.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </PageHero>
+
+  <!-- Who it is for: sticky heading beside a numbered list of buyers -->
+  <section class="section built" aria-labelledby="built-title">
+    <div class="wrap side-grid">
+      <div class="side">
+        <h2 id="built-title" class="h2" data-reveal>{built.heading}</h2>
+        <p class="lede" data-reveal>{built.lede}</p>
+      </div>
+      <ol class="aud" role="list">
+        {built.cards.map((c: any, i: number) => (
+          <li data-reveal>
+            <span class="spec n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="aud-txt">
+              <h3 class="h3">{c.title}</h3>
+              <p class="sub">{c.subtitle}</p>
+              <p class="body">{c.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Why: three figures, then the reasons in a spec table -->
+  <section class="section why" aria-labelledby="why-title">
+    <div class="wrap">
+      <SectionHead id="why-title" title={wh.title} strong={wh.strong} lede={why.lede} />
+      <dl class="figs">
+        {why.stats.map((s: any) => (
+          <div data-reveal>
+            <dt>{s.label}</dt>
+            <dd class="num">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="pillars">
+        <div class="p-head" data-reveal>
+          <h3 class="h3">{pillars.title}</h3>
+          <p class="body">{pillars.body}</p>
+          <a class="link" href={whyLink.href}>{whyLink.label} <Icon name="arrow-right" /></a>
+        </div>
+        <dl class="rows" data-reveal>
+          {pillars.items.map((it: any) => (<div><dt>{it.title}</dt><dd>{it.body}</dd></div>))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client case: the build, lit in the client's own colours -->
+  <section class="section case" aria-labelledby="case-title" style={csStyle}>
+    <div class="wrap">
+      <article class="cs" data-reveal>
+        <span class="mascot" aria-hidden="true">{cs.interactive.mascotWatermark}</span>
+        <figure class="cs-photo">
+          <img src={asset(csPhoto.src)} alt={csPhoto.alt} loading="lazy" decoding="async" />
+        </figure>
+        <div class="cs-copy">
+          <div class="cs-id">
+            <img class:list={['cs-logo', { tall: cs.interactive.logoClass === 'is-tall' }]} src={asset(csLogo.src)} alt={csLogo.alt} loading="lazy" />
+            <p class="spec cs-meta">{cs.meta}</p>
+          </div>
+          <h2 id="case-title" class="cs-h">{ch.title} <strong>{ch.strong}</strong></h2>
+          {cs.lede && <p class="cs-note">{cs.lede}</p>}
+          <p class="cs-body">{csBody}</p>
+          <ul class="cs-tags" role="list" aria-label="Scope">{cs.tags.map((t: string) => <li>{t}</li>)}</ul>
+          <div class="cs-stat">
+            <span class="num">{csStat.value}</span>
+            <span>{csStat.label}</span>
+          </div>
+          <figure class="cs-quote">
+            <blockquote><p>“{csQuote.quote}”</p></blockquote>
+            <figcaption><strong>{csQuote.name}</strong> <span>{csQuote.role}</span></figcaption>
+          </figure>
+        </div>
+      </article>
+      <div class="row-ctas" data-reveal>
+        <p class="small">{csAsk}</p>
+        <div class="btns">
+          {cs.ctas.filter((c: any) => c.style !== 'link').map((c: any) => (
+            <a class:list={['btn', c.style === 'primary' ? 'btn-primary' : 'btn-ghost']} href={c.href}>{c.label} <Icon name="arrow-right" /></a>
+          ))}
+          {cs.ctas.filter((c: any) => c.style === 'link').map((c: any) => (
+            <a class="link" href={c.href}>{c.label} <Icon name="arrow-right" /></a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {cur && (
+    <section class="section cur" aria-labelledby="cur-title">
+      <div class="wrap">
+        <div class="cur-head">
+          <h2 id="cur-title" class="h2" data-reveal>{cur.heading}</h2>
+          <div class="cur-lede" data-reveal>
+            <p class="lede">{cur.lede}</p>
+            <span class="label-glass"><span class="dot" aria-hidden="true"></span>{cur.tags[0]}</span>
+          </div>
+        </div>
+        <ol class="tracks" role="list" data-reveal>
+          {cur.cards.map((t: any, i: number) => (
+            <li>
+              <span class="spec n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="t-name">{t.title}</h3>
+              <p class="t-roles"><span class="sr-only">Careers: </span>{t.tags.join(' · ')}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  <!-- Funding: contracts and ways to pay, then the partners we build with -->
+  <section class="section fund" aria-labelledby="fund-title">
+    <div class="wrap">
+      <SectionHead id="fund-title" title={fh.title} strong={fh.strong} lede={fund.lede} />
+      <div class:list={['fund-grid', { solo: contracts.length === 0 }]}>
+        {contracts.length > 0 && (
+          <div class="contracts" data-reveal>
+            <h3 class="f-title">{contractList.title}</h3>
+            <ul role="list">
+              {contracts.map((c: any) => (
+                <li>
+                  <span class="c-logo">
+                    <img class="lg-l" src={`/assets/logo-${c.key}-black.png`} alt={c.name} loading="lazy" />
+                    <img class="lg-d" src={`/assets/logo-${c.key}-white.png`} alt="" aria-hidden="true" loading="lazy" />
+                  </span>
+                  <span class="spec">{c.kind}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div class="ways" data-reveal>
+          <h3 class="f-title">{ways.title}</h3>
+          <dl class="rows">
+            {ways.items.map((w: any) => (<div><dt>{w.title}</dt><dd>{w.body}</dd></div>))}
+          </dl>
+          <a class="link" href={fundLink.href}>{fundLink.label} <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+      <div class="partners" data-reveal>
+        <p class="small">{partnerCaption}</p>
+        <LogoMarquee logos={partnerLogos} label={partnerCaption} size="sm" />
+      </div>
+    </div>
+  </section>
+
+  <!-- League: the one full-bleed photograph, with a frosted card -->
+  <section class="league" aria-labelledby="league-title">
+    <img class="league-bg" src={asset(lgImg.src)} alt={lgImg.alt} loading="lazy" decoding="async" />
+    <div class="wrap league-inner">
+      <p class="label-glass status"><span class="live" aria-hidden="true"></span>{lg.eyebrow}</p>
+      <div class="league-card" data-reveal>
+        <h2 id="league-title" class="h2">{lg.heading}</h2>
+        <p class="body">{lg.lede}</p>
+        {lg.stats && (
+          <dl class="format">
+            {lg.stats.map((s: any) => (<div><dt>{s.label}</dt><dd>{s.value}</dd></div>))}
+          </dl>
+        )}
+        <dl class="season">
+          {lg.cards.map((c: any) => (<div><dt>{c.title}</dt><dd>{c.body}</dd></div>))}
+        </dl>
+        {lgList && (
+          <div class="titles">
+            <p class="spec">{lgList.title}</p>
+            <ul role="list">{lgList.items.map((t: string) => <li>{t}</li>)}</ul>
+          </div>
+        )}
+        <div class="btns">
+          {lg.ctas.map((c: any) => (
+            <a class:list={['btn', c.style === 'primary' ? 'btn-primary' : 'btn-ghost']} href={c.href}>{c.label}{c.style === 'primary' && <Icon name="arrow-right" />}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div>
+        <h2 id="faq-title" class="h2" data-reveal>{faq.heading}</h2>
+        <a class="assess-card" href={assess.links[0].href} data-reveal>
+          <strong>{assess.title}</strong>
+          <span class="small">{assess.body}</span>
+          <span class="btn btn-primary btn-sm">{assess.links[0].label} <Icon name="arrow-right" /></span>
+        </a>
+      </div>
+      <Faq items={faq.faqs} name={`faq-${kind}`} />
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+
+  /* Market switch under the hero actions */
+  .switch { margin-top: 1.25rem; }
+  .switch ul { list-style: none; padding: .3rem; margin: 0; display: inline-flex; gap: .2rem; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); }
+  .switch a { display: block; padding: .5rem 1rem; border-radius: 999px; font-size: .9375rem; font-weight: 600; color: var(--ink-2); text-decoration: none; transition: color .25s, background-color .25s; }
+  .switch a:hover { color: var(--ink); }
+  .switch a[aria-current='page'] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-float); }
+  :global([data-theme='dark']) .switch a[aria-current='page'] { background: var(--glass-hi); }
+
+  .btns { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+  .row-ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: clamp(2rem, 3.5vw, 3rem); padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .row-ctas .small { max-width: 48ch; }
+
+  /* Who it is for */
+  .side-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .side { position: sticky; top: 7rem; display: grid; gap: 1.25rem; }
+  .aud { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line-2); }
+  .aud li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding: clamp(1.5rem, 2.5vw, 2rem) 0; border-bottom: 1px solid var(--line); }
+  .aud .n { padding-top: .5rem; }
+  .aud-txt { display: grid; gap: .5rem; }
+  .sub { font-weight: 560; color: var(--ink); font-size: 1.0625rem; }
+
+  /* Why */
+  .figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 0 0 clamp(3.5rem, 6vw, 5.5rem); }
+  .figs > div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .75rem; padding: 1.5rem clamp(1rem, 2.5vw, 2.25rem) 0; border-top: 1px solid var(--line-2); position: relative; }
+  .figs > div:first-child { padding-left: 0; }
+  .figs > div + div { border-left: 1px solid var(--line); }
+  .figs > div::before { content: ''; position: absolute; top: -1px; left: 0; width: 2.5rem; height: 2px; background: var(--spectrum); }
+  .figs > div + div::before { left: clamp(1rem, 2.5vw, 2.25rem); }
+  .figs dd { font-size: clamp(3.25rem, 2rem + 4vw, 6rem); font-weight: 300; letter-spacing: -0.05em; line-height: .95; }
+  .figs dt { color: var(--ink-2); max-width: 26ch; }
+  .pillars { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .p-head { display: grid; gap: 1rem; justify-items: start; }
+  .rows { display: grid; border-top: 1px solid var(--line-2); }
+  .rows div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); gap: 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+  .rows dt { font-weight: 640; }
+  .rows dd { color: var(--ink-2); font-size: var(--t-small); }
+
+  /* Client case */
+  .cs {
+    position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    border-radius: 32px; color: #F5F6F8;
+    background: radial-gradient(80% 70% at 100% 0%, color-mix(in srgb, var(--ca) 38%, transparent), transparent 70%), var(--cd);
+    box-shadow: 0 50px 70px -40px color-mix(in srgb, var(--ca) 70%, transparent), var(--shadow-float);
+  }
+  .cs::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; z-index: 2; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  .mascot {
+    position: absolute; z-index: -1; right: -.04em; bottom: -.18em; font-size: clamp(5rem, 2rem + 11vw, 13rem); font-weight: 820; letter-spacing: -0.04em; line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--chi) 30%, transparent); pointer-events: none; user-select: none; white-space: nowrap;
+  }
+  .cs-photo { position: relative; min-height: 100%; }
+  .cs-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 30%; }
+  .cs-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 60%, color-mix(in srgb, var(--cd) 70%, transparent)); }
+  .cs-copy { display: grid; gap: 1.25rem; align-content: start; padding: clamp(2rem, 4.5vw, 3.75rem) clamp(1.5rem, 4.5vw, 3.75rem) clamp(2rem, 4vw, 3.25rem); }
+  .cs-id { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+  .cs-logo { height: 2.5rem; width: auto; max-width: 14rem; object-fit: contain; }
+  .cs-logo.tall { height: 3.5rem; }
+  .cs-meta { color: color-mix(in srgb, #F5F6F8 78%, var(--cd)); }
+  .cs-h { font-size: clamp(1.875rem, 1.2rem + 2.2vw, 3rem); font-weight: 360; letter-spacing: -0.035em; line-height: 1.04; }
+  .cs-h strong { font-weight: 720; color: var(--chi); }
+  .cs-note { font-size: var(--t-small); padding: .9rem 1rem; border-radius: 14px; background: color-mix(in srgb, #FFFFFF 8%, transparent); border: 1px solid color-mix(in srgb, #FFFFFF 16%, transparent); }
+  .cs-body { color: color-mix(in srgb, #F5F6F8 86%, var(--cd)); max-width: 58ch; }
+  .cs-tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .cs-tags li { font-size: .8125rem; font-weight: 560; padding: .3rem .7rem; border-radius: 999px; border: 1px solid color-mix(in srgb, #FFFFFF 26%, transparent); }
+  .cs-stat { display: flex; align-items: baseline; gap: 1rem; padding: 1.1rem 0; border-block: 1px solid color-mix(in srgb, #FFFFFF 18%, transparent); }
+  .cs-stat .num { font-size: clamp(2.75rem, 2rem + 2.4vw, 4rem); font-weight: 300; letter-spacing: -0.05em; line-height: 1; color: var(--chi); }
+  .cs-stat span:last-child { color: color-mix(in srgb, #F5F6F8 86%, var(--cd)); font-size: var(--t-small); }
+  .cs-quote { display: grid; gap: .75rem; }
+  .cs-quote blockquote { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); line-height: 1.5; letter-spacing: -0.01em; }
+  .cs-quote figcaption { font-size: var(--t-small); color: color-mix(in srgb, #F5F6F8 78%, var(--cd)); }
+  .cs-quote figcaption strong { color: #F5F6F8; font-weight: 640; }
+
+  /* Curriculum */
+  .cur-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .cur-lede { display: grid; gap: 1.25rem; justify-items: start; }
+  .cur-lede .label-glass { font-size: .8125rem; }
+  .tracks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(5, auto); column-gap: clamp(2rem, 5vw, 4.5rem); border-top: 1px solid var(--line-2); }
+  .tracks li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1.15fr); gap: 1rem; align-items: baseline; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  .t-name { font-size: 1.0625rem; font-weight: 640; letter-spacing: -0.01em; line-height: 1.3; }
+  .t-roles { font-size: var(--t-small); color: var(--ink-2); }
+
+  /* Funding */
+  .fund-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .f-title { font-size: 1.125rem; font-weight: 640; letter-spacing: -0.01em; margin-bottom: 1rem; }
+  .contracts ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line-2); }
+  .contracts li { display: grid; gap: 1rem; justify-items: start; padding: 1.5rem 1.25rem 1.25rem 0; border-bottom: 1px solid var(--line); }
+  .contracts li:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .c-logo { height: 46px; display: flex; align-items: center; }
+  .c-logo img { height: 100%; width: auto; max-width: 160px; object-fit: contain; }
+  .ways { display: grid; gap: 0; justify-items: start; }
+  .ways .rows { width: 100%; margin-bottom: 1.5rem; }
+  .solo { grid-template-columns: 1fr; }
+  .solo .ways .rows { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .solo .ways .rows div { grid-template-columns: 1fr; gap: .5rem; padding: 1.4rem clamp(1rem, 2.5vw, 2rem) 1.4rem 0; border-bottom: 0; }
+  .solo .ways .rows div + div { padding-left: clamp(1rem, 2.5vw, 2rem); border-left: 1px solid var(--line); }
+  .partners { margin-top: clamp(3.5rem, 6vw, 5rem); padding-top: 2rem; border-top: 1px solid var(--line); display: grid; gap: 1rem; justify-items: center; text-align: center; }
+  .partners :global(.marquee) { width: 100%; }
+  /* White-only logos need a dark mark on the light sweep, and the reverse on the dark stage (as in the source) */
+  .partners :global(img.lg-l[src$="usael.svg"]) { filter: brightness(0) !important; }
+  :global([data-theme=dark]) .partners :global(img.lg-d[src$="spectrum.png"]) { filter: brightness(0) invert(1) !important; }
+  .lg-d { display: none; }
+  :global([data-theme='dark']) .lg-l { display: none; }
+  :global([data-theme='dark']) .lg-d { display: block; }
+
+  /* League (fixed light-on-photo colours, as on the home page) */
+  .league { position: relative; min-height: min(96vh, 900px); display: grid; align-items: end; overflow: hidden; isolation: isolate; color: #F2F3F5; }
+  .league-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .league::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,11,14,.15) 0%, rgba(10,11,14,.3) 40%, rgba(10,11,14,.85) 100%); }
+  .league-inner { position: relative; padding-block: clamp(5.5rem, 9vw, 8rem) clamp(3rem, 7vw, 6rem); }
+  .status { position: absolute; top: clamp(1.5rem, 3vw, 2.5rem); left: 0; max-width: 100%; white-space: normal; color: #F2F3F5; background: rgba(18, 19, 24, .5); border-color: rgba(255, 255, 255, .16); padding-left: .8rem; }
+  .live { width: .55rem; height: .55rem; border-radius: 50%; background: var(--rose); box-shadow: 0 0 0 4px rgba(226,56,105,.3); }
+  @media (prefers-reduced-motion: no-preference) { .live { animation: pulse 2s ease-in-out infinite; } }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(226,56,105,0); } }
+  .league-card {
+    max-width: 720px; display: grid; gap: 1.25rem; justify-items: start; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px;
+    background: rgba(18, 19, 24, .58); border: 1px solid rgba(255, 255, 255, .14);
+    backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+  .league-card .h2 { font-size: clamp(2rem, 1.3rem + 2.4vw, 3.25rem); }
+  .league-card .body { color: #C9CCD4; }
+  .format { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; border-block: 1px solid rgba(255,255,255,.14); }
+  .format div { display: flex; flex-direction: column-reverse; gap: .2rem; padding: .9rem 1rem .9rem 0; }
+  .format div + div { padding-left: 1rem; border-left: 1px solid rgba(255,255,255,.14); }
+  .format dd { font-size: 1.25rem; font-weight: 640; letter-spacing: -0.015em; }
+  .format dt { font-size: .8125rem; color: #C9CCD4; }
+  .season { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; width: 100%; }
+  .season dt { font-weight: 660; }
+  .season dd { font-size: .875rem; color: #C9CCD4; line-height: 1.45; margin-top: .25rem; }
+  .titles { display: grid; gap: .6rem; width: 100%; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.14); }
+  .titles .spec { color: #C9CCD4; }
+  .titles ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .titles li { font-size: .8125rem; font-weight: 560; padding: .25rem .65rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); }
+  .league .btn-primary { background: #F2F3F5; color: #0E1016; }
+  .league .btn-ghost { background: rgba(255,255,255,.08); color: #F2F3F5; border-color: rgba(255,255,255,.3); }
+  .league .btn-ghost:hover { background: rgba(255,255,255,.16); }
+
+  /* Questions */
+  .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .assess-card { margin-top: 2rem; display: grid; gap: .6rem; justify-items: start; padding: 1.5rem; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; box-shadow: var(--shadow-float); }
+  .assess-card strong { font-size: 1.125rem; font-weight: 660; }
+  .assess-card .btn { margin-top: .5rem; }
+
+  @media (max-width: 960px) {
+    .side-grid, .pillars, .fund-grid, .faq-grid, .cur-head { grid-template-columns: 1fr; }
+    .side { position: static; }
+    .cs { grid-template-columns: 1fr; }
+    .cs-photo { min-height: 0; aspect-ratio: 16 / 10; }
+    .cs-photo img { position: static; }
+    .cs-photo::after { background: linear-gradient(180deg, transparent 60%, color-mix(in srgb, var(--cd) 70%, transparent)); }
+    .tracks { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; }
+  }
+  @media (max-width: 760px) {
+    .figs { grid-template-columns: 1fr; }
+    .figs > div { padding: 1.25rem 0 1.5rem !important; border-left: 0 !important; }
+    .figs > div::before { left: 0 !important; }
+    .rows div { grid-template-columns: 1fr; gap: .35rem; }
+    .solo .ways .rows { grid-template-columns: 1fr; }
+    .solo .ways .rows div { padding: 1.1rem 0 !important; border-left: 0 !important; border-bottom: 1px solid var(--line); }
+    .tracks li { grid-template-columns: 2.25rem minmax(0, 1fr); }
+    .t-roles { grid-column: 2; }
+    .season, .format { grid-template-columns: 1fr; }
+    .format div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.14); }
+    .contracts ul { grid-template-columns: 1fr 1fr; }
+    .switch a { padding: .45rem .8rem; font-size: .875rem; }
+  }
+  @media (max-width: 420px) {
+    .contracts li { padding-right: .75rem; }
+    .contracts li:nth-child(even) { padding-left: .9rem; }
+    .c-logo { height: 36px; }
+  }
+</style>

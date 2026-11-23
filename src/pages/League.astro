@@ -1,0 +1,351 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import Faq from '../components/Faq.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import Icon from '../components/Icon.astro';
+import ProgramTabs from '../components/league/ProgramTabs.astro';
+import LeagueForm from '../components/league/LeagueForm.astro';
+import page from '../content/pages/League.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+const sec = (id: string) => page.sections.find((s: any) => s.id === id) as any;
+const hero = sec('hero');
+const why = sec('why');
+const season = sec('season');
+const programs = sec('programs');
+const join = sec('join');
+const pricing = sec('pricing');
+const faq = sec('faq');
+
+const slide = hero.interactive.slideshow.slides[0];
+const pictured = hero.interactive.picturedChip;
+// One photo per page: the Community tab would repeat the community group photo used in "why",
+// so it shows the Swampy Conquest tournament floor (the hero's second slide) instead.
+const floor = hero.interactive.slideshow.slides[1];
+const tabs = programs.interactive.tabs.map((t: any) => (t.key === 'community' ? { ...t, image: { src: floor.img, alt: floor.alt } } : t));
+const games = season.lists[0];
+const gameLogos = games.items.map((g: any) => ({ name: g.alt, light: '/' + g.src.replace('-dark.', '-light.'), dark: '/' + g.src, h: g.maxHeight }));
+const steps = season.interactive.steps;
+const whyImg = why.images[0];
+const seasonImg = season.images[0];
+---
+<Base seo={seo}>
+  <PageHero
+    title="Give your players a"
+    strong="real season to play."
+    lede={hero.lede}
+  >
+    <div slot="after-copy" class="h-ctas">
+      <a class="btn btn-primary" href={hero.ctas[0].href}>{hero.ctas[0].label} <Icon name="arrow-right" /></a>
+      <a class="btn btn-ghost" href={hero.ctas[1].href}>{hero.ctas[1].label} <Icon name="arrow-up-right" /></a>
+    </div>
+    <figure class="stage">
+      <div class="plate photo">
+        <img src={'/' + slide.img} alt={slide.alt} style={`object-position:${slide.pos}`} fetchpriority="high" />
+        <span class="enroll label-glass"><span class="live" aria-hidden="true"></span>{hero.interactive.enrollChip}</span>
+        <a class="pictured label-glass" href={pictured.href} aria-label={pictured.ariaLabel}>
+          <img src={'/' + pictured.logo} alt="" width="40" height="28" />
+          <span><span class="spec">{pictured.small}</span>{pictured.text}</span>
+          <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+    </figure>
+    <div class="wrap">
+      <dl class="figures" aria-label={hero.statsAriaLabel}>
+        {hero.stats.map((s: any) => (
+          <div><dt>{s.label}</dt><dd class="num">{s.value}<span>{s.suffix}</span></dd></div>
+        ))}
+      </dl>
+    </div>
+  </PageHero>
+
+  <!-- Why the league -->
+  <section class="section" id="why" aria-labelledby="lg-idea-title">
+    <div class="wrap why">
+      <div class="why-copy">
+        <h2 id="lg-idea-title" class="h2" data-reveal>The league gives students a reason to <strong>show up every week.</strong></h2>
+        <p class="lede" data-reveal>{why.lede}</p>
+        {why.body.map((p: string) => <p class="body" data-reveal>{p}</p>)}
+      </div>
+      <figure class="why-img" data-reveal>
+        <div class="photo"><img src={'/' + whyImg.src} alt={whyImg.alt} loading="lazy" decoding="async" /></div>
+        <figcaption class="small cap"><span class="dots" aria-hidden="true">{whyImg.captionDots.map((c: string) => <i style={`background:${c}`}></i>)}</span>{whyImg.caption}</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <dl class="works" aria-label={why.cardsAriaLabel}>
+        {why.cards.map((c: any) => (
+          <div data-reveal><dt><span class="spec">{c.meta}</span>{c.title}</dt><dd>{c.body}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- Season -->
+  <section class="section season-sec sweep" id="season" aria-labelledby="lg-season-title">
+    <div class="wrap">
+      <div class="split-head">
+        <h2 id="lg-season-title" class="h2" data-reveal>From roster to <strong>championship night.</strong></h2>
+        <p class="lede" data-reveal>{season.lede}</p>
+      </div>
+      <ol class="steps" data-steps>
+        {steps.map((s: any, i: number) => (
+          <li class="step" data-step>
+            <span class="node num" aria-hidden="true">{s.n}</span>
+            <p class="spec when"><span class="sr-only">Step {i + 1} · </span>{s.when}</p>
+            <h3 class="st-title">{s.title}</h3>
+            <p class="small">{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="season-row">
+        <figure class="season-img" data-reveal>
+          <div class="photo"><img src={'/' + seasonImg.src} alt={seasonImg.alt} loading="lazy" decoding="async" /></div>
+          <figcaption class="small cap"><span class="dots" aria-hidden="true">{seasonImg.captionDots.map((c: string) => <i style={`background:${c}`}></i>)}</span>{seasonImg.caption}</figcaption>
+        </figure>
+        <div class="season-side" data-reveal>
+          <p class="lede">{season.body[0]}</p>
+          <div class="btns">
+            <a class="btn btn-primary" href={season.ctas[0].href}>{season.ctas[0].label} <Icon name="arrow-right" /></a>
+            <a class="btn btn-ghost" href={season.ctas[1].href}>{season.ctas[1].label}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="games">
+      <div class="wrap g-head">
+        <h3 class="h3">{games.title}</h3>
+        <p class="small">{games.note}</p>
+      </div>
+      <LogoMarquee logos={gameLogos} duration={40} label={games.ariaLabel} />
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section class="section" id="programs" aria-labelledby="lg-prog-title">
+    <div class="wrap">
+      <div class="split-head">
+        <h2 id="lg-prog-title" class="h2" data-reveal>A league built around <strong>your program.</strong></h2>
+        <p class="lede" data-reveal>{programs.lede}</p>
+      </div>
+      <ProgramTabs tabs={tabs} label={programs.interactive.ariaLabel} defaultTab={programs.interactive.defaultTab} />
+    </div>
+  </section>
+
+  <!-- What we handle / what you bring -->
+  <section class="section" id="join" aria-labelledby="lg-who-title">
+    <div class="wrap">
+      <div class="split-head">
+        <h2 id="lg-who-title" class="h2" data-reveal>What we handle, and <strong>what you bring.</strong></h2>
+        <p class="lede" data-reveal>{join.lede}</p>
+      </div>
+      <div class="split">
+        <div class="ours" data-reveal>
+          <h3 class="h3">{join.lists[0].title}</h3>
+          <dl class="rows">{join.lists[0].items.map((it: any) => (<div><dt><Icon name="check" size={18} />{it.title}</dt><dd>{it.body}</dd></div>))}</dl>
+        </div>
+        <div class="yours" data-reveal>
+          <h3 class="h3">{join.lists[1].title}</h3>
+          <dl class="rows">{join.lists[1].items.map((it: any) => (<div><dt>{it.title}</dt><dd>{it.body}</dd></div>))}</dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section pricing-sec sweep" id="pricing" aria-labelledby="lg-price-title">
+    <div class="wrap pricing">
+      <div class="pr-copy">
+        <h2 id="lg-price-title" class="h2" data-reveal>Priced to <strong>your season.</strong></h2>
+        <p class="lede" data-reveal>{pricing.lede}</p>
+        <div class="pr-lists" data-reveal>
+          <div>
+            <h3 class="sub">{pricing.lists[0].title}</h3>
+            <ul class="plain" role="list">{pricing.lists[0].items.map((t: string) => <li>{t}</li>)}</ul>
+          </div>
+          <div>
+            <h3 class="sub">{pricing.lists[1].title}</h3>
+            <ul class="checks" role="list">{pricing.lists[1].items.map((t: string) => <li><Icon name="check" size={16} />{t}</li>)}</ul>
+          </div>
+        </div>
+      </div>
+      <div class="form-shell" data-reveal>
+        <h3 id="lg-form-title" class="h3">{pricing.form.title}</h3>
+        <p class="small intro">{pricing.form.intro}</p>
+        <LeagueForm />
+        <ol class="next" aria-label={pricing.form.nextSteps.title}>
+          {pricing.form.nextSteps.items.map((s: any) => (<li><strong>{s.title}</strong><span>{s.body}</span></li>))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="lg-faq-title">
+    <div class="wrap faq-grid">
+      <div class="faq-side">
+        <h2 id="lg-faq-title" class="h2" data-reveal>Common questions about <strong>the League.</strong></h2>
+        <a class="member" href={faq.ctas[0].href} target="_blank" rel="noopener" data-reveal><span class="live" aria-hidden="true"></span>{faq.ctas[0].label} <Icon name="arrow-up-right" size={18} /></a>
+      </div>
+      <Faq items={faq.faqs} name="league-faq" />
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  .h-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: .5rem; }
+
+  /* Stage: the photo is the object */
+  .stage { width: min(1180px, 92vw); margin: clamp(2.5rem, 5vw, 4rem) auto 0; }
+  .plate { position: relative; aspect-ratio: 21 / 9; }
+  .plate > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .enroll { position: absolute; left: 1.25rem; top: 1.25rem; padding: .45rem .9rem; }
+  .live { width: .55rem; height: .55rem; border-radius: 50%; background: var(--rose); box-shadow: 0 0 0 4px rgba(226, 56, 105, .3); flex: none; }
+  @media (prefers-reduced-motion: no-preference) {
+    .live { animation: pulse 2s ease-in-out infinite; }
+    .plate { animation: rise 1.4s var(--ease-out) both .1s; }
+  }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(226, 56, 105, 0); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(32px) scale(.98); filter: blur(6px); } }
+  .pictured { position: absolute; right: 1.25rem; bottom: 1.25rem; padding: .4rem .9rem .4rem .45rem; gap: .7rem; text-decoration: none; }
+  .pictured img { width: 2.5rem; height: 1.75rem; object-fit: contain; border-radius: 6px; background: #0E1016; padding: 2px 4px; }
+  .pictured > span { display: grid; line-height: 1.25; }
+  .pictured .spec { font-size: .625rem; }
+  .pictured:hover { background: var(--glass-hi); }
+
+  .figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line-2); margin-top: clamp(3rem, 5vw, 4.5rem); text-align: left; }
+  .figures div { padding: 1.25rem 1.5rem 0 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .5rem; }
+  .figures div + div { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .figures dd { font-size: clamp(2.25rem, 1.5rem + 2vw, 3.5rem); font-weight: 380; letter-spacing: -0.04em; line-height: 1; }
+  .figures dd span { font-size: .42em; letter-spacing: -0.01em; margin-left: .2em; color: var(--ink-2); font-weight: 520; }
+  .figures dt { color: var(--ink-2); font-size: var(--t-small); line-height: 1.4; max-width: 22ch; }
+
+  /* Why */
+  .why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .why-copy { display: grid; gap: 1.25rem; }
+  .why-img .photo { aspect-ratio: 16 / 10; }
+  .cap { display: flex; align-items: center; gap: .6rem; padding-top: .9rem; color: var(--ink-3); }
+  .dots { display: inline-flex; gap: .25rem; }
+  .dots i { width: .55rem; height: .55rem; border-radius: 50%; }
+  .works { margin-top: clamp(3.5rem, 6vw, 5rem); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line-2); }
+  .works div { padding: 1.5rem 1.5rem 0 0; display: grid; gap: .6rem; align-content: start; }
+  .works div + div { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .works dt { display: grid; gap: .6rem; font-weight: 640; font-size: 1.125rem; letter-spacing: -0.01em; line-height: 1.25; }
+  .works dd { color: var(--ink-2); font-size: var(--t-small); }
+
+  /* Season */
+  .season-sec { padding-top: var(--section) !important; }
+  .split-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .steps { position: relative; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; --p: 1; }
+  .steps::before, .steps::after { content: ''; position: absolute; left: 1.25rem; right: calc(20% - 1.25rem); top: 1.25rem; height: 2px; border-radius: 2px; translate: 0 -1px; }
+  .steps::before { background: var(--line); }
+  .steps::after { background: var(--spectrum); transform-origin: left; transform: scaleX(var(--p)); }
+  .step { position: relative; display: grid; gap: .5rem; align-content: start; }
+  .node { position: relative; z-index: 1; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; font: 500 .75rem var(--mono); background: var(--bg); border: 1px solid var(--line-2); color: var(--ink-2); margin-bottom: .75rem; transition: background-color .4s, color .4s, border-color .4s; }
+  .step.is-done .node { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .step:last-child .node { background: var(--rose); border-color: var(--rose); color: #FFFFFF; }
+  .st-title { font-size: 1.25rem; font-weight: 640; letter-spacing: -0.02em; }
+  .season-row { margin-top: clamp(3.5rem, 6vw, 5rem); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .season-img .photo { aspect-ratio: 4 / 3; }
+  .season-side { display: grid; gap: 1rem; justify-items: start; }
+  .btns { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
+  .games { margin-top: clamp(4rem, 7vw, 6rem); }
+  .g-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: .5rem 1.25rem; margin-bottom: 1.5rem; text-align: center; }
+
+  /* Join */
+  .split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1rem, 3vw, 2rem); align-items: start; }
+  .ours, .yours { padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px; }
+  .ours { background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-object); }
+  .yours { border: 1px dashed var(--line-2); }
+  .rows { margin-top: 1.5rem; border-top: 1px solid var(--line-2); }
+  .rows div { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .rows div:last-child { border-bottom: 0; }
+  .rows dt { display: flex; align-items: flex-start; gap: .5rem; font-weight: 640; }
+  .rows dt :global(svg) { flex: none; margin-top: .2rem; color: var(--accent); }
+  .rows dd { color: var(--ink-2); font-size: var(--t-small); }
+
+  /* Pricing */
+  .pricing-sec { padding-top: var(--section) !important; }
+  .pricing { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .pr-copy { display: grid; gap: 1.5rem; position: sticky; top: 7rem; }
+  .pr-lists { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: .5rem; }
+  .sub { font-weight: 640; font-size: 1rem; padding-bottom: .75rem; margin-bottom: .5rem; border-bottom: 1px solid var(--line-2); }
+  .plain, .checks { list-style: none; padding: 0; display: grid; }
+  .plain li, .checks li { padding: .55rem 0; border-bottom: 1px solid var(--line); font-size: var(--t-small); color: var(--ink-2); display: flex; gap: .5rem; align-items: flex-start; }
+  .checks li :global(svg) { flex: none; margin-top: .2rem; color: #1FA35B; }
+  .form-shell { padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-object); }
+  .intro { margin: .4rem 0 1.5rem; }
+  .next { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; counter-reset: n; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .next li { counter-increment: n; display: grid; gap: .2rem; align-content: start; font-size: var(--t-small); }
+  .next li::before { content: counter(n, decimal-leading-zero); font: 500 var(--t-spec) var(--mono); letter-spacing: .08em; color: var(--ink-3); }
+  .next strong { font-weight: 640; }
+  .next span { color: var(--ink-2); }
+
+  /* FAQ */
+  .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .faq-side { display: grid; gap: 1.75rem; justify-items: start; position: sticky; top: 7rem; }
+  .member { display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+  .member:hover { text-decoration: underline; }
+
+  @media (max-width: 1100px) {
+    .works { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .works div + div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .works div:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 1.5rem; }
+  }
+  @media (max-width: 960px) {
+    .why, .split-head, .season-row, .split, .pricing, .faq-grid { grid-template-columns: 1fr; }
+    .pr-copy, .faq-side { position: static; }
+    .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .steps::before, .steps::after { left: 1.25rem; right: auto; top: 1.25rem; bottom: 1.25rem; width: 2px; height: auto; translate: -1px 0; }
+    .steps::after { transform-origin: top; transform: scaleY(var(--p)); }
+    .step { grid-template-columns: 2.5rem 1fr; column-gap: 1.25rem; }
+    .node { grid-row: span 3; margin: 0; }
+  }
+  @media (max-width: 760px) {
+    .plate { aspect-ratio: 4 / 3; }
+    .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figures div + div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .figures div:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 1.25rem; }
+    .rows div { grid-template-columns: 1fr; gap: .3rem; }
+  }
+  @media (max-width: 560px) {
+    .works { grid-template-columns: 1fr; }
+    .works div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); margin-top: 1.5rem; }
+    .pr-lists, .next { grid-template-columns: 1fr; }
+    .enroll { left: .75rem; top: .75rem; }
+    .pictured { right: .75rem; bottom: .75rem; left: .75rem; }
+    .pictured > span { flex: 1; }
+  }
+</style>
+
+<script>
+  // Season rail: the spectrum line draws as the visitor scrolls through the steps.
+  document.querySelectorAll<HTMLElement>('[data-steps]').forEach((ol) => {
+    const steps = [...ol.querySelectorAll<HTMLElement>('[data-step]')];
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { steps.forEach((s) => s.classList.add('is-done')); return; }
+    const vertical = () => matchMedia('(max-width: 960px)').matches;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = ol.getBoundingClientRect();
+      const mid = innerHeight * 0.65;
+      const p = vertical() ? (mid - r.top) / r.height : (mid - r.top) / (innerHeight * 0.35);
+      ol.style.setProperty('--p', Math.min(1, Math.max(0, p)).toFixed(3));
+      const pp = Number(ol.style.getPropertyValue('--p'));
+      steps.forEach((s, i) => s.classList.toggle('is-done', vertical() ? s.getBoundingClientRect().top < mid : pp >= i / (steps.length - 1) - 0.001));
+    };
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  });
+</script>

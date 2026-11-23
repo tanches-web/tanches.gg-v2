@@ -1,0 +1,464 @@
+---
+import { Picture } from 'astro:assets';
+import eye from '../../public/assets/room-eye.png';
+import iso from '../../public/assets/iso-dark.png';
+import Icon from './Icon.astro';
+
+// Space pins: % of the eye-level render (16:9). Infrastructure pins: % of the overhead render iso-dark.png (1672x941).
+const layers = [
+  {
+    id: 'space',
+    tab: 'The space',
+    audience: 'For students and coaches',
+    title: 'What students see when they walk in.',
+    hint: 'Hover a feature to find it in the room',
+    rows: [
+      { name: 'Built around your brand', desc: 'Your colors, logo, and mascot, built into the room itself.', icon: 'palette', pins: [[92, 45]] },
+      { name: 'Arena lighting', desc: 'Programmable LED lighting that sets the mood for every match.', icon: 'lightbulb', pins: [[47.5, 8.5], [69, 26]] },
+      { name: 'Stage-ready AV', desc: 'Large displays and zoned ceiling audio for matches, shoutcasting, and watch parties.', icon: 'monitor', pins: [[14, 52], [29, 54]] },
+      { name: 'Competition-grade stations', desc: 'The PCs, monitors, and peripherals serious players expect.', icon: 'cpu', pins: [[54, 56], [79.5, 55]] },
+      { name: 'Esports furniture', desc: 'Pro desks, ergonomic chairs, and lounge seating, built for long matches and daily class use.', icon: 'armchair', pins: [[70, 67], [13, 80]] },
+      { name: 'Designed for spectators', desc: 'We plan sightlines and open floor for fans, families, and watch parties from day one.', icon: 'users', pins: [[52, 82]] },
+    ],
+  },
+  {
+    id: 'infra',
+    tab: 'The infrastructure',
+    audience: 'For leadership and IT',
+    title: 'What makes the room work: one secured network your IT team can manage.',
+    hint: 'Hover a system to trace it through the room',
+    rows: [
+      { name: 'Secured network closet', desc: 'Firewall and segmentation keep gaming traffic off your main network.', icon: 'server', pins: [[44, 15]] },
+      { name: 'Hardwired stations', desc: 'Every PC on a wired, low-latency connection.', icon: 'cpu', pins: [[37.8, 51], [48.8, 45.5]] },
+      { name: 'Networked AV', desc: 'Every display, camera, and ceiling speaker on one managed network.', icon: 'monitor', pins: [[9.5, 37], [8, 55], [7, 73.5], [82, 56]] },
+      { name: 'Shoutcast rooms', desc: 'Booths wired for live commentary and streaming.', icon: 'mic', pins: [[72.4, 30], [79.3, 42.3]] },
+    ],
+  },
+  {
+    id: 'program',
+    tab: 'The program',
+    audience: 'After launch',
+    title: 'What keeps students coming back every week.',
+    hint: 'Hover a service to see it across your sites',
+    rows: [
+      { name: 'Ongoing support', desc: 'We monitor, patch, and manage every site remotely, with real people to call.', icon: 'headset', pins: [] },
+      { name: 'Curriculum', desc: 'Standards-aligned lessons for STEM, CTE, and digital media at every site.', icon: 'book', pins: [] },
+      { name: 'League', desc: 'Your sites compete in a managed season: schedules, brackets, and rankings.', icon: 'trophy', pins: [] },
+      { name: 'Room to scale', desc: 'Every new site plugs into the same platform and the same support.', icon: 'square-plus', pins: [] },
+    ],
+  },
+];
+
+// Cable runs over the overhead render (1672x941 units): each bows out from the closet hub to its system.
+// Built from the infrastructure pins, so every run ends on its dot. Group 1 stations, 2 AV, 3 shoutcast.
+const W = 1672, H = 941;
+const [hx, hy] = [(layers[1].rows[0].pins[0][0] / 100) * W, (layers[1].rows[0].pins[0][1] / 100) * H];
+// Ceiling gear: the render has no ceiling, so each device hangs at ceiling height (LIFT) above a point on the floor.
+// A speaker drops a cone of sound onto its coverage zone; the camera's field of view takes in the station pods.
+// Positions are the floor points, % of the render.
+const LIFT = 190; // ceiling height above the floor, in render units
+const speakers = [[25, 63]] as const;
+const spk = speakers.map(([x, y]) => [(x / 100) * W, (y / 100) * H] as const);
+const camFloor = [59.8, 68] as const;
+const cam = [(camFloor[0] / 100) * W, (camFloor[1] / 100) * H - LIFT] as const;
+// What the camera sees: an area on the floor around both station pods (render units), and the two edge rays to it
+const view = { cx: 720, cy: 455, rx: 215, ry: 82, rot: -12 };
+const viewPts = Array.from({ length: 180 }, (_, i) => {
+  const t = (i / 180) * Math.PI * 2, r = (view.rot * Math.PI) / 180;
+  const ex = view.rx * Math.cos(t), ey = view.ry * Math.sin(t);
+  return [view.cx + ex * Math.cos(r) - ey * Math.sin(r), view.cy + ex * Math.sin(r) + ey * Math.cos(r)];
+});
+// Angles are measured from the camera's aim, so the edges are right whichever way it points
+const aim = Math.atan2(view.cy - cam[1], view.cx - cam[0]);
+const camAim = (aim * 180) / Math.PI;
+const angTo = ([x, y]: number[]) => { const d = Math.atan2(y - cam[1], x - cam[0]) - aim; return Math.atan2(Math.sin(d), Math.cos(d)); };
+const byAng = [...viewPts].sort((p, q) => angTo(p) - angTo(q));
+const [edgeA, edgeB] = [byAng[0], byAng[byAng.length - 1]];
+const runs = [
+  ...layers[1].rows.flatMap((r, ri) => ri === 0 ? [] : r.pins.map(([x, y]) => [x, y, ri] as const)),
+  ...speakers.map(([x, y]) => [x, y - (LIFT / H) * 100, 2] as const),
+  [camFloor[0], camFloor[1] - (LIFT / H) * 100, 2] as const,
+];
+const wires = runs.map(([x, y, ri]) => {
+  const tx = (x / 100) * W, ty = (y / 100) * H;
+  const cx = (hx + tx) / 2, cy = Math.max(12, Math.min(hy, ty) - 0.22 * Math.hypot(tx - hx, ty - hy));
+  return [`M${hx.toFixed(0)} ${hy.toFixed(0)} Q${cx.toFixed(0)} ${cy.toFixed(0)} ${tx.toFixed(0)} ${ty.toFixed(0)}`, ri] as const;
+});
+
+// Program view: the room pulls back to one site among many.
+const sites = [
+  { x: 15, y: 62, support: 'High school 1', curriculum: 'Game design' },
+  { x: 85, y: 62, support: 'High school 2', curriculum: 'Intro to esports' },
+  { x: 30, y: 88, support: 'High school 3', curriculum: 'Broadcast & media' },
+  { x: 70, y: 88, support: 'High school 4', curriculum: 'Computer science' },
+];
+---
+<section class="eco section" id="ecosystem" aria-labelledby="eco-title" data-eco>
+  <div class="wrap head center">
+    <h2 id="eco-title" class="h2" data-reveal>Esports is an <strong>ecosystem.</strong></h2>
+    <p class="lede" data-reveal>First the room your students play in. Then the network and hardware behind it that make it work. Then the program that gives kids a reason to keep showing up. Click through each one.</p>
+  </div>
+
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Layers of a TANCHES.GG build" data-reveal>
+      {layers.map((l, i) => (
+        <button role="tab" id={`eco-tab-${l.id}`} aria-controls={`eco-panel-${l.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-tab={l.id}>
+          <span class="tab-name">{l.tab}</span>
+          <span class="tab-aud">{l.audience}</span>
+        </button>
+      ))}
+      <span class="tab-thumb" aria-hidden="true"></span>
+    </div>
+
+    <div class="frame" data-layer="space">
+      <div class="stage" aria-hidden="true">
+        <div class="shot">
+          <div class="shot-in">
+          <Picture src={eye} formats={['avif', 'webp']} widths={[640, 960, 1400, 1672]} sizes="(max-width: 900px) 100vw, 840px" alt="" class="eye" loading="lazy" />
+          {layers[0].rows.map((r, ri) => r.pins.map(([x, y], pi) => (
+            <span class="pin" data-for="space" data-row={ri} data-flip={x > 70 ? "true" : undefined} style={`--x:${x}%;--y:${y}%`}>{pi === 0 && <span class="pin-label">{r.name}</span>}</span>
+          )))}
+          </div>
+        </div>
+
+        <div class="camera">
+          <div class="room-wrap">
+            <Picture src={iso} formats={['avif', 'webp']} widths={[640, 960, 1400, 1672]} sizes="(max-width: 900px) 100vw, 840px" alt="" class="iso" loading="lazy" />
+            <svg class="plan" viewBox={`0 0 ${W} ${H}`} role="presentation">
+              <defs>
+                <linearGradient id="wire-g" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#F53F1D" /><stop offset=".5" stop-color="#DA358B" /><stop offset="1" stop-color="#C92FD1" />
+                </linearGradient>
+                <linearGradient id="beam-g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#E23869" stop-opacity=".42" /><stop offset="1" stop-color="#E23869" stop-opacity=".04" /></linearGradient>
+                <linearGradient id="cam-g" gradientUnits="userSpaceOnUse" x1={cam[0]} y1={cam[1]} x2={view.cx} y2={view.cy}><stop offset="0" stop-color="#C92FD1" stop-opacity=".5" /><stop offset="1" stop-color="#C92FD1" stop-opacity=".06" /></linearGradient>
+                <radialGradient id="hub-g"><stop offset="0" stop-color="#E23869" stop-opacity=".6" /><stop offset="1" stop-color="#E23869" stop-opacity="0" /></radialGradient>
+              </defs>
+              <circle cx={hx} cy={hy} r="150" fill="url(#hub-g)" class="hub-glow" />
+              {wires.map(([d, g]) => <path d={d} class="wire" data-group={g} pathLength="1" />)}
+              {spk.map(([x, y]) => (
+                <g class="spk" data-group="2" transform={`translate(${x.toFixed(0)} ${y.toFixed(0)})`}>
+                  <path class="spk-beam" d={`M-14 ${-LIFT} L-166 35 A170 64 -12 0 0 166 -35 L14 ${-LIFT} Z`} />
+                  <g transform="rotate(-12)">
+                    <ellipse class="spk-zone" rx="170" ry="64" />
+                    <ellipse class="spk-ripple" rx="170" ry="64" />
+                  </g>
+                  <line class="spk-drop" x1="0" y1={-LIFT + 24} x2="0" y2="0" />
+                  <g transform={`translate(0 ${-LIFT})`}>
+                    <ellipse class="spk-body" rx="30" ry="14" />
+                    <ellipse class="spk-grille" rx="20" ry="9" />
+                    <ellipse class="spk-cone" rx="6" ry="3" />
+                  </g>
+                </g>
+              ))}
+              <g class="spk cam" data-group="2">
+                <path class="cam-view" d={`M${cam[0].toFixed(0)} ${cam[1].toFixed(0)} L${edgeA[0].toFixed(0)} ${edgeA[1].toFixed(0)} L${edgeB[0].toFixed(0)} ${edgeB[1].toFixed(0)} Z`} />
+                <ellipse class="cam-area" cx={view.cx} cy={view.cy} rx={view.rx} ry={view.ry} transform={`rotate(${view.rot} ${view.cx} ${view.cy})`} />
+                <line class="spk-drop" x1={cam[0]} y1={cam[1] + 20} x2={cam[0]} y2={cam[1] + LIFT} />
+                <g transform={`translate(${cam[0].toFixed(0)} ${cam[1].toFixed(0)})`}>
+                  <rect class="cam-mount" x="-12" y="-30" width="24" height="7" rx="2" />
+                  <line class="cam-arm" x1="0" y1="-23" x2="0" y2="-8" />
+                  <g transform={`rotate(${camAim.toFixed(1)})`}>
+                    <rect class="cam-body" x="-26" y="-14" width="48" height="28" rx="7" />
+                    <circle class="cam-lens" cx="22" cy="0" r="9" />
+                    <circle class="cam-rec" cx="-14" cy="-6" r="3" />
+                  </g>
+                </g>
+              </g>
+            </svg>
+            {layers[1].rows.map((r, ri) => r.pins.map(([x, y], pi) => (
+              <span class="pin" data-for="infra" data-row={ri} data-flip={x > 70 ? "true" : undefined} style={`--x:${x}%;--y:${y}%`}>{pi === 0 && <span class="pin-label">{r.name}</span>}</span>
+            )))}
+          </div>
+        </div>
+
+        <div class="program">
+          <svg class="net" viewBox="0 0 1600 900" preserveAspectRatio="none">
+            <path d="M800 150 C800 300 240 336 240 540" pathLength="1" />
+            <path d="M800 150 C800 300 1360 336 1360 540" pathLength="1" />
+            <path d="M800 150 C800 360 480 600 480 770" pathLength="1" />
+            <path d="M800 150 C800 360 1120 600 1120 770" pathLength="1" />
+            <path class="next" d="M800 150 C1000 150 1200 170 1344 234" pathLength="1" />
+            <path class="vs vs-a" d="M240 560 Q360 760 480 790" pathLength="1" />
+            <path class="vs vs-b" d="M1360 560 Q1240 760 1120 790" pathLength="1" />
+          </svg>
+          <div class="hub label-glass"><img src="/assets/brand-kit/tanches-gg-icon-color.svg" alt="" width="20" height="20" /><span>[TANCHES.GG]</span><span class="spec">Manages every site</span></div>
+          {sites.map((s, i) => (
+            <div class="site" style={`--x:${s.x}%;--y:${s.y}%;--d:${i * 70}ms`}>
+              <span class="site-tag spec">School district · 0{i + 1}</span>
+              <span class="site-name" data-support={s.support} data-curriculum={s.curriculum} data-league={s.support}>{s.support}</span>
+            </div>
+          ))}
+          <div class="site next-site" style="--x:84%;--y:26%">
+            <span class="site-tag spec"><Icon name="plus" size={12} /> Next site</span>
+            <span class="site-name">Your next school</span>
+          </div>
+          <span class="vs-pill vs-pill-a">VS</span>
+          <span class="vs-pill vs-pill-b">VS</span>
+        </div>
+      </div>
+
+      {layers.map((l, i) => (
+        <div class="panel" role="tabpanel" id={`eco-panel-${l.id}`} aria-labelledby={`eco-tab-${l.id}`} hidden={i !== 0} data-panel={l.id}>
+          <h3 class="h3">{l.title}</h3>
+          <ul class="rows" role="list">
+            {l.rows.map((r, ri) => (
+              <li>
+                <button class="row" aria-expanded={ri === 0 ? 'true' : 'false'} data-row={ri}>
+                  <span class="row-icon"><Icon name={r.icon} size={18} /></span>
+                  <span class="row-text">
+                    <span class="row-name">{r.name}</span>
+                    <span class="row-desc">{r.desc}</span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <p class="hint spec"><span class="h-hover">Hover</span><span class="h-tap">Tap</span>{l.hint.replace(/^Hover/, '')}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="after" data-reveal>
+      <p class="h3">One partner from design to launch, and every season after.</p>
+      <a class="btn btn-primary" href="#start">Start your project <Icon name="arrow-right" /></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .head .lede { margin-top: 1.25rem; max-width: 60ch; }
+
+  /* Segmented control: glass track with a sliding thumb */
+  .tabs {
+    position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; width: min(100%, 760px); margin: 0 auto clamp(1.5rem, 3vw, 2.25rem);
+    padding: .375rem; border-radius: 22px; background: var(--surface-2); border: 1px solid var(--line);
+  }
+  .tabs button { position: relative; z-index: 1; display: grid; gap: .1rem; padding: .7rem .75rem; border-radius: 16px; text-align: center; color: var(--ink-2); transition: color .3s; }
+  .tabs button[aria-selected='true'] { color: var(--ink); }
+  .tab-name { font-weight: 640; font-size: 1rem; letter-spacing: -0.01em; }
+  .tab-aud { font-size: .8125rem; color: var(--ink-3); }
+  .tab-thumb {
+    position: absolute; z-index: 0; top: .375rem; bottom: .375rem; left: .375rem; width: calc((100% - .75rem) / 3);
+    border-radius: 16px; background: var(--surface); box-shadow: var(--shadow-float);
+    transform: translateX(calc(var(--i, 0) * 100%)); transition: transform .55s var(--ease-out);
+  }
+  :root[data-theme='dark'] .tab-thumb { background: var(--glass-hi); border: 1px solid var(--glass-line); }
+
+  /* Frame: stage on the sweep + side panel */
+  .frame {
+    display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(300px, 1fr); align-items: stretch;
+    border-radius: 32px; overflow: hidden; border: 1px solid var(--line);
+    background: radial-gradient(90% 80% at 40% 100%, var(--sweep-floor), transparent 70%), linear-gradient(180deg, var(--sweep-hi), var(--bg));
+  }
+  :root[data-theme='dark'] .frame { background: radial-gradient(70% 60% at 40% 0%, var(--sweep-hi), transparent 70%), var(--surface); }
+  .stage { position: relative; width: 100%; min-width: 0; min-height: clamp(30rem, 42vw, 38rem); overflow: hidden; }
+  .stage .pin { z-index: 2; }
+  .camera { position: absolute; inset: 6% 4%; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; transition: transform 1.1s var(--ease-out), opacity .8s var(--ease-out), filter 1s var(--ease-out); transform-origin: 50% 46%; }
+  .room-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+
+  /* Space: the eye-level render floats on the sweep like a product shot */
+  .shot { position: absolute; inset: 8% 5%; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; transition: opacity .7s var(--ease-out), transform 1s var(--ease-out), filter .8s var(--ease-out); }
+  .shot-in { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; background: var(--surface-2); box-shadow: var(--shadow-object); }
+  .shot-in :global(picture), .shot-in :global(img) { display: block; width: 100%; height: 100%; }
+  .shot-in :global(img) { object-fit: cover; border-radius: 20px; }
+  .frame:not([data-layer='space']) .shot { opacity: 0; transform: scale(1.06); filter: blur(10px); pointer-events: none; }
+
+  /* Infrastructure + program: the drawn plan */
+  .camera { opacity: 0; }
+  .frame:not([data-layer='space']) .camera { opacity: 1; transition-delay: .15s; }
+  .plan { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; border-radius: 20px; }
+  .room-wrap { border-radius: 20px; background: #0B0C10; box-shadow: var(--shadow-object); }
+  .room-wrap :global(picture), .room-wrap :global(img.iso) { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+  .room-wrap :global(img.iso) { object-fit: cover; border-radius: 20px; transition: filter .8s var(--ease-out); }
+  .frame[data-layer='infra'] .room-wrap :global(img.iso) { filter: brightness(.82) saturate(.9); }
+  .wire { fill: none; stroke: url(#wire-g); stroke-width: 4; filter: drop-shadow(0 0 6px rgba(226, 56, 105, .7)); stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .9; transition: stroke-dashoffset 1.1s var(--ease-out), opacity .4s, stroke-width .3s; }
+  .hub-glow { opacity: 0; transition: opacity .6s; }
+  /* Ceiling speakers: symbol plus a coverage zone on the floor; the zone breathes while AV is selected */
+  .spk { opacity: 0; transition: opacity .4s; }
+  .spk-beam { fill: url(#beam-g); }
+  .spk-drop { stroke: rgba(255, 255, 255, .35); stroke-width: 2; stroke-dasharray: 4 6; }
+  .spk-zone { fill: rgba(226, 56, 105, .14); stroke: url(#wire-g); stroke-width: 2.5; stroke-dasharray: 10 8; }
+  .spk-ripple { fill: none; stroke: #E23869; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .spk-body { fill: rgba(14, 16, 22, .9); stroke: rgba(255, 255, 255, .85); stroke-width: 3; }
+  .spk-grille { fill: none; stroke: rgba(255, 255, 255, .55); stroke-width: 2; stroke-dasharray: 3 3; }
+  .spk-cone { fill: #E23869; }
+  /* Ceiling camera: its field of view takes in the station pods */
+  .cam-view { fill: url(#cam-g); }
+  .cam-area { fill: rgba(201, 47, 209, .12); stroke: #C92FD1; stroke-width: 2.5; stroke-dasharray: 10 8; }
+  .cam-mount { fill: rgba(255, 255, 255, .7); }
+  .cam-arm { stroke: rgba(255, 255, 255, .7); stroke-width: 4; }
+  .cam-body { fill: rgba(14, 16, 22, .92); stroke: rgba(255, 255, 255, .85); stroke-width: 3; }
+  .cam-lens { fill: #0B0C10; stroke: #C92FD1; stroke-width: 4; }
+  .cam-rec { fill: #F53F1D; }
+  @media (prefers-reduced-motion: no-preference) {
+    .frame[data-layer='infra'] .cam.on .cam-rec { animation: rec 1.2s steps(2, jump-none) infinite; }
+  }
+  @keyframes rec { 50% { opacity: .15; } }
+  .frame[data-layer='infra'] .spk { opacity: .5; }
+  .frame[data-layer='infra'] .spk.on { opacity: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .frame[data-layer='infra'] .spk.on .spk-ripple { animation: spk-ripple 2.2s var(--ease-out) infinite; }
+  }
+  @keyframes spk-ripple { from { opacity: .8; transform: scale(.25); } to { opacity: 0; transform: scale(1.15); } }
+
+  .pin { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; opacity: 0; transition: opacity .35s var(--ease-out); pointer-events: none; }
+  .pin::before {
+    content: ''; position: absolute; left: -.6rem; top: -.6rem; width: 1.2rem; height: 1.2rem; border-radius: 50%;
+    background: var(--spectrum); box-shadow: 0 0 0 4px rgba(255, 255, 255, .55), 0 6px 14px rgba(0, 0, 0, .35);
+    transform: scale(.6); transition: transform .45s var(--ease-out);
+  }
+  .pin[data-flip] .pin-label { left: auto; right: 1rem; }
+  .pin-label {
+    position: absolute; left: 1rem; top: 0; translate: 0 -50%; white-space: nowrap;
+    padding: .3rem .65rem; border-radius: 999px; font-size: .75rem; font-weight: 640;
+    background: var(--glass-hi); border: 1px solid var(--glass-line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-float); color: var(--ink); opacity: 0; transition: opacity .3s;
+  }
+
+  /* Space layer */
+  .frame[data-layer='space'] .pin[data-for='space'] { opacity: .55; }
+  .frame[data-layer='space'] .pin[data-for='space'].on { opacity: 1; }
+  .frame[data-layer='space'] .pin[data-for='space'].on::before { transform: scale(1); }
+  .frame[data-layer='space'] .pin[data-for='space'].on .pin-label { opacity: 1; }
+
+  /* Infrastructure layer: room dims, wires draw from the closet */
+  .frame[data-layer='infra'] .wire { stroke-dashoffset: 0; opacity: .3; }
+  .frame[data-layer='infra'] .wire.on { opacity: 1; stroke-width: 6; }
+  .frame[data-layer='infra'] .hub-glow { opacity: 1; }
+  .frame[data-layer='infra'] .pin[data-for='infra'] { opacity: .5; }
+  .frame[data-layer='infra'] .pin[data-for='infra'].on { opacity: 1; }
+  .frame[data-layer='infra'] .pin[data-for='infra'].on::before { transform: scale(1); }
+  .frame[data-layer='infra'] .pin[data-for='infra'].on .pin-label { opacity: 1; }
+
+  /* Program layer: the camera pulls back; this room becomes one site of many */
+  .program { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .6s var(--ease-out); }
+  .frame[data-layer='program'] .camera { transform: translateY(6%) scale(.36); }
+  .frame[data-layer='program'] .program { opacity: 1; transition-delay: .35s; }
+  .net { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .net path { fill: none; stroke: url(#wire-g); stroke: var(--rose); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .7; vector-effect: non-scaling-stroke; transition: stroke-dashoffset 1.2s var(--ease-out) .45s, opacity .3s; }
+  .frame[data-layer='program'] .net path { stroke-dashoffset: 0; }
+  .net path.next { stroke-dasharray: .03 .03; stroke-dashoffset: 0; opacity: 0; }
+  .net .vs { opacity: 0; stroke: var(--violet); }
+  .hub { position: absolute; left: 50%; top: 10%; translate: -50% -50%; font-size: .8125rem; }
+  .hub img { width: 1.25rem; height: 1.25rem; }
+  .hub .spec { margin-left: .25rem; }
+  .site { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; display: grid; gap: .15rem; padding: .55rem .85rem; border-radius: 14px; text-align: left;
+    background: var(--glass-hi); border: 1px solid var(--glass-line); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--shadow-float);
+    transform: translateY(10px); opacity: 0; transition: transform .7s var(--ease-out), opacity .5s var(--ease-out), box-shadow .3s; transition-delay: calc(.55s + var(--d, 0ms)); }
+  .frame[data-layer='program'] .site { transform: none; opacity: 1; }
+  .site-tag { font-size: .625rem; display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap; }
+  .site-name { font-weight: 640; font-size: .875rem; white-space: nowrap; }
+  .next-site { border-style: dashed; border-color: var(--line-2); background: transparent; backdrop-filter: none; box-shadow: none; }
+  .frame[data-row-program='3'] .next-site { border-color: var(--rose); background: var(--glass-hi); box-shadow: 0 0 0 4px color-mix(in srgb, var(--rose) 18%, transparent), var(--shadow-float); }
+  .frame[data-row-program='3'] .net path.next { opacity: 1; }
+  .frame[data-row-program='2'] .net .vs { opacity: 1; }
+  .vs-pill { position: absolute; padding: .2rem .5rem; border-radius: 999px; background: var(--ink); color: var(--on-ink); font: 600 .6875rem var(--mono); letter-spacing: .08em; opacity: 0; transition: opacity .3s; translate: -50% -50%; }
+  .vs-pill-a { left: 22.5%; top: 82%; }
+  .vs-pill-b { left: 77.5%; top: 82%; }
+  .frame[data-row-program='2'] .vs-pill { opacity: 1; }
+
+  /* Panel */
+  .panel { padding: clamp(1.5rem, 2.5vw, 2.25rem); border-left: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 72%, transparent); display: flex; flex-direction: column; }
+  .panel[hidden] { display: none; }
+  .panel .h3 { font-size: clamp(1.25rem, 1.05rem + .6vw, 1.625rem); }
+  .rows { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .25rem; }
+  .row { width: 100%; display: grid; grid-template-columns: auto 1fr; gap: .85rem; align-items: start; padding: .75rem .85rem; border-radius: 16px; text-align: left; border: 1px solid transparent; transition: background-color .25s, border-color .25s; }
+  .row:hover { background: var(--line); }
+  .row[aria-expanded='true'] { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow-float); }
+  :root[data-theme='dark'] .row[aria-expanded='true'] { background: var(--surface-2); }
+  .row-icon { width: 2.25rem; height: 2.25rem; border-radius: 12px; display: grid; place-items: center; background: var(--surface-2); color: var(--ink-2); transition: background-color .3s, color .3s; }
+  .row[aria-expanded='true'] .row-icon { background: var(--spectrum); color: #fff; }
+  .row-text { display: grid; gap: .2rem; padding-top: .3rem; }
+  .row-name { font-weight: 640; font-size: 1rem; }
+  .row-desc { font-size: .9375rem; color: var(--ink-2); line-height: 1.5; display: none; }
+  .row[aria-expanded='true'] .row-desc { display: block; }
+  .hint { margin-top: auto; padding-top: 1.25rem; }
+  .h-tap { display: none; }
+  @media (hover: none) { .h-hover { display: none; } .h-tap { display: inline; } }
+
+  .after { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+  .after .h3 { font-weight: 420; max-width: 32ch; }
+
+  @media (max-width: 960px) {
+    .frame { grid-template-columns: 1fr; }
+    .panel { border-left: 0; border-top: 1px solid var(--line); }
+    .stage { aspect-ratio: 4 / 3; min-height: 0; }
+    .frame[data-layer='program'] .camera { transform: translateY(4%) scale(.42); }
+  }
+  @media (max-width: 560px) {
+    .tab-aud { display: none; }
+    .tabs button { padding: .65rem .25rem; }
+    .tab-name { font-size: .875rem; }
+    .pin-label { display: none; }
+    .pin::before { left: -.4rem; top: -.4rem; width: .8rem; height: .8rem; box-shadow: 0 0 0 2px rgba(255, 255, 255, .55), 0 3px 8px rgba(0, 0, 0, .35); }
+    .stage { aspect-ratio: 16 / 12; }
+    .site { padding: .35rem .5rem; }
+    .site-tag { display: none; }
+    .site-name { font-size: .6875rem; }
+    .hub .spec { display: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-eco]').forEach((root) => {
+    const frame = root.querySelector<HTMLElement>('.frame')!;
+    const tablist = root.querySelector<HTMLElement>('[role="tablist"]')!;
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+    const wires = [...root.querySelectorAll<SVGElement>('.wire, .spk')];
+
+    const setRow = (layer: string, idx: number) => {
+      const panel = root.querySelector<HTMLElement>(`[data-panel="${layer}"]`)!;
+      panel.querySelectorAll<HTMLButtonElement>('.row').forEach((b, i) => b.setAttribute('aria-expanded', String(i === idx)));
+      root.querySelectorAll<HTMLElement>(`.pin[data-for="${layer}"]`).forEach((p) => p.classList.toggle('on', Number(p.dataset.row) === idx));
+      if (layer === 'infra') {
+        // Row 0 is the closet: light every run. Otherwise light the matching group.
+        wires.forEach((w) => w.classList.toggle('on', idx === 0 || Number(w.dataset.group) === idx));
+      }
+      if (layer === 'program') {
+        frame.dataset.rowProgram = String(idx);
+        const key = idx === 1 ? 'curriculum' : idx === 2 ? 'league' : 'support';
+        root.querySelectorAll<HTMLElement>('.site-name[data-support]').forEach((n) => { n.textContent = n.dataset[key] ?? n.textContent; });
+      }
+    };
+
+    const select = (i: number, focus = false) => {
+      tabs.forEach((t, ti) => {
+        const on = ti === i;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((p, pi) => (p.hidden = pi !== i));
+      tablist.style.setProperty('--i', String(i));
+      const layer = tabs[i].dataset.tab!;
+      frame.dataset.layer = layer;
+      setRow(layer, 0);
+      if (focus) tabs[i].focus();
+    };
+
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(i));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); select((i + 1) % tabs.length, true); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); select((i - 1 + tabs.length) % tabs.length, true); }
+        if (e.key === 'Home') { e.preventDefault(); select(0, true); }
+        if (e.key === 'End') { e.preventDefault(); select(tabs.length - 1, true); }
+      });
+    });
+
+    panels.forEach((panel) => {
+      const layer = panel.dataset.panel!;
+      panel.querySelectorAll<HTMLButtonElement>('.row').forEach((b, i) => {
+        b.addEventListener('click', () => setRow(layer, i));
+        b.addEventListener('pointerenter', (e) => { if ((e as PointerEvent).pointerType === 'mouse') setRow(layer, i); });
+        b.addEventListener('focus', () => setRow(layer, i));
+      });
+    });
+
+    // Deep link: ?eco=infra or ?eco=program opens that layer.
+    const want = new URLSearchParams(location.search).get('eco');
+    const wi = tabs.findIndex((t) => t.dataset.tab === want);
+    select(wi >= 0 ? wi : 0);
+  });
+</script>

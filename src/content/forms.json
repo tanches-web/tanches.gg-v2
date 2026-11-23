@@ -1,0 +1,1985 @@
+{
+  "_readme" : "All site forms post to Netlify Forms via window.tgSend (SiteNav.dc.html). Home (index.html), About, Team, Technology, Procurement, Projects, brand, 404 and the case studies have no form of their own; pages listed under project-cta.pages embed the ProjectCTA form.",
+  "assessment" : {
+    "branching" : "Only branching is the track chosen on the path screen; each track has its own fixed 8-question list asked in order. No per-answer branching. Every question is single-select; option keys shown as A/B/C/D.",
+    "leadCapture" : {
+      "actualEndpoint" : "Netlify Forms via POST '/' (form-name 'assessment')",
+      "completedLead" : {
+        "onFailure" : "Errors swallowed (.catch(() => {})); tgSend itself shows the global #tg-form-fail toast.",
+        "payload" : {
+          "Action plan" : "plan.map(p => p.n + ' ' + p.t + ' [' + p.priority + ']').join(' | ')",
+          "Area breakdown" : "dims.map(d => d.name + ': ' + d.status + ' (' + d.pct + '%)').join(' | ')",
+          "Email" : "fEmail",
+          "Name" : "fName",
+          "Organization" : "fOrg || '(not provided)'",
+          "PDF report" : "only when PDF failed: 'Could not be generated; the visitor can download it from the results page.'",
+          "Page" : "location.href",
+          "Phone" : "fPhone || '(not provided)'",
+          "Q{n}. {question text}" : "chosen option label, or '(skipped)'",
+          "Readiness score" : "score + ' / 100'",
+          "Readiness survey" : "'Completed' + (hadPartial ? '. They came back and finished after an earlier \"NOT completed\" email; this one has the full results.' : '.')",
+          "Readiness tier" : "tier name",
+          "Reference" : "S.ref",
+          "Strengths" : "strengths.map(s => s.t).join(', ') || '(none)'",
+          "Submitted" : "new Date().toLocaleString()",
+          "Track" : "path.label",
+          "_captcha" : "false",
+          "_replyto" : "email",
+          "_subject" : "'Assessment lead ' + S.ref + ': ' + name + (org ? ' · ' + org : '') + ' (' + tierName + ', ' + score + '/100)'",
+          "_template" : "table"
+        },
+        "transport" : "window.tgSend(payload, { files: [['report', pdfBlob, fileName]] }) → multipart POST '/'. PDF built with buildPdf(A, true); 15 s timeout, otherwise sent without PDF.",
+        "trigger" : "sendLead() after the last answer (results screen). De-duplicated by JSON.stringify(answers)."
+      },
+      "declaredEndpointProp" : "leadEndpoint, default https://formsubmit.co/ajax/contact@tanches.gg (unused in code)",
+      "fields" : [
+        "Full name (required)",
+        "Work email (required)",
+        "Organization",
+        "Phone (optional)"
+      ],
+      "incompleteLead" : {
+        "condition" : "Only after intake submitted (_pending) and only once (_incSent).",
+        "fields" : "{ 'form-name': 'assessment', 'bot-field': '' } + tgFields(payload) (fallback: name, email, organization, subject, details=JSON.stringify(payload)), URL-encoded",
+        "payload" : {
+          "Email" : "fEmail",
+          "Name" : "fName",
+          "Organization" : "fOrg || '(not provided)'",
+          "Page" : "location.href",
+          "Phone" : "fPhone || '(not provided)'",
+          "Q{n}. {question text}" : "chosen option label (answered ones only)",
+          "Readiness survey" : "'NOT completed. Answered ' + answered + ' of ' + total + ' questions. No report was generated.'",
+          "Reason" : "'Left the page before finishing' | 'No activity for 10 minutes'",
+          "Submitted" : "new Date().toLocaleString()",
+          "Track" : "path.label",
+          "_subject" : "'Assessment NOT completed: ' + name + (org ? ' · ' + org : '') + ' (' + answered + ' of ' + total + ' answered)'"
+        },
+        "triggers" : [
+          "pagehide event → reason 'Left the page before finishing' (uses navigator.sendBeacon('/'))",
+          "10 minutes with no answer after intake → reason 'No activity for 10 minutes' (fetch '/', keepalive)"
+        ]
+      }
+    },
+    "padSteps" : [
+      {
+        "d" : "We evaluate your space in person and turn this report into a scoped plan and budget.",
+        "dim" : "Space",
+        "priority" : "NEXT STEP",
+        "t" : "Schedule a site assessment"
+      },
+      {
+        "d" : "Finalize the layout and hardware so purchasing can start on your timeline.",
+        "dim" : "Timeline & Scope",
+        "priority" : "NEXT STEP",
+        "t" : "Lock scope and station count"
+      },
+      {
+        "d" : "Set the launch date, schedule, and staffing so the room is used from day one.",
+        "dim" : "Program",
+        "priority" : "NEXT STEP",
+        "t" : "Plan your first season"
+      }
+    ],
+    "paths" : [
+      {
+        "key" : "education",
+        "label" : "Education",
+        "sub" : "K-12 districts, colleges, and universities",
+        "title" : "Education"
+      },
+      {
+        "key" : "community",
+        "label" : "Community",
+        "sub" : "Nonprofits, government, and community centers",
+        "title" : "Community"
+      },
+      {
+        "key" : "commercial",
+        "label" : "Commercial",
+        "sub" : "LAN centers, hotels, casinos, and healthcare",
+        "title" : "Commercial"
+      }
+    ],
+    "pdf" : {
+      "brandGradientStops" : [
+        "#F53F1D",
+        "#E23869",
+        "#DA358B",
+        "#C92FD1"
+      ],
+      "filename" : "(org || name || 'TANCHESGG').replace(/[^\\w]+/g, '_') + '_Readiness_Report.pdf'",
+      "fonts" : {
+        "base" : "https://cdn.jsdelivr.net/fontsource/fonts/",
+        "fallback" : "helvetica / courier if any font fails",
+        "files" : {
+          "m5" : "jetbrains-mono@latest/latin-500-normal.ttf",
+          "m6" : "jetbrains-mono@latest/latin-600-normal.ttf",
+          "s4" : "sora@latest/latin-400-normal.ttf",
+          "s6" : "sora@latest/latin-600-normal.ttf",
+          "s7" : "sora@latest/latin-700-normal.ttf"
+        }
+      },
+      "format" : "letter, unit pt (612 × 792), margin 45, compress true",
+      "library" : "jsPDF 2.5.1 UMD (https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js)",
+      "logoPlate" : "document img.tg-lion src, or 'assets/logo-mark.png', drawn on a #0B0B0F rounded plate via canvas",
+      "notes" : "PDF ecosystem copy differs from on-screen ecosystem copy (both verbatim above). PDF link uses www.tanches.gg/contact (lowercase; site canonical is https://tanches.gg/Contact, www redirects 301).",
+      "page1" : {
+        "footer" : "CONFIDENTIAL · PREPARED FOR {PREPARED UPPERCASE} · © TANCHES.GG  |  REF {ref} · 01 / 02 (name truncated with … if too long)",
+        "headerRight" : [
+          "FACILITY READINESS REPORT",
+          "{DATE e.g. NOVEMBER 11, 2026} · REF {ref}"
+        ],
+        "strings" : [
+          "PREPARED FOR",
+          "{prepared}",
+          "READINESS TIER",
+          "{tier name}",
+          "{tier description}",
+          "READINESS INDEX",
+          "{score}",
+          "/ 100",
+          "READINESS BY AREA",
+          "{dim name} … {STATUS} (per area, with gradient bar)",
+          "WHAT YOU ALREADY HAVE",
+          "{strength} / {DIM} cards (2 columns)",
+          "Nothing is locked in yet, which means every decision is still open. This is the best time to get the order of operations right."
+        ]
+      },
+      "page2" : {
+        "footer" : "CONFIDENTIAL · PREPARED FOR {PREPARED UPPERCASE} · © TANCHES.GG  |  REF {ref} · 02 / 02",
+        "headerRight" : [
+          "ACTION PLAN · {PATH UPPERCASE}"
+        ],
+        "strings" : [
+          "What to do next, in order.",
+          "{n} {PRIORITY} {DIM} {title} {description} YOU ANSWERED: {ANSWER UPPERCASE} (per plan step; steps that don't fit above the ecosystem box are dropped)",
+          "Hardware is one part of the ecosystem.",
+          "Design, infrastructure, hardware, program, League competition, and ongoing support, built and run as one system. We partner with Dell, Lenovo, and other leading manufacturers, with one team accountable for all of it.",
+          "Turn this report into a plan.",
+          "Book a no-cost consultation with our team. We’ll evaluate your space, review your infrastructure, and scope a build to your budget and timeline.",
+          "tanches.gg/contact (linked to https://www.tanches.gg/contact)",
+          "QUOTE REF {ref} · (281) 826-2437"
+        ]
+      },
+      "preparedFor" : "[name, org].filter(Boolean).join(', ') || path.label + ' organization'",
+      "properties" : {
+        "author" : "TANCHES.GG",
+        "creator" : "TANCHES.GG",
+        "subject" : "Facility Readiness Assessment",
+        "title" : "'Facility Readiness Report · ' + prepared"
+      },
+      "wordmark" : "[TANCHES.GG] (\"GG\" in #DA358B, rest #0B0B0E)"
+    },
+    "questionFields" : "id, dim (dimension), w (weight), text, strong (strength label when v >= 2), options [{l: label, v: value 0-2}], recs [[title, description] indexed by answer value: recs[0] for v=0, recs[1] for v=1; fallback recs[0]]",
+    "reference" : {
+      "expression" : "'TG-' + String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase()",
+      "format" : "TG-YYMMDD-XXXX"
+    },
+    "resultsScreenCopy" : {
+      "answeredPrefix" : "You answered: ",
+      "areasHeading" : "Readiness by area",
+      "callLink" : "Prefer to talk? Call (281) 826-2437",
+      "ctaBody" : "Book a no-cost consultation and we’ll work through every item in your action plan. We evaluate your space, review your infrastructure, and scope a build to your budget and timeline.",
+      "ctaButtons" : [
+        "Book my consultation",
+        "Download PDF report",
+        "Retake"
+      ],
+      "ctaFirstNameFallback" : "there",
+      "ctaHeading" : "Turn this report into a plan, {firstName}.",
+      "ecoBody" : "A program that lasts needs more than PCs: facility design, network and cybersecurity, hardware, the program itself, competition in the TANCHES.GG League, and support long after launch. We design, build, and run every piece together with Dell, Lenovo, and other leading manufacturers, and one team is accountable for all of it.",
+      "ecoHeading" : "Hardware is one part of the ecosystem.",
+      "headingPrefix" : "Your readiness tier is",
+      "noStrengths" : "Nothing is locked in yet, which means every decision is still open. This is the best time to get the order of operations right.",
+      "pdfBusyLabel" : "Building your PDF…",
+      "planHeading" : "What to do next, in order.",
+      "planLede" : "Ranked by how much each step moves your readiness, based on your answers.",
+      "refLine" : "Your report reference · {ref}",
+      "scale" : [
+        "Foundation",
+        "Growth Ready",
+        "Premier"
+      ],
+      "scoreLabel" : "TANCHES.GG readiness index",
+      "scoreSuffix" : "/ 100",
+      "strengthsHeading" : "What you already have",
+      "trackLine" : "{PATH LABEL UPPERCASE} track · Prepared for {preparedFor}"
+    },
+    "scoring" : {
+      "colors" : {
+        "dimensionStatusDot" : {
+          "DEVELOPING" : [
+            "var(--warning)",
+            "#E0A100"
+          ],
+          "GAP" : [
+            "var(--danger)",
+            "#D93A3A"
+          ],
+          "STRONG" : [
+            "var(--success)",
+            "#1E9E5A"
+          ]
+        },
+        "priority" : {
+          "HIGH PRIORITY" : [
+            "var(--danger)",
+            "#D93A3A"
+          ],
+          "MEDIUM PRIORITY" : [
+            "var(--warning)",
+            "#B87A00"
+          ],
+          "NEXT STEP" : [
+            "var(--success)",
+            "#1E9E5A"
+          ],
+          "WORTH DOING" : [
+            "var(--text-secondary)",
+            "#6A6A76"
+          ]
+        },
+        "priorityNote" : "[0] is the on-screen CSS colour (pColor, unused in template), [1] is pPdf used for the on-screen chip dot and in the PDF"
+      },
+      "dimensionOrder" : [
+        "Space",
+        "Infrastructure",
+        "Funding",
+        "Program",
+        "Timeline & Scope"
+      ],
+      "dimensionStatus" : "p = Math.round(dm[n][0] / dm[n][1] * 100); p >= 75 ? 'STRONG' : p >= 40 ? 'DEVELOPING' : 'GAP'; bar width = Math.max(p, 3) + '%' (displayed pct also floored at 3)",
+      "dimensionTotals" : "dm[q.dim][0] += v * q.w; dm[q.dim][1] += 2 * q.w",
+      "gapSort" : "gaps.sort((a, b) => b.impact - a.impact || a.qi - b.qi)",
+      "gaps" : "else { r = q.recs[v] || q.recs[0]; gaps.push({ impact: q.w * (2 - v), qi, t: r[0], d: r[1], dim: q.dim, ans: o.l }) }",
+      "padding" : "If fewer than 3 plan items, append items from pad[] in order (priority 'NEXT STEP') until there are 3.",
+      "perQuestion" : "sc += v * q.w; mx += 2 * q.w  (only answered questions count)",
+      "plain" : "Each answer is worth 0, 1 or 2 points times the question weight (1 or 2). The score is the share of the maximum possible, rounded to 0–100. 65%+ is Premier, 35–64% Growth Ready, under 35% Foundation. Every answer below 2 becomes an action item; its impact is weight × (2 − value), so 4 = high, 2 = medium, 1 = worth doing. Each area (Space, Infrastructure, Funding, Program, Timeline & Scope) is STRONG at 75%+, DEVELOPING at 40–74%, GAP below 40%.",
+      "priority" : "impact >= 4 ? 'HIGH PRIORITY' : impact >= 2 ? 'MEDIUM PRIORITY' : 'WORTH DOING'",
+      "score" : "pct = mx ? sc / mx : 0; score = Math.round(pct * 100)",
+      "strengths" : "if (v >= 2) strengths.push({ t: q.strong, dimUp: q.dim.toUpperCase() })",
+      "tier" : "pct >= 0.65 ? 'premier' : pct >= 0.35 ? 'growth' : 'foundation'"
+    },
+    "screens" : [
+      "path",
+      "intake",
+      "q",
+      "res"
+    ],
+    "source" : "Assessment.html <script type=\"text/x-dc\"> class Component (Q getter, ST(), PATHS, TIERS, report(), sendLead(), sendIncomplete(), buildPdf())",
+    "stationsQuestionTemplate" : {
+      "dim" : "Timeline & Scope",
+      "id" : "stations",
+      "note" : "Only one rec; any non-2 answer (i.e. 'Not sure yet', v=0) uses recs[0].",
+      "options" : [
+        {
+          "l" : "o[0]",
+          "v" : 2
+        },
+        {
+          "l" : "o[1]",
+          "v" : 2
+        },
+        {
+          "l" : "o[2]",
+          "v" : 2
+        },
+        {
+          "l" : "Not sure yet",
+          "v" : 0
+        }
+      ],
+      "recs" : [
+        [
+          "Define the scope",
+          "Station count drives space, infrastructure, and budget. Settle it early so everything else can be sized around it."
+        ]
+      ],
+      "source" : "ST(o)",
+      "strong" : "Station count defined",
+      "text" : "How many gaming stations are you envisioning?",
+      "w" : 1
+    },
+    "tiers" : {
+      "foundation" : {
+        "desc" : "You’re at the start of the journey, which is exactly the right time for structured guidance. The action plan below gives you the order of operations.",
+        "name" : "Foundation",
+        "threshold" : "pct < 0.35"
+      },
+      "growth" : {
+        "desc" : "Meaningful pieces are in place, with a few key areas to resolve before breaking ground. Close the gaps below in order and you can move efficiently.",
+        "name" : "Growth Ready",
+        "threshold" : "0.35 <= pct < 0.65"
+      },
+      "premier" : {
+        "desc" : "The foundations are in place to move quickly. You have alignment, resources, and momentum. This is a build-ready situation, and the next step is locking scope.",
+        "name" : "Premier",
+        "threshold" : "pct >= 0.65"
+      }
+    },
+    "tracks" : {
+      "commercial" : [
+        {
+          "dim" : "Space",
+          "id" : "space",
+          "n" : 1,
+          "options" : [
+            {
+              "l" : "Yes, secured and ready for build-out",
+              "v" : 2
+            },
+            {
+              "l" : "In progress, searching or negotiating",
+              "v" : 1
+            },
+            {
+              "l" : "Not yet, no location identified",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Define your site criteria",
+              "Know what your concept requires before you tour. It narrows the search fast."
+            ],
+            [
+              "Evaluate before you sign",
+              "Spaces vary widely in what they can support, and it can swing build costs. Get finalists evaluated first."
+            ]
+          ],
+          "strong" : "Space secured",
+          "text" : "Do you have a commercial space identified or under lease?",
+          "w" : 2
+        },
+        {
+          "dim" : "Infrastructure",
+          "id" : "site",
+          "n" : 2,
+          "options" : [
+            {
+              "l" : "Yes, we know what it can support",
+              "v" : 2
+            },
+            {
+              "l" : "Partially, some systems checked",
+              "v" : 1
+            },
+            {
+              "l" : "Not yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Get the site evaluated",
+              "Gaming venues place unusual demands on a building. Knowing the limits early avoids costly change orders."
+            ],
+            [
+              "Finish the site evaluation",
+              "Close the remaining checks before the layout is finalized."
+            ]
+          ],
+          "strong" : "Site evaluated",
+          "text" : "Has the space been evaluated for power, cooling, and network?",
+          "w" : 2
+        },
+        {
+          "dim" : "Funding",
+          "id" : "invest",
+          "n" : 3,
+          "options" : [
+            {
+              "l" : "$250K+, a full-scale build",
+              "v" : 2
+            },
+            {
+              "l" : "$75K–$250K, phased or mid-scale",
+              "v" : 1
+            },
+            {
+              "l" : "Under $75K, or undetermined",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Set an investment range",
+              "A working range tells you which concept the numbers can support."
+            ],
+            [
+              "Plan a phased build",
+              "Open with a core layout and design for expansion from day one."
+            ]
+          ],
+          "strong" : "Capital committed",
+          "text" : "What is your expected capital investment range?",
+          "w" : 2
+        },
+        {
+          "dim" : "Program",
+          "id" : "model",
+          "n" : 4,
+          "options" : [
+            {
+              "l" : "Hourly or membership play (LAN center)",
+              "v" : 2
+            },
+            {
+              "l" : "Events, tournaments, and private bookings",
+              "v" : 2
+            },
+            {
+              "l" : "Corporate amenity or employee engagement",
+              "v" : 1
+            },
+            {
+              "l" : "Still developing the model",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Pressure-test the business model",
+              "Validate the model for your market before committing to a layout."
+            ],
+            [
+              "Define success for the space",
+              "For an amenity, set the goal first and design usage around it."
+            ]
+          ],
+          "strong" : "Revenue model defined",
+          "text" : "What is your primary revenue model?",
+          "w" : 2
+        },
+        {
+          "dim" : "Timeline & Scope",
+          "id" : "timeline",
+          "n" : 5,
+          "options" : [
+            {
+              "l" : "Within 6 months, we need to move fast",
+              "v" : 2
+            },
+            {
+              "l" : "6–12 months, in planning",
+              "v" : 1
+            },
+            {
+              "l" : "Over 12 months, or flexible",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Set a target opening",
+              "Work back from a date to set your lease, design, and ordering milestones."
+            ],
+            [
+              "Lock design before construction",
+              "Late changes are the most expensive kind. Finalize the design first."
+            ]
+          ],
+          "strong" : "Ready to move",
+          "text" : "What is your target opening timeline?",
+          "w" : 1
+        },
+        {
+          "dim" : "Timeline & Scope",
+          "id" : "stations",
+          "n" : 6,
+          "options" : [
+            {
+              "l" : "Under 20 stations, a boutique or lounge",
+              "v" : 2
+            },
+            {
+              "l" : "20–50 stations, a mid-scale venue",
+              "v" : 2
+            },
+            {
+              "l" : "50+ stations, a large competitive facility",
+              "v" : 2
+            },
+            {
+              "l" : "Not sure yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Define the scope",
+              "Station count drives space, infrastructure, and budget. Settle it early so everything else can be sized around it."
+            ]
+          ],
+          "strong" : "Station count defined",
+          "text" : "How many gaming stations are you envisioning?",
+          "w" : 1
+        },
+        {
+          "dim" : "Space",
+          "id" : "design",
+          "n" : 7,
+          "options" : [
+            {
+              "l" : "Yes, design and construction are in motion",
+              "v" : 2
+            },
+            {
+              "l" : "Someone in mind, not engaged yet",
+              "v" : 1
+            },
+            {
+              "l" : "No, not started on that side",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Line up design and construction",
+              "Build-out needs an architect or contractor, coordinated with your technology partner from the start."
+            ],
+            [
+              "Engage your designer early",
+              "Technology requirements should shape the drawings, not follow them."
+            ]
+          ],
+          "strong" : "Design team engaged",
+          "text" : "Are you working with an architect or general contractor?",
+          "w" : 1
+        },
+        {
+          "dim" : "Program",
+          "id" : "operator",
+          "n" : 8,
+          "options" : [
+            {
+              "l" : "Yes, direct industry or operations experience",
+              "v" : 2
+            },
+            {
+              "l" : "Partially, adjacent experience or advisors",
+              "v" : 1
+            },
+            {
+              "l" : "No, this is our first venture",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Plan the operating model",
+              "Define who runs the floor, events, and maintenance before opening day."
+            ],
+            [
+              "Fill the operations gaps",
+              "Experienced guidance shortens the learning curve considerably."
+            ]
+          ],
+          "strong" : "Operator experience",
+          "text" : "Do you have gaming or venue operations experience on the team?",
+          "w" : 1
+        }
+      ],
+      "community" : [
+        {
+          "dim" : "Space",
+          "id" : "space",
+          "n" : 1,
+          "options" : [
+            {
+              "l" : "Yes, dedicated space ready to build out",
+              "v" : 2
+            },
+            {
+              "l" : "Partially, shared or limited space",
+              "v" : 1
+            },
+            {
+              "l" : "Not yet, space would need to be secured",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Secure a space",
+              "Partner sites can sometimes get you open faster than a build-out. Explore options before committing."
+            ],
+            [
+              "Plan around shared use",
+              "Shared rooms need a different design approach. Factor that in early."
+            ]
+          ],
+          "strong" : "Dedicated space",
+          "text" : "Do you have a physical space available for the facility?",
+          "w" : 2
+        },
+        {
+          "dim" : "Funding",
+          "id" : "funding",
+          "n" : 2,
+          "options" : [
+            {
+              "l" : "Grant funding or donor commitments are in place",
+              "v" : 2
+            },
+            {
+              "l" : "Actively pursuing grants and sponsorships",
+              "v" : 1
+            },
+            {
+              "l" : "Funding is the main barrier right now",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Get a scoped, phased budget",
+              "Know exactly what you’re raising for, and what a realistic first phase looks like."
+            ],
+            [
+              "Strengthen your funding ask",
+              "Funders want reach, outcomes, and a credible budget. Package all three."
+            ]
+          ],
+          "strong" : "Funding committed",
+          "text" : "How is your organization positioned to fund the facility?",
+          "w" : 2
+        },
+        {
+          "dim" : "Infrastructure",
+          "id" : "tech",
+          "n" : 3,
+          "options" : [
+            {
+              "l" : "Managed IT and reliable infrastructure",
+              "v" : 2
+            },
+            {
+              "l" : "Basic, mostly consumer-grade equipment",
+              "v" : 1
+            },
+            {
+              "l" : "Very limited, technology is a known gap",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Plan for ongoing technical support",
+              "Without in-house IT, the facility needs a support plan to stay running. Budget for it up front."
+            ],
+            [
+              "Plan to move beyond consumer-grade",
+              "Consumer equipment rarely holds up to a full room of players. Plan for an upgrade."
+            ]
+          ],
+          "strong" : "Managed IT in place",
+          "text" : "What is your current technology footprint?",
+          "w" : 2
+        },
+        {
+          "dim" : "Program",
+          "id" : "reach",
+          "n" : 4,
+          "options" : [
+            {
+              "l" : "200+ per year",
+              "v" : 2
+            },
+            {
+              "l" : "50–200 per year",
+              "v" : 1
+            },
+            {
+              "l" : "Under 50, or just launching",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Prove demand early",
+              "A small pilot builds the participation numbers funders ask for."
+            ],
+            [
+              "Start tracking outcomes",
+              "Participation and outcome data strengthen every funding conversation."
+            ]
+          ],
+          "strong" : "Proven reach",
+          "text" : "How many people does your program currently serve each year?",
+          "w" : 1
+        },
+        {
+          "dim" : "Funding",
+          "id" : "partners",
+          "n" : 5,
+          "options" : [
+            {
+              "l" : "Yes, established sponsors or partners",
+              "v" : 2
+            },
+            {
+              "l" : "Possibly, relationships we could use",
+              "v" : 1
+            },
+            {
+              "l" : "Not at this time",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Identify potential co-investors",
+              "Local employers and civic groups often back youth and workforce programs. Start those conversations now."
+            ],
+            [
+              "Bring partners in early",
+              "Sponsors commit more when they help shape the program."
+            ]
+          ],
+          "strong" : "Partners in place",
+          "text" : "Do you have partners who might co-invest?",
+          "w" : 1
+        },
+        {
+          "dim" : "Program",
+          "id" : "stem",
+          "n" : 6,
+          "options" : [
+            {
+              "l" : "Yes, it’s core to what we do",
+              "v" : 2
+            },
+            {
+              "l" : "Some, but it’s not a primary focus",
+              "v" : 1
+            },
+            {
+              "l" : "No, this would be a new direction",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Define participant outcomes",
+              "What participants gain shapes both the space and the funding pitch."
+            ],
+            [
+              "Tie gaming to your mission",
+              "Connecting play to real skills widens who participates and who funds you."
+            ]
+          ],
+          "strong" : "STEM programming",
+          "text" : "Do you run any STEM, workforce, or education programming?",
+          "w" : 1
+        },
+        {
+          "dim" : "Timeline & Scope",
+          "id" : "timeline",
+          "n" : 7,
+          "options" : [
+            {
+              "l" : "Within 6 months",
+              "v" : 2
+            },
+            {
+              "l" : "6–18 months",
+              "v" : 1
+            },
+            {
+              "l" : "No defined timeline yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Set a target opening",
+              "A date, even a rough one, puts funding, space, and partners in the right order."
+            ],
+            [
+              "Align with funding cycles",
+              "Award dates often set your real timeline. Plan around them."
+            ]
+          ],
+          "strong" : "Ready to launch",
+          "text" : "What is your realistic timeline for launching?",
+          "w" : 1
+        },
+        {
+          "dim" : "Timeline & Scope",
+          "id" : "stations",
+          "n" : 8,
+          "options" : [
+            {
+              "l" : "Under 20 stations, a focused space",
+              "v" : 2
+            },
+            {
+              "l" : "20–40 stations, a mid-size center",
+              "v" : 2
+            },
+            {
+              "l" : "40+ stations, a full-scale arena",
+              "v" : 2
+            },
+            {
+              "l" : "Not sure yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Define the scope",
+              "Station count drives space, infrastructure, and budget. Settle it early so everything else can be sized around it."
+            ]
+          ],
+          "strong" : "Station count defined",
+          "text" : "How many gaming stations are you envisioning?",
+          "w" : 1
+        }
+      ],
+      "education" : [
+        {
+          "dim" : "Space",
+          "id" : "space",
+          "n" : 1,
+          "options" : [
+            {
+              "l" : "Yes, a specific room is identified",
+              "v" : 2
+            },
+            {
+              "l" : "Possibly, we have underused space we could repurpose",
+              "v" : 1
+            },
+            {
+              "l" : "Not yet, we’d need to find or build out space",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Identify candidate spaces",
+              "Not every room can support a lab. Shortlist a few options and have them evaluated before you plan around one."
+            ],
+            [
+              "Validate the space before you commit",
+              "Repurposed rooms often have hidden limits. Get the space evaluated so there are no surprises mid-project."
+            ]
+          ],
+          "strong" : "Space identified",
+          "text" : "Do you have a dedicated space in mind for an esports or STEM lab?",
+          "w" : 2
+        },
+        {
+          "dim" : "Funding",
+          "id" : "funding",
+          "n" : 2,
+          "options" : [
+            {
+              "l" : "Active budget or grant funding is available",
+              "v" : 2
+            },
+            {
+              "l" : "We’re actively exploring grants",
+              "v" : 1
+            },
+            {
+              "l" : "Funding hasn’t been identified yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Get a scoped budget",
+              "Funding conversations stall without a number. A scoped estimate gives leadership something concrete to approve."
+            ],
+            [
+              "Align the project with your funding source",
+              "Grant rules and deadlines shape what you can buy and when. Plan the project around them from the start."
+            ]
+          ],
+          "strong" : "Funding available",
+          "text" : "How would you describe your funding for this initiative?",
+          "w" : 2
+        },
+        {
+          "dim" : "Infrastructure",
+          "id" : "infra",
+          "n" : 3,
+          "options" : [
+            {
+              "l" : "Enterprise-grade, with dedicated IT staff",
+              "v" : 2
+            },
+            {
+              "l" : "Functional but basic, could support a lab with upgrades",
+              "v" : 1
+            },
+            {
+              "l" : "Limited, significant work would be needed",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Address infrastructure first",
+              "Infrastructure is the most common source of delays and cost overruns. Get it scoped before any hardware is selected."
+            ],
+            [
+              "Assess network readiness",
+              "A lab puts a different kind of load on your network. Have it assessed so the lab and the rest of campus both run well."
+            ]
+          ],
+          "strong" : "Enterprise IT in place",
+          "text" : "How would you describe your current network and IT infrastructure?",
+          "w" : 2
+        },
+        {
+          "dim" : "Program",
+          "id" : "program",
+          "n" : 4,
+          "options" : [
+            {
+              "l" : "Yes, we have an active program or team",
+              "v" : 2
+            },
+            {
+              "l" : "In planning, we’re building toward one",
+              "v" : 1
+            },
+            {
+              "l" : "No, this would be a new initiative",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Define the program before the room",
+              "A facility without a program behind it sits empty. Decide who it serves and how often it runs."
+            ],
+            [
+              "Clarify the program’s purpose",
+              "Competition, curriculum, club, or all three. The answer drives the schedule, staffing, and design."
+            ]
+          ],
+          "strong" : "Active program",
+          "text" : "Is there an existing esports, gaming, or STEM program?",
+          "w" : 1
+        },
+        {
+          "dim" : "Program",
+          "id" : "champion",
+          "n" : 5,
+          "options" : [
+            {
+              "l" : "Yes, leadership is engaged and supportive",
+              "v" : 2
+            },
+            {
+              "l" : "Somewhat, there’s interest but no commitment",
+              "v" : 1
+            },
+            {
+              "l" : "Not yet, we’re still building alignment",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Build the case for leadership",
+              "Projects move when leadership sees outcomes they care about. A clear proposal speeds approval."
+            ],
+            [
+              "Name an owner",
+              "Projects stall without a decision-maker and a program lead. Identify both now."
+            ]
+          ],
+          "strong" : "Leadership engaged",
+          "text" : "Is there an internal champion or decision-maker driving this?",
+          "w" : 1
+        },
+        {
+          "dim" : "Timeline & Scope",
+          "id" : "timeline",
+          "n" : 6,
+          "options" : [
+            {
+              "l" : "Within 6 months, we’re ready to move",
+              "v" : 2
+            },
+            {
+              "l" : "6–18 months, we’re in planning and approvals",
+              "v" : 1
+            },
+            {
+              "l" : "No set timeline yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Set a target launch",
+              "A date turns planning into a schedule and lines up the budget cycle behind it."
+            ],
+            [
+              "Build the schedule backward from launch",
+              "Approvals, purchasing, and installation all take time. Map them against your calendar early."
+            ]
+          ],
+          "strong" : "Ready to move",
+          "text" : "What is your target timeline for moving forward?",
+          "w" : 1
+        },
+        {
+          "dim" : "Timeline & Scope",
+          "id" : "stations",
+          "n" : 7,
+          "options" : [
+            {
+              "l" : "Under 20 stations, a focused lab",
+              "v" : 2
+            },
+            {
+              "l" : "20–40 stations, a mid-size lab",
+              "v" : 2
+            },
+            {
+              "l" : "40+ stations, a full-scale facility",
+              "v" : 2
+            },
+            {
+              "l" : "Not sure yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Define the scope",
+              "Station count drives space, infrastructure, and budget. Settle it early so everything else can be sized around it."
+            ]
+          ],
+          "strong" : "Station count defined",
+          "text" : "How many gaming stations are you envisioning?",
+          "w" : 1
+        },
+        {
+          "dim" : "Infrastructure",
+          "id" : "support",
+          "n" : 8,
+          "options" : [
+            {
+              "l" : "Our IT team has capacity to own it",
+              "v" : 2
+            },
+            {
+              "l" : "IT can help, but bandwidth is tight",
+              "v" : 1
+            },
+            {
+              "l" : "We haven’t thought about that yet",
+              "v" : 0
+            }
+          ],
+          "recs" : [
+            [
+              "Plan for life after launch",
+              "Labs need ongoing care to stay open and competitive. Decide who owns it before day one."
+            ],
+            [
+              "Define who supports what",
+              "Split responsibilities clearly so nothing falls through the cracks mid-season."
+            ]
+          ],
+          "strong" : "Support plan in place",
+          "text" : "Who will maintain the lab after it opens?",
+          "w" : 1
+        }
+      ]
+    }
+  },
+  "forms" : [
+    {
+      "_source" : {
+        "netlifyFormName" : "tgFormName({Form: 'Contact'}) → 'contact'"
+      },
+      "action" : null,
+      "element" : "<form class=\"tg-ct-form\" role=\"tabpanel\" aria-labelledby=\"ct-tab-msg\" onSubmit=\"{{ submit }}\">",
+      "errorMessage" : "Your message didn’t go through. Please try again, email contact@tanches.gg, or call (281) 826-2437.",
+      "fields" : [
+        {
+          "_source" : {
+            "placeholder" : "SECRET_IDS[Math.floor(Math.random() * SECRET_IDS.length)]"
+          },
+          "autocomplete" : "name",
+          "id" : "ct-name",
+          "label" : "Full name",
+          "name" : "name",
+          "placeholder" : "{random SECRET_ID}",
+          "placeholderOptions" : [
+            "Lara Croft",
+            "Nathan Drake",
+            "Gordon Freeman",
+            "Samus Aran",
+            "Cloud Strife",
+            "Solid Snake",
+            "Master Chief",
+            "Marcus Fenix",
+            "Arthur Morgan",
+            "John Marston",
+            "Ellie Williams",
+            "Joel Miller",
+            "Leon Kennedy",
+            "Jill Valentine",
+            "Ezio Auditore",
+            "Max Payne",
+            "Sam Fisher",
+            "Tifa Lockhart",
+            "Alyx Vance",
+            "Fox McCloud",
+            "Duke Nukem",
+            "Donkey Kong",
+            "Princess Peach",
+            "Crash Bandicoot",
+            "Isaac Clarke",
+            "Commander Shepard",
+            "Chris Redfield",
+            "Princess Zelda",
+            "Captain Price",
+            "Doctor Eggman"
+          ],
+          "prefill" : "?name=",
+          "required" : true,
+          "type" : "text"
+        },
+        {
+          "autocomplete" : "email",
+          "id" : "ct-email",
+          "label" : "Work email",
+          "name" : "email",
+          "placeholder" : "you@organization.org",
+          "prefill" : "?email=",
+          "required" : true,
+          "type" : "email"
+        },
+        {
+          "autocomplete" : "organization",
+          "id" : "ct-org",
+          "label" : "Organization",
+          "name" : "organization",
+          "placeholder" : "School, city, or business",
+          "prefill" : "?org=",
+          "required" : false,
+          "type" : "text"
+        },
+        {
+          "id" : "ct-prog",
+          "label" : "Program type",
+          "name" : null,
+          "options" : [
+            {
+              "label" : "Select one",
+              "value" : ""
+            },
+            {
+              "label" : "K-12 Education",
+              "value" : "K-12 Education"
+            },
+            {
+              "label" : "Higher Education",
+              "value" : "Higher Education"
+            },
+            {
+              "label" : "Community / Government",
+              "value" : "Community / Government"
+            },
+            {
+              "label" : "Commercial",
+              "value" : "Commercial"
+            }
+          ],
+          "prefill" : "?program= or page-based default",
+          "required" : false,
+          "type" : "select"
+        },
+        {
+          "id" : "ct-topic",
+          "label" : "I’m interested in",
+          "name" : null,
+          "options" : [
+            {
+              "label" : "Select one",
+              "value" : ""
+            },
+            {
+              "label" : "Full facility build",
+              "value" : "Full facility build"
+            },
+            {
+              "label" : "Hardware & equipment",
+              "value" : "Hardware & equipment"
+            },
+            {
+              "label" : "Technology & infrastructure",
+              "value" : "Technology & infrastructure"
+            },
+            {
+              "label" : "Funding & procurement",
+              "value" : "Funding & procurement"
+            },
+            {
+              "label" : "Managed services",
+              "value" : "Managed services"
+            },
+            {
+              "label" : "Esports League",
+              "value" : "Esports League"
+            },
+            {
+              "label" : "24\" Circle Sign",
+              "value" : "24\" Circle Sign"
+            },
+            {
+              "label" : "Custom signage",
+              "value" : "Custom signage"
+            },
+            {
+              "label" : "Merch & apparel",
+              "value" : "Merch & apparel"
+            },
+            {
+              "label" : "Not sure yet",
+              "value" : "Not sure yet"
+            }
+          ],
+          "prefill" : "?topic=, or 'Full facility build' when ?tier= present, or page-based default",
+          "required" : false,
+          "type" : "select"
+        },
+        {
+          "id" : "ct-msg",
+          "label" : "What are you looking to build?",
+          "name" : null,
+          "placeholder" : "Space, timeline, number of stations, titles you play…",
+          "required" : false,
+          "rows" : 5,
+          "type" : "textarea"
+        }
+      ],
+      "formNote" : "By submitting this form, you agree to our Terms & Privacy Policy.",
+      "hiddenFields" : [],
+      "id" : "contact",
+      "method" : "JS (fetch POST '/' via window.tgSend)",
+      "netlify" : {
+        "dataNetlify" : true,
+        "honeypot" : "bot-field",
+        "registeredIn" : "forms.html"
+      },
+      "netlifyFormName" : "contact",
+      "page" : "Contact",
+      "pagePrefill" : {
+        "map" : {
+          "about" : [
+            "",
+            ""
+          ],
+          "commercial" : [
+            "Commercial",
+            "Full facility build"
+          ],
+          "community" : [
+            "Community / Government",
+            "Full facility build"
+          ],
+          "education" : [
+            "",
+            "Full facility build"
+          ],
+          "league" : [
+            "",
+            "Esports League"
+          ],
+          "procurement" : [
+            "",
+            "Funding & procurement"
+          ],
+          "project" : [
+            "",
+            "Full facility build"
+          ],
+          "team" : [
+            "",
+            ""
+          ],
+          "technology" : [
+            "",
+            "Technology & infrastructure"
+          ]
+        },
+        "note" : "On Contact.html itself the path is 'Contact', so no PAGE_PREFILL key matches; the map only matters if this form is rendered elsewhere. Query params from /Assessment (name, email, org, tier, score, ref, track) prefill fields and show the 'Report attached' chip.",
+        "queryParams" : [
+          "program",
+          "topic",
+          "tier",
+          "name",
+          "email",
+          "org",
+          "score",
+          "ref",
+          "track"
+        ],
+        "source" : "PAGE_PREFILL keyed by the last path segment of location.pathname (startsWith match) → [program, topic]"
+      },
+      "payload" : {
+        "_captcha" : "false",
+        "_subject" : "'Contact lead: ' + (d['Full name'] || '') + (d['Organization'] ? ' · ' + d['Organization'] : '')",
+        "_template" : "table",
+        "assessmentExtras" : "when ?tier= present: 'Readiness tier', 'Readiness score' (score + ' / 100'), 'Assessment ref', 'Assessment track'",
+        "keys" : "Each field keyed by its <label> text: 'Full name', 'Work email', 'Organization', 'Program type', 'I’m interested in', 'What are you looking to build?' (plus _replyto = email value)",
+        "trailer" : {
+          "Form" : "Contact",
+          "Page" : "location.href",
+          "Submitted" : "new Date().toLocaleString()"
+        }
+      },
+      "submitLabel" : "Request my consultation",
+      "submitLabelBusy" : "Sending…",
+      "success" : {
+        "behaviour" : "Replaces the tabs and form with a 'Received' panel (role=status).",
+        "body" : "Your message has been received. We’ll reach out to schedule your no-cost consultation.",
+        "chip" : "Received",
+        "heading" : "Thank you.",
+        "link" : {
+          "href" : "/Projects",
+          "label" : "See rooms we’ve built"
+        }
+      },
+      "thirdParty" : [
+        "Netlify Forms (POST /)",
+        "tracking.js lead events if IDs configured"
+      ]
+    },
+    {
+      "action" : null,
+      "element" : "<form class=\"tg-as-card\" onSubmit=\"{{ startQs }}\">",
+      "fields" : [
+        {
+          "autocomplete" : "name",
+          "id" : "as-name",
+          "label" : "Full name",
+          "name" : "name",
+          "placeholder" : "{random SECRET_ID (same list as Contact)}",
+          "required" : true,
+          "type" : "text"
+        },
+        {
+          "autocomplete" : "email",
+          "id" : "as-email",
+          "label" : "Work email",
+          "name" : "email",
+          "placeholder" : "you@organization.org",
+          "required" : true,
+          "type" : "email"
+        },
+        {
+          "autocomplete" : "organization",
+          "id" : "as-org",
+          "label" : "Organization",
+          "name" : "organization",
+          "placeholder" : "School, city, or business",
+          "required" : false,
+          "type" : "text"
+        },
+        {
+          "autocomplete" : "tel",
+          "id" : "as-phone",
+          "label" : "Phone (optional)",
+          "name" : "phone",
+          "placeholder" : "(555) 555-0123",
+          "required" : false,
+          "type" : "tel"
+        }
+      ],
+      "formNote" : "By continuing, you agree to our Terms & Privacy Policy.",
+      "id" : "assessment-intake",
+      "leadEndpointProp" : {
+        "default" : "https://formsubmit.co/ajax/contact@tanches.gg",
+        "editor" : "text",
+        "name" : "leadEndpoint",
+        "note" : "Declared in data-props but NEVER referenced in the script. Actual sending goes through window.tgSend (Netlify) or a direct fetch('/') / sendBeacon('/').",
+        "section" : "Behavior"
+      },
+      "method" : "none on submit (client-side gate). Lead is sent later: full lead on completion, partial 'NOT completed' lead on page leave or 10 min idle.",
+      "netlify" : {
+        "dataNetlify" : true,
+        "enctype" : "multipart/form-data",
+        "fileField" : "report",
+        "honeypot" : "bot-field",
+        "registeredIn" : "forms.html"
+      },
+      "netlifyFormName" : "assessment",
+      "page" : "Assessment",
+      "submitLabel" : "Start the assessment",
+      "success" : "Moves to question 1 (screen 'q').",
+      "validation" : {
+        "error" : "Add your name and a valid email to start.",
+        "rule" : "!S.fName.trim() || !/^\\S+@\\S+\\.\\S+$/.test(S.fEmail.trim())"
+      }
+    },
+    {
+      "action" : null,
+      "endpoint" : "POST / (Netlify Forms), Content-Type application/x-www-form-urlencoded",
+      "failure" : "tgSend rejects -> window.tgFormFail(payload) shows a fixed bottom toast (role=alert): heading 'Your message didn’t go through.', text 'Please email us at contact@tanches.gg or call (281) 826-2437. Your details are ready to send.', buttons 'Email it instead' (mailto:contact@tanches.gg?subject=<_subject>&body=<field lines, max 1800 chars>) and 'Close'. The League form stays in the unsent state (catch is a no-op).",
+      "fields" : [
+        {
+          "_source" : {
+            "placeholder" : "SECRET_IDS[Math.floor(Math.random() * SECRET_IDS.length)]"
+          },
+          "autocomplete" : "name",
+          "id" : "lg-name",
+          "label" : "Full name",
+          "name" : "name",
+          "placeholder" : "<random video-game character name>",
+          "placeholderOptions" : [
+            "Lara Croft",
+            "Nathan Drake",
+            "Gordon Freeman",
+            "Samus Aran",
+            "Cloud Strife",
+            "Solid Snake",
+            "Master Chief",
+            "Marcus Fenix",
+            "Arthur Morgan",
+            "John Marston",
+            "Ellie Williams",
+            "Joel Miller",
+            "Leon Kennedy",
+            "Jill Valentine",
+            "Ezio Auditore",
+            "Max Payne",
+            "Sam Fisher",
+            "Tifa Lockhart",
+            "Alyx Vance",
+            "Fox McCloud",
+            "Duke Nukem",
+            "Donkey Kong",
+            "Princess Peach",
+            "Crash Bandicoot",
+            "Isaac Clarke",
+            "Commander Shepard",
+            "Chris Redfield",
+            "Princess Zelda",
+            "Captain Price",
+            "Doctor Eggman"
+          ],
+          "required" : true,
+          "type" : "text"
+        },
+        {
+          "autocomplete" : "email",
+          "id" : "lg-email",
+          "label" : "Work email",
+          "name" : "email",
+          "placeholder" : "you@organization.org",
+          "required" : true,
+          "type" : "email"
+        },
+        {
+          "autocomplete" : "organization",
+          "id" : "lg-org",
+          "label" : "Organization",
+          "name" : "organization",
+          "placeholder" : "School, city, or venue",
+          "required" : false,
+          "span" : 2,
+          "type" : "text"
+        },
+        {
+          "controlled" : "state.program; preset from URL hash (#education -> 'K-12 Education', #community -> 'Community / Government', #commercial -> 'Commercial')",
+          "id" : "lg-prog",
+          "label" : "Program type",
+          "name" : null,
+          "options" : [
+            {
+              "label" : "Select one",
+              "value" : ""
+            },
+            {
+              "label" : "K-12 Education",
+              "value" : "K-12 Education"
+            },
+            {
+              "label" : "Higher Education",
+              "value" : "Higher Education"
+            },
+            {
+              "label" : "Community / Government",
+              "value" : "Community / Government"
+            },
+            {
+              "label" : "Commercial",
+              "value" : "Commercial"
+            }
+          ],
+          "required" : false,
+          "type" : "select"
+        },
+        {
+          "id" : "lg-teams",
+          "label" : "Expected teams",
+          "name" : null,
+          "options" : [
+            {
+              "label" : "Select one",
+              "value" : ""
+            },
+            {
+              "label" : "1–2 teams",
+              "value" : "1–2 teams"
+            },
+            {
+              "label" : "3–5 teams",
+              "value" : "3–5 teams"
+            },
+            {
+              "label" : "6–10 teams",
+              "value" : "6–10 teams"
+            },
+            {
+              "label" : "10+ teams or multiple sites",
+              "value" : "10+ teams or multiple sites"
+            },
+            {
+              "label" : "Not sure yet",
+              "value" : "Not sure yet"
+            }
+          ],
+          "required" : false,
+          "type" : "select"
+        },
+        {
+          "id" : "lg-msg",
+          "label" : "Anything we should know?",
+          "name" : null,
+          "placeholder" : "Titles you play, number of locations, when you’d like to start…",
+          "required" : false,
+          "rows" : 3,
+          "span" : 2,
+          "type" : "textarea"
+        }
+      ],
+      "hiddenFields" : {
+        "Form" : "League",
+        "Page" : "<location.href>",
+        "Submitted" : "<new Date().toLocaleString()>",
+        "_captcha" : "false",
+        "_subject" : "League lead: <Full name>[ · <Organization>]",
+        "_template" : "table",
+        "bot-field" : "",
+        "form-name" : "league"
+      },
+      "id" : "league",
+      "intro" : "We’ll follow up with a quote for your format.",
+      "location" : "section#pricing, <form class=\"tg-form-card lg-form\" onSubmit=\"{{ submit }}\" aria-labelledby=\"lg-form-title\">",
+      "method" : "JS fetch POST via window.tgSend (defined in SiteNav.dc.html)",
+      "netlify" : {
+        "_source" : {
+          "formName" : "window.tgFormName(payload): String(payload.Form).toLowerCase().replace(/[^a-z0-9]+/g,'-') -> 'league'"
+        },
+        "formName" : "league",
+        "honeypot" : "bot-field (sent empty)",
+        "registeredIn" : "forms.html: <form name=\"league\" data-netlify=\"true\" netlify-honeypot=\"bot-field\" hidden> with inputs bot-field, name, email, organization, phone, subject, page, textarea details"
+      },
+      "nextSteps" : [
+        {
+          "body" : "Within one business day.",
+          "n" : "01",
+          "title" : "We reply"
+        },
+        {
+          "body" : "Teams, titles, and format.",
+          "n" : "02",
+          "title" : "Scope your season"
+        },
+        {
+          "body" : "Pricing built around your program.",
+          "n" : "03",
+          "title" : "Your quote"
+        }
+      ],
+      "note" : "Prefer to talk? Call (281) 826-2437",
+      "noteLink" : "tel:+12818262437",
+      "page" : "League",
+      "submitLabel" : "Contact Us for Pricing",
+      "submitLogic" : "preventDefault; collect every INPUT/SELECT/TEXTAREA (skip submit/button/hidden) keyed by its <label> text (fallback aria-label, name, placeholder, 'Field'); email value also copied to _replyto. payload = { _subject: 'League lead: ' + Full name + (Organization ? ' · ' + Organization : ''), _template: 'table', _captcha: 'false', ...fields, Form: 'League', Page: location.href, Submitted: new Date().toLocaleString() }. window.tgSend maps it to Netlify fields: form-name='league', bot-field='', name (Full name), email (_replyto/Work email), organization, phone (none on this form), subject (_subject), page, details = every non-underscore key as 'Key: value' lines. On success window.tgTrackLead('league') fires gtag 'generate_lead', fbq 'Lead', lintrk conversion if configured; then state.sent = true.",
+      "success" : {
+        "body" : "We’ll reach out with league pricing for your program.",
+        "chip" : "Received",
+        "chipDotColor" : "#1FA35B",
+        "heading" : "Thank you.",
+        "role" : "status"
+      },
+      "thirdParty" : "None beyond Netlify Forms. _template/_captcha keys are FormSubmit.co-style leftovers; tgFields drops underscore keys before posting.",
+      "title" : "Request league pricing",
+      "validation" : "Native HTML5 only (required on name and email, type=email)."
+    },
+    {
+      "action" : null,
+      "component" : "ProjectCTA.dc.html",
+      "element" : "<form class=\"tg-form-card\" onSubmit=\"{{ submit }}\" aria-labelledby=\"cta-title\">",
+      "endpoint" : "POST / (Netlify Forms), Content-Type application/x-www-form-urlencoded",
+      "failure" : "See sharedSender.onFailure (toast with 'Email it instead' mailto fallback).",
+      "fields" : [
+        {
+          "_source" : {
+            "placeholder" : "SECRET_IDS[Math.floor(Math.random() * SECRET_IDS.length)]"
+          },
+          "autocomplete" : "name",
+          "id" : "cta-name",
+          "label" : "Full name",
+          "name" : "name",
+          "placeholder" : "<random video-game character name>",
+          "placeholderOptions" : [
+            "Lara Croft",
+            "Nathan Drake",
+            "Gordon Freeman",
+            "Samus Aran",
+            "Cloud Strife",
+            "Solid Snake",
+            "Master Chief",
+            "Marcus Fenix",
+            "Arthur Morgan",
+            "John Marston",
+            "Ellie Williams",
+            "Joel Miller",
+            "Leon Kennedy",
+            "Jill Valentine",
+            "Ezio Auditore",
+            "Max Payne",
+            "Sam Fisher",
+            "Tifa Lockhart",
+            "Alyx Vance",
+            "Fox McCloud",
+            "Duke Nukem",
+            "Donkey Kong",
+            "Princess Peach",
+            "Crash Bandicoot",
+            "Isaac Clarke",
+            "Commander Shepard",
+            "Chris Redfield",
+            "Princess Zelda",
+            "Captain Price",
+            "Doctor Eggman"
+          ],
+          "required" : true,
+          "type" : "text"
+        },
+        {
+          "autocomplete" : "email",
+          "id" : "cta-email",
+          "label" : "Work email",
+          "name" : "email",
+          "placeholder" : "you@organization.org",
+          "required" : true,
+          "type" : "email"
+        },
+        {
+          "autocomplete" : "organization",
+          "id" : "cta-org",
+          "label" : "Organization",
+          "name" : "organization",
+          "placeholder" : "School, city, or business",
+          "required" : false,
+          "type" : "text"
+        },
+        {
+          "id" : "cta-prog",
+          "label" : "Program type",
+          "name" : null,
+          "options" : [
+            {
+              "label" : "Select one",
+              "value" : ""
+            },
+            {
+              "label" : "K-12 Education",
+              "value" : "K-12 Education"
+            },
+            {
+              "label" : "Higher Education",
+              "value" : "Higher Education"
+            },
+            {
+              "label" : "Community / Government",
+              "value" : "Community / Government"
+            },
+            {
+              "label" : "Commercial",
+              "value" : "Commercial"
+            }
+          ],
+          "prefill" : "URL ?program= else PAGE_PREFILL[page][0]",
+          "required" : false,
+          "type" : "select"
+        },
+        {
+          "id" : "cta-topic",
+          "label" : "I’m interested in",
+          "name" : null,
+          "options" : [
+            {
+              "label" : "Select one",
+              "value" : ""
+            },
+            {
+              "label" : "Full facility build",
+              "value" : "Full facility build"
+            },
+            {
+              "label" : "Hardware & equipment",
+              "value" : "Hardware & equipment"
+            },
+            {
+              "label" : "Technology & infrastructure",
+              "value" : "Technology & infrastructure"
+            },
+            {
+              "label" : "Funding & procurement",
+              "value" : "Funding & procurement"
+            },
+            {
+              "label" : "Managed services",
+              "value" : "Managed services"
+            },
+            {
+              "label" : "Esports League",
+              "value" : "Esports League"
+            },
+            {
+              "label" : "Not sure yet",
+              "value" : "Not sure yet"
+            }
+          ],
+          "prefill" : "URL ?topic= else PAGE_PREFILL[page][1]",
+          "required" : false,
+          "span" : 2,
+          "type" : "select"
+        },
+        {
+          "id" : "cta-msg",
+          "label" : "What are you looking to build?",
+          "name" : null,
+          "placeholder" : "Space, timeline, number of stations, titles you play…",
+          "required" : false,
+          "rows" : 4,
+          "span" : 2,
+          "type" : "textarea"
+        }
+      ],
+      "formNote" : "By submitting this form, you agree to our Terms & Privacy Policy.",
+      "hiddenFields" : {
+        "Form" : "Project CTA",
+        "Page" : "<location.href>",
+        "Submitted" : "<new Date().toLocaleString()>",
+        "_captcha" : "false",
+        "_subject" : "Project CTA lead: <Full name>[ · <Organization>]",
+        "_template" : "table",
+        "bot-field" : "",
+        "form-name" : "project-cta"
+      },
+      "id" : "project-cta",
+      "method" : "JS fetch POST via window.tgSend (defined in SiteNav.dc.html)",
+      "netlify" : {
+        "_source" : {
+          "formName" : "window.tgFormName(payload) with payload.Form = 'Project CTA' -> 'project-cta'"
+        },
+        "formName" : "project-cta",
+        "honeypot" : "bot-field (sent empty)",
+        "registeredIn" : "forms.html: <form name=\"project-cta\" data-netlify=\"true\" netlify-honeypot=\"bot-field\" hidden> (bot-field, name, email, organization, phone, subject, page, details)"
+      },
+      "pagePrefill" : {
+        "_source" : "PAGE_PREFILL keyed by lowercased last path segment startsWith(key); URL params ?program= and ?topic= override",
+        "map" : {
+          "about" : [
+            "",
+            ""
+          ],
+          "commercial" : [
+            "Commercial",
+            "Full facility build"
+          ],
+          "community" : [
+            "Community / Government",
+            "Full facility build"
+          ],
+          "education" : [
+            "",
+            "Full facility build"
+          ],
+          "league" : [
+            "",
+            "Esports League"
+          ],
+          "procurement" : [
+            "",
+            "Funding & procurement"
+          ],
+          "project" : [
+            "",
+            "Full facility build"
+          ],
+          "team" : [
+            "",
+            ""
+          ],
+          "technology" : [
+            "",
+            "Technology & infrastructure"
+          ]
+        },
+        "note" : "Values are [program, topic]. 'project' matches both /Projects and /Project-*."
+      },
+      "pages" : [
+        "home",
+        "About",
+        "Team",
+        "Education",
+        "Community",
+        "Commercial",
+        "Technology",
+        "Procurement",
+        "Projects",
+        "League",
+        "all 12 Project-* case studies"
+      ],
+      "submitIcon" : "arrow (lucide arrow-right)",
+      "submitLabel" : "Submit",
+      "submitLogic" : "preventDefault; collect every INPUT/SELECT/TEXTAREA (skip submit/button/hidden) keyed by its <label> text (fallback aria-label, name, placeholder, 'Field'); email value also copied to _replyto. payload = Object.assign({ _subject: 'Project CTA lead: ' + (d['Full name'] || '') + (d['Organization'] ? ' · ' + d['Organization'] : ''), _template: 'table', _captcha: 'false' }, d, { Form: 'Project CTA', Page: location.href, Submitted: new Date().toLocaleString() }). Sent via window.tgSend; on success state.sent = true; on failure the shared tgFormFail toast shows and the form stays unsent.",
+      "success" : {
+        "body" : "Your submission has been received. We'll reach out to schedule your no-cost consultation.",
+        "chip" : "Received",
+        "chipDotColor" : "#1FA35B",
+        "heading" : "Thank you.",
+        "role" : "status"
+      },
+      "thirdParty" : "None beyond Netlify Forms; analytics lead events via tgTrackLead if tracking IDs are set (all empty).",
+      "validation" : "Native HTML5 only (required on Full name and Work email, type=email)."
+    }
+  ],
+  "registry" : {
+    "file" : "forms.html (robots noindex, nofollow; Netlify Forms registry read at deploy time)",
+    "forms" : [
+      {
+        "attrs" : "data-netlify=\"true\" netlify-honeypot=\"bot-field\" hidden",
+        "fields" : [
+          "bot-field",
+          "name",
+          "email",
+          "organization",
+          "phone",
+          "subject",
+          "page",
+          "details"
+        ],
+        "name" : "contact"
+      },
+      {
+        "attrs" : "data-netlify=\"true\" netlify-honeypot=\"bot-field\" hidden",
+        "fields" : [
+          "bot-field",
+          "name",
+          "email",
+          "organization",
+          "phone",
+          "subject",
+          "page",
+          "details"
+        ],
+        "name" : "league"
+      },
+      {
+        "attrs" : "data-netlify=\"true\" netlify-honeypot=\"bot-field\" hidden",
+        "fields" : [
+          "bot-field",
+          "name",
+          "email",
+          "organization",
+          "phone",
+          "subject",
+          "page",
+          "details"
+        ],
+        "name" : "project-cta"
+      },
+      {
+        "attrs" : "data-netlify=\"true\" netlify-honeypot=\"bot-field\" enctype=\"multipart/form-data\" hidden",
+        "fields" : [
+          "bot-field",
+          "name",
+          "email",
+          "organization",
+          "phone",
+          "subject",
+          "page",
+          "details",
+          "report:file"
+        ],
+        "name" : "assessment"
+      },
+      {
+        "attrs" : "data-netlify=\"true\" netlify-honeypot=\"bot-field\" enctype=\"multipart/form-data\" hidden",
+        "fields" : [
+          "bot-field",
+          "order",
+          "name",
+          "email",
+          "organization",
+          "phone",
+          "subject",
+          "details",
+          "file1:file",
+          "file2:file",
+          "file3:file",
+          "file4:file",
+          "file5:file",
+          "file6:file"
+        ],
+        "name" : "store-order",
+        "note" : "Belongs to the out-of-scope shop; listed only because it is in the registry."
+      }
+    ]
+  },
+  "sharedSender" : {
+    "fieldsMapping" : {
+      "details" : "every payload key not starting with '_' as 'Key: value' lines joined by \\n",
+      "email" : "pick('_replyto', 'Work email', 'Email')",
+      "name" : "pick('Full name', 'Name')",
+      "note" : "pick() skips values equal to '(not provided)'. Always adds 'form-name' and 'bot-field': ''.",
+      "organization" : "pick('Organization', 'School or organization')",
+      "page" : "pick('Page') || location.href",
+      "phone" : "pick('Phone', 'Phone number')",
+      "subject" : "pick('_subject')"
+    },
+    "formName" : "tgFormName(p) = p.Form ? slugified lowercase p.Form : (/^assessment/i.test(p._subject) ? 'assessment' : 'contact')",
+    "formRegistry" : "forms.html (noindex) registers hidden Netlify forms: contact, league, project-cta, assessment (enctype multipart/form-data, extra <input type=file name=report>), store-order. All use data-netlify=\"true\" netlify-honeypot=\"bot-field\" and fields bot-field, name, email, organization, phone, subject, page, details.",
+    "formsubmitKeys" : "Payloads still contain FormSubmit-style keys (_subject, _template: 'table', _captcha: 'false', _replyto). Only _subject/_replyto are used by tgFields; the others are dropped (keys starting with '_' are excluded from details).",
+    "httpError" : "non-ok response throws 'HTTP <status>' (404 adds ' (turn on form detection in Netlify and redeploy)')",
+    "onFailure" : {
+      "behaviour" : "console.warn('[TANCHES.GG] form not sent:', msg); shows fixed bottom toast #tg-form-fail (role=alert) then rethrows",
+      "body" : "Please email us at contact@tanches.gg or call (281) 826-2437. Your details are ready to send.",
+      "buttons" : [
+        {
+          "href" : "mailto:contact@tanches.gg?subject=<_subject or 'Website inquiry'>&body=<payload lines, max 1800 chars>",
+          "label" : "Email it instead"
+        },
+        {
+          "label" : "Close"
+        }
+      ],
+      "title" : "Your message didn’t go through."
+    },
+    "onSuccess" : "window.tgTrackLead(form-name): gtag('event','generate_lead',{form_name}), fbq('track','Lead',{content_name}), lintrk('track',{conversion_id: TG_LI_LEAD}) when those trackers are loaded",
+    "source" : "SiteNav.dc.html componentDidMount (window.tgSend / tgFields / tgFormName / tgTrackLead / tgFormFail)",
+    "transport" : "Netlify Forms. fetch('/', POST). URL-encoded body (Content-Type application/x-www-form-urlencoded); multipart FormData when files are attached."
+  }
+}

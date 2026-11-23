@@ -1,0 +1,198 @@
+{
+  "slug": "Contact",
+  "sourceFile": "Contact.html",
+  "url": "https://tanches.gg/Contact",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "contact" }, "notes": "No tone prop on this page (other pages pass tone=\"dark\")." },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Contact | TANCHES.GG",
+    "description": "Talk to TANCHES.GG about your esports program. Book a no-cost consultation or take the free facility readiness assessment.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Contact",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Contact | TANCHES.GG",
+    "ogDescription": "Talk to TANCHES.GG about your esports program. Book a no-cost consultation or take the free facility readiness assessment.",
+    "ogUrl": "https://tanches.gg/Contact",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Contact | TANCHES.GG",
+    "twitterDescription": "Talk to TANCHES.GG about your esports program. Book a no-cost consultation or take the free facility readiness assessment.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Contact | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Contact",
+            "url": "https://tanches.gg/Contact",
+            "name": "Contact | TANCHES.GG",
+            "description": "Talk to TANCHES.GG about your esports program. Book a no-cost consultation or take the free facility readiness assessment.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://tanches.gg/Contact" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Contact",
+      "p": [
+        "Talk to TANCHES.GG about your esports program. Book a no-cost consultation or take the free facility readiness assessment.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "viewport": "width=device-width, initial-scale=1",
+      "htmlLang": "en",
+      "base": "/",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeBootstrap": "Inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>.",
+      "pageClasses": "tg-page tg-contact (no mobile.css link on this page)"
+    }
+  },
+  "sections": [
+    {
+      "id": "ct-top",
+      "heading": "Let’s plan your esports lab.",
+      "headingHtml": "Let’s plan your <span class=\"tg-grad\">esports lab.</span>",
+      "lede": "Tell us about your space, goals, and budget, and we’ll set up a no-cost consultation. Not sure where to start? Take the readiness assessment first.",
+      "images": [
+        { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students at white Alienware stations in the Stafford MSD esports lab", "role": "lead photo (left column background)" },
+        { "src": "assets/clients/stafford-spartan.png", "alt": "", "role": "\"Pictured\" badge logo" }
+      ],
+      "pictured": {
+        "href": "/Project-Stafford",
+        "ariaLabel": "Pictured: Stafford MSD. Read the case study",
+        "small": "Pictured",
+        "text": "Stafford MSD",
+        "logo": "assets/clients/stafford-spartan.png"
+      },
+      "interactive": {
+        "type": "tabbed card (#assessment)",
+        "tablistAriaLabel": "How would you like to start?",
+        "tabs": [
+          { "id": "ct-tab-msg", "label": "Send a message", "panel": "contact form (see forms.json → contact)", "default": true },
+          { "id": "ct-tab-asm", "label": "Take the assessment", "panel": "assessment promo" }
+        ],
+        "hashBehaviour": "If location.hash === '#assessment' on load or hashchange, the 'Take the assessment' tab is selected.",
+        "tabsCondition": "Tabs are hidden once the message has been sent.",
+        "messagePanel": {
+          "condition": "showMsg: !sent && mode === 'msg'",
+          "attachedReport": {
+            "condition": "hasAsm: arrived from /Assessment with ?tier=…",
+            "chip": "Report attached",
+            "note": "Readiness tier: {tier} ({score}/100) · Ref {ref}",
+            "_source": { "note": "'Readiness tier: ' + S.aTier + (S.aScore ? ' (' + S.aScore + '/100)' : '') + (S.aRef ? ' · Ref ' + S.aRef : '')" }
+          },
+          "formRef": "forms.json#forms[contact]",
+          "submitLabel": "Request my consultation",
+          "submitLabelBusy": "Sending…",
+          "formNote": "By submitting this form, you agree to our Terms & Privacy Policy."
+        },
+        "assessmentPanel": {
+          "condition": "showAsm: !sent && mode === 'asm'",
+          "heading": "Find out how ready you are to build.",
+          "body": "Eight questions written for education, community, or commercial programs. You get a readiness score, a breakdown by area, and an action plan in priority order, as a PDF.",
+          "points": [
+            "Readiness score and tier",
+            "Breakdown by space, infrastructure, funding, program, and timeline",
+            "Prioritized action plan you can share"
+          ],
+          "cta": { "label": "Start the assessment", "href": "/Assessment", "style": "primary", "icon": "arrow-right" },
+          "formNote": "About 4 minutes · Free PDF report"
+        },
+        "sentPanel": {
+          "condition": "sent",
+          "chip": "Received",
+          "heading": "Thank you.",
+          "body": "Your message has been received. We’ll reach out to schedule your no-cost consultation.",
+          "link": { "label": "See rooms we’ve built", "href": "/Projects", "style": "link" }
+        }
+      },
+      "reach": {
+        "srHeading": "Other ways to reach us",
+        "promises": ["We reply within one business day", "Your consultation is no-cost"],
+        "channels": [
+          { "k": "Call", "v": "(281) 826-2437", "href": "tel:2818262437", "target": "_self" },
+          { "k": "Email", "v": "contact@tanches.gg", "href": "mailto:contact@tanches.gg", "target": "_self" },
+          { "k": "Visit", "v": "10804 Roark Road\nHouston, TX 77099", "href": "https://maps.google.com/?q=10804+Roark+Road+Houston+TX+77099", "target": "_blank" }
+        ],
+        "leagueLink": { "label": "League member? Log in to your portal", "href": "https://tel.rally.gg" }
+      }
+    },
+    {
+      "id": "ct-next",
+      "heading": "What happens after you write to us.",
+      "headingHtml": "What happens after <span class=\"tg-grad\">you write to us.</span>",
+      "lists": [
+        {
+          "title": "steps",
+          "items": [
+            { "n": "01", "title": "We reply", "body": "Within one business day." },
+            { "n": "02", "title": "Consultation", "body": "A no-cost call about your space, goals, and budget." },
+            { "n": "03", "title": "Your plan", "body": "A scoped proposal with funding options." }
+          ]
+        }
+      ],
+      "images": [
+        { "src": "assets/opt/alvin-side.webp", "alt": "Students playing at Lenovo Legion stations in the Alvin College esports lab" },
+        { "src": "assets/clients/alvin-dark.png", "alt": "", "role": "testimonial logo" }
+      ],
+      "testimonials": [
+        {
+          "quote": "“TANCHES.GG made the entire process easy. They helped us present the vision to our President, got it approved, and delivered our lab under budget.”",
+          "name": "Huff Mann",
+          "role": "Director, Distance Education",
+          "org": "Alvin College",
+          "roleLine": "Director, Distance Education, Alvin College",
+          "image": "assets/clients/alvin-dark.png",
+          "link": { "href": "/Project-Alvin", "ariaLabel": "Read the Alvin College case study" }
+        }
+      ],
+      "body": ["Not ready to talk yet? See where you stand in about four minutes."],
+      "ctas": [
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" },
+        { "label": "See rooms we’ve built", "href": "/Projects", "style": "ink" }
+      ]
+    },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

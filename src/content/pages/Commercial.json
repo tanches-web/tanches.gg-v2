@@ -1,0 +1,287 @@
+{
+  "slug": "Commercial",
+  "sourceFile": "Commercial.html",
+  "url": "https://tanches.gg/Commercial",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "commercial", "tone": "dark" } },
+    { "name": "SolutionPage", "props": { "kind": "commercial" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Commercial | TANCHES.GG",
+    "description": "Esports venues and gaming spaces built to drive revenue beyond gameplay through events, shared use, and long-term operations.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Commercial",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Commercial | TANCHES.GG",
+    "ogDescription": "Esports venues and gaming spaces built to drive revenue beyond gameplay through events, shared use, and long-term operations.",
+    "ogUrl": "https://tanches.gg/Commercial",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Commercial | TANCHES.GG",
+    "twitterDescription": "Esports venues and gaming spaces built to drive revenue beyond gameplay through events, shared use, and long-term operations.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Commercial | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Commercial",
+            "url": "https://tanches.gg/Commercial",
+            "name": "Commercial | TANCHES.GG",
+            "description": "Esports venues and gaming spaces built to drive revenue beyond gameplay through events, shared use, and long-term operations.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Commercial", "item": "https://tanches.gg/Commercial" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Commercial",
+      "p": [
+        "Esports venues and gaming spaces built to drive revenue beyond gameplay through events, shared use, and long-term operations.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "htmlLang": "en",
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css", "mobile.css"],
+      "themeBootstrap": "inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>"
+    }
+  },
+  "sections": [
+    {
+      "id": "sp-hero",
+      "component": "SolutionPage",
+      "heading": "Gaming spaces for businesses that bring in revenue.",
+      "headingHtml": "Gaming spaces for businesses <span class=\"tg-grad\">that bring in revenue.</span>",
+      "lede": "We build esports rooms for businesses that want to bring customers in and keep them coming back, from LAN centers to hotel lounges to casino floors. Each one is built to earn its keep.",
+      "tags": ["LAN centers · Hotels · Casinos · Healthcare"],
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (18px)" },
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/banners/commercial-ban.jpg", "alt": "Players in team jerseys competing at gaming stations", "objectPosition": "50% 45%" }
+      ],
+      "interactive": {
+        "type": "solutions-switch",
+        "ariaLabel": "Solutions by market",
+        "label": "Solutions",
+        "tabs": [
+          { "label": "Education", "href": "/Education", "current": false },
+          { "label": "Community", "href": "/Community", "current": false },
+          { "label": "Commercial", "href": "/Commercial", "current": true }
+        ]
+      },
+      "_source": { "heading": "d.h1a + ' ' + d.h1b" }
+    },
+    {
+      "id": "sp-built",
+      "component": "SolutionPage",
+      "heading": "For every kind of commercial venue.",
+      "lede": "Every business makes money from the room in a different way. We design around how yours will.",
+      "cards": [
+        { "meta": "LAN CENTERS", "title": "LAN Centers", "subtitle": "Rooms built for heavy, paying use.", "body": "A LAN center has to handle serious players, long hours, and real revenue targets. We build them to perform at scale, with enterprise networking, managed services, and lab management in place from day one.", "icon": "lucide gamepad-2" },
+        { "meta": "HOTELS & HOSPITALITY", "title": "Hotels & Hospitality", "subtitle": "An amenity that gives guests a reason to book.", "body": "An esports lounge gives guests a reason to book, stay longer, and come back. We build guest-ready rooms with enterprise networking and managed services included.", "icon": "lucide bed-double" },
+        { "meta": "CASINOS & ENTERTAINMENT", "title": "Casinos & Entertainment", "subtitle": "A draw for younger guests.", "body": "Esports lounges on casino floors and in entertainment venues bring in younger guests that traditional gaming doesn’t reach. We build high-spec rooms with broadcast capability to match the production quality your guests expect.", "icon": "lucide ticket" },
+        { "meta": "HEALTHCARE", "title": "Healthcare", "subtitle": "Gaming for therapy and patient engagement.", "body": "Pediatric waiting rooms, occupational therapy programs, and veteran wellness centers use gaming for therapy and engagement. We build right-sized, secure rooms that meet compliance requirements and serve patients where they are.", "icon": "lucide heart-pulse" }
+      ],
+      "notes": "h3 = nameCase(label); 'LAN CENTERS' -> 'LAN Centers' via the \\bLan\\b special case.",
+      "_source": { "cards[].title": "nameCase(label)" }
+    },
+    {
+      "id": "sp-why",
+      "component": "SolutionPage",
+      "heading": "Esports fans are a young audience that is hard to reach.",
+      "headingHtml": "Esports fans are a young audience <span class=\"tg-grad\">that is hard to reach.</span>",
+      "lede": "Esports audiences are younger, more engaged, and harder to reach through traditional channels. Businesses with esports rooms reach people who spend, stay longer, and come back.",
+      "stats": [
+        { "value": "$1.8B", "label": "Global esports market and growing", "countUp": { "pre": "$", "val": "1.8", "dec": 1, "unit": "B" } },
+        { "value": "26%", "label": "Year-over-year audience growth", "countUp": { "pre": "", "val": "26", "dec": 0, "unit": "%" } },
+        { "value": "26", "label": "Average age of the core esports fan", "countUp": { "pre": "", "val": "26", "dec": 0, "unit": "" } }
+      ],
+      "lists": [
+        {
+          "title": "Built to open fast and handle daily use.",
+          "body": "Whether you need a few new stations or a full facility, every project gets the same network, security, and support we build for our IT clients.",
+          "items": [
+            { "label": "SPEED", "title": "Fast to deploy", "body": "We work at commercial pace. We scope, source, and install without the procurement delays that slow down public projects." },
+            { "label": "RELIABILITY", "title": "Built for heavy use", "body": "With 28 years of enterprise IT behind us, we build for uptime. Every room is designed for daily commercial use without failures that cost you revenue." },
+            { "label": "FLEXIBILITY", "title": "Leasing and HaaS available", "body": "Keep your capital. Lease the room or use Hardware-as-a-Service and pay over 12, 24, or 36 months." }
+          ]
+        }
+      ],
+      "ctas": [
+        { "label": "See how we build the network", "href": "/Technology", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "notes": "Heading split from whyTitle 'Esports fans are a young audience | that is hard to reach.'. Pillar labels not rendered."
+    },
+    {
+      "id": "sp-case",
+      "component": "SolutionPage",
+      "heading": "A full build, from cabling to support.",
+      "headingHtml": "A full build, <span class=\"tg-sp-hi\">from cabling to support.</span>",
+      "lede": "Stafford MSD is a school district, but the work is the same one we’d do for your venue: cabling, network, hardware, and someone to call after you open.",
+      "body": [
+        "A full esports lab built from scratch, tied to the district’s STEM program. Stafford bought it through DIR and OMNIA, so there was no separate bid. We handled the consulting, electrical and cabling, network, and hardware, and we stayed on for support after it opened.",
+        "Tell us about your venue, and we’ll scope it the same way."
+      ],
+      "tags": ["Consulting", "Electrical & Cabling", "Hardware", "Networking", "Ongoing Support"],
+      "stats": [{ "value": "+65%", "label": "increase in student engagement" }],
+      "meta": "K-12 Education · Stafford, TX",
+      "testimonials": [
+        { "quote": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth.", "name": "Colt Berry", "role": "Esports Head Coach, Stafford MSD", "org": "Stafford MSD", "display": "blockquote wraps quote in “ ” (added by template)" }
+      ],
+      "ctas": [
+        { "label": "Read the case study", "href": "/Project-Stafford", "style": "ghost", "icon": "arrow-right (16px)" },
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "View all projects", "href": "/Projects", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "images": [
+        { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students at white Alienware stations in the Stafford MSD esports lab", "loading": "lazy" },
+        { "src": "assets/district-stafford-h-white.png", "alt": "Stafford Municipal School District", "role": "client logo" }
+      ],
+      "interactive": {
+        "type": "client-themed-case",
+        "clientColors": { "--a": "#EA0000", "--b": "#FCB326", "--hi": "#FCB326", "--deep": "#4E060C" },
+        "mascotWatermark": "SPARTANS",
+        "logoClass": ""
+      },
+      "condition": "lede (csNote) shown because d.hasCsNote = !!raw.csNote is true for commercial only",
+      "notes": "Commercial reuses the Stafford (K-12) case study: proj = { ...STAFFORD, meta: 'K-12 Education · Stafford, TX' }.",
+      "_source": { "heading": "d.csA + ' ' + d.csB", "project": "{ ...STAFFORD, meta: 'K-12 Education · Stafford, TX' }" }
+    },
+    {
+      "id": "sp-fund",
+      "component": "SolutionPage",
+      "heading": "Several ways to pay for it.",
+      "headingHtml": "Several ways <span class=\"tg-grad\">to pay for it.</span>",
+      "lede": "Buy outright, lease, or use hardware-as-a-service. We work with your capital plan, not against it.",
+      "ctas": [
+        { "label": "See all procurement options", "href": "/Procurement", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "lists": [
+        {
+          "title": "Ways to pay for it",
+          "items": [
+            { "title": "Direct Purchase", "body": "Buy outright through our active contracts, with competitive OEM pricing." },
+            { "title": "Leasing & HaaS", "body": "Spread the cost over 12, 24, or 36 months with predictable payments and built-in hardware refresh cycles." },
+            { "title": "Manufacturer Co-Funding", "body": "Through our OEM partners, co-funding may be available to help offset hardware costs." }
+          ]
+        }
+      ],
+      "interactive": {
+        "type": "partner-logo-marquee",
+        "caption": "We build with hardware and software from these partners, and many more.",
+        "ref": "Identical list to Education.json sections[sp-fund].interactive.logos (shared PARTNERS constant)"
+      },
+      "notes": "The 'Buy through a contract you already use' contracts block is NOT rendered on Commercial (hasProcurement = kind !== 'commercial'). The curriculum section is also absent (hasCurriculum false), so this follows the case study directly."
+    },
+    {
+      "id": "league",
+      "component": "SolutionPage",
+      "eyebrow": "TANCHES.GG League · Founding season forming",
+      "heading": "Your venue can host its own league.",
+      "lede": "A custom esports league for LAN centers, hotels, casinos, hospitals, and other venues. We run the league, and you bring the players.",
+      "stats": [
+        { "value": "Single Location", "label": "One venue, a casino, a hospital" },
+        { "value": "Regional", "label": "Every location across a state" },
+        { "value": "Nationwide", "label": "Coast to coast, one league" }
+      ],
+      "cards": [
+        { "title": "Recurring foot traffic", "body": "Scheduled match nights bring the same players back every week of the season." },
+        { "title": "One venue or the whole chain", "body": "Run it at a single location, across a region, or nationwide." },
+        { "title": "Finals as an event", "body": "Host championship night on your floor, with the crowd and press that come with it." }
+      ],
+      "lists": [
+        { "title": "Game formats", "items": ["Team-based", "Sports sim", "Party / family", "Chosen with you"] }
+      ],
+      "ctas": [
+        { "label": "Explore the League", "href": "/League#commercial", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "Contact for Pricing", "href": "/League#pricing", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/opt/league-swampy-conquest-v2.webp", "alt": "Students competing at TexSEF’s Swampy Conquest tournament on Alienware stations", "loading": "lazy", "role": "full-bleed background" }
+      ],
+      "_source": { "ctas[0].href": "'/League#' + kind" }
+    },
+    {
+      "id": "sp-faq",
+      "component": "SolutionPage",
+      "heading": "Common questions from businesses.",
+      "cards": [
+        { "title": "Not sure where to start?", "body": "Answer a few questions about your space and program, and we’ll send you a free readiness report.", "links": [{ "label": "Take the assessment", "href": "/Assessment", "style": "ink small button", "icon": "arrow-right (16px)" }] }
+      ],
+      "faqs": [
+        { "q": "How quickly can you deploy a commercial esports facility?", "a": "It depends on scope, but commercial projects move faster than public ones because there are no procurement delays. Once the scope is approved, we source and install without the back-and-forth that slows public sector projects." },
+        { "q": "Do you offer leasing or hardware-as-a-service options?", "a": "Yes. Spread the cost over 12, 24, or 36 months with predictable payments and built-in hardware refresh cycles. You can bundle them with managed services for one monthly cost." },
+        { "q": "What ongoing support do you provide after the build?", "a": "Managed services cover day-to-day lab operations, session and billing management, monitoring, cybersecurity, and dedicated IT support." },
+        { "q": "Can we roll out across multiple locations or franchise sites?", "a": "Yes. Deployments and the League scale from a single location to regional and nationwide networks." },
+        { "q": "How does the TANCHES.GG League work for commercial venues?", "a": "We design the format and run scheduling, brackets, and results, so you get a recurring draw. Your team runs the space." },
+        { "q": "What kind of ROI can we expect from an esports facility?", "a": "It depends on your venue and model. We design for revenue beyond gameplay, such as shared use, events, and repeat visits, and we scope it around your goals during the assessment." }
+      ],
+      "interactive": { "type": "accordion", "behaviour": "single-open; first item open by default" }
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ],
+  "unrenderedData": {
+    "note": "Fields present in SolutionPage DATA.commercial but not bound in the template.",
+    "caps": "COMMERCIAL",
+    "cta": "Start Your Project",
+    "leagueCta": "Join the League",
+    "hasHandles": true,
+    "hostTitle": "Host the championship finals at your venue.",
+    "hostDesc": "Every season ends with a championship night. Casinos, hospitals, hotels, LAN centers, and other venues can host it on-site, putting your venue in front of a new audience, with the foot traffic and press that comes with it.",
+    "pricing": "Pricing: fully custom, priced per opportunity.",
+    "deliver": [
+      { "cat": "CONSULTING", "title": "Advisory & Planning" },
+      { "cat": "DESIGN", "title": "Facility Design" },
+      { "cat": "INFRASTRUCTURE", "title": "Cabling & Networking" },
+      { "cat": "AUDIO VISUAL", "title": "AV & Broadcasting" },
+      { "cat": "HARDWARE", "title": "Gaming Hardware & Servers" },
+      { "cat": "MANAGED SERVICES", "title": "Ongoing Support" }
+    ]
+  }
+}

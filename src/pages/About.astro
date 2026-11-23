@@ -1,0 +1,312 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import Icon from '../components/Icon.astro';
+import BeforeAfter from '../components/about/BeforeAfter.astro';
+import Milestones from '../components/about/Milestones.astro';
+import page from '../content/pages/About.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+const sec = (id: string) => page.sections.find((s: any) => s.id === id) as any;
+const hero = sec('about-hero');
+const letter = sec('founder-letter');
+const story = sec('story-milestones');
+const why = sec('why-us');
+const certs = sec('certifications-contracts');
+const clients = sec('clients');
+const teaser = sec('team-teaser');
+
+const ba = hero.interactive;
+const founder = letter.testimonials[0];
+const shown = letter.body.slice(0, 2);
+const more = letter.body.slice(2);
+const pullIndex = 7 - 2; // body[7] is the closing pull line
+const [sigName, sigRole] = letter.lists[0].items;
+const tl = story.interactive;
+const brandCard = story.cards[0];
+const contractKey: Record<string, string> = { 'Texas DIR': 'dir', 'OMNIA Partners': 'omnia', NCPA: 'ncpa', GSA: 'gsa' };
+const logos = clients.interactive.items.map((c: any) => ({ name: c.name, light: '/' + c.light, dark: '/' + c.dark, h: c.maxHeight }));
+const cta = (style: string) => why.ctas.find((c: any) => c.style === style);
+// "28 years" heading: plain part, then the emphasised close
+const whyPlain = why.heading.replace('not a reseller.', '').trim();
+---
+<Base seo={seo}>
+  <PageHero
+    title={hero.heading.replace(' esports was next.', '')}
+    strong="esports was next."
+    lede={hero.lede}
+    ctas={hero.ctas.map((c: any) => ({ label: c.label, href: c.href, primary: c.style === 'primary' }))}
+  >
+    <BeforeAfter
+      before={{ src: '/' + ba.beforeImage.src, alt: ba.beforeImage.alt }}
+      after={{ src: '/' + ba.afterImage.src, alt: ba.afterImage.alt }}
+      caption={ba.caption}
+    />
+  </PageHero>
+
+  <!-- Founder letter -->
+  <section class="section letter-sec" aria-labelledby="letter-title">
+    <div class="wrap letter">
+      <aside class="founder">
+        <figure class="f-photo photo" data-reveal>
+          <img src={'/' + founder.image.src} alt={founder.image.alt} loading="lazy" decoding="async" />
+          <figcaption class="label-glass"><span class="dot" aria-hidden="true"></span>{founder.name}</figcaption>
+        </figure>
+        <p class="spec f-role">{founder.role} · {founder.org}</p>
+      </aside>
+      <div class="l-copy">
+        <h2 id="letter-title" class="h2" data-reveal>{letter.heading}</h2>
+        <blockquote class="l-quote" data-reveal><p>{founder.quote}</p></blockquote>
+        <div class="l-body">
+          {shown.map((p: string) => <p>{p}</p>)}
+          <details class="more">
+            <summary class="btn btn-ghost btn-sm" aria-controls="about-letter-rest">
+              <span class="open-l">{letter.interactive.expandButton.label}</span>
+              <span class="close-l">{letter.interactive.collapseButton.label}</span>
+              <Icon name="chevron-down" size={18} />
+            </summary>
+            <div id="about-letter-rest" class="rest">
+              {more.map((p: string, i: number) => <p class:list={{ pull: i === pullIndex }}>{p}</p>)}
+            </div>
+          </details>
+        </div>
+        <div class="sig">
+          <img class="sig-img" src="/assets/opt/about-signature.webp" alt={letter.images[1].alt} width="800" height="267" loading="lazy" decoding="async" />
+          <p><strong>{sigName}</strong><span class="small">{sigRole}</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story and milestones -->
+  <section class="section" aria-labelledby="story-title">
+    <div class="wrap">
+      <div class="story">
+        <div class="s-copy">
+          <h2 id="story-title" class="h2" data-reveal>How an IT company got into <strong>esports.</strong></h2>
+          <p class="lede" data-reveal>{story.lede}</p>
+          {story.body.map((p: string) => <p class="body" data-reveal>{p}</p>)}
+        </div>
+        <div class="s-side" data-reveal>
+          <figure class="s-photo photo">
+            <img src={'/' + story.images[0].src} alt={story.images[0].alt} loading="lazy" decoding="async" />
+          </figure>
+          <a class="brand-card" href={brandCard.links[0].href}>
+            <img src={'/' + brandCard.image.src} alt="" width="48" height="56" loading="lazy" />
+            <span><strong>{brandCard.title}</strong><span class="small">{brandCard.body}</span></span>
+            <Icon name="arrow-right" />
+          </a>
+        </div>
+      </div>
+      <div class="tl" data-reveal>
+        <Milestones title={tl.title} hint={tl.hint} hintTouch={tl.hintTouch} items={tl.items} active={tl.defaultActiveIndex} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us: figures, then the four commitments as a spec sheet -->
+  <section class="section why-sec sweep" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="split-head">
+        <h2 id="why-title" class="h2" data-reveal>{whyPlain} <strong>not a reseller.</strong></h2>
+        <p class="lede" data-reveal>{why.lede}</p>
+      </div>
+      <dl class="figures">
+        {why.stats.map((s: any) => (
+          <div data-reveal><dt>{s.label}</dt><dd class="num">{s.value}</dd></div>
+        ))}
+      </dl>
+      <dl class="specs" data-reveal>
+        {why.cards.map((c: any) => (<div><dt>{c.title}</dt><dd>{c.body}</dd></div>))}
+      </dl>
+      <div class="row-ctas" data-reveal>
+        <p class="small">{why.body[0]}</p>
+        <div class="btns">
+          <a class="link" href={cta('link').href}>{cta('link').label} <Icon name="arrow-right" /></a>
+          <a class="btn btn-ghost" href={cta('ghost').href}>{cta('ghost').label}</a>
+          <a class="btn btn-primary" href={cta('ink').href}>{cta('ink').label} <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications and contracts -->
+  <section class="section" aria-labelledby="cert-title">
+    <div class="wrap certs">
+      <div class="c-head">
+        <h2 id="cert-title" class="h2" data-reveal>{certs.heading}</h2>
+        <p class="lede" data-reveal>{certs.lede}</p>
+        <a class="link" href={certs.ctas[0].href} data-reveal>{certs.ctas[0].label} <Icon name="arrow-right" /></a>
+      </div>
+      <div class="c-body" data-reveal>
+        <ul class="contracts" role="list">
+          {certs.cards.map((c: any) => (
+            <li>
+              <span class="logo">
+                <img class="lg-l" src={`/assets/logo-${contractKey[c.title]}-black.png`} alt={c.image.alt} loading="lazy" />
+                <img class="lg-d" src={`/assets/logo-${contractKey[c.title]}-white.png`} alt="" aria-hidden="true" loading="lazy" />
+              </span>
+              <span class="c-meta"><strong>{c.title}</strong><span class="spec">{c.meta}</span></span>
+            </li>
+          ))}
+        </ul>
+        <div class="c-grid">
+          <div>
+            <h3 class="sub">{certs.lists[0].title}</h3>
+            <ul class="chips" role="list">{certs.lists[0].items.map((t: string) => <li class="spec">{t}</li>)}</ul>
+          </div>
+          <dl class="ids">
+            {certs.stats.map((s: any) => (<div><dt class="spec">{s.label}</dt><dd class="num">{s.value}</dd></div>))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="clients" aria-label={clients.interactive.ariaLabel}>
+    <p class="wrap trust">{clients.body[0]}</p>
+    <LogoMarquee logos={logos} />
+  </section>
+
+  <!-- Team teaser -->
+  <section class="section" aria-labelledby="teaser-title">
+    <div class="wrap teaser">
+      <div class="t-head">
+        <h2 id="teaser-title" class="h2" data-reveal>Who you will <strong>work with</strong></h2>
+        <p class="lede" data-reveal>{teaser.lede}</p>
+        <a class="btn btn-ghost" href={teaser.ctas[0].href} data-reveal>{teaser.ctas[0].label} <Icon name="arrow-right" /></a>
+      </div>
+      <ul class="trio" role="list">
+        {teaser.cards.map((c: any) => (
+          <li data-reveal>
+            <a href="/Team" class="person">
+              <span class="p-img photo"><img src={'/' + c.toon} alt="" loading="lazy" decoding="async" /></span>
+              <span class="p-name">{c.title}</span>
+              <span class="spec">{c.meta}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  /* Letter */
+  .letter { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: start; }
+  .founder { position: sticky; top: 7rem; display: grid; gap: 1rem; }
+  .f-photo { position: relative; aspect-ratio: 4 / 5; }
+  .f-photo figcaption { position: absolute; left: 1rem; bottom: 1rem; }
+  .f-role { line-height: 1.6; }
+  .l-copy { display: grid; gap: 1.75rem; }
+  .l-quote p { font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); line-height: 1.25; letter-spacing: -0.025em; font-weight: 400; }
+  .l-body { display: grid; gap: 1.1rem; color: var(--ink-2); max-width: 64ch; font-size: 1.0625rem; }
+  .more { display: block; }
+  .more summary { list-style: none; justify-self: start; margin-top: .5rem; }
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary :global(svg) { transition: transform .35s var(--ease-out); }
+  .more[open] summary :global(svg) { transform: rotate(180deg); }
+  .close-l, .more[open] .open-l { display: none; }
+  .more[open] .close-l { display: inline; }
+  .rest { display: grid; gap: 1.1rem; margin-top: 1.5rem; }
+  .pull { font-size: clamp(1.25rem, 1rem + .8vw, 1.625rem); line-height: 1.35; color: var(--ink); font-weight: 560; letter-spacing: -0.015em; padding: .5rem 0 .5rem 1.25rem; border-left: 2px solid var(--rose); }
+  .sig { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .sig-img { width: 200px; height: auto; filter: invert(1); }
+  :global([data-theme='dark']) .sig-img { filter: none; }
+  .sig p { display: grid; gap: .1rem; }
+  .sig strong { font-weight: 640; }
+
+  /* Story */
+  .story { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .s-copy { display: grid; gap: 1.25rem; }
+  .s-side { display: grid; gap: 1rem; position: sticky; top: 7rem; }
+  .s-photo { aspect-ratio: 4 / 3; }
+  .brand-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.1rem; padding: 1rem 1.25rem; border-radius: 18px; border: 1px solid var(--line-2); text-decoration: none; transition: background-color .25s, border-color .25s; }
+  .brand-card:hover { background: var(--surface); border-color: var(--ink-3); }
+  .brand-card img { width: 2.5rem; height: auto; }
+  .brand-card strong { display: block; font-weight: 640; }
+  .brand-card :global(svg) { transition: transform .35s var(--ease-out); }
+  .brand-card:hover :global(svg) { transform: translateX(3px); }
+  .tl { margin-top: clamp(3rem, 6vw, 5rem); }
+
+  /* Why */
+  .why-sec { padding-top: var(--section) !important; }
+  .split-head { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line-2); }
+  .figures div { padding: 1.25rem 1.5rem 0 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .5rem; }
+  .figures div + div { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .figures dd { font-size: clamp(2rem, 1.4rem + 1.8vw, 3rem); font-weight: 380; letter-spacing: -0.035em; line-height: 1; }
+  .figures dt { color: var(--ink-2); font-size: var(--t-small); line-height: 1.4; max-width: 22ch; }
+  .specs { margin-top: clamp(3rem, 5vw, 4.5rem); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 4rem); border-top: 1px solid var(--line-2); }
+  .specs div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.3fr); gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+  .specs dt { font-weight: 640; }
+  .specs dd { color: var(--ink-2); font-size: var(--t-small); }
+  .row-ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+  .btns { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; }
+
+  /* Certifications */
+  .certs { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .c-head { display: grid; gap: 1.25rem; justify-items: start; position: sticky; top: 7rem; }
+  .c-body { display: grid; gap: 2.5rem; }
+  .contracts { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line-2); }
+  .contracts li { display: grid; gap: 1.1rem; padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .contracts li:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+  .logo { height: 48px; display: flex; align-items: center; }
+  .logo img { max-height: 44px; width: auto; max-width: 160px; }
+  .c-meta { display: grid; gap: .2rem; }
+  .c-meta strong { font-weight: 640; }
+  .lg-d { display: none; }
+  :global([data-theme='dark']) .lg-l { display: none; }
+  :global([data-theme='dark']) .lg-d { display: block; }
+  .c-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; }
+  .sub { font-weight: 640; font-size: 1rem; margin-bottom: 1rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; }
+  .chips li { padding: .35rem .7rem; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); }
+  .ids { border-top: 1px solid var(--line-2); }
+  .ids div { display: flex; justify-content: space-between; gap: 1rem; padding: .7rem 0; border-bottom: 1px solid var(--line); }
+  .ids dd { font-family: var(--mono); font-size: .875rem; text-align: right; }
+
+  /* Clients */
+  .clients { padding-bottom: var(--section); }
+  .trust { color: var(--ink-2); font-size: var(--t-small); text-align: center; margin-bottom: 1.75rem; }
+
+  /* Teaser */
+  .teaser { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .t-head { display: grid; gap: 1.25rem; justify-items: start; }
+  .trio { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+  .person { display: grid; gap: .35rem; text-decoration: none; }
+  .p-img { aspect-ratio: 4 / 5; margin-bottom: .75rem; transition: transform .7s var(--ease-out); }
+  .person:hover .p-img { transform: translateY(-4px); }
+  .p-name { font-weight: 640; letter-spacing: -0.01em; }
+
+  @media (max-width: 960px) {
+    .letter, .story, .certs, .teaser, .split-head { grid-template-columns: 1fr; }
+    .founder, .s-side, .c-head { position: static; }
+    .founder { max-width: 420px; }
+    .specs { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figures div + div:nth-child(3) { border-left: 0; padding-left: 0; }
+    .figures div:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 1.25rem; }
+    .c-grid { grid-template-columns: 1fr; }
+    .specs div { grid-template-columns: 1fr; gap: .35rem; }
+  }
+  @media (max-width: 560px) {
+    .contracts { grid-template-columns: 1fr; }
+    .contracts li:nth-child(even) { padding-left: 0; border-left: 0; }
+    .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+    .p-name { font-size: .9375rem; }
+  }
+</style>

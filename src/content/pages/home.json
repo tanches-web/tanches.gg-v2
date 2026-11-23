@@ -1,0 +1,744 @@
+{
+  "slug": "home",
+  "sourceFile": "index.html",
+  "url": "https://tanches.gg/",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "home", "tone": "dark" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "componentProps": {
+    "_note": "index.html's own data-dc-script declares props (editor defaults).",
+    "heroVariant": { "editor": "enum", "options": ["Arena photo", "Concept render"], "default": "Arena photo" },
+    "motion": { "editor": "boolean", "default": true }
+  },
+  "seo": {
+    "title": "TANCHES.GG | We Build Esports Ecosystems",
+    "helmetTitle": "TANCHES.GG | We Build Esports Ecosystems",
+    "description": "TANCHES.GG designs, builds, and supports esports and gaming technology programs for schools, cities, and community organizations: facilities, IT infrastructure, and league operations.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "TANCHES.GG | We Build Esports Ecosystems",
+    "ogDescription": "TANCHES.GG designs, builds, and supports esports and gaming technology programs for schools, cities, and community organizations: facilities, IT infrastructure, and league operations.",
+    "ogUrl": "https://tanches.gg/",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "TANCHES.GG | We Build Esports Ecosystems",
+    "twitterDescription": "TANCHES.GG designs, builds, and supports esports and gaming technology programs for schools, cities, and community organizations: facilities, IT infrastructure, and league operations.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TANCHES.GG",
+        "url": "https://tanches.gg/",
+        "logo": "https://tanches.gg/assets/favicon.png",
+        "email": "contact@tanches.gg",
+        "telephone": "+1-281-826-2437",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "10804 Roark Road",
+          "addressLocality": "Houston",
+          "addressRegion": "TX",
+          "postalCode": "77099",
+          "addressCountry": "US"
+        },
+        "sameAs": ["https://www.linkedin.com/showcase/tanches-gg/", "https://www.instagram.com/tanches.gg/"]
+      },
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://tanches.gg/#org",
+            "name": "TANCHES.GG",
+            "url": "https://tanches.gg/",
+            "logo": "https://tanches.gg/assets/og-logo.png",
+            "email": "contact@tanches.gg",
+            "telephone": "+1-281-826-2437",
+            "description": "TANCHES.GG designs, builds, supports, and scales esports and gaming technology programs for education, municipalities, and community organizations.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "10804 Roark Road",
+              "addressLocality": "Houston",
+              "addressRegion": "TX",
+              "postalCode": "77099",
+              "addressCountry": "US"
+            },
+            "parentOrganization": { "@type": "Organization", "name": "TanChes Global Management, Inc.", "foundingDate": "1998" },
+            "sameAs": ["https://www.linkedin.com/showcase/tanches-gg/", "https://www.instagram.com/tanches.gg/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://tanches.gg/#site",
+            "name": "TANCHES.GG",
+            "url": "https://tanches.gg/",
+            "publisher": { "@id": "https://tanches.gg/#org" },
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "TANCHES.GG | We Build Esports Ecosystems",
+      "p": [
+        "TANCHES.GG designs, builds, and supports esports and gaming technology programs for schools, cities, and community organizations: facilities, IT infrastructure, and league operations.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "pHtml": [null, "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\" style=\"color:#E23869\">contact@tanches.gg</a>."],
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "htmlLang": "en",
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "themeBootstrapScript": "Reads localStorage 'tg-theme-v2' (default \"light\"); if \"light\" sets data-theme=\"light\" on <html>.",
+      "dcLinkRewriterScript": "Inline script rewrites any <a href=\"X.dc.html\"> to \"X.html\" (map: 'TANCHES Home' -> 'index.html').",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "inlineStyles": [
+        "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "@keyframes tg-cue { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }"
+      ],
+      "noMobileCss": "Unlike other pages, index.html does not link mobile.css."
+    }
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "element": "section.x-hero[aria-labelledby=hero-title]",
+      "heading": "Not just equipment. We build esports ecosystems.",
+      "headingLines": [
+        { "text": "Not just equipment.", "style": "plain" },
+        { "text": "We build esports ecosystems.", "style": "gradient (tg-grad)" }
+      ],
+      "headingHtml": "<span data-reveal=\"1\" data-delay=\"120\" style=\"display: block;\">Not just equipment.</span>\n            <span data-reveal=\"1\" data-delay=\"260\" style=\"display: block;\" class=\"tg-grad\">We build esports ecosystems.</span>",
+      "lede": "We design the room, wire the network, install the hardware, and support it every season after. Behind every build is TanChes Global, a Houston IT firm that has worked with schools, cities, and businesses for 28 years.",
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "size": "lg", "icon": "arrow-right (18px)" },
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost", "size": "lg", "inlineStyle": "color: #FFFFFF; border-color: rgba(255,255,255,0.32);" }
+      ],
+      "interactive": {
+        "type": "auto-rotating hero slideshow (background photo + pull quote + 'Pictured' pill + segmented progress buttons)",
+        "slideDurationMs": 8000,
+        "_source": { "slideDurationMs": "const HERO_DUR = 8000", "slides": "HERO_SLIDES (rendered via heroSlides; final duplicate key in renderVals return wins)" },
+        "autoAdvance": "goHero((i + 1) % HERO_SLIDES.length) every 8000ms when motion is on (props.motion ?? true, and not prefers-reduced-motion)",
+        "picturedPill": {
+          "template": "<a href=\"{heroCur.href}\" aria-label=\"Pictured: {heroCur.place}. Read the case study\"><img src=\"{heroCur.logo}\" alt=\"\"><small>Pictured</small>{heroCur.place} →</a>",
+          "smallLabel": "Pictured"
+        },
+        "quoteTemplate": "“{quote}”  —  {name} / {role}, {org}  [link: \"Case study →\" href={href}, aria-label \"Read the {org} case study\"]",
+        "segmentButtonAriaLabel": "Show {org}",
+        "slides": [
+          {
+            "img": "assets/opt/home-hero-stafford.webp",
+            "pos": "50% 42%",
+            "alt": "Students competing in the Stafford MSD esports arena built by TANCHES.GG",
+            "place": "Stafford MSD · Spartans",
+            "href": "/Project-Stafford",
+            "colors": { "a": "#EA0000", "b": "#FCB326", "deep": "#4E060C" },
+            "name": "Colt Berry",
+            "role": "Esports Head Coach",
+            "org": "Stafford MSD",
+            "logo": "assets/clients/stafford-spartan.png",
+            "logoFit": "contain",
+            "quote": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth.",
+            "full": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth. We’re grateful for their commitment to helping our esports program thrive.",
+            "unusedFields": { "qw": "32px", "q1": "", "qh": "TANCHES.GG", "q2": "" }
+          },
+          {
+            "img": "assets/alvin-showcase.jpg",
+            "pos": "50% 40%",
+            "alt": "Alvin College esports lab built by TANCHES.GG",
+            "place": "Alvin College · Finz",
+            "href": "/Project-Alvin",
+            "colors": { "a": "#C10230", "b": "#66191D", "deep": "#3A0E12" },
+            "name": "Huff Mann",
+            "role": "Director, Distance Education",
+            "org": "Alvin College",
+            "logo": "assets/clients/alvin-dark.png",
+            "logoFit": "cover",
+            "quote": "TANCHES.GG made the entire process easy. They helped us present the vision to our President, got it approved, and delivered our lab under budget.",
+            "full": "TANCHES.GG made the entire process easy. They helped us present the vision to our President, got it approved, and delivered our lab under budget. We couldn’t have asked for a better partner.",
+            "unusedFields": { "qw": "43px", "q1": "", "qh": "TANCHES.GG", "q2": "" }
+          },
+          {
+            "img": "assets/muskogee-a.webp",
+            "pos": "50% 45%",
+            "alt": "Lenovo Legion stations in the City of Muskogee esports arena",
+            "place": "City of Muskogee · Esports Arena",
+            "href": "/Project-Muskogee",
+            "colors": { "a": "#03457F", "b": "#0386D2", "deep": "#021B33" },
+            "name": "James Felder",
+            "role": "Director of Esports",
+            "org": "City of Muskogee",
+            "logo": "assets/clients/muskogee-dark.png",
+            "logoFit": "cover",
+            "quote": "The difference was obvious from day one. Better communication, faster answers, and better service than we’ve had from any vendor. TANCHES.GG treats our program like it’s their own.",
+            "full": "The difference was obvious from day one. Better communication, faster answers, and better service than we’ve had from any vendor. TANCHES.GG treats our program like it’s their own.",
+            "unusedFields": { "qw": "40px", "q1": "", "qh": "TANCHES.GG", "q2": "" }
+          }
+        ],
+        "heroVariants": {
+          "Arena photo": "default; heroPhoto = true",
+          "Concept render": "heroRender = true",
+          "notes": "renderVals computes heroPhoto/heroRender/heroPillNav/heroCount/heroPrev/heroNext/heroPadTop, but the current template never binds any of them, so both variants render the identical photo slideshow above. No concept-render image is referenced in the hero."
+        }
+      },
+      "stats": [
+        { "value": "28+", "prefix": "", "countTo": "28", "decimals": 0, "suffix": "+", "label": "Years of IT experience" },
+        { "value": "$5.5M+", "prefix": "$", "countTo": "5.5", "decimals": 1, "suffix": "M+", "label": "Of esports infrastructure deployed" },
+        { "value": "750+", "prefix": "", "countTo": "750", "decimals": 0, "suffix": "+", "label": "Students and players reached" },
+        { "value": "100%", "prefix": "", "countTo": "100", "decimals": 0, "suffix": "%", "label": "Of our business comes from referrals" }
+      ],
+      "statsAriaLabel": "TANCHES.GG by the numbers",
+      "_source": { "stats": "second `stats:` key in renderVals return (the earlier stats array with different labels is overridden; see unrenderedData.statsV1)" },
+      "images": [
+        { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students competing in the Stafford MSD esports arena built by TANCHES.GG" },
+        { "src": "assets/alvin-showcase.jpg", "alt": "Alvin College esports lab built by TANCHES.GG" },
+        { "src": "assets/muskogee-a.webp", "alt": "Lenovo Legion stations in the City of Muskogee esports arena" },
+        { "src": "assets/clients/stafford-spartan.png", "alt": "" },
+        { "src": "assets/clients/alvin-dark.png", "alt": "" },
+        { "src": "assets/clients/muskogee-dark.png", "alt": "" }
+      ]
+    },
+    {
+      "id": "trust",
+      "element": "section.x-trust[aria-label=Clients]",
+      "body": ["Chosen by school districts, colleges, and cities across Texas and Oklahoma."],
+      "interactive": {
+        "type": "logo marquee (list duplicated twice for seamless loop: logoLoop = [...mLogos, ...mLogos])",
+        "theming": "Each cell renders two imgs: .tg-logo-l (light-theme, src = -light.png, alt = name) and .tg-logo-d (dark-theme, src = -dark.png, alt=\"\", aria-hidden). Inline max-height = h.",
+        "logos": [
+          { "name": "Longview ISD", "light": "assets/clients/longview-light.png", "dark": "assets/clients/longview-dark.png", "maxHeight": "40px" },
+          { "name": "Stafford MSD", "light": "assets/clients/stafford-light.png", "dark": "assets/clients/stafford-dark.png", "maxHeight": "38px" },
+          { "name": "University of Houston", "light": "assets/clients/uh-light.png", "dark": "assets/clients/uh-dark.png", "maxHeight": "36px" },
+          { "name": "Pleasant Grove ISD", "light": "assets/clients/pleasantgrove-light.png", "dark": "assets/clients/pleasantgrove-dark.png", "maxHeight": "40px" },
+          { "name": "Fort Bend ISD", "light": "assets/clients/fbisd-light.png", "dark": "assets/clients/fbisd-dark.png", "maxHeight": "50px" },
+          { "name": "University of St. Thomas", "light": "assets/clients/ust-light.png", "dark": "assets/clients/ust-dark.png", "maxHeight": "50px" },
+          { "name": "Alvin College", "light": "assets/clients/alvin-light.png", "dark": "assets/clients/alvin-dark.png", "maxHeight": "46px" },
+          { "name": "Navarro College", "light": "assets/clients/navarro-light.png", "dark": "assets/clients/navarro-dark.png", "maxHeight": "36px" },
+          { "name": "SAMSAT", "light": "assets/clients/samsat-light.png", "dark": "assets/clients/samsat-dark.png", "maxHeight": "64px" },
+          { "name": "TexSEF", "light": "assets/clients/texsef-light.png", "dark": "assets/clients/texsef-dark.png", "maxHeight": "60px" },
+          { "name": "City of Muskogee", "light": "assets/clients/muskogee-light.png", "dark": "assets/clients/muskogee-dark.png", "maxHeight": "44px" }
+        ],
+        "_source": { "logos": "mLogos.map(([name,k,h]) => ({ name, dark: `assets/clients/${k}-dark.png`, light: `assets/clients/${k}-light.png`, h }))" }
+      }
+    },
+    {
+      "id": "projects",
+      "element": "section#projects.x-chapter",
+      "heading": "Programs that changed what was possible.",
+      "headingHtml": "Programs that changed <span class=\"tg-grad\">what was possible.</span>",
+      "lede": "From empty rooms to championship-level arenas. Each one is built around the school’s own colors, logo, and mascot.",
+      "cards": [
+        {
+          "title": "Stafford Municipal School District",
+          "meta": "Stafford, TX · K-12",
+          "body": "A full esports lab built from scratch: design, cabling, hardware, AV, cybersecurity, and support. Bought through state contracts.",
+          "image": { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students at white Alienware stations in the Stafford MSD esports lab", "objectPosition": "50% 45%" },
+          "logo": { "src": "assets/district-stafford-h-white.png", "alt": "", "ariaHidden": true },
+          "colors": { "a": "#EA0000", "b": "#FCB326", "deep": "78,6,12" },
+          "links": [{ "label": "View project", "href": "/Project-Stafford" }]
+        },
+        {
+          "title": "Alvin College",
+          "meta": "Alvin, TX · Higher Ed",
+          "body": "A competitive esports lab that helps the college recruit and keep students and supports its STEM programs.",
+          "image": { "src": "assets/alvin-showcase.jpg", "alt": "Alvin College esports lab", "objectPosition": "50% 50%" },
+          "logo": { "src": "assets/clients/alvin-dark.png", "alt": "", "ariaHidden": true },
+          "colors": { "a": "#C10230", "b": "#66191D", "deep": "102,25,29" },
+          "links": [{ "label": "View project", "href": "/Project-Alvin" }]
+        },
+        {
+          "title": "TexSEF’s Swampy Conquest",
+          "meta": "Houston, TX · Event",
+          "body": "A tournament for students from several school districts, run on Dell and Alienware hardware we set up for the day.",
+          "image": { "src": "assets/opt/home-swampy-floor.webp", "alt": "Tournament floor at TexSEF’s Swampy Conquest", "objectPosition": "50% 50%" },
+          "logo": { "src": "assets/clients/texsef-dark.png", "alt": "", "ariaHidden": true },
+          "colors": { "a": "#1F51FF", "b": "#FF3131", "deep": "10,26,92" },
+          "links": [{ "label": "View project", "href": "/Project-Swampy" }]
+        }
+      ],
+      "_source": { "cards": "WORK constant via `work`; card CSS vars --a/--b/--deep; whole card is the link; meta shown as glass chip; 'View project' + arrow" },
+      "body": ["Want to see the room in person or talk to a district we’ve worked with? Just ask."],
+      "ctas": [
+        { "label": "All projects", "href": "/Projects", "style": "ghost", "icon": "arrow-right (16px)" },
+        { "label": "Ask for a reference", "href": "/Contact", "style": "ink", "icon": "arrow-right (16px)" }
+      ],
+      "images": [
+        { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students at white Alienware stations in the Stafford MSD esports lab" },
+        { "src": "assets/alvin-showcase.jpg", "alt": "Alvin College esports lab" },
+        { "src": "assets/opt/home-swampy-floor.webp", "alt": "Tournament floor at TexSEF’s Swampy Conquest" },
+        { "src": "assets/district-stafford-h-white.png", "alt": "" },
+        { "src": "assets/clients/alvin-dark.png", "alt": "" },
+        { "src": "assets/clients/texsef-dark.png", "alt": "" }
+      ]
+    },
+    {
+      "id": "solutions",
+      "element": "section#solutions.x-chapter.tg-alt",
+      "heading": "Built for schools, cities, and businesses.",
+      "headingHtml": "Built for schools, cities, <span class=\"tg-grad\">and businesses.</span>",
+      "lede": "Most of our work is in K-12 and higher ed. We also build public rooms for cities and nonprofits, and venues that earn money for businesses.",
+      "cards": [
+        {
+          "title": "Education",
+          "meta": "K-12, colleges, universities",
+          "body": "Esports clubs, CTE courses, and full academic programs, bought through DIR, OMNIA, NCPA, or GSA. We also help you look for grant money.",
+          "tags": ["K-12", "Higher Ed", "CTE", "Charter"],
+          "image": { "src": "assets/alvin-showcase.jpg", "alt": "Students at an Alvin College esports station" },
+          "links": [{ "label": "See Education programs", "href": "/Education" }]
+        },
+        {
+          "title": "Community",
+          "meta": "Cities, libraries, nonprofits",
+          "body": "Public rooms for rec centers, libraries, and city programs, with grant and public funding options to help pay for them.",
+          "tags": ["Cities", "Libraries", "Nonprofits"],
+          "image": { "src": "assets/muskogee-a.webp", "alt": "The City of Muskogee esports arena" },
+          "links": [{ "label": "See Community programs", "href": "/Community" }]
+        },
+        {
+          "title": "Commercial",
+          "meta": "LAN centers, hotels, venues",
+          "body": "Gaming spaces that earn money through events, memberships, and rentals, set up so they are easy to run day to day.",
+          "tags": ["LAN Centers", "Hotels", "Casinos", "Hospitals"],
+          "image": { "src": "assets/home-commercial.jpg", "alt": "A commercial gaming venue" },
+          "links": [{ "label": "See Commercial programs", "href": "/Commercial" }]
+        }
+      ],
+      "_source": { "cards": "`audiences` array in renderVals; link label template \"See {{ a.title }} programs\" + arrow; card fields: title (h3), short (meta), desc + tags revealed in .x-aud-more on hover/expand" },
+      "images": [
+        { "src": "assets/alvin-showcase.jpg", "alt": "Students at an Alvin College esports station" },
+        { "src": "assets/muskogee-a.webp", "alt": "The City of Muskogee esports arena" },
+        { "src": "assets/home-commercial.jpg", "alt": "A commercial gaming venue" }
+      ]
+    },
+    {
+      "id": "why",
+      "element": "section#why.x-chapter",
+      "heading": "We were an IT company first. That’s still how we build.",
+      "headingHtml": "We were an IT company first. <span class=\"tg-grad\">That’s still how we build.</span>",
+      "lede": "Before esports, we spent decades on networks and cybersecurity for schools and public agencies. Your IT director gets a lab built to their standards, not a pile of gaming PCs to support.",
+      "cards": [
+        { "title": "Its own secured network", "body": "Firewall and segmentation keep gaming traffic off your district network." },
+        { "title": "Hardware your IT team knows", "body": "Dell, Lenovo, HP Enterprise, Cisco, Samsung, MSI and more, bought the way you already buy." },
+        { "title": "Someone to call after launch", "body": "We monitor, patch, and manage every site remotely, with real people on the phone." }
+      ],
+      "ctas": [{ "label": "How we build the infrastructure", "href": "/Technology", "style": "link", "icon": "arrow-right (16px)" }],
+      "images": [
+        { "src": "assets/opt/home-room-inside.webp", "alt": "Inside a finished esports room", "slot": "collage x-c1" },
+        { "src": "assets/opt/home-broadcast-booth.webp", "alt": "A shoutcast and broadcast booth", "slot": "collage x-c2" },
+        { "src": "assets/banners/technology-server-room.jpg", "alt": "Network equipment in a server room", "slot": "collage x-c3", "chip": "Network closet · AV · Stations" }
+      ]
+    },
+    {
+      "id": "build",
+      "element": "section#build[data-screen-label=\"07 The Build\"]",
+      "notes": "This is the \"Esports is an Ecosystem\" interactive. The words \"Esports is an Ecosystem\" do not appear anywhere in index.html; the section heading is \"What goes into every build\".",
+      "heading": "What goes into every build",
+      "headingHtml": "What goes into <span class=\"tg-grad\">every build</span>",
+      "lede": "First the room your students play in. Then the network and hardware behind it that make it work. Then the program that gives kids a reason to keep showing up. Click through each one.",
+      "interactive": {
+        "type": "3 tabs (role=tablist) driving a 16:9 stage with hotspots + a side panel of expandable rows; prev/next buttons cycle views; camera transition (eye-level room slides up/out, overhead plan tilts in, then zooms out to a regional map)",
+        "tabs": [
+          { "n": "01", "name": "The space", "view": 0 },
+          { "n": "02", "name": "The infrastructure", "view": 1 },
+          { "n": "03", "name": "The program", "view": 2 }
+        ],
+        "panelChrome": {
+          "eyebrow": "",
+          "stepIndicator": "'0' + (V + 1) + ' / 03'  → \"01 / 03\", \"02 / 03\", \"03 / 03\"",
+          "prevAriaLabel": "Previous view",
+          "nextAriaLabel": "Next view",
+          "hintTouchVariant": "On touch devices (matchMedia('(hover: none)')) the hint replaces 'HOVER' with 'TAP'."
+        },
+        "views": [
+          {
+            "view": 0,
+            "tab": "The space",
+            "panelTitle": "What students see when they walk in.",
+            "hint": "HOVER TO FIND IT IN THE ROOM",
+            "hintTouch": "TAP TO FIND IT IN THE ROOM",
+            "nextLabelUnused": "Next: The infrastructure",
+            "stageImage": { "src": "assets/opt/home-room-inside.webp", "alt": "Inside a TANCHES.GG esports room", "fit": "cover", "maskOnWide": "linear-gradient(180deg, transparent 0%, #000 14%, #000 86%, transparent 100%) when width >= 1020" },
+            "backgroundBlurImage": { "src": "assets/opt/home-room-inside.webp", "alt": "", "filter": "blur(48px) brightness(0.5) saturate(1.2)" },
+            "positionUnits": "x/y are percent of the 16:9 stage (left/top of hotspot centre). Pin label (uppercase via CSS) is shown only on the first pin of the active item.",
+            "hotspots": [
+              { "name": "Built around your brand", "description": "Your colors, logo, and mascot, built into the room itself.", "icon": "palette", "positions": [{ "x": 92, "y": 45 }] },
+              { "name": "Arena lighting", "description": "Programmable LED lighting that sets the mood for every match.", "icon": "bulb", "positions": [{ "x": 47.5, "y": 8.5 }] },
+              { "name": "Stage-ready AV", "description": "Large displays and zoned ceiling audio for matches, shoutcasting, and watch parties.", "icon": "monitor", "positions": [{ "x": 14, "y": 52 }, { "x": 29, "y": 54 }, { "x": 66, "y": 6 }] },
+              { "name": "Competition-grade stations", "description": "The PCs, monitors, and peripherals serious players expect.", "icon": "cpu", "positions": [{ "x": 54, "y": 56 }, { "x": 79.5, "y": 55 }] },
+              { "name": "Esports furniture", "description": "Pro desks, ergonomic chairs, and lounge seating, built for long matches and daily class use.", "icon": "chair", "positions": [{ "x": 70, "y": 67 }, { "x": 55.6, "y": 63.8 }, { "x": 85.5, "y": 59.5 }, { "x": 13, "y": 80 }] },
+              { "name": "Designed for spectators", "description": "We plan sightlines and open floor for fans, families, and watch parties from day one.", "icon": "users", "positions": [{ "x": 52, "y": 82 }] }
+            ],
+            "_source": { "hotspots": "const PI = [[name, desc, [[x,y],...]], ...]; icons ['palette','bulb','monitor','cpu','chair','users'][i]" }
+          },
+          {
+            "view": 1,
+            "tab": "The infrastructure",
+            "panelTitle": "What makes the room work: one secured network your IT team can manage.",
+            "hint": "HOVER TO TRACE IT ON THE PLAN",
+            "hintTouch": "TAP TO TRACE IT ON THE PLAN",
+            "nextLabelUnused": "Next: The program",
+            "stageImage": { "src": "assets/opt/home-overhead-network.webp", "alt": "Overhead view of the same room, wired back to one network closet", "fit": "contain", "inset": "4%", "filter": "brightness(0.6) saturate(0.75)" },
+            "overlay": "SVG (viewBox 0 0 2048 1154) draws gradient wires (#F53F1D → #DA358B → #C92FD1) from hub (922,277) to each endpoint; hub glow circle r=140.",
+            "hiddenChip": { "text": "TANCHES.GG REMOTE SUPPORT", "notes": "chipOp is hard-coded 0, so this chip never shows." },
+            "panelRows": [
+              { "name": "Secured network closet", "description": "Firewall and segmentation keep gaming traffic off your main network.", "icon": "server", "highlights": "Network closet pin (layer 1: all wires lit)" },
+              { "name": "Hardwired stations", "description": "Every PC on a wired, low-latency connection.", "icon": "cpu", "highlights": "pin group 'Stations'" },
+              { "name": "Networked AV", "description": "Every display and ceiling speaker on one managed network.", "icon": "monitor", "highlights": "pin group 'AV'" },
+              { "name": "Shoutcast rooms", "description": "Booths wired for live commentary and streaming.", "icon": "mic", "highlights": "pin group 'Shoutcast rooms'" }
+            ],
+            "_source": { "panelRows": "const INF = [[name, desc, icon], ...]", "hotspots": "ENDS mapped through tx(v) = 4 + v * 0.92 (percent of stage); grouped by GROUPS = [['Stations',[0,1]],['AV',[2,3,8,9,10,11,6,7]],['Shoutcast rooms',[4,5]]]; label shown only on first index of each group" },
+            "hotspotGroups": [
+              {
+                "name": "Stations",
+                "positions": [
+                  { "endIndex": 0, "raw": [38.5, 50], "x": 39.42, "y": 50, "showsLabel": true },
+                  { "endIndex": 1, "raw": [49, 45], "x": 49.08, "y": 45.4 }
+                ]
+              },
+              {
+                "name": "AV",
+                "positions": [
+                  { "endIndex": 2, "raw": [8.5, 52], "x": 11.82, "y": 51.84, "showsLabel": true },
+                  { "endIndex": 3, "raw": [81, 55], "x": 78.52, "y": 54.6 },
+                  { "endIndex": 8, "raw": [9.6, 37.1], "x": 12.832, "y": 38.132 },
+                  { "endIndex": 9, "raw": [6.4, 77.1], "x": 9.888, "y": 74.932 },
+                  { "endIndex": 10, "raw": [47.4, 82.6], "x": 47.608, "y": 79.992 },
+                  { "endIndex": 11, "raw": [58.7, 77.2], "x": 58.004, "y": 75.024 },
+                  { "endIndex": 6, "raw": [21, 48], "x": 23.32, "y": 48.16 },
+                  { "endIndex": 7, "raw": [55, 56], "x": 54.6, "y": 55.52 }
+                ]
+              },
+              {
+                "name": "Shoutcast rooms",
+                "positions": [
+                  { "endIndex": 4, "raw": [72, 28], "x": 70.24, "y": 29.76, "showsLabel": true },
+                  { "endIndex": 5, "raw": [80, 41], "x": 77.6, "y": 41.72 }
+                ]
+              },
+              {
+                "name": "Network closet",
+                "positions": [{ "raw": [45, 24], "x": 45.4, "y": 26.08, "showsLabel": true }]
+              }
+            ],
+            "wirePathsSvg": [
+              "M922 277 Q855 368 788 577", "M922 277 Q963 352 1004 519", "M922 277 Q548 292 174 600", "M922 277 Q1290 308 1659 635",
+              "M922 277 Q1198 200 1475 323", "M922 277 Q1280 241 1638 473", "M922 277 Q676 314 430 554", "M922 277 Q1024 386 1126 646",
+              "M922 277 Q560 315 197 428", "M922 277 Q527 430 131 890", "M922 277 Q947 446 971 953", "M922 277 Q1062 431 1202 891",
+              "outbound dashed: M922 277 Q942 127 962 -80"
+            ]
+          },
+          {
+            "view": 2,
+            "tab": "The program",
+            "panelTitle": "What keeps students coming back every week.",
+            "hint": "HOVER TO SEE IT ACROSS YOUR SITES",
+            "hintTouch": "TAP TO SEE IT ACROSS YOUR SITES",
+            "nextLabelUnused": "Back to the room",
+            "stageImage": { "src": "assets/map-terrain-earth.png", "alt": "Program sites spread across a region, each connected to TANCHES.GG", "fit": "cover" },
+            "hub": { "component": "TANCHESGGDesignSystem_550c61.Logo (variant 'full', or 'icon' on phones <560px; size 16; plate true)", "caption": "MANAGES EVERY SITE", "position": "left 50%, bottom 83.3% (SVG hub point 800,150)" },
+            "panelRows": [
+              { "name": "Ongoing support", "description": "We monitor, patch, and manage every site remotely, with real people to call.", "icon": "headset", "where": "EVERY SITE", "chips": ["MONITORING", "UPDATES", "HELP DESK"] },
+              { "name": "Curriculum", "description": "Standards-aligned lessons for STEM, CTE, and digital media at every site.", "icon": "book", "where": "EVERY CLASSROOM", "chips": ["STEM", "CTE", "DIGITAL MEDIA"] },
+              { "name": "League", "description": "Your sites compete in a managed season: schedules, brackets, and rankings.", "icon": "trophy", "where": "EVERY SEASON", "chips": ["SCHEDULES", "BRACKETS", "RANKINGS"] },
+              { "name": "Room to scale", "description": "Every new site plugs into the same platform and the same support.", "icon": "plus", "where": "NEXT SITE", "chips": ["NEW SITES", "TITLES", "MEDIA"] }
+            ],
+            "_source": { "panelRows": "const SUP = [[name, where, desc, chips], ...]; 'where' and 'chips' are only used by supRows, which the template does not render" },
+            "siteMarkers": {
+              "positionUnits": "x = svgX/16 %, y = svgY/9 % of stage (SVG viewBox 1600x900)",
+              "labelFormat": "C.tag + ' · ' + n  (e.g. \"SCHOOL DISTRICT · 01\"); 5th marker label \"NEXT SITE\" (dashed pin, plus icon). Caption = site name, or for Curriculum the path name.",
+              "markers": [
+                { "n": "01", "svg": [230, 556], "x": "14.375%", "y": "61.7778%" },
+                { "n": "02", "svg": [1360, 588], "x": "85%", "y": "65.3333%" },
+                { "n": "03", "svg": [560, 775], "x": "35%", "y": "86.1111%" },
+                { "n": "04", "svg": [1080, 783], "x": "67.5%", "y": "87%" },
+                { "n": "+", "svg": [800, 427], "x": "50%", "y": "47.4444%", "isNext": true, "click": "sets sup = 3 (Room to scale)" }
+              ],
+              "rotation": "Every 2600ms while view 2 is shown, sup !== 3 and no marker hovered: ctx = (ctx+1) % 4 rotates the context set; for League the VS pair also changes randomly.",
+              "lit": "hovered marker; else if sup===3 only the NEXT SITE marker; else markers 01-04",
+              "contextsBySupportRow": {
+                "Ongoing support (SUPC, cycles 4)": [
+                  { "tag": "SCHOOL DISTRICT", "icon": "school", "names": ["High school 1", "High school 2", "High school 3", "High school 4", "Your next school"] },
+                  { "tag": "UNIVERSITY", "icon": "tower", "names": ["Main campus", "North campus", "Downtown campus", "Satellite campus", "Your next campus"] },
+                  { "tag": "NONPROFIT", "icon": "civic", "names": ["Youth center", "Library branch", "Rec center", "Community hub", "Your next site"] },
+                  { "tag": "LAN CENTER", "icon": "tower", "names": ["Flagship center", "Downtown", "Westside", "Northside", "Your next location"] }
+                ],
+                "Curriculum (CURC, cycles ctx % 2)": [
+                  { "tag": "K-12 DISTRICT", "icon": "school", "names": ["High school 1", "High school 2", "Middle school 1", "Middle school 2", "Your next school"], "captionsShown": ["Game design", "Intro to esports", "Broadcast & media", "Computer science"] },
+                  { "tag": "NONPROFIT", "icon": "civic", "names": ["Youth center", "Library branch", "Rec center", "Community hub", "Your next site"], "captionsShown": ["Digital literacy", "Intro to esports", "Content creation", "Community STEM"] }
+                ],
+                "League (LGC, cycles 4)": [
+                  { "tag": "HIGH SCHOOL", "icon": "school", "names": ["North High", "East High", "West High", "South High", "Your next school"] },
+                  { "tag": "UNIVERSITY", "icon": "tower", "names": ["State University", "City University", "Tech University", "Coastal University", "Your next university"] },
+                  { "tag": "LAN CENTER", "icon": "tower", "names": ["Downtown LAN", "Westside LAN", "Northside LAN", "Eastside LAN", "Your next location"] },
+                  { "tag": "NONPROFIT", "icon": "civic", "names": ["Youth center", "Library branch", "Rec center", "Community hub", "Your next site"] }
+                ],
+                "Room to scale (GEN, static)": {
+                  "tag": "SITE",
+                  "names": ["High school arena", "Middle school club", "CTE broadcast lab", "Community center", "Your next site"],
+                  "icons": ["school", "school", "tower", "civic", "next"],
+                  "unusedHub": "MANAGES EVERY SITE"
+                }
+              },
+              "leagueVsBadges": {
+                "text": "VS",
+                "notes": "Two curved gradient lines join pairs of sites with a 'VS' pill at the curve midpoint; shown only when League row is active.",
+                "pairs": [
+                  [[230, 556, 330, 740, 560, 773], [1360, 588, 1300, 800, 1080, 784]],
+                  [[230, 556, 795, 470, 1360, 588], [560, 775, 820, 860, 1080, 783]],
+                  [[230, 556, 620, 600, 1080, 783], [1360, 588, 980, 600, 560, 775]]
+                ],
+                "_source": { "pairs": "PAIRS [ax, ay, cx, cy, bx, by]; path `M${ax} ${ay} Q${cx} ${cy} ${bx} ${by}`; badge x = (ax+2cx+bx)/64 %, y = (ay+2cy+by)/36 %" }
+              },
+              "networkLinesSvg": ["M800 150 C800 300 230 336 230 556", "M800 150 C800 300 1360 368 1360 588", "M800 150 C800 300 560 553 560 773", "M800 150 C800 300 1080 564 1080 784", "dashed: M800 150 C800 300 800 207 800 427"]
+            }
+          }
+        ],
+        "iconSvgs": "Lucide-style icon paths inline in IC object (palette, bulb, monitor, cpu, chair, users, server, mic, headset, book, trophy, plus, speaker, pad, sofa).",
+        "brandGradient": ["#F53F1D", "#DA358B", "#C92FD1"]
+      },
+      "body": ["One partner from design to launch, and every season after."],
+      "ctas": [{ "label": "Start your project", "href": "#start", "style": "gradient (DS Button variant=gradient size=lg, icon-right arrow)", "notes": "#start is the id inside ProjectCTA.dc.html" }],
+      "images": [
+        { "src": "assets/opt/home-room-inside.webp", "alt": "", "role": "blurred ambient background" },
+        { "src": "assets/map-terrain-earth.png", "alt": "Program sites spread across a region, each connected to TANCHES.GG" },
+        { "src": "assets/opt/home-overhead-network.webp", "alt": "Overhead view of the same room, wired back to one network closet" },
+        { "src": "assets/opt/home-room-inside.webp", "alt": "Inside a TANCHES.GG esports room" }
+      ]
+    },
+    {
+      "id": "process",
+      "element": "section#process.x-chapter.x-arena",
+      "heading": "From first call to opening day.",
+      "headingHtml": "From first call to <span class=\"tg-grad\">opening day.</span>",
+      "lede": "Six steps, one team accountable for all of them. Public schools and agencies can buy through contracts they already have, so there’s no separate RFP.",
+      "interactive": {
+        "type": "6-step ordered list with scroll-driven progress line (--p = stepP); step gets 'is-done' as progress passes it",
+        "stepLabelFormat": "Step {n} (n = '01'…'06')",
+        "steps": [
+          { "n": "01", "title": "Discover", "desc": "We learn your goals, who will use the room, its size, your budget, and your timeline.", "items": ["Needs assessment", "Site walkthrough", "Budget range"] },
+          { "n": "02", "title": "Plan", "desc": "We write up the concept and requirements and sketch a basic layout.", "items": ["Concept brief", "Requirements", "Layout"] },
+          { "n": "03", "title": "Design", "desc": "You get 3D renders of the room to refine the layout and show to stakeholders.", "items": ["3D renders", "Layout revisions", "Stakeholder review"] },
+          {
+            "n": "04", "title": "Approve", "desc": "You sign off on final scope and pricing, through a purchasing contract you already use.", "items": ["Final scope", "Pricing", "Sign-off"],
+            "procurementStrip": {
+              "label": "Buy through a contract you already use:",
+              "logos": [
+                { "src": "assets/logo-dir-white.png", "alt": "Texas DIR" },
+                { "src": "assets/logo-omnia-white.png", "alt": "OMNIA Partners" },
+                { "src": "assets/logo-ncpa-white.png", "alt": "NCPA" },
+                { "src": "assets/logo-gsa-white.png", "alt": "GSA" }
+              ]
+            }
+          },
+          { "n": "05", "title": "Build & Launch", "desc": "One team installs the network, AV, stations, lighting, and finishes. Then we test everything, train your staff, and open the doors.", "items": ["Network & AV", "Stations & finishes", "Staff training", "Opening day"] },
+          { "n": "06", "title": "Scale", "desc": "Support, curriculum, and league play keep the program going each season, and new sites plug into the same setup.", "items": ["Managed support", "Curriculum & league", "New sites"] }
+        ],
+        "_source": { "steps": "const STEPS; proc: i === 3", "itemsNote": "items are passed into each step object but the template does not render them" }
+      },
+      "body": ["The first conversation and the plan are free."],
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "Contracts and funding", "href": "/Procurement", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/logo-dir-white.png", "alt": "Texas DIR" },
+        { "src": "assets/logo-omnia-white.png", "alt": "OMNIA Partners" },
+        { "src": "assets/logo-ncpa-white.png", "alt": "NCPA" },
+        { "src": "assets/logo-gsa-white.png", "alt": "GSA" }
+      ]
+    },
+    {
+      "id": "league",
+      "element": "section.x-league.x-arena[aria-labelledby=league-title]",
+      "eyebrow": "TANCHES.GG Esports League",
+      "eyebrowNotes": "glass chip with a pulsing 'live' dot",
+      "heading": "A room is a start. A season keeps them coming back.",
+      "headingHtml": "A room is a start. <span class=\"tg-grad\">A season keeps them coming back.</span>",
+      "lede": "Our league gives your students real matches, a schedule to show up for, and a championship night to work toward. We run the season so your coach can focus on the team.",
+      "ctas": [{ "label": "Explore the league", "href": "/League", "style": "primary", "icon": "arrow-right (16px)" }],
+      "cards": [
+        { "title": "Roster", "body": "Students try out, make a team, and wear your school’s colors." },
+        { "title": "Season", "body": "Weekly matches on a set schedule, with standings everyone can follow." },
+        { "title": "Playoffs", "body": "The top teams meet in brackets for a championship night families can watch." }
+      ],
+      "images": [{ "src": "assets/opt/league-swampy-hero-v2.webp", "alt": "Students competing at TexSEF’s Swampy Conquest tournament", "role": "full-bleed background" }]
+    },
+    {
+      "id": "testimonials",
+      "element": "section.x-chapter[aria-labelledby=say-title]",
+      "heading": "In their words",
+      "lede": "100% of our business has come from word of mouth. Here’s why.",
+      "testimonials": [
+        {
+          "quote": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth. We’re grateful for their commitment to helping our esports program thrive.",
+          "name": "Colt Berry",
+          "role": "Esports Head Coach",
+          "org": "Stafford MSD",
+          "image": { "src": "assets/clients/stafford-spartan.png", "alt": "" },
+          "link": { "href": "/Project-Stafford", "ariaLabel": "Read the Stafford MSD case study" },
+          "colors": { "a": "#EA0000", "b": "#FCB326", "deep": "#4E060C" }
+        },
+        {
+          "quote": "TANCHES.GG made the entire process easy. They helped us present the vision to our President, got it approved, and delivered our lab under budget. We couldn’t have asked for a better partner.",
+          "name": "Huff Mann",
+          "role": "Director, Distance Education",
+          "org": "Alvin College",
+          "image": { "src": "assets/clients/alvin-dark.png", "alt": "" },
+          "link": { "href": "/Project-Alvin", "ariaLabel": "Read the Alvin College case study" },
+          "colors": { "a": "#C10230", "b": "#66191D", "deep": "#3A0E12" }
+        },
+        {
+          "quote": "The difference was obvious from day one. Better communication, faster answers, and better service than we’ve had from any vendor. TANCHES.GG treats our program like it’s their own.",
+          "name": "James Felder",
+          "role": "Director of Esports",
+          "org": "City of Muskogee",
+          "image": { "src": "assets/clients/muskogee-dark.png", "alt": "" },
+          "link": { "href": "/Project-Muskogee", "ariaLabel": "Read the City of Muskogee case study" },
+          "colors": { "a": "#03457F", "b": "#0386D2", "deep": "#021B33" }
+        }
+      ],
+      "_source": { "testimonials": "heroSlides (HERO_SLIDES) using q.full; quotes wrapped in “ ” by template; caption format \"{role}, {org}\"" }
+    },
+    {
+      "id": "faq",
+      "element": "section.x-chapter.tg-alt[aria-labelledby=faq-title]",
+      "heading": "Questions we hear every week",
+      "headingHtml": "Questions we hear <span class=\"tg-grad\">every week</span>",
+      "cards": [
+        {
+          "title": "Not sure where to start?",
+          "body": "Answer eight questions about your space and program. You get a free readiness report you can share with your team.",
+          "links": [{ "label": "Take the assessment", "href": "/Assessment", "style": "ink sm", "icon": "arrow-right (16px)" }]
+        }
+      ],
+      "faqs": [
+        { "q": "What does a turnkey esports lab include?", "a": "Whatever you need. We can handle the whole thing: room design, electrical, network and cabling, hardware, AV, cybersecurity, curriculum, league play, and support after launch. Or we can take on one piece and work with what you already have." },
+        { "q": "How much does an esports lab cost?", "a": "It depends on the room, the number of stations, and what you already have. Discovery and planning are free. You see the final scope and price before anything is built, and you can buy through DIR, OMNIA, NCPA, or GSA. We also help you look for grants." },
+        { "q": "We have never done this before. Can you still help?", "a": "Yes. Most of our clients were starting from an empty room. One team walks you through planning, design, approval, the build, and the first season. If you are not sure where to start, the free assessment is a good first step." },
+        { "q": "Will this make more work for our IT team?", "a": "It should make less. We have done enterprise IT for 28 years, so the network, security, and support are set up to your IT department’s standards, and we manage them after launch." },
+        { "q": "Do you support the lab after it opens?", "a": "Yes. We monitor, patch, and manage the systems remotely, and you can call a real person when something comes up. Curriculum and league play are there if you want them." }
+      ],
+      "interactive": { "type": "accordion; first item (index 0) open by default (state.faq = 0); one open at a time" },
+      "_source": { "faqs": "mFaqs (the final `faqs:` key in the renderVals return object overrides the earlier `faqs` array; see unrenderedData.faqsV1)" }
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA", "notes": "Contains id=\"start\" (target of the build section's 'Start your project' button and of the mobile bar hide logic)." },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" },
+    {
+      "id": "mobile-cta-bar",
+      "element": "a.x-mcta",
+      "condition": "Sticky bar shown (class is-on) once scrollY > 0.85 × viewport height and before #start enters the viewport; otherwise aria-hidden=true, tabIndex=-1.",
+      "body": ["Ready to plan your lab?"],
+      "ctas": [{ "label": "Book a call", "href": "/Contact", "style": "primary", "notes": "Whole bar is the link to /Contact; 'Book a call' is a span styled as a primary button." }]
+    }
+  ],
+  "unrenderedData": {
+    "_note": "Constants/values computed in index.html's renderVals() that no template binding uses (dead code from earlier designs, or overridden by duplicate object keys). Kept verbatim in case the rebuild wants them.",
+    "statsV1": [
+      { "idx": "01", "pre": "", "val": "28", "dec": 0, "suf": "+", "label": "Years of IT expertise behind every build" },
+      { "idx": "02", "pre": "$", "val": "5.5", "dec": 1, "suf": "M+", "label": "In esports infrastructure deployed" },
+      { "idx": "03", "pre": "", "val": "750", "dec": 0, "suf": "+", "label": "Students & gamers reached" },
+      { "idx": "04", "pre": "", "val": "100", "dec": 0, "suf": "%", "label": "Referral-driven business" }
+    ],
+    "faqsV1": [
+      { "q": "What does a turnkey esports lab actually include?", "a": "It depends on what you need. That’s the point. We can handle everything: facility design, electrical, network and cabling, hardware, AV, cybersecurity, curriculum, league play, and ongoing managed support. Or we can step in for just one piece. We work with what you have and build from there." },
+      { "q": "How much does an esports facility cost?", "a": "Every build is scoped to your space, goals, and budget, so there’s no one-size price. Discovery and planning cost nothing: you get a final scope and pricing to sign off on before anything is built, mapped to purchasing contracts like DIR, OMNIA, NCPA, and GSA, with grant funding where available." },
+      { "q": "Do you work with schools, institutions, and businesses that have never done this before?", "a": "Yes. One team takes you from an empty room to your first season and beyond: discover, plan, design, approve, build and launch, then scale with support, curriculum, and league play. Not sure where to start? Begin with the free assessment." },
+      { "q": "Will this create challenges for our IT team?", "a": "It’s designed to do the opposite. With 28 years of enterprise IT behind every build, networking, cybersecurity, and managed support are specced to your IT department’s standards." },
+      { "q": "Do you offer managed IT and ongoing support after installation?", "a": "Yes. After launch we monitor, patch, and manage everything remotely, with real people to call. Curriculum and league play keep the program growing, as much or as little as you need." }
+    ],
+    "solutionsV1": [
+      { "title": "Education", "href": "/Education", "short": "K-12 and higher ed programs", "desc": "From esports clubs to full academic programs. Aligned with procurement pathways like DIR, OMNIA, NCPA, and GSA, with grant funding available to support implementation.", "tags": ["K-12", "University", "Junior College", "Charter School"], "img": "assets/alvin-showcase.jpg" },
+      { "title": "Community", "href": "/Community", "short": "Public access, long-term programming", "desc": "Built for community access and long-term programming with grant funding and public-sector initiatives available to support implementation.", "tags": ["Nonprofits", "Government", "Municipalities", "Community Centers"], "img": "assets/commercial-event.jpg" },
+      { "title": "Commercial", "href": "/Commercial", "short": "Revenue beyond gameplay", "desc": "Built to drive revenue beyond gameplay and designed to support shared-use models, events, and long-term operational success.", "tags": ["LAN Centers", "Hospitals", "Hotels", "Casinos", "Cruise Lines", "Apartment Complexes"], "img": "assets/home-commercial.jpg" }
+    ],
+    "solutionsV2_mSolutions": [
+      { "title": "Education", "href": "/Education", "short": "K-12 and higher ed", "desc": "Esports clubs, CTE courses, and full academic programs. You can buy through DIR, OMNIA, NCPA, or GSA, and we help you look for grant money.", "tags": ["K-12", "University", "Junior College", "Charter School"], "img": "assets/alvin-showcase.jpg", "alt": "A college esports lab" },
+      { "title": "Community", "href": "/Community", "short": "Cities and nonprofits", "desc": "Public rooms for libraries, rec centers, and city programs, with grant and public funding options to help pay for them.", "tags": ["Nonprofits", "Government", "Municipalities", "Community Centers"], "img": "assets/commercial-event.jpg", "alt": "A community esports event" },
+      { "title": "Commercial", "href": "/Commercial", "short": "Venues and businesses", "desc": "Rooms that earn money through events, memberships, and rentals, set up so the space is easy to run day to day.", "tags": ["LAN Centers", "Hospitals", "Hotels", "Casinos", "Cruise Lines", "Apartment Complexes"], "img": "assets/home-commercial.jpg", "alt": "A commercial gaming venue" }
+    ],
+    "projectsV1": [
+      { "title": "Stafford Municipal School District", "loc": "STAFFORD, TX · K-12", "img": "assets/opt/home-hero-stafford.webp", "href": "/Project-Stafford", "desc": "Full-facility esports lab: design, cabling, hardware, AV, cybersecurity, and managed support. Procured via state contracts.", "brand": { "a": "#EA0000", "b": "#FCB326", "deep": "78,6,12", "logo": "assets/district-stafford-h-white.png" } },
+      { "title": "Alvin College", "loc": "ALVIN, TX · HIGHER ED", "img": "assets/alvin-showcase.jpg", "href": "/Project-Alvin", "desc": "Competitive esports lab supporting student recruitment, retention, and STEM programming, built around Alvin’s athletic and academic mission.", "brand": { "a": "#C10230", "b": "#66191D", "deep": "77,77,79", "logo": "assets/clients/alvin-dark.png" } },
+      { "title": "TexSEF’s Swampy Conquest", "loc": "HOUSTON, TX · EVENT", "img": "assets/opt/home-swampy-floor.webp", "href": "/Project-Swampy", "desc": "A multi-district scholastic tournament powered by Dell and Alienware hardware.", "brand": { "a": "#1F51FF", "b": "#FF3131", "deep": "0,0,0", "logo": "assets/clients/texsef-dark.png" } }
+    ],
+    "processStepsV1_PSTEPS": [
+      { "title": "Discover", "desc": "Goals, users, room size, budget, and timeline.", "icon": "chat", "items": ["Needs assessment", "Site walkthrough", "Budget range"], "img": "assets/alvin-showcase.jpg", "fit": "cover" },
+      { "title": "Plan", "desc": "Concept, requirements, and a simple layout framework.", "icon": "plan", "items": ["Concept brief", "Requirements", "Layout framework"], "img": "assets/iso-plan.png", "fit": "contain" },
+      { "title": "Design", "desc": "3D renders of your room for layout refinement and stakeholder review.", "icon": "box", "items": ["3D renders", "Layout revisions", "Stakeholder review"], "img": "assets/opt/home-hero-render.webp", "fit": "cover" },
+      { "title": "Approve", "desc": "Final scope, pricing, and sign-off, through the purchasing contracts you already use.", "icon": "check", "items": ["Final scope", "Pricing", "Sign-off"], "img": "assets/render-lounge.png", "fit": "cover", "logos": "proc" },
+      { "title": "Build & Launch", "desc": "Network, AV, stations, lighting, and finishes, installed end-to-end by one team. Then we test, train your staff, and go live.", "icon": "net", "items": ["Network & AV", "Stations & finishes", "Staff training", "Opening day"], "img": "assets/opt/home-broadcast-booth.webp", "fit": "cover", "logos": "partners" },
+      { "title": "Scale", "desc": "Ongoing support, curriculum, and league play keep the program growing, season after season and site after site.", "icon": "grow", "items": ["Managed support", "Curriculum & league", "New sites"], "img": "assets/opt/league-hero.webp", "fit": "cover" }
+    ],
+    "layers_LAYERS": [
+      { "name": "The room", "where": "IN THE ROOM", "desc": "Hardwired stations, networked stage screens, two shoutcast rooms, and ceiling audio, all built for match day.", "chips": ["STATIONS", "SCREENS", "SHOUTCAST", "AUDIO"] },
+      { "name": "The network", "where": "IN THE CLOSET", "desc": "Every device wired back to one secured closet. Firewall and segmentation keep gaming traffic off your main network.", "chips": ["CABLING", "FIREWALL", "SEGMENTATION"] },
+      { "name": "Ongoing support", "where": "REMOTE", "desc": "We monitor, patch, and manage everything remotely, with real people to call every season after launch.", "chips": ["MONITORING", "UPDATES", "HELP DESK"] }
+    ],
+    "paths_PATHS": ["Game design", "Intro to esports", "Broadcast & media", "Community STEM"],
+    "oemLogos_mOem": [
+      { "name": "Lenovo", "src": "assets/oem/lenovo.png", "srcL": "assets/oem/lenovo.png", "h": "26px" },
+      { "name": "Dell Technologies", "src": "assets/oem/dell.png", "srcL": "assets/oem/dell.png", "h": "18px" },
+      { "name": "Cisco", "src": "assets/oem/cisco.png", "srcL": "assets/oem/cisco.png", "h": "36px" },
+      { "name": "Samsung", "src": "assets/oem/samsung.png", "srcL": "assets/oem/samsung.png", "h": "18px" },
+      { "name": "HPE", "src": "assets/oem/hpe-dark.png", "srcL": "assets/oem/hpe-light.png", "h": "28px" },
+      { "name": "MSI", "src": "assets/oem/msi-dark.png", "srcL": "assets/oem/msi-light.png", "h": "30px" },
+      { "name": "Acer", "src": "assets/oem/acer.png", "srcL": "assets/oem/acer.png", "h": "26px" },
+      { "name": "Extron", "src": "assets/oem/extron.png", "srcL": "assets/oem/extron.png", "h": "24px" },
+      { "name": "Logitech", "src": "assets/oem/logitech-dark.png", "srcL": "assets/oem/logitech-light.png", "h": "26px" },
+      { "name": "Alienware", "src": "assets/oem/alienware-dark.svg", "srcL": "assets/oem/alienware-light.svg", "h": "18px" }
+    ],
+    "oemLogosV1_oem": "Same 10 brands as mOem, names suffixed ' logo' (e.g. 'Lenovo logo'), heights 30/20/40/22/32/36/32/28/30/22px; srcL derived by replacing -dark with -light.",
+    "partnersLoop": [
+      { "name": "Lenovo", "src": "assets/oem/lenovo.png", "srcL": "assets/oem/lenovo.png", "h": "21px" },
+      { "name": "Dell Technologies", "src": "assets/oem/dell.png", "srcL": "assets/oem/dell.png", "h": "14px" },
+      { "name": "Alienware", "src": "assets/oem/alienware-dark.svg", "srcL": "assets/oem/alienware-light.svg", "h": "15px" },
+      { "name": "HPE", "src": "assets/oem/hpe-dark.png", "srcL": "assets/oem/hpe-light.png", "h": "22px" },
+      { "name": "Samsung", "src": "assets/oem/samsung.png", "srcL": "assets/oem/samsung.png", "h": "15px" },
+      { "name": "Extron", "src": "assets/oem/extron.png", "srcL": "assets/oem/extron.png", "h": "20px" },
+      { "name": "Spectrum Industries", "src": "assets/oem/spectrum.png", "srcL": "assets/oem/spectrum.png", "h": "18px", "darkFilter": "brightness(0) invert(1)" },
+      { "name": "Senet", "src": "assets/oem/senet-dark.svg", "srcL": "assets/oem/senet-light.svg", "h": "20px" },
+      { "name": "GG Circuit", "src": "assets/oem/ggcircuit-dark.svg", "srcL": "assets/oem/ggcircuit-light.svg", "h": "22px" },
+      { "name": "Respawn Youth", "src": "assets/oem/respawn-dark.png", "srcL": "assets/oem/respawn-light.png", "h": "34px" },
+      { "name": "USAEL", "src": "assets/oem/usael.svg", "srcL": "assets/oem/usael.svg", "h": "26px", "darkFilter": "none", "lightFilter": "brightness(0)" }
+    ],
+    "contracts": [
+      { "kind": "State contract", "name": "Texas DIR", "logo": "assets/proc-dir.png", "h": "60px" },
+      { "kind": "Cooperative", "name": "OMNIA Partners", "logo": "assets/proc-omnia.png", "h": "48px" },
+      { "kind": "Cooperative", "name": "NCPA", "logo": "assets/proc-ncpa.png", "h": "46px" },
+      { "kind": "Federal", "name": "GSA", "logo": "assets/proc-gsa-mono.svg", "h": "58px" }
+    ],
+    "contractsV1": "Same four with kind uppercased ('STATE CONTRACT', 'COOPERATIVE', 'COOPERATIVE', 'FEDERAL') and heights 72/60/58/72px.",
+    "cdnConstant": "https://cdn.prod.website-files.com/6a2871770ee1eb5abc18b322/ (const CDN, never used)",
+    "pjBrand": "PJ_BRAND colours (see projectsV1.brand)"
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "slug": "About",
+  "sourceFile": "About.html",
+  "url": "https://tanches.gg/About",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "about", "tone": "dark" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "About Us | TANCHES.GG",
+    "description": "Meet TANCHES.GG, pairing esports program strategy with full-service IT infrastructure for education, municipalities, and community organizations.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/About",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "About Us | TANCHES.GG",
+    "ogDescription": "Meet TANCHES.GG, pairing esports program strategy with full-service IT infrastructure for education, municipalities, and community organizations.",
+    "ogUrl": "https://tanches.gg/About",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "About Us | TANCHES.GG",
+    "twitterDescription": "Meet TANCHES.GG, pairing esports program strategy with full-service IT infrastructure for education, municipalities, and community organizations.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "About Us | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/About",
+            "url": "https://tanches.gg/About",
+            "name": "About Us | TANCHES.GG",
+            "description": "Meet TANCHES.GG, pairing esports program strategy with full-service IT infrastructure for education, municipalities, and community organizations.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://tanches.gg/About" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "About Us",
+      "p": [
+        "Meet TANCHES.GG, pairing esports program strategy with full-service IT infrastructure for education, municipalities, and community organizations.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "viewport": "width=device-width, initial-scale=1",
+      "htmlLang": "en",
+      "base": "/",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js", "./image-slot.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css", "mobile.css"],
+      "themeInit": "localStorage 'tg-theme-v2' (default 'light') sets data-theme=\"light\" on <html>"
+    }
+  },
+  "sections": [
+    {
+      "id": "about-hero",
+      "heading": "The IT company that knew esports was next.",
+      "headingHtml": "The IT company that knew <span class=\"tg-grad\">esports was next.</span>",
+      "lede": "We spent 28 years building networks and IT systems for schools, cities, and businesses, a lot of it in the public sector. When we saw what a school esports program really needs to run well, building those rooms was the obvious next step for us.",
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary" },
+        { "label": "See our work", "href": "/Projects", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/opt/about-before.jpg", "alt": "Before: empty room" },
+        { "src": "assets/opt/about-after.jpg", "alt": "After: finished TANCHES.GG esports arena" }
+      ],
+      "interactive": {
+        "type": "before-after-slider",
+        "beforeImage": { "src": "assets/opt/about-before.jpg", "alt": "Before: empty room" },
+        "afterImage": { "src": "assets/opt/about-after.jpg", "alt": "After: finished TANCHES.GG esports arena", "clip": "clip-path: inset(0 0 0 {pos}%)" },
+        "tags": { "before": "Before", "after": "After", "beforeHiddenWhen": "pos < 16", "afterHiddenWhen": "pos > 84" },
+        "handle": {
+          "role": "slider",
+          "ariaLabel": "Before and after comparison",
+          "ariaValuemin": 0,
+          "ariaValuemax": 100,
+          "ariaValuetext": "{posR}% of the image shows the room before",
+          "initialPos": 50,
+          "clamp": [2, 98],
+          "keys": "ArrowLeft/ArrowDown -5, ArrowRight/ArrowUp +5, Home = 2, End = 98"
+        },
+        "caption": "An empty room, and the esports arena we built. Drag the handle, or use the arrow keys, to compare.",
+        "_source": { "handle.ariaValuetext": "posR + '% of the image shows the room before'" }
+      }
+    },
+    {
+      "id": "founder-letter",
+      "heading": "A letter from our founder",
+      "testimonials": [
+        {
+          "quote": "“I have always believed that technology should do more than impress us. It should improve lives and create opportunity.”",
+          "name": "Chesley Choudhury",
+          "role": "Founder & Chairman",
+          "org": "TanChes Global Management, Inc.",
+          "image": { "src": "assets/about/chesley-founder-v2.webp", "alt": "Chesley Choudhury, Founder & Chairman" }
+        }
+      ],
+      "body": [
+        "As a father, that belief took on greater urgency when I began studying what happens during the hours immediately following school dismissal, often called the after-school gap. For millions of young people, the final bell begins a vulnerable period without structure, supervision, mentorship, or a meaningful place to belong. Research consistently identifies these hours as a critical window for juvenile crime, substance use, and other risky behaviors.",
+        "I wanted TanChes to do more than recognize the problem. I wanted us to help change what those hours could become.",
+        "That conviction led me to create our esports services program. I saw something much larger than gaming. I saw a powerful way to connect with a generation already fluent in digital experiences. Rather than asking young people to become interested in technology on our terms, we could meet them in a world that already held their attention and channel that engagement into purpose, discipline, teamwork, healthy competition, and possibility.",
+        "My wife, Tanaz, who founded TanChes with me and serves as its President, has always believed deeply in the power of education and entrepreneurship. Her conviction that both can change the course of a life has helped strengthen the educational and entrepreneurial pathways within my vision.",
+        "What began as a personal mission to create opportunities for underserved young people has grown into TANCHES.GG, a turnkey, multipurpose esports platform serving organizations across the country. Today, we build solutions for K-12 schools, higher education, nonprofits, governments, community centers, LAN centers, healthcare organizations, hotels, casinos, apartment communities, and more.",
+        "These environments may serve different audiences, but each can use esports to bring people together, strengthen communities, encourage learning, develop talent, and create meaningful connections to technology. Behind every competition is an ecosystem of opportunity spanning STEM, coding, cybersecurity, graphic design, broadcasting, data analytics, AR/VR, engineering, and entrepreneurship.",
+        "Our vision is not simply to produce better gamers. It is to help people recognize that they can become the developers, designers, strategists, innovators, and business owners who shape what comes next.",
+        "After 28 years of building technology infrastructure, TanChes has the experience to build something even more important. Pathways.",
+        "That is the future we are building, one person, one community, and one meaningful connection at a time."
+      ],
+      "interactive": {
+        "type": "expandable-letter",
+        "alwaysVisible": "body[0..1] (letterAll.slice(0, 2))",
+        "hiddenUntilExpanded": "body[2..8] (letterAll.slice(2) plus the two hard-coded closing paragraphs; body[7] is styled as a pull line 'tg-about-close')",
+        "expandButton": { "label": "Read the full letter", "ariaControls": "about-letter-rest", "condition": "letter closed" },
+        "collapseButton": { "label": "Show less", "ariaControls": "about-letter-rest", "condition": "letter open" }
+      },
+      "lists": [
+        { "title": "signature block", "items": ["Chesley Choudhury", "Founder & Chairman · TanChes Global Management, Inc."] }
+      ],
+      "images": [
+        { "src": "assets/about/chesley-founder-v2.webp", "alt": "Chesley Choudhury, Founder & Chairman" },
+        { "src": "assets/opt/about-signature.webp", "alt": "Signature of Chesley Choudhury" }
+      ]
+    },
+    {
+      "id": "story-milestones",
+      "heading": "How an IT company got into esports.",
+      "headingHtml": "How an IT company got into <span class=\"tg-grad\">esports.</span>",
+      "lede": "We did not come from esports. We came from the networks, cabling, and support that keep an esports program running.",
+      "body": [
+        "Tanaz and Chesley Choudhury founded TanChes Global Management, Inc. in Houston, TX in 1998. It is a minority, woman-owned IT company. We earned our name on complex technology work for schools, government agencies, nonprofits, and businesses: infrastructure design, technology refreshes, network migrations, and managed services.",
+        "We also love games. Put that together with 28 years of infrastructure work and we saw early what esports could do for schools, colleges, community groups, and commercial venues. We also saw that the industry needed real infrastructure partners, and most vendors were only selling hardware.",
+        "In 2021 we started consulting on esports facilities. In 2022 we finished our first full deployment. For an IT company, it was the next logical step."
+      ],
+      "cards": [
+        {
+          "title": "Brand Center",
+          "body": "See how the TanChes seal became the TANCHES.GG lion.",
+          "image": { "src": "assets/brand-kit/tanches-gg-icon-color.svg", "alt": "" },
+          "links": [{ "label": "Brand Center", "href": "/brand" }]
+        }
+      ],
+      "images": [
+        { "src": "assets/banners/technology-server-room.jpg", "alt": "Network equipment in a server room" },
+        { "src": "assets/brand-kit/tanches-gg-icon-color.svg", "alt": "" }
+      ],
+      "interactive": {
+        "type": "timeline",
+        "title": "Milestones",
+        "hint": "Hover or select a year to trace the journey.",
+        "hintTouch": "Tap a year to trace the journey.",
+        "_source": { "hint": "canHover ? 'Hover or select a year to trace the journey.' : 'Tap a year to trace the journey.'  (canHover = matchMedia('(hover: hover)'))" },
+        "defaultActiveIndex": 5,
+        "behaviour": "hover/focus/click selects a milestone; items before it get 'is-past', after it 'is-next'; mouse leave resets to the last item",
+        "items": [
+          { "year": "1998", "title": "Tanaz and Chesley Choudhury found TanChes", "sub": "Houston, TX · Enterprise IT & MSP" },
+          { "year": "2014", "title": "Entered the SLED market", "sub": "Education, government, and nonprofit deployments" },
+          { "year": "2021", "title": "First esports facility consultation", "sub": "Recognized the infrastructure gap in the market" },
+          { "year": "2022", "title": "Chesley launches TANCHES.GG", "sub": "First full esports deployment completed" },
+          { "year": "2024", "title": "Nationwide expansion", "sub": "K-12, higher ed, community, and commercial deployments" },
+          { "year": "Today", "title": "Turnkey esports infrastructure, coast to coast", "sub": "SLED-certified · MWBE · Same IT standards on every build" }
+        ]
+      }
+    },
+    {
+      "id": "why-us",
+      "heading": "We have been in business for 28 years, and we are not a reseller.",
+      "headingHtml": "We have been in business for 28 years, and we are <span class=\"tg-grad\">not a reseller.</span>",
+      "lede": "TANCHES.GG is the esports side of TanChes Global Management, Inc. We plan, build, and support your esports room the same way we handle networks for schools and cities.",
+      "cards": [
+        { "title": "Built on enterprise IT", "body": "28 years of infrastructure, managed services, and cybersecurity work sit behind every room we build." },
+        { "title": "SLED-certified procurement", "body": "DIR, OMNIA, NCPA, GSA, and E-Rate. Public institutions and funded programs can buy through contracts they already use." },
+        { "title": "Cybersecurity on every build", "body": "Firewalls, network segmentation, and managed support come standard on every build. We do not sell them as an upgrade." },
+        { "title": "Vendor-agnostic, with OEM partners", "body": "Metallic-tier partnerships with Lenovo, Dell, Extron, Samsung, Cisco, and others, so we can choose the hardware that fits your room." }
+      ],
+      "stats": [
+        { "value": "28+", "prefix": "", "number": "28", "decimals": 0, "suffix": "+", "label": "Years of IT expertise behind every build" },
+        { "value": "$5.5M+", "prefix": "$", "number": "5.5", "decimals": 1, "suffix": "M+", "label": "In esports infrastructure deployed" },
+        { "value": "750+", "prefix": "", "number": "750", "decimals": 0, "suffix": "+", "label": "Students & gamers reached" },
+        { "value": "100%", "prefix": "", "number": "100", "decimals": 0, "suffix": "%", "label": "Referral-driven growth" }
+      ],
+      "body": ["Want to see a room in person, or talk to a district we’ve worked with? Just ask."],
+      "ctas": [
+        { "label": "How we build", "href": "/Technology", "style": "link" },
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" },
+        { "label": "Book a free consultation", "href": "/Contact", "style": "ink" }
+      ],
+      "notes": "Stat numbers animate via data-count / data-dec count-up."
+    },
+    {
+      "id": "certifications-contracts",
+      "heading": "Certifications and contracts",
+      "lede": "We hold active cooperative contracts, so public institutions and school districts can buy from us without running a standalone bid.",
+      "lists": [
+        { "title": "Certifications", "items": ["HUB", "MBE", "WBE", "SBE", "DBE", "NMSDC", "CMBL", "Metro SBE", "Hire Houston First"] }
+      ],
+      "cards": [
+        { "meta": "State contract", "title": "Texas DIR", "image": { "src": "assets/proc-dir.png", "alt": "Texas DIR", "maxHeight": "60px" } },
+        { "meta": "Cooperative", "title": "OMNIA Partners", "image": { "src": "assets/proc-omnia.png", "alt": "OMNIA Partners", "maxHeight": "48px" } },
+        { "meta": "Cooperative", "title": "NCPA", "image": { "src": "assets/proc-ncpa.png", "alt": "NCPA", "maxHeight": "46px" } },
+        { "meta": "Federal", "title": "GSA", "image": { "src": "assets/proc-gsa-mono.svg", "alt": "GSA", "maxHeight": "58px" } }
+      ],
+      "stats": [
+        { "label": "DUNS", "value": "070841700" },
+        { "label": "CAGE", "value": "7XTE4" },
+        { "label": "NAICS", "value": "541512, 541519" },
+        { "label": "E-Rate SPIN", "value": "143052684" },
+        { "label": "UEI", "value": "FFEYNRXJARF8" }
+      ],
+      "ctas": [
+        { "label": "View all procurement vehicles & contract details", "href": "/Procurement", "style": "link" }
+      ],
+      "images": [
+        { "src": "assets/proc-dir.png", "alt": "Texas DIR" },
+        { "src": "assets/proc-omnia.png", "alt": "OMNIA Partners" },
+        { "src": "assets/proc-ncpa.png", "alt": "NCPA" },
+        { "src": "assets/proc-gsa-mono.svg", "alt": "GSA" }
+      ],
+      "notes": "The 'stats' here are the vendor identifier codes rendered as a <dl> (dt = label, dd = value)."
+    },
+    {
+      "id": "clients",
+      "body": ["Trusted by schools, colleges, and organizations nationwide."],
+      "interactive": {
+        "type": "logo-marquee",
+        "ariaLabel": "Clients",
+        "loop": "list rendered twice ([...logos, ...logos]) for a seamless scroll",
+        "themeVariants": "img.tg-logo-l uses the -light file with alt = name; img.tg-logo-d uses the -dark file with alt=\"\" aria-hidden",
+        "_source": { "paths": "`assets/clients/${k}-dark.png` and `assets/clients/${k}-light.png`" },
+        "items": [
+          { "name": "Longview ISD", "key": "longview", "maxHeight": "40px", "light": "assets/clients/longview-light.png", "dark": "assets/clients/longview-dark.png" },
+          { "name": "Stafford MSD", "key": "stafford", "maxHeight": "38px", "light": "assets/clients/stafford-light.png", "dark": "assets/clients/stafford-dark.png" },
+          { "name": "University of Houston", "key": "uh", "maxHeight": "36px", "light": "assets/clients/uh-light.png", "dark": "assets/clients/uh-dark.png" },
+          { "name": "Pleasant Grove ISD", "key": "pleasantgrove", "maxHeight": "40px", "light": "assets/clients/pleasantgrove-light.png", "dark": "assets/clients/pleasantgrove-dark.png" },
+          { "name": "Fort Bend ISD", "key": "fbisd", "maxHeight": "50px", "light": "assets/clients/fbisd-light.png", "dark": "assets/clients/fbisd-dark.png" },
+          { "name": "University of St. Thomas", "key": "ust", "maxHeight": "50px", "light": "assets/clients/ust-light.png", "dark": "assets/clients/ust-dark.png" },
+          { "name": "Alvin College", "key": "alvin", "maxHeight": "46px", "light": "assets/clients/alvin-light.png", "dark": "assets/clients/alvin-dark.png" },
+          { "name": "Navarro College", "key": "navarro", "maxHeight": "36px", "light": "assets/clients/navarro-light.png", "dark": "assets/clients/navarro-dark.png" },
+          { "name": "SAMSAT", "key": "samsat", "maxHeight": "64px", "light": "assets/clients/samsat-light.png", "dark": "assets/clients/samsat-dark.png" },
+          { "name": "TexSEF", "key": "texsef", "maxHeight": "60px", "light": "assets/clients/texsef-light.png", "dark": "assets/clients/texsef-dark.png" },
+          { "name": "City of Muskogee", "key": "muskogee", "maxHeight": "44px", "light": "assets/clients/muskogee-light.png", "dark": "assets/clients/muskogee-dark.png" }
+        ]
+      }
+    },
+    {
+      "id": "team-teaser",
+      "heading": "Who you will work with",
+      "headingHtml": "Who you will <span class=\"tg-grad\">work with</span>",
+      "lede": "Our founders still run the company, and our esports strategist is your first call on every project.",
+      "ctas": [
+        { "label": "Meet the team", "href": "/Team", "style": "ghost" }
+      ],
+      "cards": [
+        { "title": "Tanaz Choudhury", "meta": "PRESIDENT", "image": { "src": "team/web/tanaz.jpg", "alt": "Tanaz Choudhury" }, "toon": "team/web/tanaz-toon3.jpg" },
+        { "title": "Chesley Choudhury", "meta": "FOUNDER & CHAIRMAN", "image": { "src": "team/web/chesley.jpg", "alt": "Chesley Choudhury" }, "toon": "team/web/chesley-toon2.jpg" },
+        { "title": "Sayan Tarafder", "meta": "ESPORTS STRATEGIST", "image": { "src": "team/web/sayan.jpg", "alt": "Sayan Tarafder" }, "toon": "team/web/sayan-toon2.jpg" }
+      ],
+      "interactive": {
+        "type": "photo-toon-reveal",
+        "behaviour": "Character art (toon, alt=\"\") overlays the photo by default; hover/focus (hover devices) or tap (touch) fades the toon out to reveal the photo.",
+        "toggleAriaLabel": "Show photo of {name} (when toon showing) / Show character art of {name} (when photo revealed)",
+        "_source": { "toggleAriaLabel": "(r ? 'Show character art of ' : 'Show photo of ') + name" },
+        "faceFraming": {
+          "note": "Percent offsets of a 4:5 frame. pl/pt/pw = photo left/top/width; tl/tt/tw = toon when revealed; dl/dt/dw = toon default.",
+          "team-tanaz": { "pl": "-38.2%", "pt": "-12%", "pw": "174.8%", "tl": "-31.2%", "tt": "-7.7%", "tw": "174.8%", "dl": "-12.5%", "dt": "0%", "dw": "125%" },
+          "team-chesley": { "pl": "-91.3%", "pt": "-20.9%", "pw": "274.7%", "tl": "-73.4%", "tt": "-14.5%", "tw": "242.7%", "dl": "-12.5%", "dt": "0%", "dw": "125%" },
+          "team-sayan-headshot": { "pl": "-11.7%", "pt": "0%", "pw": "125%", "tl": "-27.9%", "tt": "-4.9%", "tw": "162.4%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+        }
+      },
+      "images": [
+        { "src": "team/web/tanaz.jpg", "alt": "Tanaz Choudhury" },
+        { "src": "team/web/tanaz-toon3.jpg", "alt": "" },
+        { "src": "team/web/chesley.jpg", "alt": "Chesley Choudhury" },
+        { "src": "team/web/chesley-toon2.jpg", "alt": "" },
+        { "src": "team/web/sayan.jpg", "alt": "Sayan Tarafder" },
+        { "src": "team/web/sayan-toon2.jpg", "alt": "" }
+      ]
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

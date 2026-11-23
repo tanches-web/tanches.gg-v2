@@ -1,0 +1,58 @@
+---
+// The identifiers a business office asks for, each with a copy button. Values stay selectable without JS.
+import Icon from '../Icon.astro';
+interface Props { ids: { label: string; value: string }[]; copy: string; copied: string }
+const { ids, copy, copied } = Astro.props;
+---
+<div class="sheet" data-ids data-copied={copied} data-copy={copy}>
+  <dl>
+    {ids.map((r) => (
+      <div class="row">
+        <dt class="spec">{r.label}</dt>
+        <dd>
+          <span class="val num">{r.value}</span>
+          <button type="button" class="cp" data-k={r.label} data-v={r.value} aria-label={`Copy ${r.label} ${r.value}`} hidden>
+            <Icon name="copy" size={16} /><span class="cp-t">{copy}</span>
+          </button>
+        </dd>
+      </div>
+    ))}
+  </dl>
+  <p class="sr-only" role="status" aria-live="polite" data-live></p>
+</div>
+
+<style>
+  .sheet { border-radius: 24px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-object); padding: .5rem clamp(1.25rem, 3vw, 2rem); }
+  .row { display: grid; grid-template-columns: minmax(7.5rem, .7fr) minmax(0, 1.3fr); align-items: center; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  dd { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; }
+  .val { font-family: var(--mono); font-size: clamp(1rem, .9rem + .4vw, 1.25rem); font-weight: 500; letter-spacing: .02em; overflow-wrap: anywhere; user-select: all; }
+  .cp { flex: none; display: inline-flex; align-items: center; gap: .4rem; min-height: 2.25rem; padding: 0 .8rem; border-radius: 999px; border: 1px solid var(--line-2); font-size: .8125rem; font-weight: 600; color: var(--ink-2); transition: background-color .25s, color .25s, border-color .25s; }
+  .cp:hover { color: var(--ink); border-color: var(--ink-3); }
+  .cp.done { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; gap: .35rem; }
+    .cp-t { display: none; }
+    .cp { padding: 0 .6rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-ids]').forEach((root) => {
+    if (!navigator.clipboard) return;
+    const live = root.querySelector<HTMLElement>('[data-live]')!;
+    root.querySelectorAll<HTMLButtonElement>('.cp').forEach((b) => {
+      b.hidden = false;
+      const label = b.querySelector<HTMLElement>('.cp-t')!;
+      let t = 0;
+      b.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(b.dataset.v!); } catch { return; }
+        root.querySelectorAll<HTMLButtonElement>('.cp.done').forEach((o) => { o.classList.remove('done'); o.querySelector<HTMLElement>('.cp-t')!.textContent = root.dataset.copy!; });
+        b.classList.add('done'); label.textContent = root.dataset.copied!;
+        live.textContent = `${b.dataset.k} copied to the clipboard`;
+        clearTimeout(t);
+        t = window.setTimeout(() => { b.classList.remove('done'); label.textContent = root.dataset.copy!; }, 2400);
+      });
+    });
+  });
+</script>

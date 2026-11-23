@@ -1,0 +1,21 @@
+---
+// Section heading. No eyebrows or kickers above it: the heading carries the section.
+// layout="split" puts the lede beside the heading; "center" stacks centred; "stack" stacks left.
+interface Props { title: string; strong?: string; lede?: string; layout?: 'split' | 'center' | 'stack'; id?: string; level?: 2 | 3 }
+const { title, strong, lede, layout = 'split', id, level = 2 } = Astro.props;
+const H = level === 2 ? 'h2' : 'h3';
+---
+<div class:list={['shead', layout]}>
+  <H id={id} class="h2" data-reveal>{title}{strong && <> <strong>{strong}</strong></>}</H>
+  {lede && <p class="lede" data-reveal>{lede}</p>}
+  <slot />
+</div>
+
+<style>
+  .shead { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; }
+  .center { text-align: center; display: grid; justify-items: center; gap: 1.25rem; }
+  .stack { display: grid; gap: 1.25rem; justify-items: start; }
+  .shead :global(strong) { font-weight: 720; }
+  @media (max-width: 960px) { .split { grid-template-columns: 1fr; } }
+</style>

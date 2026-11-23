@@ -1,0 +1,221 @@
+{
+  "slug": "Projects",
+  "sourceFile": "Projects.html",
+  "url": "https://tanches.gg/Projects",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "projects" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Selected Work | TANCHES.GG",
+    "description": "Esports facility and event projects by TANCHES.GG for school districts, colleges, universities, and cities.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Projects",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Selected Work | TANCHES.GG",
+    "ogDescription": "Esports facility and event projects by TANCHES.GG for school districts, colleges, universities, and cities.",
+    "ogUrl": "https://tanches.gg/Projects",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Selected Work | TANCHES.GG",
+    "twitterDescription": "Esports facility and event projects by TANCHES.GG for school districts, colleges, universities, and cities.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Selected Work | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Projects",
+            "url": "https://tanches.gg/Projects",
+            "name": "Selected Work | TANCHES.GG",
+            "description": "Esports facility and event projects by TANCHES.GG for school districts, colleges, universities, and cities.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Selected Work", "item": "https://tanches.gg/Projects" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Selected Work",
+      "p": [
+        "Esports facility and event projects by TANCHES.GG for school districts, colleges, universities, and cities.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "htmlLang": "en",
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeBootstrap": "inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>",
+      "note": "Unlike most pages, Projects.html does not load mobile.css."
+    }
+  },
+  "sections": [
+    {
+      "id": "pj-head",
+      "heading": "Our work, school by school.",
+      "headingHtml": "Our work, <span class=\"tg-grad\">school by school.</span>",
+      "lede": "Case studies from some of the schools, colleges, and cities we’ve built for. Each room is designed around the client’s colors and mascot."
+    },
+    {
+      "id": "case-studies",
+      "ariaLabel": "Case studies",
+      "cards": [
+        {
+          "key": "Stafford",
+          "title": "Stafford Municipal School District",
+          "meta": "K-12 · Stafford, TX",
+          "body": "First district in the region with a dedicated esports facility, procured through DIR and OMNIA.",
+          "image": { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students at white Alienware stations in the Stafford MSD esports lab" },
+          "logo": { "src": "assets/district-stafford-h-white.png", "alt": "" },
+          "href": "/Project-Stafford",
+          "links": [{ "label": "Read the case study", "href": "/Project-Stafford" }],
+          "colors": { "--a": "#EA0000", "--b": "#FCB326", "--deep (rgb triplet)": "78,6,12", "hi": "#FCB326", "deep": "#4E060C", "label": "#FCB326" },
+          "mascot": "SPARTANS",
+          "colorName": "Spartans · Scarlet & Gold",
+          "partners": "Alienware · Dell · MSI · Samsung",
+          "feature": true
+        },
+        {
+          "key": "Alvin",
+          "title": "Alvin College",
+          "meta": "Higher Ed · Alvin, TX",
+          "body": "A collegiate esports lab, from program approval to ongoing support.",
+          "image": { "src": "assets/alvin-showcase.jpg", "alt": "Alvin College esports lab" },
+          "logo": { "src": "assets/clients/alvin-dark.png", "alt": "" },
+          "href": "/Project-Alvin",
+          "links": [{ "label": "Read the case study", "href": "/Project-Alvin" }],
+          "colors": { "--a": "#C10230", "--b": "#66191D", "--deep (rgb triplet)": "58,14,18", "hi": "#E5577A", "deep": "#3A0E12", "label": "color-mix(in oklch, #C10230 55%, #FFFFFF)" },
+          "mascot": "FINZ",
+          "colorName": "Finz · Red & Burgundy",
+          "partners": "Lenovo · Samsung · Logitech"
+        },
+        {
+          "key": "Muskogee",
+          "title": "City of Muskogee",
+          "meta": "Community · Muskogee, OK",
+          "body": "Lenovo Legion PCs for the Muskogee Esports Arena, shipped within a week in an out-of-stock market.",
+          "image": { "src": "assets/muskogee-b.webp", "alt": "Lenovo Legion stations in the Muskogee Esports Arena" },
+          "logo": { "src": "assets/district-muskogee-white.png", "alt": "" },
+          "href": "/Project-Muskogee",
+          "links": [{ "label": "Read the case study", "href": "/Project-Muskogee" }],
+          "colors": { "--a": "#03457F", "--b": "#0386D2", "--deep (rgb triplet)": "2,27,51", "hi": "#5AB6F2", "deep": "#021B33", "label": "#7CC4F4" },
+          "mascot": "MUSKOGEE",
+          "colorName": "Navy & Azure",
+          "partners": "Lenovo",
+          "tall": true
+        },
+        {
+          "key": "Swampy",
+          "title": "TexSEF’s Swampy Conquest",
+          "meta": "Event · Houston, TX",
+          "body": "A multi-district scholastic tournament powered by Dell and Alienware hardware.",
+          "image": { "src": "assets/opt/home-swampy-floor.webp", "alt": "Tournament floor at TexSEF’s Swampy Conquest" },
+          "logo": { "src": "assets/clients/texsef-dark.png", "alt": "" },
+          "href": "/Project-Swampy",
+          "links": [{ "label": "Read the case study", "href": "/Project-Swampy" }],
+          "colors": { "--a": "#1F51FF", "--b": "#FF3131", "--deep (rgb triplet)": "10,26,92", "hi": "#FF3131", "deep": "#0A1A5C", "label": "#FF8A8A" },
+          "mascot": "TEXSEF",
+          "colorName": "Red, White & Blue",
+          "partners": "Dell · Alienware · MSI",
+          "tall": true
+        },
+        {
+          "key": "Longview",
+          "title": "Longview Independent School District",
+          "meta": "K-12 · Longview, TX",
+          "body": "Multi-phase, district-wide esports deployment across multiple campuses.",
+          "image": { "src": "assets/arena-longview.jpg", "alt": "Longview ISD esports arena" },
+          "logo": { "src": "assets/district-longview-h-white.png", "alt": "" },
+          "href": "/Project-Longview",
+          "links": [{ "label": "Case study coming soon", "href": "/Project-Longview" }],
+          "colors": { "--a": "#046A38", "--b": "#FFC72C", "--deep (rgb triplet)": "3,43,23", "hi": "#FFC72C", "deep": "#032B17", "label": "#FFC72C" },
+          "mascot": "LOBOS",
+          "colorName": "Lobos · Evergreen & Gold",
+          "partners": "Extron",
+          "soon": true,
+          "notes": "soon=true: CTA text becomes 'Case study coming soon' but the card is still a link to /Project-Longview."
+        }
+      ],
+      "interactive": {
+        "type": "case-study-card-grid",
+        "cardMarkup": "Whole card is <a href>. Layers: photo, shade, colour wash, glass chip (meta), logo (alt=\"\" aria-hidden), h2 title, p desc, 'go' line = cta + arrow, bottom stripe. CSS vars --a, --b, --deep (rgb triplet from deep hex).",
+        "filters": "none (no category filters on this page)"
+      },
+      "_source": {
+        "href": "'/Project-' + w.id",
+        "cta": "w.soon ? 'Case study coming soon' : 'Read the case study'",
+        "--deep": "[1,3,5].map(k => parseInt(w.deep.slice(k,k+2),16)).join(',')",
+        "computedButUnrendered": "cls ('is-feature'), logoCls ('is-tall'), imgF (w.soon ? 'saturate(0.6)' : 'none'), kind (w.soon ? 'Case study coming soon' : 'Built with'), partners: computed in renderVals but not bound in the template; hi, label, mascot, colors also unbound here"
+      }
+    },
+    {
+      "id": "more",
+      "heading": "Other clients",
+      "lede": "We’ve also built for districts, universities, and community groups across Texas and beyond. Ask us and we’ll put you in touch with one of them.",
+      "ctas": [
+        { "label": "Ask for a reference", "href": "/Contact", "style": "ghost", "icon": "arrow-right (16px)" }
+      ],
+      "interactive": {
+        "type": "client-logo-marquee",
+        "loop": "list rendered twice ([...LOGOS, ...LOGOS])",
+        "logos": [
+          { "name": "Longview ISD", "light": "assets/clients/longview-light.png", "dark": "assets/clients/longview-dark.png", "maxHeight": "40px" },
+          { "name": "Stafford MSD", "light": "assets/clients/stafford-light.png", "dark": "assets/clients/stafford-dark.png", "maxHeight": "38px" },
+          { "name": "University of Houston", "light": "assets/clients/uh-light.png", "dark": "assets/clients/uh-dark.png", "maxHeight": "36px" },
+          { "name": "Pleasant Grove ISD", "light": "assets/clients/pleasantgrove-light.png", "dark": "assets/clients/pleasantgrove-dark.png", "maxHeight": "40px" },
+          { "name": "Fort Bend ISD", "light": "assets/clients/fbisd-light.png", "dark": "assets/clients/fbisd-dark.png", "maxHeight": "50px" },
+          { "name": "University of St. Thomas", "light": "assets/clients/ust-light.png", "dark": "assets/clients/ust-dark.png", "maxHeight": "50px" },
+          { "name": "Alvin College", "light": "assets/clients/alvin-light.png", "dark": "assets/clients/alvin-dark.png", "maxHeight": "46px" },
+          { "name": "Navarro College", "light": "assets/clients/navarro-light.png", "dark": "assets/clients/navarro-dark.png", "maxHeight": "36px" },
+          { "name": "SAMSAT", "light": "assets/clients/samsat-light.png", "dark": "assets/clients/samsat-dark.png", "maxHeight": "64px" },
+          { "name": "TexSEF", "light": "assets/clients/texsef-light.png", "dark": "assets/clients/texsef-dark.png", "maxHeight": "60px" },
+          { "name": "City of Muskogee", "light": "assets/clients/muskogee-light.png", "dark": "assets/clients/muskogee-dark.png", "maxHeight": "44px" }
+        ],
+        "altText": "light-variant img alt = name; dark-variant img alt=\"\" aria-hidden",
+        "_source": { "light/dark": "`assets/clients/${k}-light.png` / `assets/clients/${k}-dark.png`" }
+      }
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

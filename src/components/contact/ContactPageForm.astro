@@ -1,0 +1,99 @@
+---
+// The Contact page form ("contact" on Netlify). Same markup, styling and no-JS behaviour as ContactForm, with the
+// source Contact form's own fields: optional organization, the longer interest list, query-string prefill from
+// /Assessment and the "Report attached" note. Without JavaScript it is a plain POST to /Contact?sent=1.
+import Icon from '../Icon.astro';
+import forms from '../../content/forms.json';
+const def = (forms as any).forms.find((f: any) => f.id === 'contact');
+const fld = (id: string) => def.fields.find((f: any) => f.id === id);
+const name = fld('ct-name'), email = fld('ct-email'), org = fld('ct-org'), prog = fld('ct-prog'), topic = fld('ct-topic'), msg = fld('ct-msg');
+---
+<form class="cform" name="contact" method="POST" action="/Contact?sent=1" data-netlify="true" netlify-honeypot="bot-field" data-ctform
+  data-err={def.errorMessage} data-ids={JSON.stringify(name.placeholderOptions)}>
+  <input type="hidden" name="form-name" value="contact" />
+  <input type="hidden" name="subject" value="Contact lead" />
+  <input type="hidden" name="page" value="/Contact" data-page />
+  <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+  <div class="attached" role="status" hidden data-attached>
+    <span class="chip"><span class="dot"></span>Report attached</span>
+    <span class="small" data-attached-note></span>
+  </div>
+
+  <div class="fields">
+    <div class="f">
+      <label for="ct-name">{name.label}</label>
+      <input id="ct-name" name="name" type="text" autocomplete="name" required placeholder={name.placeholderOptions[0]} />
+    </div>
+    <div class="f">
+      <label for="ct-email">{email.label}</label>
+      <input id="ct-email" name="email" type="email" autocomplete="email" required placeholder={email.placeholder} />
+    </div>
+    <div class="f">
+      <label for="ct-org">{org.label}</label>
+      <input id="ct-org" name="organization" type="text" autocomplete="organization" placeholder={org.placeholder} />
+    </div>
+    <div class="f">
+      <label for="ct-prog">{prog.label}</label>
+      <div class="sel">
+        <select id="ct-prog" name="program">
+          {prog.options.map((o: any) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <Icon name="chevron-down" size={18} />
+      </div>
+    </div>
+    <div class="f wide">
+      <label for="ct-topic">{topic.label}</label>
+      <div class="sel">
+        <select id="ct-topic" name="interest">
+          {topic.options.map((o: any) => <option value={o.value}>{o.label}</option>)}
+        </select>
+        <Icon name="chevron-down" size={18} />
+      </div>
+    </div>
+    <div class="f wide">
+      <label for="ct-msg">{msg.label}</label>
+      <textarea id="ct-msg" name="details" rows={msg.rows} placeholder={msg.placeholder}></textarea>
+    </div>
+  </div>
+
+  <p class="err" role="alert" hidden></p>
+  <div class="foot">
+    <button class="btn btn-primary full" type="submit"><span class="lbl">{def.submitLabel}</span><Icon name="arrow-right" /></button>
+    <p class="note">{def.formNote}</p>
+  </div>
+</form>
+
+<style>
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; }
+  .f { display: grid; gap: .45rem; }
+  .f.wide { grid-column: 1 / -1; }
+  label { font-size: .875rem; font-weight: 600; }
+  input, select, textarea {
+    width: 100%; min-height: 3rem; padding: .75rem .95rem; border-radius: 14px; font-size: 1rem;
+    background: var(--bg); border: 1px solid var(--line-2); color: var(--ink);
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink-3); opacity: 1; }
+  textarea { resize: vertical; min-height: 7.5rem; line-height: 1.5; }
+  input:hover, select:hover, textarea:hover { border-color: var(--ink-3); }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); background: var(--surface); }
+  input:user-invalid { border-color: #C2261B; }
+  .sel { position: relative; }
+  .sel select { appearance: none; padding-right: 2.5rem; cursor: pointer; }
+  .sel option { color: var(--ink); background: var(--surface); }
+  .sel :global(svg) { position: absolute; right: .9rem; top: 50%; translate: 0 -50%; pointer-events: none; color: var(--ink-3); }
+  .attached { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; padding: .8rem 1rem; margin-bottom: 1.25rem; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); }
+  .attached[hidden] { display: none; }
+  .chip { display: inline-flex; align-items: center; gap: .5rem; padding: .3rem .75rem; border-radius: 999px; border: 1px solid var(--line-2); font: 500 var(--t-spec) var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .chip .dot { width: .5rem; height: .5rem; border-radius: 50%; background: #1FA35B; }
+  .foot { display: grid; gap: .9rem; margin-top: 1.5rem; }
+  .full { width: 100%; }
+  .note { font-size: .8125rem; color: var(--ink-3); text-align: center; }
+  .err { margin-top: 1rem; padding: .9rem 1rem; border-radius: 14px; background: color-mix(in srgb, #C2261B 10%, var(--surface)); border: 1px solid color-mix(in srgb, #C2261B 40%, transparent); font-size: var(--t-small); }
+  .err :global(a) { color: var(--accent); font-weight: 600; }
+  .err[hidden] { display: none; }
+  button[aria-busy='true'] { opacity: .7; pointer-events: none; }
+  @media (max-width: 560px) { .fields { grid-template-columns: 1fr; } }
+</style>

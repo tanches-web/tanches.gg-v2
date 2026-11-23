@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+interface Props { items: { q: string; a: string }[]; name?: string }
+const { items, name = 'faq' } = Astro.props;
+---
+<div class="faq">
+  {items.map((f, i) => (
+    <details name={name} open={i === 0}>
+      <summary><span>{f.q}</span><span class="plus" aria-hidden="true"><Icon name="plus" size={18} /></span></summary>
+      <div class="ans"><p>{f.a}</p></div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq { border-top: 1px solid var(--line-2); }
+  details { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.4rem 0; cursor: pointer; font-size: clamp(1.0625rem, 1rem + .35vw, 1.25rem); font-weight: 600; letter-spacing: -0.01em; }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: var(--accent); }
+  .plus { flex: none; width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-2); transition: transform .45s var(--ease-out), background-color .3s, color .3s; }
+  details[open] .plus { transform: rotate(45deg); background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .ans { padding: 0 3.5rem 1.6rem 0; color: var(--ink-2); max-width: 70ch; }
+  @media (prefers-reduced-motion: no-preference) {
+    details::details-content { block-size: 0; overflow: clip; transition: block-size .5s var(--ease-out), content-visibility .5s allow-discrete; }
+    details[open]::details-content { block-size: auto; }
+  }
+  :global(html) { interpolate-size: allow-keywords; }
+</style>

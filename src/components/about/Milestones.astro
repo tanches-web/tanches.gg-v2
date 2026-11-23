@@ -1,0 +1,82 @@
+---
+// Milestones as a measured rail. Selecting a year (hover, focus or click) traces the journey:
+// stops before it are inked, stops after it fall back. Without JavaScript every stop is inked.
+interface Item { year: string; title: string; sub: string }
+interface Props { title: string; hint: string; hintTouch: string; items: Item[]; active?: number }
+const { title, hint, hintTouch, items, active = items.length - 1 } = Astro.props;
+---
+<div class="ms" data-ms data-active={active} style={`--n:${items.length};--a:${active}`}>
+  <div class="ms-head">
+    <h3 class="h3">{title}</h3>
+    <p class="small hint"><span class="h-hover">{hint}</span><span class="h-touch">{hintTouch}</span></p>
+  </div>
+  <div class="rail-wrap">
+  <span class="line" aria-hidden="true"><span class="fill"></span></span>
+  <ol class="rail" role="list">
+    {items.map((m, i) => (
+      <li class:list={['stop', { 'is-past': i < active, 'is-on': i === active }]} data-i={i}>
+        <button type="button" class="yr num" aria-pressed={i === active ? 'true' : 'false'}>
+          <span class="node" aria-hidden="true"></span>
+          <span class="y">{m.year}</span>
+        </button>
+        <p class="t">{m.title}</p>
+        <p class="small s">{m.sub}</p>
+      </li>
+    ))}
+  </ol>
+  </div>
+</div>
+
+<style>
+  .ms { padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-float); }
+  .ms-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 2rem; margin-bottom: 2rem; }
+  .hint { color: var(--ink-3); }
+  .h-touch { display: none; }
+  @media (hover: none) { .h-hover { display: none; } .h-touch { display: inline; } }
+  .rail-wrap { position: relative; }
+  .rail { position: relative; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 0 1.25rem; }
+  .line { position: absolute; left: .5625rem; right: calc((100% - (var(--n) - 1) * 1.25rem) / var(--n) - .5625rem); top: 1.05rem; height: 2px; background: var(--line); border-radius: 2px; }
+  .fill { position: absolute; inset: 0; background: var(--spectrum); border-radius: 2px; transform-origin: left; transform: scaleX(calc(var(--a) / (var(--n) - 1))); transition: transform .7s var(--ease-out); }
+  .stop { position: relative; display: grid; gap: .5rem; align-content: start; transition: opacity .4s var(--ease-out); }
+  .yr { display: grid; justify-items: start; gap: .9rem; text-align: left; padding: 0; border-radius: 10px; }
+  .node { width: 1.125rem; height: 1.125rem; margin-top: .5rem; border-radius: 50%; background: var(--surface); border: 2px solid var(--line-2); transition: background-color .35s, border-color .35s, transform .35s var(--ease-out); }
+  .y { font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); font-weight: 360; letter-spacing: -0.04em; line-height: 1; color: var(--ink-3); transition: color .35s; }
+  .t { font-weight: 640; line-height: 1.3; font-size: var(--t-small); }
+  .s { line-height: 1.45; color: var(--ink-3); font-size: .875rem; }
+  .stop.is-past .node { background: var(--ink); border-color: var(--ink); }
+  .stop.is-on .node { background: var(--rose); border-color: var(--rose); transform: scale(1.25); box-shadow: 0 0 0 5px color-mix(in srgb, var(--rose) 22%, transparent); }
+  .stop.is-past .y, .stop.is-on .y { color: var(--ink); }
+  .stop:not(.is-past):not(.is-on) { opacity: .5; }
+  .yr:hover .y { color: var(--ink); }
+  @media (max-width: 900px) {
+    .rail { grid-template-columns: 1fr; gap: 1.5rem; padding-left: 0; }
+    .line { left: .5rem; right: auto; top: .5rem; bottom: .5rem; width: 2px; height: auto; }
+    .fill { transform-origin: top; transform: scaleY(calc(var(--a) / (var(--n) - 1))); }
+    .stop { padding-left: 2.25rem; }
+    .yr { display: block; }
+    .node { position: absolute; left: 0; top: .35rem; margin: 0; z-index: 1; }
+    .y { font-size: 1.75rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-ms]').forEach((ms) => {
+    const def = Number(ms.dataset.active);
+    const stops = [...ms.querySelectorAll<HTMLElement>('.stop')];
+    const pick = (a: number) => {
+      ms.style.setProperty('--a', String(a));
+      stops.forEach((s, i) => {
+        s.classList.toggle('is-past', i < a);
+        s.classList.toggle('is-on', i === a);
+        s.querySelector('button')!.setAttribute('aria-pressed', String(i === a));
+      });
+    };
+    stops.forEach((s, i) => {
+      const b = s.querySelector('button')!;
+      b.addEventListener('click', () => pick(i));
+      b.addEventListener('focus', () => pick(i));
+      if (matchMedia('(hover: hover)').matches) s.addEventListener('mouseenter', () => pick(i));
+    });
+    ms.querySelector('.rail')!.addEventListener('mouseleave', () => pick(def));
+  });
+</script>

@@ -1,0 +1,287 @@
+---
+// Homepage. Sections follow the buyer's path:
+//   1 Hero      three finished labs, each with its client's own words + the two actions (book / assess)
+//   2 Proof     figures and client logos
+//   3 Ecosystem what you get: the space, the infrastructure, the program
+//   4 Solutions find your environment
+//   5 Why       built by an IT company (for the IT director)
+//   6 Process   six steps, bought on contracts you already have
+//   7 Work      more builds + ask for a reference
+//   8 League    what keeps the room full
+//   9 FAQ       last questions + the readiness assessment
+//  10 Contact   the form
+// (Client testimonials live in the hero caption: see src/lib/showcase.ts.)
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Proof from '../components/Proof.astro';
+import Ecosystem from '../components/Ecosystem.astro';
+import Work from '../components/Work.astro';
+import Process from '../components/Process.astro';
+import Faq from '../components/Faq.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import Icon from '../components/Icon.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import home from '../content/pages/home.json';
+import projectData from '../content/projects.json';
+
+const seo = {
+  title: home.seo.title,
+  description: home.seo.description,
+  canonical: 'https://tanches.gg/',
+  ogImage: '/assets/og-logo.png',
+  jsonLd: home.seo.jsonLd,
+};
+const sec = (id: string) => home.sections.find((s: any) => s.id === id) as any;
+
+// Lead with finished case studies only: Longview joins (and leads) once its case study is done.
+// The hero already uses two Stafford photos, so this tile takes another one.
+// (A photo may appear only once per page: see scripts/check-images.mjs.)
+const stafford = sec('projects').cards.find((c: any) => c.links[0].href === '/Project-Stafford');
+const swampy = sec('projects').cards.find((c: any) => c.links[0].href === '/Project-Swampy');
+// Each client's colourway and mascot, as on its case study
+const themeOf = (slug: string) => ((projectData as any[]).find((p) => p.slug === slug)?.data?.theme ?? {}) as { name?: string; mascot?: string | null };
+const staffordTheme = themeOf('Project-Stafford');
+const swampyTheme = themeOf('Project-Swampy');
+const work = [
+  {
+    title: stafford.title, meta: stafford.meta, body: stafford.body, href: stafford.links[0].href,
+    img: '/assets/stafford/stafford-10.jpg', alt: 'Students competing at their stations in the Stafford MSD esports lab', pos: '50% 40%', logo: '/' + stafford.logo.src,
+    a: stafford.colors.a, b: stafford.colors.b, deep: `rgb(${stafford.colors.deep})`,
+    colorName: staffordTheme.name, mascot: staffordTheme.mascot,
+  },
+  {
+    title: swampy.title, meta: swampy.meta, body: swampy.body, href: swampy.links[0].href,
+    img: '/' + swampy.image.src, alt: swampy.image.alt, pos: swampy.image.objectPosition, logo: '/' + swampy.logo.src,
+    a: swampy.colors.a, b: swampy.colors.b, deep: `rgb(${swampy.colors.deep})`,
+    colorName: swampyTheme.name, mascot: swampyTheme.mascot,
+  },
+];
+const workLede = sec('projects').lede.replace('the school’s own', 'the client’s own');
+
+const lineupImages: Record<string, { src: string; alt: string }> = {
+  Education: { src: '/assets/stafford/stafford-04.jpg', alt: 'Students at a row of stations in the Stafford MSD esports lab' },
+  Community: { src: '/assets/commercial-event.jpg', alt: 'Community members seated at the opening of an esports arena' },
+  Commercial: { src: '/assets/opt/league-swampy-commercial-v2.webp', alt: 'Players at Alienware stations during a tournament' },
+};
+const solutions = sec('solutions').cards.map((s: any) => ({ ...s, image: lineupImages[s.title] ?? { src: '/' + s.image.src, alt: s.image.alt } }));
+const why = sec('why');
+const league = sec('league');
+const faq = sec('faq');
+const partners = home.unrenderedData.oemLogos_mOem.map((p: any) => ({ name: p.name, light: '/' + p.srcL, dark: '/' + p.src, h: p.h }));
+---
+<Base seo={seo} navTone="dark">
+  <Hero />
+  <Proof />
+
+  <Ecosystem />
+
+  <!-- Solutions as a lineup: find your environment -->
+  <section class="section lineup-sec sweep soft-top" id="solutions" aria-labelledby="sol-title">
+    <div class="wrap">
+      <div class="center head">
+        <h2 id="sol-title" class="h2" data-reveal>Built for <strong>schools, cities, and businesses.</strong></h2>
+        <p class="lede" data-reveal>{sec('solutions').lede}</p>
+      </div>
+      <ul class="lineup" role="list">
+        {solutions.map((s: any) => (
+          <li data-reveal>
+            <a href={s.links[0].href} class="lu">
+              <div class="lu-img photo"><img src={s.image.src} alt={s.image.alt} loading="lazy" decoding="async" /></div>
+              <h3 class="h3">{s.title}</h3>
+              <p class="spec">{s.meta}</p>
+              <p class="small lu-body">{s.body}</p>
+              <ul class="tags" role="list">{s.tags.map((t: string) => <li>{t}</li>)}</ul>
+              <span class="link">{s.links[0].label} <Icon name="arrow-right" /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- IT first -->
+  <section class="section" id="why" aria-labelledby="why-title">
+    <div class="wrap why">
+      <div class="why-copy">
+        <h2 id="why-title" class="h2" data-reveal>We were an IT company first. <strong>That’s still how we build.</strong></h2>
+        <p class="lede" data-reveal>{why.lede}</p>
+        <dl class="specs-list" data-reveal>
+          {why.cards.map((c: any) => (<div><dt>{c.title}</dt><dd>{c.body}</dd></div>))}
+        </dl>
+        <a class="link" href="/Technology" data-reveal>How we build the infrastructure <Icon name="arrow-right" /></a>
+      </div>
+      <div class="collage" data-reveal>
+        <figure class="c1 photo"><img src="/assets/opt/league-hero.webp" alt="A finished esports arena: LED video walls, accent lighting, Extron AV displays and competition stations" style="object-position:50% 60%" loading="lazy" /></figure>
+        <figure class="c2 photo"><img src="/assets/stafford/stafford-03.jpg" alt="Students in headsets at Alienware stations in the Stafford MSD esports lab" style="object-position:55% 50%" loading="lazy" /></figure>
+        <figure class="c3 photo"><img src="/assets/alvin/alvin-05.jpg" alt="The Alvin College esports lab: stations under red-lit wall displays, with a table-tennis table in the lounge" style="object-position:50% 55%" loading="lazy" /></figure>
+      </div>
+    </div>
+    <div class="wrap partners">
+      <LogoMarquee logos={partners} label="Hardware partners" size="sm" duration={45} reverse />
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section" id="process" aria-labelledby="proc-title">
+    <div class="wrap proc">
+      <div class="proc-head">
+        <h2 id="proc-title" class="h2" data-reveal>From first call to <strong>opening day.</strong></h2>
+        <p class="lede" data-reveal>{sec('process').lede}</p>
+        <p class="small" data-reveal>{sec('process').body[0]}</p>
+        <div class="btns" data-reveal>
+          <a class="btn btn-primary" href="/Contact">Book a free consultation <Icon name="arrow-right" /></a>
+          <a class="btn btn-ghost" href="/Procurement">Contracts and funding</a>
+        </div>
+      </div>
+      <Process />
+      <div class="btns proc-after">
+        <a class="btn btn-primary" href="/Contact">Book a free consultation <Icon name="arrow-right" /></a>
+        <a class="btn btn-ghost" href="/Procurement">Contracts and funding</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- More builds, and the ask that closes: talk to a client -->
+  <section class="section" id="projects" aria-labelledby="work-title">
+    <div class="wrap">
+      <div class="split-head">
+        <h2 id="work-title" class="h2" data-reveal>Programs that <strong>changed what was possible.</strong></h2>
+        <p class="lede" data-reveal>{workLede}</p>
+      </div>
+      <Work items={work}>
+        <div class="ref" slot="extra">
+          <p class="ref-q">{sec('projects').body[0].replace('a district', 'a client')}</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="/Contact">Ask for a reference <Icon name="arrow-right" /></a>
+            <a class="btn btn-ghost" href="/Projects">All projects</a>
+          </div>
+        </div>
+      </Work>
+    </div>
+  </section>
+
+  <!-- League: what keeps the room full after launch -->
+  <section class="league" aria-labelledby="league-title">
+    <img class="league-bg" src="/assets/opt/league-swampy-hero-v2.webp" alt="Students competing at TexSEF’s Swampy Conquest tournament" loading="lazy" />
+    <div class="wrap league-inner">
+      <div class="league-card" data-reveal>
+        <h2 id="league-title" class="h2">A room is a start. <strong>A season keeps<br /> them coming back.</strong></h2>
+        <p class="body">{league.lede}</p>
+        <dl class="season">
+          {league.cards.map((c: any) => (<div><dt>{c.title}</dt><dd>{c.body}</dd></div>))}
+        </dl>
+        <a class="btn btn-primary" href="/League"><span class="live" aria-hidden="true"></span>Explore the league <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-sec" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div>
+        <h2 id="faq-title" class="h2" data-reveal>Questions we hear <strong>every week</strong></h2>
+        <a class="assess-card" href="/Assessment" data-reveal>
+          <strong>{faq.cards[0].title}</strong>
+          <span class="small">{faq.cards[0].body}</span>
+          <span class="btn btn-primary btn-sm">{faq.cards[0].links[0].label} <Icon name="arrow-right" /></span>
+        </a>
+      </div>
+      <Faq items={faq.faqs} />
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  .split-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .head { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .head .lede { margin-top: 1.25rem; }
+  /* Reference ask: sits in the work grid as its closing cell */
+  .ref { display: grid; align-content: end; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line-2); }
+  .ref-q { font-size: var(--t-h3); font-weight: 420; letter-spacing: -0.02em; line-height: 1.2; max-width: 22ch; text-wrap: balance; }
+  .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  /* Lineup */
+  .lineup-sec { padding-top: clamp(3.5rem, 6vw, 5.5rem) !important; }
+  /* Equal padding on every column (so the three photos match), pulled back out so the outer edges sit on the page grid */
+  .lineup { --lu-pad: clamp(1rem, 2.5vw, 2.25rem); list-style: none; padding: 0; margin-inline: calc(-1 * var(--lu-pad)); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .lineup > li + li { border-left: 1px solid var(--line); }
+  .lu { display: grid; gap: .75rem; padding: 0 var(--lu-pad); text-decoration: none; height: 100%; align-content: start; }
+  .lu-img { aspect-ratio: 4 / 3; margin-bottom: .75rem; transition: transform .7s var(--ease-out); }
+  .lu:hover .lu-img { transform: translateY(-4px); }
+  .lu-body { min-height: 4.8em; }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
+  .tags li { font-size: .8125rem; font-weight: 560; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+  .lu .link { margin-top: .5rem; }
+
+  /* Why */
+  .why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .why-copy { display: grid; gap: 1.5rem; justify-items: start; }
+  .specs-list { display: grid; gap: 0; width: 100%; border-top: 1px solid var(--line-2); }
+  .specs-list div { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: 1.5rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+  .specs-list dt { font-weight: 640; }
+  .specs-list dd { color: var(--ink-2); font-size: var(--t-small); }
+  /* Landscape photos: the arena runs wide across the top, two close-ups beneath */
+  .collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.15fr 1fr; gap: 1rem; aspect-ratio: 1 / .92; }
+  .collage figure { position: relative; }
+  .c1 { grid-column: 1 / -1; }
+  .partners { margin-top: clamp(3.5rem, 6vw, 5rem); padding-top: 2rem; border-top: 1px solid var(--line); }
+  .lg-d { display: none; }
+  :global([data-theme='dark']) .lg-l { display: none; }
+  :global([data-theme='dark']) .lg-d { display: block; }
+
+  /* Process */
+  .proc { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .proc-head { position: sticky; top: 7rem; display: grid; gap: 1.25rem; justify-items: start; }
+  /* On one-column layouts the actions follow the six steps instead of preceding them */
+  .proc-after { display: none; }
+
+  /* League */
+  .faq-sec { padding-top: var(--section) !important; }
+  .league { position: relative; min-height: min(92vh, 860px); display: grid; align-items: end; overflow: hidden; isolation: isolate; color: #F2F3F5; }
+  /* The photo is atmosphere here, not the subject: softened and pushed back behind the card */
+  .league-bg { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; z-index: -2; filter: blur(6px) saturate(1.1) brightness(.8); transform: scale(1.04); }
+  .league::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,11,14,.1) 0%, rgba(10,11,14,.25) 40%, rgba(10,11,14,.82) 100%); }
+  .league-inner { padding-block: clamp(4rem, 8vw, 7rem); }
+  .league-card {
+    max-width: 720px; display: grid; gap: 1.25rem; justify-items: start; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px;
+    background: rgba(18, 19, 24, .55); border: 1px solid rgba(255, 255, 255, .14);
+    backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+  .league-card .body { color: #C9CCD4; }
+  /* Two sentences, two lines: the statement, then the bold answer starting on its own line */
+  .league-card .h2 strong { display: block; }
+  .league-card .h2 { text-wrap: wrap; }
+  @media (max-width: 380px) { .league-card .h2 { font-size: 2rem; } }
+  .live-chip { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .875rem; }
+  .live { width: .55rem; height: .55rem; border-radius: 50%; background: var(--rose); box-shadow: 0 0 0 4px rgba(226,56,105,.3); }
+  @media (prefers-reduced-motion: no-preference) { .live { animation: pulse 2s ease-in-out infinite; } }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(226,56,105,0); } }
+  .season { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; width: 100%; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.14); }
+  .season dt { font-weight: 660; }
+  .season dd { font-size: .875rem; color: #C9CCD4; line-height: 1.45; margin-top: .25rem; }
+  .league .btn-primary { background: #F2F3F5; color: #0E1016; }
+
+  /* FAQ */
+  .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .assess-card { margin-top: 2rem; display: grid; gap: .6rem; justify-items: start; padding: 1.5rem; border-radius: 24px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; box-shadow: var(--shadow-float); }
+  .assess-card strong { font-size: 1.125rem; font-weight: 660; }
+  .assess-card .btn { margin-top: .5rem; }
+
+  @media (max-width: 960px) {
+    .split-head, .why, .proc, .faq-grid { grid-template-columns: 1fr; }
+    .proc-head { position: static; }
+    .proc-head .btns { display: none; }
+    .proc-after { display: flex; }
+    .lineup { grid-template-columns: 1fr; gap: 3rem; margin-inline: 0; }
+    .lineup > li + li { border-left: 0; }
+    .lu { padding: 0 !important; }
+    .season { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .collage { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; aspect-ratio: auto; }
+    .c1 { aspect-ratio: 16 / 9; }
+    .c2, .c3 { aspect-ratio: 1; }
+  }
+</style>

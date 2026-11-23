@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import Icon from '../components/Icon.astro';
+import Portrait from '../components/team/Portrait.astro';
+import page from '../content/pages/Team.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+const sec = (id: string) => page.sections.find((s: any) => s.id === id) as any;
+const hero = sec('team-head');
+const lead = sec('leadership');
+const poc = sec('contact');
+const rest = sec('rest-of-team');
+const people = page.people as any[];
+const byGroup = (g: string) => people.filter((p) => p.group === g);
+const sayan = people.find((p) => p.slot === 'team-sayan-headshot');
+const favorite = poc.body.find((b: string) => b.startsWith('Favorite game:'));
+const pocBio = poc.body.filter((b: string) => b !== favorite);
+const pocLinkedIn = poc.ctas.find((c: any) => c.style === 'icon');
+const pocAssess = poc.ctas.find((c: any) => c.style === 'link');
+const pocPrimary = poc.ctas.find((c: any) => c.style === 'primary');
+const [pocRole, pocNote] = poc.eyebrow.split(' · ');
+---
+<Base seo={seo}>
+  <PageHero
+    title={hero.heading.replace(' work with.', '')}
+    strong="work with."
+    lede={hero.lede}
+    ctas={hero.ctas.map((c: any) => ({ label: c.label, href: c.href, primary: c.style === 'primary' }))}
+  />
+
+  <!-- Leadership: the two founders, presented large -->
+  <section class="section lead-sec" aria-labelledby="lead-title">
+    <div class="wrap">
+      <SectionHead id="lead-title" title={lead.heading} lede={lead.lede} />
+      <ul class="leaders" role="list">
+        {byGroup('leadership').map((p, i) => (
+          <li class="leader" data-reveal>
+            <Portrait name={p.name} photo={p.photo} toon={p.toon} frame={p.frame} eager={i === 0} />
+            <div class="who">
+              <div class="nameline">
+                <h3 class="h3">{p.name}</h3>
+                <a class="li-btn" href={p.linkedin} target="_blank" rel="noopener" aria-label={p.linkedinAriaLabel}><Icon name="linkedin" size={18} /></a>
+              </div>
+              <p class="spec role">{p.role}</p>
+              <p class="body">{p.bio}</p>
+              <p class="fav"><span class="spec">Favorite game</span><span>{p.favoriteGame}</span></p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Point of contact: one person, on the tournament floor -->
+  <section class="poc" id="contact" aria-labelledby="poc-title">
+    <img class="poc-bg" src="/assets/opt/home-swampy-floor.webp" alt="" loading="lazy" decoding="async" />
+    <div class="wrap poc-inner">
+      <div class="poc-card" data-reveal>
+        <div class="poc-portrait">
+          <Portrait name={sayan.name} photo={sayan.photo} toon={sayan.toon} frame={sayan.frame} />
+        </div>
+        <div class="poc-copy">
+          <h2 id="poc-title" class="h2">{poc.heading}</h2>
+          <p class="poc-role"><span class="spec">{pocRole}</span><span class="tag"><span class="dot" aria-hidden="true"></span>{pocNote}</span></p>
+          <blockquote class="poc-quote"><p>{poc.testimonials[0].quote}</p></blockquote>
+          {pocBio.map((b: string) => <p class="body">{b}</p>)}
+          <p class="fav"><span class="spec">Favorite game</span><span>{favorite.replace('Favorite game: ', '')}</span></p>
+          <div class="poc-ctas">
+            <a class="btn btn-primary" href={pocPrimary.href}>{pocPrimary.label} <Icon name="arrow-right" /></a>
+            <a class="li-btn lg" href={pocLinkedIn.href} target="_blank" rel="noopener" aria-label={pocLinkedIn.label}><Icon name="linkedin" size={20} /></a>
+          </div>
+          <a class="link" href={pocAssess.href}>{pocAssess.label} <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The rest of the team: a roster -->
+  <section class="section" aria-labelledby="rest-title">
+    <div class="wrap">
+      <SectionHead id="rest-title" title={rest.heading} lede={rest.lede} />
+      <ul class="roster" role="list">
+        {byGroup('rest-of-team').map((p) => (
+          <li class="member" data-reveal>
+            <Portrait name={p.name} photo={p.photo} toon={p.toon} frame={p.frame} />
+            <div class="who">
+              <div class="nameline">
+                <h3 class="m-name">{p.name}</h3>
+                <a class="li-btn" href={p.linkedin} target="_blank" rel="noopener" aria-label={p.linkedinAriaLabel}><Icon name="linkedin" size={16} /></a>
+              </div>
+              <p class="spec role">{p.role}</p>
+              {p.bio && <p class="small m-bio">{p.bio}</p>}
+              <p class="fav"><span class="spec">Favorite game</span><span>{p.favoriteGame}</span></p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  .lead-sec { padding-top: clamp(2rem, 4vw, 3rem); }
+  .leaders { list-style: none; padding: 0; display: grid; gap: clamp(4rem, 8vw, 7rem); }
+  .leader { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .leader:nth-child(even) > :first-child { order: 2; }
+  .leader .body { font-size: var(--t-lede); line-height: 1.55; }
+  .who { display: grid; gap: .6rem; justify-items: start; }
+  .nameline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; }
+  .leader .h3 { font-size: clamp(1.625rem, 1.2rem + 1.2vw, 2.25rem); letter-spacing: -0.03em; }
+  .role { color: var(--ink-2); }
+  .leader .body { margin-top: .4rem; max-width: 52ch; }
+  .fav { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .75rem; margin-top: .5rem; padding-top: .9rem; border-top: 1px solid var(--line); width: 100%; font-weight: 600; font-size: var(--t-small); }
+  .li-btn { flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--ink-2); text-decoration: none; transition: color .25s, border-color .25s, background-color .25s; }
+  .li-btn:hover { color: var(--ink); border-color: var(--ink-3); background: var(--surface); }
+  .li-btn.lg { width: 3.25rem; height: 3.25rem; }
+
+  /* Point of contact */
+  .poc { position: relative; isolation: isolate; overflow: hidden; color: #F2F3F5; }
+  .poc-bg { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; z-index: -2; filter: blur(14px) saturate(.8) brightness(.55); }
+  .poc::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,11,14,.55) 0%, rgba(10,11,14,.7) 55%, rgba(10,11,14,.88) 100%); }
+  .poc-inner { padding-block: clamp(5rem, 9vw, 8.5rem); }
+  .poc-card {
+    display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center;
+    padding: clamp(1.25rem, 3vw, 2.5rem); border-radius: 32px; max-width: 1040px;
+    background: rgba(18, 19, 24, .58); border: 1px solid rgba(255, 255, 255, .14);
+    backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+  .poc-copy { display: grid; gap: 1rem; justify-items: start; }
+  .poc-copy .body { color: #C9CCD4; }
+  .poc-copy .spec { color: #A7ABB6; }
+  .poc-role { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+  .tag { display: inline-flex; align-items: center; gap: .5rem; padding: .3rem .8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); font-size: .8125rem; font-weight: 600; }
+  .tag .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--rose); }
+  .poc-quote { margin: .25rem 0; padding-left: 1.1rem; border-left: 2px solid var(--rose); }
+  .poc-quote p { font-size: clamp(1.25rem, 1rem + .7vw, 1.625rem); line-height: 1.35; letter-spacing: -0.015em; font-weight: 420; }
+  .poc .fav { border-top-color: rgba(255,255,255,.14); }
+  .poc-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .25rem; }
+  .poc .btn-primary { background: #F2F3F5; color: #0E1016; }
+  .poc .li-btn { color: #F2F3F5; border-color: rgba(255,255,255,.3); }
+  .poc .li-btn:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.55); }
+  .poc .link { color: #F7A3BC; }
+  .poc-portrait { max-width: 360px; width: 100%; }
+
+  /* Roster */
+  .roster { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 2.5rem); }
+  .member { display: grid; gap: 1.25rem; align-content: start; }
+  .m-name { font-size: 1.25rem; font-weight: 640; letter-spacing: -0.02em; line-height: 1.2; }
+  .m-bio { margin-top: .25rem; }
+
+  @media (max-width: 960px) {
+    .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .poc-card { grid-template-columns: 1fr; }
+    .poc-portrait { max-width: 300px; }
+  }
+  @media (max-width: 760px) {
+    .leader { grid-template-columns: 1fr; }
+    .leader:nth-child(even) > :first-child { order: 0; }
+    .leader .pt { max-width: 440px; }
+  }
+  @media (max-width: 540px) {
+    .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem .9rem; }
+    .member { gap: .9rem; }
+    .m-name { font-size: 1rem; }
+    .member .li-btn { width: 2.125rem; height: 2.125rem; }
+    .member .fav { flex-direction: column; gap: .15rem; }
+    .member .role { font-size: .6875rem; letter-spacing: .05em; }
+  }
+</style>

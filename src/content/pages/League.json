@@ -1,0 +1,376 @@
+{
+  "slug": "League",
+  "sourceFile": "League.html",
+  "url": "https://tanches.gg/League",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "league", "tone": "dark" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Esports League | TANCHES.GG",
+    "description": "The TANCHES.GG Esports League: a fully managed competitive season for schools, communities, and organizations, with playoffs and a championship night.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/League",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Esports League | TANCHES.GG",
+    "ogDescription": "The TANCHES.GG Esports League: a fully managed competitive season for schools, communities, and organizations, with playoffs and a championship night.",
+    "ogUrl": "https://tanches.gg/League",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Esports League | TANCHES.GG",
+    "twitterDescription": "The TANCHES.GG Esports League: a fully managed competitive season for schools, communities, and organizations, with playoffs and a championship night.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Esports League | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/League",
+            "url": "https://tanches.gg/League",
+            "name": "Esports League | TANCHES.GG",
+            "description": "The TANCHES.GG Esports League: a fully managed competitive season for schools, communities, and organizations, with playoffs and a championship night.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Esports League", "item": "https://tanches.gg/League" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Esports League",
+      "p": [
+        "The TANCHES.GG Esports League: a fully managed competitive season for schools, communities, and organizations, with playoffs and a championship night.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeBootstrap": "localStorage key \"tg-theme-v2\" (default \"light\"); sets data-theme=\"light\" on <html>",
+      "note": "League.html does NOT load mobile.css (Education etc. do)."
+    }
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "ariaLabelledby": "lg-title",
+      "heading": "Give your players a real season to play.",
+      "headingHtml": "Give your players a <span class=\"tg-grad\">real season</span> to play.",
+      "lede": "We design and run a competitive esports league for schools, communities, and venues. You bring the players. We handle the schedule, the rules, the standings, and championship night.",
+      "ctas": [
+        { "label": "Get Pricing", "href": "#pricing", "style": "primary", "notes": "onClick smooth-scrolls to #pricing (offset 90px); arrow icon after label" },
+        { "label": "Member Login", "href": "https://tel.rally.gg/", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/opt/league-swampy-hero-v2.webp", "alt": "Students in headsets competing at rows of gaming PCs during TexSEF’s Swampy Conquest tournament", "objectPosition": "50% 42%" },
+        { "src": "assets/opt/home-swampy-floor.webp", "alt": "The tournament floor at TexSEF’s Swampy Conquest, with the event logo on the big screens", "objectPosition": "50% 40%" },
+        { "src": "assets/clients/texsef-dark.png", "alt": "", "notes": "logo inside the 'Pictured' chip" }
+      ],
+      "interactive": {
+        "slideshow": {
+          "slides": [
+            { "img": "assets/opt/league-swampy-hero-v2.webp", "pos": "50% 42%", "alt": "Students in headsets competing at rows of gaming PCs during TexSEF’s Swampy Conquest tournament" },
+            { "img": "assets/opt/home-swampy-floor.webp", "pos": "50% 40%", "alt": "The tournament floor at TexSEF’s Swampy Conquest, with the event logo on the big screens" }
+          ],
+          "intervalMs": 7000,
+          "counter": "1 / 2",
+          "_source": { "counter": "(S.hs + 1) + ' / ' + HERO.length" },
+          "playPauseAriaLabel": { "running": "Pause photo slideshow", "paused": "Play photo slideshow" },
+          "reducedMotion": "starts paused when prefers-reduced-motion: reduce"
+        },
+        "picturedChip": {
+          "href": "/Project-Swampy",
+          "ariaLabel": "Pictured: TexSEF’s Swampy Conquest, Houston. Read the project",
+          "small": "Pictured",
+          "text": "TexSEF’s Swampy Conquest",
+          "logo": "assets/clients/texsef-dark.png"
+        },
+        "enrollChip": "Now enrolling"
+      },
+      "stats": [
+        { "value": "8", "suffix": " weeks", "label": "Regular season of weekly matches" },
+        { "value": "2", "suffix": " weeks", "label": "Single-elimination playoffs" },
+        { "value": "1", "suffix": " night", "label": "Live championship finals" },
+        { "value": "8", "suffix": " titles", "label": "Scholastic games in the lineup" }
+      ],
+      "statsAriaLabel": "A K-12 season at a glance",
+      "notes": "Stats count up (data-count, 0 decimals); suffix rendered in gradient span."
+    },
+    {
+      "id": "why",
+      "ariaLabelledby": "lg-idea-title",
+      "heading": "The league gives students a reason to show up every week.",
+      "headingHtml": "The league gives students a reason to <span class=\"tg-grad\">show up every week.</span>",
+      "lede": "A lot of esports programs stall after the ribbon cutting. Players drift into casual play, interest fades, and the room goes quiet.",
+      "body": [
+        "We’ve spent years building esports spaces, and we built the League so they get used. It adds the part that’s usually missing: scheduled matches against real opponents, with standings, playoffs, and a championship night at the end.",
+        "Players get opponents. Coaches get structure. Leaders get results they can point to, season after season."
+      ],
+      "images": [
+        { "src": "assets/opt/league-swampy-community-v2.webp", "alt": "A large group photo of tournament players in team jerseys on the steps outside the venue", "caption": "TexSEF’s Swampy Conquest · Houston, TX", "captionDots": ["#1F51FF", "#FF3131"] }
+      ],
+      "cards": [
+        { "meta": "ACCOUNTABILITY", "title": "Real stakes every week.", "body": "Mandatory rosters, required match times, and forfeits for no-shows. Players show up because their team needs them." },
+        { "meta": "BELONGING", "title": "Players compete for a team.", "body": "Players compete under your name, against real opponents, in front of people who care how it goes." },
+        { "meta": "PATHWAYS", "title": "Roles beyond the players.", "body": "Coaching, casting, production, and team operations give every kind of student or member a role." },
+        { "meta": "VISIBILITY", "title": "Results you can point to.", "body": "Standings, playoffs, and a championship night give leaders, families, and sponsors something to see." }
+      ],
+      "cardsAriaLabel": "Why it works"
+    },
+    {
+      "id": "season",
+      "ariaLabelledby": "lg-season-title",
+      "heading": "From roster to championship night.",
+      "headingHtml": "From roster to <span class=\"tg-grad\">championship night.</span>",
+      "lede": "This is our K-12 season. Community and commercial schedules are built around how your organization runs.",
+      "images": [
+        { "src": "assets/opt/league-swampy-conquest-v2.webp", "alt": "Players in team jerseys competing at Alienware PCs, with the tournament logo on the screen behind them", "caption": "TexSEF’s Swampy Conquest · Houston, TX", "captionDots": ["#1F51FF", "#FF3131"] }
+      ],
+      "interactive": {
+        "steps": [
+          { "n": "01", "label": "Step 01 · Preseason", "when": "Preseason", "title": "Enroll & roster", "desc": "Register your program, build rosters, and confirm divisions and titles." },
+          { "n": "02", "label": "Step 02 · Preseason", "when": "Preseason", "title": "Onboarding", "desc": "Coaches and players get the rulebook, eligibility checks, and match-day walkthroughs." },
+          { "n": "03", "label": "Step 03 · 8 weeks", "when": "8 weeks", "title": "Regular season", "desc": "Weekly scheduled matches. Every result counts toward the standings." },
+          { "n": "04", "label": "Step 04 · 2 weeks", "when": "2 weeks", "title": "Playoffs", "desc": "Top teams are seeded into single-elimination brackets." },
+          { "n": "05", "label": "Step 05 · 1 night", "when": "1 night", "title": "Championship", "desc": "A live finals night, hosted on-site by a member program." }
+        ],
+        "_source": { "steps[].label": "'Step ' + ('0' + (i + 1)) + ' · ' + when" },
+        "behaviour": "Scroll-linked progress line (--p from 0 to 1 as the list scrolls in); steps get 'is-done' as progress passes them. Reduced motion: progress = 1."
+      },
+      "lists": [
+        {
+          "id": "games",
+          "title": "Scholastic titles",
+          "note": "Formats vary by program.",
+          "ariaLabel": "Scholastic titles",
+          "items": [
+            { "name": "VALORANT", "alt": "VALORANT logo", "src": "assets/games/valorant-dark.svg", "maxHeight": "22px" },
+            { "name": "Rocket League", "alt": "Rocket League logo", "src": "assets/games/rocketleague-dark.png", "maxHeight": "44px" },
+            { "name": "Overwatch", "alt": "Overwatch logo", "src": "assets/games/overwatch-dark.svg", "maxHeight": "56px" },
+            { "name": "Marvel Rivals", "alt": "Marvel Rivals logo", "src": "assets/games/marvelrivals-dark.svg", "maxHeight": "50px" },
+            { "name": "Super Smash Bros.", "alt": "Super Smash Bros. logo", "src": "assets/games/smash-dark.svg", "maxHeight": "44px" },
+            { "name": "Mario Kart", "alt": "Mario Kart logo", "src": "assets/games/mariokart-dark.png", "maxHeight": "18px" },
+            { "name": "Fortnite", "alt": "Fortnite logo", "src": "assets/games/fortnite-dark.png", "maxHeight": "58px" },
+            { "name": "Madden NFL", "alt": "Madden NFL logo", "src": "assets/games/madden-dark.png", "maxHeight": "32px" }
+          ],
+          "_source": { "items[].src": "'assets/games/' + f + '-dark' + (/mariokart|madden|fortnite|rocketleague/.test(f) ? '.png' : '.svg')" }
+        }
+      ],
+      "body": [
+        "Seasons line up with the school calendar. Tell us your teams and titles, and we’ll quote your season."
+      ],
+      "ctas": [
+        { "label": "Get Pricing", "href": "#pricing", "style": "primary" },
+        { "label": "Book a free consultation", "href": "/Contact", "style": "ghost" }
+      ]
+    },
+    {
+      "id": "programs",
+      "ariaLabelledby": "lg-prog-title",
+      "heading": "A league built around your program.",
+      "headingHtml": "A league built around <span class=\"tg-grad\">your program.</span>",
+      "lede": "Pick your division to see the format, what players get, and where championship night happens.",
+      "interactive": {
+        "type": "tabs",
+        "ariaLabel": "Program type",
+        "defaultTab": "education",
+        "deepLinks": "URL hash #education / #community / #commercial selects that tab, pre-selects the pricing form's Program type (education -> 'K-12 Education', community -> 'Community / Government', commercial -> 'Commercial') and scrolls to #programs after 350ms. Any other hash scrolls to that element id.",
+        "keyboard": "ArrowLeft/ArrowRight/Home/End move between tabs",
+        "tabs": [
+          {
+            "key": "education",
+            "anchor": "#education",
+            "tabId": "lg-tab-education",
+            "label": "Education",
+            "who": "K-12 districts · charter & private · colleges · universities",
+            "image": { "src": "assets/opt/league-swampy-education-v2.webp", "alt": "Students in headsets playing VALORANT at a scholastic tournament" },
+            "title": "Give your students a season, not just a lab.",
+            "desc": "Schools compete against schools on a fixed weekly schedule, with eligibility and conduct standards your administrators can stand behind. Students earn their spot, show up for their team, and finish the year with something to show for it.",
+            "format": [
+              { "value": "8 Weeks", "label": "Regular season" },
+              { "value": "2 Weeks", "label": "Playoffs" },
+              { "value": "1 Night", "label": "Championship" }
+            ],
+            "points": [
+              { "title": "Interscholastic competition", "body": "Scheduled matches against other schools, not just pickup games in the lab." },
+              { "title": "Eligibility & conduct", "body": "One rulebook, enforced. Built to sit alongside your athletics and activities policies." },
+              { "title": "Career pathways", "body": "Casting, production, coaching, and team operations roles tie directly into STEM and CTE." },
+              { "title": "Recruitment exposure", "body": "Colleges and districts can host championship night and put the campus in front of families." }
+            ],
+            "hostHeading": "Host the finals",
+            "host": "Host the championship finals on your campus.",
+            "link": { "label": "Esports for education", "href": "/Education" },
+            "labLink": { "label": "Need a lab first? We design and build it, then enroll you in the League.", "labelHtml": "<strong>Need a lab first?</strong> We design and build it, then enroll you in the League.", "href": "/Contact?topic=Full%20facility%20build" }
+          },
+          {
+            "key": "community",
+            "anchor": "#community",
+            "tabId": "lg-tab-community",
+            "label": "Community",
+            "who": "Nonprofits · municipalities · libraries · youth & faith organizations",
+            "image": { "src": "assets/opt/league-swampy-community-v2.webp", "alt": "A large group photo of tournament players in team jerseys on the steps outside the venue" },
+            "title": "Give your community something to compete for.",
+            "desc": "A standing weekly commitment does more for youth engagement than drop-in play ever will. Your center fields teams, competes against other organizations, and builds the kind of identity that keeps young people coming back.",
+            "format": [
+              { "value": "Single Site", "label": "One center" },
+              { "value": "Network", "label": "All your locations" },
+              { "value": "Regional", "label": "Across organizations" }
+            ],
+            "points": [
+              { "title": "A reason to return", "body": "Weekly match nights give youth a fixed commitment and a team that counts on them." },
+              { "title": "Safe & structured", "body": "Rosters, supervision expectations, and conduct standards built for youth programs." },
+              { "title": "Network-ready", "body": "Compete against other organizations, or link your own centers into one league." },
+              { "title": "Reportable outcomes", "body": "A structured season is easier to document for boards, councils, and funders than open play." }
+            ],
+            "hostHeading": "Host the finals",
+            "host": "Host the championship night at your center.",
+            "link": { "label": "Esports for community", "href": "/Community" },
+            "labLink": { "label": "Need a lab first? We design and build it, then enroll you in the League.", "labelHtml": "<strong>Need a lab first?</strong> We design and build it, then enroll you in the League.", "href": "/Contact?topic=Full%20facility%20build&program=Community%20%2F%20Government" }
+          },
+          {
+            "key": "commercial",
+            "anchor": "#commercial",
+            "tabId": "lg-tab-commercial",
+            "label": "Commercial",
+            "who": "LAN centers · hotels · casinos · healthcare · entertainment venues",
+            "image": { "src": "assets/opt/league-swampy-commercial-v2.webp", "alt": "Players in matching purple jerseys competing at Alienware PCs on a tournament floor" },
+            "title": "Your venue becomes the arena.",
+            "desc": "A league turns a gaming space into a recurring event. The same players return every week of the season, bring friends to watch, and finish at championship night on your floor.",
+            "format": [
+              { "value": "Single", "label": "One venue" },
+              { "value": "Regional", "label": "Every location in a state" },
+              { "value": "Nationwide", "label": "Coast to coast" }
+            ],
+            "points": [
+              { "title": "Recurring traffic", "body": "Scheduled match nights bring the same players back week after week." },
+              { "title": "Single site to nationwide", "body": "Run at one venue, across a region, or as one league coast to coast." },
+              { "title": "Custom formats", "body": "Team-based, sports sim, or party titles chosen with you to fit your audience." },
+              { "title": "Finals as an event", "body": "Championship night on your floor, with the crowd and local press that come with it." }
+            ],
+            "hostHeading": "Host the finals",
+            "host": "Host the championship finals at your venue.",
+            "link": { "label": "Esports for commercial", "href": "/Commercial" },
+            "labLink": { "label": "Need a lab first? We design and build it, then enroll you in the League.", "labelHtml": "<strong>Need a lab first?</strong> We design and build it, then enroll you in the League.", "href": "/Contact?topic=Full%20facility%20build&program=Commercial" }
+          }
+        ],
+        "_source": { "tabs[].labLink.href": "'/Contact?topic=' + encodeURIComponent('Full facility build') + ({ community: '&program=' + encodeURIComponent('Community / Government'), commercial: '&program=Commercial' }[S.tab] || '')" }
+      }
+    },
+    {
+      "id": "join",
+      "ariaLabelledby": "lg-who-title",
+      "heading": "What we handle, and what you bring.",
+      "headingHtml": "What we handle, and <span class=\"tg-grad\">what you bring.</span>",
+      "lede": "We run the whole operation. Your part is a team that shows up.",
+      "lists": [
+        {
+          "title": "TANCHES.GG handles the entire operation",
+          "items": [
+            { "title": "Scheduling & brackets", "body": "Divisions, match slots, standings, and playoff seeding." },
+            { "title": "Rules & eligibility", "body": "One rulebook, conduct standards, and dispute resolution." },
+            { "title": "Results & standings", "body": "Live scores and a season players and families can follow." },
+            { "title": "Coach & staff support", "body": "Roster management and match-day operations help." },
+            { "title": "Championship night", "body": "Format, production, and run of show for the finals." }
+          ]
+        },
+        {
+          "title": "You bring players and a place to play",
+          "items": [
+            { "title": "Players", "body": "Students, members, or guests ready to commit to a season." },
+            { "title": "A coach or staff lead", "body": "One point of contact to manage the roster and match days." },
+            { "title": "A place to play", "body": "Your existing space, or one we design and build for you." },
+            { "title": "Commitment to the schedule", "body": "Show up for every match. That’s what makes it a league." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pricing",
+      "ariaLabelledby": "lg-price-title",
+      "heading": "Priced to your season.",
+      "headingHtml": "Priced to <span class=\"tg-grad\">your season.</span>",
+      "lede": "The League is a paid, fully managed program. We build every quote around your format, so you only pay for the season you actually run.",
+      "lists": [
+        { "title": "What shapes your quote", "items": ["Teams & divisions", "Titles played", "Single site, regional, or nationwide", "Championship hosting & production"] },
+        { "title": "Included every season", "style": "check", "items": ["Scheduling & brackets", "Rulebook & eligibility", "Live results & standings", "Coach & staff support", "Member portal access"] }
+      ],
+      "form": {
+        "ref": "forms.json#league",
+        "title": "Request league pricing",
+        "intro": "We’ll follow up with a quote for your format.",
+        "submitLabel": "Contact Us for Pricing",
+        "note": "Prefer to talk? Call (281) 826-2437",
+        "noteHtml": "Prefer to talk? Call <a href=\"tel:+12818262437\" class=\"lg-tel\">(281) 826-2437</a>",
+        "nextSteps": {
+          "title": "What happens next",
+          "items": [
+            { "n": "01", "title": "We reply", "body": "Within one business day." },
+            { "n": "02", "title": "Scope your season", "body": "Teams, titles, and format." },
+            { "n": "03", "title": "Your quote", "body": "Pricing built around your program." }
+          ]
+        },
+        "success": { "chip": "Received", "chipDot": "#1FA35B", "heading": "Thank you.", "body": "We’ll reach out with league pricing for your program." }
+      }
+    },
+    {
+      "id": "faq",
+      "ariaLabelledby": "lg-faq-title",
+      "heading": "Common questions about the League.",
+      "headingHtml": "Common questions about <span class=\"tg-grad\">the League.</span>",
+      "ctas": [
+        { "label": "Already a member? Log in to your portal", "href": "https://tel.rally.gg", "style": "link", "notes": "preceded by a live-dot indicator, followed by arrow icon" }
+      ],
+      "faqs": [
+        { "q": "Is the League free to join?", "a": "No. The League is a paid, fully managed program. Pricing depends on your number of teams, titles, format, and whether you host the finals. Contact us and we’ll put together a quote for your program." },
+        { "q": "Do we need a TANCHES.GG-built facility to participate?", "a": "No. The League is open to any program with its own esports space. Programs that build their facility with TANCHES.GG get discounted League pricing, so your build and your first season work together from day one." },
+        { "q": "How long is a season?", "a": "It depends on your program. K-12 seasons run an 8-week regular season, 2 weeks of playoffs, and a championship night, aligned to the school calendar. For community, healthcare, and commercial programs, we build the schedule and format around how your organization actually operates." },
+        { "q": "Which games are played?", "a": "Education divisions play established scholastic titles such as VALORANT, Rocket League, Overwatch 2, and Mario Kart 8. Community and commercial formats are chosen with you to fit your players." },
+        { "q": "What happens if a team misses a match?", "a": "Match times are required. A no-show is a forfeit, and repeated no-shows can lead to disqualification. Real stakes are what keep players invested." },
+        { "q": "Can multiple locations join as one program?", "a": "Yes. The League scales from a single site to a network of locations, a region, or a nationwide format." },
+        { "q": "Who can host championship night?", "a": "Member programs, whether a campus, a community center, or a venue, can host the finals on-site. We handle the format and run of show." },
+        { "q": "How do players and coaches follow the season?", "a": "Members get portal access for schedules, rosters, results, and standings throughout the season." }
+      ],
+      "notes": "Accordion; first FAQ (index 0) open by default; one open at a time."
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

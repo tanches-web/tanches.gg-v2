@@ -1,0 +1,76 @@
+---
+// Six steps; a spectrum line draws down the rail as the visitor scrolls.
+const steps = [
+  { title: 'Discover', desc: 'We learn your goals, who will use the room, its size, your budget, and your timeline.', items: ['Needs assessment', 'Site walkthrough', 'Budget range'] },
+  { title: 'Plan', desc: 'We write up the concept and requirements and sketch a basic layout.', items: ['Concept brief', 'Requirements', 'Layout'] },
+  { title: 'Design', desc: 'You get 3D renders of the room to refine the layout and show to stakeholders.', items: ['3D renders', 'Layout revisions', 'Stakeholder review'] },
+  { title: 'Approve', desc: 'You sign off on final scope and pricing, through a purchasing contract you already use.', items: ['Final scope', 'Pricing', 'Sign-off'], contracts: true },
+  { title: 'Build & Launch', desc: 'One team installs the network, AV, stations, lighting, and finishes. Then we test everything, train your staff, and open the doors.', items: ['Network & AV', 'Stations & finishes', 'Staff training', 'Opening day'] },
+  { title: 'Scale', desc: 'Support, curriculum, and league play keep the program going each season, and new sites plug into the same setup.', items: ['Managed support', 'Curriculum & league', 'New sites'] },
+];
+const contracts = [
+  ['Texas DIR', 'dir'], ['OMNIA Partners', 'omnia'], ['NCPA', 'ncpa'], ['GSA', 'gsa'],
+];
+---
+<ol class="process" data-process>
+  <span class="rail" aria-hidden="true"><span class="fill"></span></span>
+  {steps.map((s, i) => (
+    <li class="step" data-step>
+      <span class="node" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+      <div class="body-col">
+        <h3 class="h3"><span class="sr-only">Step {i + 1}: </span>{s.title}</h3>
+        <p class="body">{s.desc}</p>
+        <ul class="chips" role="list">{s.items.map((it) => <li>{it}</li>)}</ul>
+        {s.contracts && (
+          <div class="contracts">
+            <p class="small">Buy through a contract you already use:</p>
+            <ul role="list">
+              {contracts.map(([n, k]) => (
+                <li>
+                  <img class="c-l" src={`/assets/logo-${k}-black.png`} alt={n} loading="lazy" />
+                  <img class="c-d" src={`/assets/logo-${k}-white.png`} alt="" aria-hidden="true" loading="lazy" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .process { position: relative; list-style: none; padding: 0; display: grid; gap: 0; }
+  .rail { position: absolute; left: 1.25rem; top: 1.5rem; bottom: 1.5rem; width: 2px; background: var(--line); border-radius: 2px; }
+  .fill { position: absolute; inset: 0; background: linear-gradient(180deg, var(--flame), var(--rose) 50%, var(--violet)); transform-origin: top; transform: scaleY(var(--p, 1)); border-radius: 2px; }
+  .step { position: relative; display: grid; grid-template-columns: 2.5rem 1fr; gap: clamp(1.25rem, 3vw, 2.5rem); padding: 1.5rem 0 2.25rem; }
+  .node { position: relative; z-index: 1; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; font: 500 .75rem var(--mono); letter-spacing: .04em; background: var(--bg); border: 1px solid var(--line-2); color: var(--ink-2); transition: background-color .4s, border-color .4s; }
+  .step.is-done .node { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .body-col { display: grid; gap: .6rem; padding-top: .3rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin-top: .35rem; }
+  .chips li { font-size: .8125rem; font-weight: 560; padding: .3rem .7rem; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); }
+  .contracts { margin-top: 1rem; padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  .contracts ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 1.75rem; margin-top: .75rem; }
+  .contracts img { height: 30px; width: auto; }
+  .c-d { display: none; }
+  :global([data-theme='dark']) .c-l { display: none; }
+  :global([data-theme='dark']) .c-d { display: block; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-process]').forEach((ol) => {
+    const steps = [...ol.querySelectorAll<HTMLElement>('[data-step]')];
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { steps.forEach((s) => s.classList.add('is-done')); return; }
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = ol.getBoundingClientRect();
+      const mid = innerHeight * 0.6;
+      const p = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+      ol.style.setProperty('--p', p.toFixed(3));
+      steps.forEach((s) => s.classList.toggle('is-done', s.getBoundingClientRect().top < mid));
+    };
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    update();
+  });
+</script>

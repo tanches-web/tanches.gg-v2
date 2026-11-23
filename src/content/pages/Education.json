@@ -1,0 +1,347 @@
+{
+  "slug": "Education",
+  "sourceFile": "Education.html",
+  "url": "https://tanches.gg/Education",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "education", "tone": "dark" } },
+    { "name": "SolutionPage", "props": { "kind": "education" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Education | TANCHES.GG",
+    "description": "Esports programs for K-12 and higher education, from club rooms to full academic labs, aligned with DIR, OMNIA, NCPA, and E-Rate procurement.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Education",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Education | TANCHES.GG",
+    "ogDescription": "Esports programs for K-12 and higher education, from club rooms to full academic labs, aligned with DIR, OMNIA, NCPA, and E-Rate procurement.",
+    "ogUrl": "https://tanches.gg/Education",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Education | TANCHES.GG",
+    "twitterDescription": "Esports programs for K-12 and higher education, from club rooms to full academic labs, aligned with DIR, OMNIA, NCPA, and E-Rate procurement.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Education | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Education",
+            "url": "https://tanches.gg/Education",
+            "name": "Education | TANCHES.GG",
+            "description": "Esports programs for K-12 and higher education, from club rooms to full academic labs, aligned with DIR, OMNIA, NCPA, and E-Rate procurement.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Education", "item": "https://tanches.gg/Education" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Education",
+      "p": [
+        "Esports programs for K-12 and higher education, from club rooms to full academic labs, aligned with DIR, OMNIA, NCPA, and E-Rate procurement.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "htmlLang": "en",
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css", "mobile.css"],
+      "themeBootstrap": "inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>"
+    }
+  },
+  "sections": [
+    {
+      "id": "sp-hero",
+      "component": "SolutionPage",
+      "heading": "Esports for K‑12 and colleges, built to support real coursework.",
+      "headingHtml": "Esports for K‑12 and colleges, <span class=\"tg-grad\">built to support real coursework.</span>",
+      "lede": "We design and build esports rooms that support STEM, CTE, and workforce programs. You can buy through contracts your district already uses, and we keep supporting the room after it opens.",
+      "tags": ["K-12 · Colleges · Universities"],
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (18px)" },
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/banners/education-ban.jpg", "alt": "Students working on laptops in a classroom while a teacher looks on", "objectPosition": "50% 50%" }
+      ],
+      "interactive": {
+        "type": "solutions-switch",
+        "ariaLabel": "Solutions by market",
+        "label": "Solutions",
+        "tabs": [
+          { "label": "Education", "href": "/Education", "current": true },
+          { "label": "Community", "href": "/Community", "current": false },
+          { "label": "Commercial", "href": "/Commercial", "current": false }
+        ]
+      },
+      "notes": "h1 = d.h1a + ' ' + <span class=tg-grad>d.h1b</span>. h1a contains a non-breaking hyphen (U+2011) in 'K‑12'. Chip text is d.chip.",
+      "_source": { "heading": "d.h1a + ' ' + d.h1b", "tabs": "['education','community','commercial'].map(k => ({label: k[0].toUpperCase()+k.slice(1), href: '/' + label}))" }
+    },
+    {
+      "id": "sp-built",
+      "component": "SolutionPage",
+      "heading": "For every kind of school and college.",
+      "lede": "Districts, private schools, and colleges buy and run programs differently. We plan around how yours works.",
+      "cards": [
+        { "meta": "K-12 SCHOOL DISTRICTS", "title": "K-12 School Districts", "subtitle": "One campus or the whole district.", "body": "We work directly with districts and handle DIR, OMNIA, NCPA, and E-Rate alongside your procurement office. The program runs as STEM and CTE, the kind of program boards approve and families support.", "icon": "lucide school (BF_ICONS['K-12 SCHOOL DISTRICTS'])" },
+        { "meta": "PRIVATE, CHARTER & MAGNET", "title": "Private, Charter & Magnet", "subtitle": "A faster path to a new program.", "body": "Private, charter, and magnet schools can often decide faster than a district. We keep that pace and deliver a STEM program that helps in enrollment conversations and keeps students engaged.", "icon": "lucide zap (BF_ICONS['PRIVATE, CHARTER & MAGNET'])" },
+        { "meta": "JUNIOR & COMMUNITY COLLEGES", "title": "Junior & Community Colleges", "subtitle": "A way to recruit students and build pathways.", "body": "Community colleges use esports to attract and keep students and to build workforce and CTE pathways. We build the room and the program structure that keeps it going.", "icon": "lucide book-open (BF_ICONS['JUNIOR & COMMUNITY COLLEGES'])" },
+        { "meta": "UNIVERSITIES", "title": "Universities", "subtitle": "Scholarships, STEM research, and campus life.", "body": "Universities build esports programs to compete for students, offer scholarships, and support STEM research. We build a facility sized to your program and your campus.", "icon": "lucide graduation-cap (BF_ICONS['UNIVERSITIES'])" }
+      ],
+      "notes": "Rendered card shows icon, h3 = title (nameCase(label)), lead p = subtitle, body p. The uppercase 'meta' label is in the data but NOT rendered.",
+      "_source": { "cards[].title": "nameCase(label): s.toLowerCase().replace(/(^|[\\s,&/-])([a-z])/g, upper).replace(/\\bLan\\b/g,'LAN')" }
+    },
+    {
+      "id": "sp-why",
+      "component": "SolutionPage",
+      "heading": "Most of your students already play video games.",
+      "headingHtml": "Most of your students <span class=\"tg-grad\">already play video games.</span>",
+      "lede": "A structured program gives that interest a place in school. Schools that run one see stronger engagement, new CTE enrollment, and real career paths in technology, media, and business.",
+      "stats": [
+        { "value": "96%", "label": "of US teens play video games", "countUp": { "pre": "", "val": "96", "dec": 0, "unit": "%" } },
+        { "value": "300+", "label": "universities offer esports scholarships", "countUp": { "pre": "", "val": "300", "dec": 0, "unit": "+" } },
+        { "value": "50%+", "label": "of esports players go on to study in STEM fields", "countUp": { "pre": "", "val": "50", "dec": 0, "unit": "%+" } }
+      ],
+      "lists": [
+        {
+          "title": "Built around how public schools buy and run technology.",
+          "body": "Whether you need a few new stations or a full facility, every project gets the same network, security, and support we build for our IT clients.",
+          "items": [
+            { "label": "PROCUREMENT", "title": "No RFP needed", "body": "Our active DIR, OMNIA, NCPA, GSA, and E-Rate contracts let public institutions buy from us without a separate bid." },
+            { "label": "INFRASTRUCTURE", "title": "Your IT team stays in charge", "body": "We bring 28 years of enterprise IT to every build, and we work with your district’s IT department, not around it." },
+            { "label": "OUTCOMES", "title": "STEM, CTE, and workforce programs", "body": "STEM-accredited curriculum and CTE pathway alignment are available, so the room supports a full workforce program." }
+          ]
+        }
+      ],
+      "ctas": [
+        { "label": "See how we build the network", "href": "/Technology", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "notes": "Heading from whyTitle 'Most of your students | already play video games.' split on ' | '; second half gets gradient. Stat number split into pre/val/unit, val count-up animated. Pillar 'label' (PROCUREMENT etc.) is in data but not rendered; rendered as <strong>title</strong><span>body</span>. The pillars body paragraph is hard-coded in the template (same on all three kinds)."
+    },
+    {
+      "id": "sp-case",
+      "component": "SolutionPage",
+      "heading": "Stafford MSD built the first esports lab in its region.",
+      "headingHtml": "Stafford MSD built the first esports lab <span class=\"tg-sp-hi\">in its region.</span>",
+      "body": [
+        "A full esports lab built from scratch, tied to the district’s STEM program. Stafford bought it through DIR and OMNIA, so there was no separate bid. We handled the consulting, electrical and cabling, network, and hardware, and we stayed on for support after it opened.",
+        "Want to talk to a district we’ve worked with, or see a room in person? Just ask."
+      ],
+      "tags": ["Consulting", "Electrical & Cabling", "Hardware", "Networking", "Ongoing Support"],
+      "stats": [{ "value": "+65%", "label": "increase in student engagement" }],
+      "meta": "K-12 Education · Stafford, TX",
+      "testimonials": [
+        { "quote": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth.", "name": "Colt Berry", "role": "Esports Head Coach, Stafford MSD", "org": "Stafford MSD", "display": "blockquote wraps quote in “ ” (added by template)" }
+      ],
+      "ctas": [
+        { "label": "Read the case study", "href": "/Project-Stafford", "style": "ghost", "icon": "arrow-right (16px)" },
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "View all projects", "href": "/Projects", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "images": [
+        { "src": "assets/opt/home-hero-stafford.webp", "alt": "Students at white Alienware stations in the Stafford MSD esports lab", "loading": "lazy" },
+        { "src": "assets/district-stafford-h-white.png", "alt": "Stafford Municipal School District", "role": "client logo" }
+      ],
+      "interactive": {
+        "type": "client-themed-case",
+        "clientColors": { "--a": "#EA0000", "--b": "#FCB326", "--hi": "#FCB326", "--deep": "#4E060C" },
+        "mascotWatermark": "SPARTANS",
+        "logoClass": ""
+      },
+      "notes": "Second body paragraph (csAsk) sits in the 'x-after' bar above the two buttons. Data object STAFFORD shared with Commercial. hasCsNote false for education.",
+      "_source": { "heading": "d.csA + ' ' + d.csB", "project": "STAFFORD constant" }
+    },
+    {
+      "id": "sp-curriculum",
+      "component": "SolutionPage",
+      "condition": "d.hasCurriculum === true",
+      "heading": "Curriculum that connects the room to real careers.",
+      "lede": "We connect your program with STEM.org accredited curriculum partners. Each track below ties esports to real jobs, and your staff doesn’t have to build it from scratch.",
+      "tags": ["STEM.org accredited"],
+      "cards": [
+        { "title": "Artificial Intelligence", "tags": ["Gen-AI Programmer", "Data Scientist"], "icon": "lucide cpu" },
+        { "title": "Software & Product", "tags": ["Game Developer", "Product Manager"], "icon": "lucide code" },
+        { "title": "Hardware & IT", "tags": ["Network Engineer", "IT Technician"], "icon": "lucide server" },
+        { "title": "Cybersecurity", "tags": ["Security Analyst", "Penetration Tester"], "icon": "lucide lock" },
+        { "title": "Media Arts & Design", "tags": ["Shoutcaster", "Graphic Designer"], "icon": "lucide video" },
+        { "title": "Marketing & PR", "tags": ["Brand Manager", "Marketing Director"], "icon": "lucide megaphone" },
+        { "title": "Operations & Management", "tags": ["Data Analyst", "Esports Program Director"], "icon": "lucide chart-line" },
+        { "title": "Event Production", "tags": ["Production Manager", "A/V Technician"], "icon": "lucide radio" },
+        { "title": "Health Sciences", "tags": ["Physical Therapist", "Exercise Physiologist"], "icon": "lucide heart-pulse" },
+        { "title": "Business & Finance", "tags": ["Growth Strategist", "Treasurer"], "icon": "lucide circle-dollar-sign" }
+      ],
+      "notes": "Tracks come from the shared TRACKS constant (same 10 for education and community). 'tags' = career roles listed under each track. Data also has curEyebrow 'CURRICULUM & PATHWAYS' which is NOT rendered."
+    },
+    {
+      "id": "sp-fund",
+      "component": "SolutionPage",
+      "heading": "There is usually more funding than you think.",
+      "headingHtml": "There is usually more funding <span class=\"tg-grad\">than you think.</span>",
+      "lede": "Most schools have more ways to pay for this than they realize. We help you find them and use them.",
+      "ctas": [
+        { "label": "See all contracts and funding options", "href": "/Procurement", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "lists": [
+        {
+          "title": "Buy through a contract you already use",
+          "condition": "d.hasProcurement (kind !== 'commercial')",
+          "items": [
+            { "kind": "State contract", "name": "Texas DIR", "logo": "assets/proc-dir.png", "maxHeight": "60px" },
+            { "kind": "Cooperative", "name": "OMNIA Partners", "logo": "assets/proc-omnia.png", "maxHeight": "48px" },
+            { "kind": "Cooperative", "name": "NCPA", "logo": "assets/proc-ncpa.png", "maxHeight": "46px" },
+            { "kind": "Federal", "name": "GSA", "logo": "assets/proc-gsa-mono.svg", "maxHeight": "58px" }
+          ]
+        },
+        {
+          "title": "Ways to pay for it",
+          "items": [
+            { "title": "E-Rate (SPIN: 143052684)", "body": "Federal discounts on networking and broadband for eligible K-12 schools and libraries." },
+            { "title": "Federal & State Grants", "body": "Programs like CTE Perkins, ESSER, and state technology grants can pay for equipment, infrastructure, and programming. We help you find the ones that fit your project." },
+            { "title": "Manufacturer Co-Funding", "body": "Through our OEM partners, co-funding may be available to help offset hardware costs." }
+          ]
+        }
+      ],
+      "images": [
+        { "src": "assets/proc-dir.png", "alt": "Texas DIR" },
+        { "src": "assets/proc-omnia.png", "alt": "OMNIA Partners" },
+        { "src": "assets/proc-ncpa.png", "alt": "NCPA" },
+        { "src": "assets/proc-gsa-mono.svg", "alt": "GSA" }
+      ],
+      "interactive": {
+        "type": "partner-logo-marquee",
+        "caption": "We build with hardware and software from these partners, and many more.",
+        "loop": "list rendered twice ([...L, ...L]) for seamless scroll",
+        "logos": [
+          { "name": "Lenovo", "srcDark": "assets/oem/lenovo.png", "srcLight": "assets/oem/lenovo.png", "maxHeight": "32px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "Dell Technologies", "srcDark": "assets/oem/dell.png", "srcLight": "assets/oem/dell.png", "maxHeight": "21px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "Alienware", "srcDark": "assets/oem/alienware-dark.svg", "srcLight": "assets/oem/alienware-light.svg", "maxHeight": "23px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "HPE", "srcDark": "assets/oem/hpe-dark.png", "srcLight": "assets/oem/hpe-light.png", "maxHeight": "33px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "Samsung", "srcDark": "assets/oem/samsung.png", "srcLight": "assets/oem/samsung.png", "maxHeight": "23px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "Extron", "srcDark": "assets/oem/extron.png", "srcLight": "assets/oem/extron.png", "maxHeight": "30px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "Spectrum Industries", "srcDark": "assets/oem/spectrum.png", "srcLight": "assets/oem/spectrum.png", "maxHeight": "27px", "hoverFilterDark": "brightness(0) invert(1)", "hoverFilterLight": "none" },
+          { "name": "Senet", "srcDark": "assets/oem/senet-dark.svg", "srcLight": "assets/oem/senet-light.svg", "maxHeight": "30px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "GG Circuit", "srcDark": "assets/oem/ggcircuit-dark.svg", "srcLight": "assets/oem/ggcircuit-light.svg", "maxHeight": "33px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "Respawn Youth", "srcDark": "assets/oem/respawn-dark.png", "srcLight": "assets/oem/respawn-light.png", "maxHeight": "51px", "hoverFilterDark": "none", "hoverFilterLight": "none" },
+          { "name": "USAEL", "srcDark": "assets/oem/usael.svg", "srcLight": "assets/oem/usael.svg", "maxHeight": "39px", "hoverFilterDark": "none", "hoverFilterLight": "brightness(0)" }
+        ],
+        "_source": { "maxHeight": "Math.round(PARTNERS[i][3] * 1.5) + 'px' (raw heights: 21,14,15,22,15,20,18,20,22,34,26)" }
+      },
+      "notes": "Heading from fundTitle 'There is usually more funding | than you think.'. Logo alt text = partner name on both light and dark variants."
+    },
+    {
+      "id": "league",
+      "component": "SolutionPage",
+      "eyebrow": "TANCHES.GG League · Now enrolling",
+      "heading": "We also run a league for your students to play in.",
+      "lede": "The TANCHES.GG League gives your students scheduled matches against other schools. We run the league, and you bring your teams.",
+      "stats": [
+        { "value": "8 Weeks", "label": "Regular season" },
+        { "value": "2 Weeks", "label": "Playoffs" },
+        { "value": "1 Night", "label": "Championship final" }
+      ],
+      "cards": [
+        { "title": "Somewhere to compete", "body": "Students play scheduled matches against other schools, not just each other in the lab." },
+        { "title": "Built for school policy", "body": "Eligibility and conduct standards your administrators can stand behind, alongside athletics and activities." },
+        { "title": "A recruiting night on campus", "body": "Host the championship on campus and show your program to families and prospective students." }
+      ],
+      "lists": [
+        { "title": "Titles", "items": ["VALORANT", "Rocket League", "Overwatch 2", "Marvel Rivals", "Smash Ultimate", "Mario Kart 8", "Fortnite", "Madden NFL 26"] }
+      ],
+      "ctas": [
+        { "label": "Explore the League", "href": "/League#education", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "Contact for Pricing", "href": "/League#pricing", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/opt/league-swampy-conquest-v2.webp", "alt": "Students competing at TexSEF’s Swampy Conquest tournament on Alienware stations", "loading": "lazy", "role": "full-bleed background" }
+      ],
+      "notes": "Eyebrow is a glass chip with a pulsing 'live' dot (d.leagueStatus). Format strip shown because hasFormat=true; games shown because hasGames=true (label = d.gamesLabel 'Titles'). Image alt is hard-coded in template (same for all kinds).",
+      "_source": { "ctas[0].href": "'/League#' + kind" }
+    },
+    {
+      "id": "sp-faq",
+      "component": "SolutionPage",
+      "heading": "Common questions from schools.",
+      "cards": [
+        { "title": "Not sure where to start?", "body": "Answer a few questions about your space and program, and we’ll send you a free readiness report.", "links": [{ "label": "Take the assessment", "href": "/Assessment", "style": "ink small button", "icon": "arrow-right (16px)" }] }
+      ],
+      "faqs": [
+        { "q": "Do we need to go through a bid process to work with TANCHES.GG?", "a": "Usually not. Our active DIR, OMNIA, NCPA, and E-Rate contracts let most public institutions buy from us without a separate RFP or bid. We can walk your procurement office through it." },
+        { "q": "Will this create problems for our district’s IT department?", "a": "No. We work with your IT department, not around it. We bring 28 years of enterprise IT to every build, and the networking, cybersecurity, and managed support are built to your IT team’s standards." },
+        { "q": "Does the facility qualify for E-Rate funding?", "a": "E-Rate gives federal discounts on networking and broadband for eligible K-12 schools and libraries. We’ll show you which parts of your build may qualify. Our SPIN is 143052684." },
+        { "q": "Is the curriculum STEM or CTE accredited?", "a": "Yes. We connect your program with STEM.org accredited curriculum partners, and CTE pathway alignment is available." },
+        { "q": "Can we start with a small deployment and expand later?", "a": "Yes. We can start with a small equipment deployment or a full facility build. We scope what you need now and plan for what comes next." },
+        { "q": "What happens after the facility is built?", "a": "Your first season starts with coaching, league registration, and student onboarding. After that, we provide ongoing technical, coaching, and program support." }
+      ],
+      "interactive": { "type": "accordion", "behaviour": "single-open; first item (index 0) open by default (state.faq = 0); clicking open item closes all", "ids": "button sp-faq-q{i}, panel sp-faq-a{i}" }
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ],
+  "unrenderedData": {
+    "note": "Fields present in SolutionPage DATA.education but not bound anywhere in the template.",
+    "caps": "EDUCATION",
+    "cta": "Start a Project",
+    "curEyebrow": "CURRICULUM & PATHWAYS",
+    "leagueCta": "Join the League",
+    "hasHandles": true,
+    "hostTitle": "Host the championship finals on your campus.",
+    "hostDesc": "Every season ends with a championship night. Junior colleges, universities, and school districts can host it on-site, putting your campus in front of competitive families and prospective students, with the recruitment exposure and local press that comes with it.",
+    "pricing": "Pricing: quoted per program.",
+    "deliver": [
+      { "cat": "CONSULTING", "title": "Advisory & Planning" },
+      { "cat": "FUNDING", "title": "Grants Research" },
+      { "cat": "DESIGN", "title": "Facility Design" },
+      { "cat": "INFRASTRUCTURE", "title": "Cabling & Networking" },
+      { "cat": "AUDIO VISUAL", "title": "AV Integration" },
+      { "cat": "HARDWARE", "title": "Gaming Hardware & Servers" },
+      { "cat": "PROGRAMMING", "title": "Curriculum & Programming" },
+      { "cat": "MANAGED SERVICES", "title": "Ongoing Support" }
+    ],
+    "handles": [
+      { "t": "Scheduling & Brackets", "d": "Divisions, match slots, standings, seeding." },
+      { "t": "Rules & Eligibility", "d": "One rulebook, conduct standards, dispute resolution." },
+      { "t": "Results & Standings", "d": "Live scores, a season to follow." },
+      { "t": "Coach & Staff Support", "d": "Roster management, match-day operations." }
+    ]
+  }
+}

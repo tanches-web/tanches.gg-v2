@@ -1,0 +1,56 @@
+---
+// Logo marquee. Every logo sits in one neutral tone; hovering a logo reveals its own colours.
+// The loop never pauses on hover. Reduced motion gets a static, wrapped row.
+export interface Logo { name: string; light: string; dark?: string; h?: number | string }
+interface Props { logos: Logo[]; label?: string; duration?: number; reverse?: boolean; size?: 'md' | 'sm' }
+const { logos, label, duration = 60, reverse = false, size = 'md' } = Astro.props;
+const px = (h?: number | string) => (h == null ? undefined : typeof h === 'number' ? `${h}px` : h);
+const loop = [...logos, ...logos];
+---
+<div class:list={['marquee', size]} aria-label={label} role={label ? 'region' : undefined} style={`--dur:${duration}s`}>
+  <ul class:list={['track', { reverse }]} role="list">
+    {loop.map((l, i) => {
+      const clone = i >= logos.length;
+      return (
+        <li aria-hidden={clone ? 'true' : undefined}>
+          <img class="lg-l" src={l.light} alt={clone ? '' : l.name} style={px(l.h) ? `max-height:${px(l.h)}` : undefined} loading="lazy" decoding="async" />
+          <img class="lg-d" src={l.dark ?? l.light} alt="" aria-hidden="true" style={px(l.h) ? `max-height:${px(l.h)}` : undefined} loading="lazy" decoding="async" />
+        </li>
+      );
+    })}
+  </ul>
+</div>
+
+<style>
+  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .track { display: flex; align-items: center; gap: clamp(2.75rem, 5vw, 4.75rem); list-style: none; padding: 0; margin: 0; width: max-content; animation: scroll var(--dur) linear infinite; }
+  .track.reverse { animation-direction: reverse; }
+  .track li { flex: none; display: grid; place-items: center; height: 72px; }
+  .sm .track li { height: 52px; }
+  .track img { width: auto; height: auto; max-width: 190px; max-height: 48px; object-fit: contain; }
+  .sm .track img { max-width: 140px; max-height: 30px; }
+  /* One tone until hovered; the hovered logo shows its true colours */
+  .track img { filter: grayscale(1) contrast(1.1); opacity: .55; transition: filter .35s var(--ease-out), opacity .35s var(--ease-out); }
+  .track li:hover img { filter: none; opacity: 1; }
+  .lg-d { display: none; }
+  /* Dark theme: the light-ground artwork inverted to a single pale tone (grey-scaled colour logos would sink into black);
+     the hovered logo swaps to its own dark-ground colours */
+  :global([data-theme='dark']) .track .lg-l { filter: grayscale(1) invert(1) brightness(1.2); opacity: .74; }
+  :global([data-theme='dark']) .track li:hover .lg-l { display: none; }
+  :global([data-theme='dark']) .track li:hover .lg-d { display: block; filter: none; opacity: 1; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { -webkit-mask-image: none; mask-image: none; }
+    .track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; row-gap: 1.5rem; }
+    .track li[aria-hidden='true'] { display: none; }
+  }
+</style>
+
+<script>
+  // In dark theme the colour versions are separate files: fetch them the first time the pointer reaches a marquee,
+  // so the swap on hover is instant.
+  document.querySelectorAll<HTMLElement>('.marquee').forEach((m) => m.addEventListener('pointerenter', () => {
+    if (document.documentElement.dataset.theme !== 'dark') return;
+    m.querySelectorAll<HTMLImageElement>('img.lg-d[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
+  }));
+</script>

@@ -1,0 +1,179 @@
+---
+// Technology: the IT director's page. The room as a network diagram, the ten layers as a rack,
+// what we deliver, the hardware we source, and who keeps it running after launch.
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import Icon from '../components/Icon.astro';
+import TechPlan from '../components/technology/TechPlan.astro';
+import LayerStack from '../components/technology/LayerStack.astro';
+import page from '../content/pages/Technology.json';
+import { splitHeading, asset } from '../components/solution/heading';
+
+const sec = (id: string) => page.sections.find((s: any) => s.id === id) as any;
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+
+const hero = sec('tech-hero');
+const hh = splitHeading(hero);
+const stack = sec('the-stack');
+const services = sec('services');
+const hw = sec('hardware-partners');
+const hwh = splitHeading(hw);
+const hwImg = hw.images[0];
+const oem = hw.interactive.items.map((o: any) => ({ name: o.name, light: asset(o.srcLightUnused), dark: asset(o.src) }));
+const sup = sec('support-after-launch');
+---
+<Base seo={seo}>
+  <PageHero
+    title={hh.title}
+    strong={hh.strong}
+    lede={hero.lede}
+    ctas={hero.ctas.map((c: any) => ({ label: c.label, href: c.href, primary: c.style === 'primary' }))}
+  >
+    <TechPlan stats={hero.stats} />
+  </PageHero>
+
+  <!-- The ten layers, as a rack -->
+  <section class="section" id="layers" aria-labelledby="stack-title">
+    <div class="wrap">
+      <LayerStack
+        heading={stack.heading}
+        body={stack.body}
+        caption={stack.interactive.caption}
+        whyPrefix={stack.interactive.whyPrefix}
+        items={stack.interactive.items}
+      />
+    </div>
+  </section>
+
+  <!-- Services: a capability matrix -->
+  <section class="section" id="services" aria-labelledby="svc-title">
+    <div class="wrap">
+      <SectionHead id="svc-title" title={services.heading} lede={services.lede} />
+      <ul class="caps" role="list" data-reveal>
+        {services.cards.map((c: any, i: number) => (
+          <li>
+            <span class="spec">{String(i + 1).padStart(2, '0')} · {c.meta}</span>
+            <h3 class="cap-t">{c.title}</h3>
+            <p class="small">{c.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Hardware: one real build, then the brands we source -->
+  <section class="section hw" aria-labelledby="hw-title" style={`--ca:${hwImg.clientColors.a};--cb:${hwImg.clientColors.b}`}>
+    <div class="wrap hw-grid">
+      <figure class="hw-photo" data-reveal>
+        <div class="photo"><img src={asset(hwImg.src)} alt={hwImg.alt} loading="lazy" decoding="async" /></div>
+        <figcaption class="label-glass chip"><span class="dots" aria-hidden="true"><i></i><i></i></span>{hwImg.chip}</figcaption>
+      </figure>
+      <div class="hw-copy">
+        <h2 id="hw-title" class="h2" data-reveal>{hwh.title} <strong>{hwh.strong}</strong></h2>
+        {hw.body.map((p: string) => <p class="lede" data-reveal>{p}</p>)}
+        <a class="link" href={hw.ctas[0].href} data-reveal>{hw.ctas[0].label} <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+    <div class="wrap oem" data-reveal>
+      <p class="small">{hw.interactive.caption}</p>
+      <LogoMarquee logos={oem} label={hw.interactive.caption} duration={46} />
+    </div>
+  </section>
+
+  <!-- Support after launch: the server room, with the contract in a frosted card -->
+  <section class="support" aria-labelledby="sup-title">
+    <img class="support-bg" src="/assets/banners/technology-server-room.jpg" alt="Rows of server racks in a data room" loading="lazy" decoding="async" />
+    <div class="wrap support-inner">
+      <div class="sup-card" data-reveal>
+        <h2 id="sup-title" class="h2">{sup.heading}</h2>
+        <p class="body">{sup.lede}</p>
+        <div class="sup-lists">
+          {sup.lists.map((l: any) => (
+            <div>
+              <div class="sup-h"><h3>{l.title}</h3><span class="spec">{l.eyebrow}</span></div>
+              <ul role="list">{l.items.map((it: string) => <li><Icon name="check" size={16} />{it}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+        <p class="body note">{sup.body[0]}</p>
+        <div class="btns">
+          {sup.ctas.slice().reverse().map((c: any) => (
+            <a class:list={['btn', c.style === 'ink' ? 'btn-primary' : 'btn-ghost']} href={c.href}>{c.label}{c.style === 'ink' && <Icon name="arrow-right" />}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  /* Capability matrix */
+  .caps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line-2); }
+  .caps li { display: grid; gap: .6rem; align-content: start; padding: 1.5rem clamp(1rem, 2vw, 1.75rem) 2rem; border-bottom: 1px solid var(--line); }
+  .caps li:not(:nth-child(4n + 1)) { border-left: 1px solid var(--line); }
+  .caps li:nth-child(4n + 1) { padding-left: 0; }
+  .cap-t { font-size: 1.1875rem; font-weight: 640; letter-spacing: -0.015em; line-height: 1.25; }
+
+  /* Hardware */
+  .hw-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .hw-photo { position: relative; }
+  .hw-photo .photo { aspect-ratio: 4 / 3; position: relative; box-shadow: 0 50px 60px -36px color-mix(in srgb, var(--ca) 55%, transparent), var(--shadow-float); }
+  .hw-photo .photo::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; z-index: 1; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  .chip { position: absolute; left: 1rem; bottom: 1rem; padding-left: .75rem; font-size: .8125rem; }
+  .dots { display: inline-flex; }
+  .dots i { width: .7rem; height: .7rem; border-radius: 50%; background: var(--ca); box-shadow: 0 0 0 2px var(--glass-hi); }
+  .dots i + i { background: var(--cb); margin-left: -.2rem; }
+  .hw-copy { display: grid; gap: 1.5rem; justify-items: start; }
+  .oem { margin-top: clamp(3.5rem, 6vw, 5rem); padding-top: 2rem; border-top: 1px solid var(--line); display: grid; gap: 1rem; justify-items: center; text-align: center; }
+  .oem :global(.marquee) { width: 100%; }
+
+  /* Support (fixed light-on-photo colours, as on the home league band) */
+  .support { position: relative; min-height: min(100vh, 920px); display: grid; align-items: center; overflow: hidden; isolation: isolate; color: #F2F3F5; }
+  .support-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .support::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10,11,14,.82) 0%, rgba(10,11,14,.45) 60%, rgba(10,11,14,.25) 100%); }
+  .support-inner { padding-block: clamp(4rem, 8vw, 7rem); }
+  .sup-card {
+    max-width: 760px; display: grid; gap: 1.25rem; justify-items: start; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px;
+    background: rgba(18, 19, 24, .58); border: 1px solid rgba(255, 255, 255, .14);
+    backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  }
+  .sup-card .body { color: #C9CCD4; }
+  .sup-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.14); }
+  .sup-h { display: grid; gap: .3rem; padding-bottom: .75rem; margin-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .sup-h h3 { font-size: 1.0625rem; font-weight: 660; }
+  .sup-h .spec { color: #A9AEB9; }
+  .sup-lists ul { list-style: none; padding: 0; display: grid; gap: .55rem; }
+  .sup-lists li { display: grid; grid-template-columns: 1rem 1fr; gap: .6rem; align-items: start; font-size: var(--t-small); color: #DADDE3; }
+  .sup-lists li :global(svg) { margin-top: .2rem; color: var(--rose); }
+  .note { font-size: var(--t-small); }
+  .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .support .btn-primary { background: #F2F3F5; color: #0E1016; }
+  .support .btn-ghost { background: rgba(255,255,255,.08); color: #F2F3F5; border-color: rgba(255,255,255,.3); }
+  .support .btn-ghost:hover { background: rgba(255,255,255,.16); }
+
+  @media (max-width: 1024px) {
+    .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .caps li:not(:nth-child(4n + 1)) { border-left: 0; }
+    .caps li:nth-child(odd) { padding-left: 0; }
+    .caps li:nth-child(even) { border-left: 1px solid var(--line); }
+  }
+  @media (max-width: 900px) {
+    .hw-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .caps { grid-template-columns: 1fr; }
+    .caps li { padding-left: 0 !important; padding-right: 0; border-left: 0 !important; }
+    .sup-lists { grid-template-columns: 1fr; }
+  }
+</style>

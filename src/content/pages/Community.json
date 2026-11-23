@@ -1,0 +1,305 @@
+{
+  "slug": "Community",
+  "sourceFile": "Community.html",
+  "url": "https://tanches.gg/Community",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "community", "tone": "dark" } },
+    { "name": "SolutionPage", "props": { "kind": "community" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Community | TANCHES.GG",
+    "description": "Esports and gaming facilities for cities, libraries, and community centers, built for public access and long-term programming.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Community",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Community | TANCHES.GG",
+    "ogDescription": "Esports and gaming facilities for cities, libraries, and community centers, built for public access and long-term programming.",
+    "ogUrl": "https://tanches.gg/Community",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Community | TANCHES.GG",
+    "twitterDescription": "Esports and gaming facilities for cities, libraries, and community centers, built for public access and long-term programming.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Community | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Community",
+            "url": "https://tanches.gg/Community",
+            "name": "Community | TANCHES.GG",
+            "description": "Esports and gaming facilities for cities, libraries, and community centers, built for public access and long-term programming.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Community", "item": "https://tanches.gg/Community" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Community",
+      "p": [
+        "Esports and gaming facilities for cities, libraries, and community centers, built for public access and long-term programming.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "htmlLang": "en",
+      "base": "/",
+      "viewport": "width=device-width, initial-scale=1",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css", "mobile.css"],
+      "themeBootstrap": "inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>"
+    }
+  },
+  "sections": [
+    {
+      "id": "sp-hero",
+      "component": "SolutionPage",
+      "heading": "Esports rooms for cities and community programs.",
+      "headingHtml": "Esports rooms for cities <span class=\"tg-grad\">and community programs.</span>",
+      "lede": "We build esports rooms for nonprofits, government agencies, and community organizations, and we plan each one around the people you serve.",
+      "tags": ["Cities · Nonprofits · Community centers"],
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (18px)" },
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/banners/community-ban.jpg", "alt": "Players in matching shirts celebrating at a row of gaming stations", "objectPosition": "60% 40%" }
+      ],
+      "interactive": {
+        "type": "solutions-switch",
+        "ariaLabel": "Solutions by market",
+        "label": "Solutions",
+        "tabs": [
+          { "label": "Education", "href": "/Education", "current": false },
+          { "label": "Community", "href": "/Community", "current": true },
+          { "label": "Commercial", "href": "/Commercial", "current": false }
+        ]
+      },
+      "_source": { "heading": "d.h1a + ' ' + d.h1b" }
+    },
+    {
+      "id": "sp-built",
+      "component": "SolutionPage",
+      "heading": "For every kind of community organization.",
+      "lede": "Rec centers, youth groups, churches, and job training programs each need something different. We plan around your space and your mission.",
+      "cards": [
+        { "meta": "NONPROFITS & YOUTH ORGANIZATIONS", "title": "Nonprofits & Youth Organizations", "subtitle": "Programs that keep young people coming back.", "body": "Boys & Girls Clubs, YMCAs, and after-school programs use esports to give young people a structured, positive place to be. We build the room and help connect your program to grants that support your mission.", "icon": "lucide users" },
+        { "meta": "GOVERNMENT & MUNICIPAL", "title": "Government & Municipal", "subtitle": "Public rooms the whole community can use.", "body": "City recreation centers, libraries, and municipal buildings can use GSA and DIR contracts to build esports spaces open to the public. We’ve done it before and know the process.", "icon": "lucide landmark" },
+        { "meta": "FAITH-BASED ORGANIZATIONS", "title": "Faith-Based Organizations", "subtitle": "A way to reach youth where they already are.", "body": "Churches and faith-based community centers are finding esports to be one of the most effective tools for youth outreach. We build right-sized rooms that fit your space and your values.", "icon": "lucide church" },
+        { "meta": "WORKFORCE DEVELOPMENT", "title": "Workforce Development", "subtitle": "Digital skills, taught through games.", "body": "Job training centers and reentry programs use esports to teach digital literacy, IT fundamentals, and career skills. We build the room and connect you to curriculum partners who support the work.", "icon": "lucide briefcase" }
+      ],
+      "notes": "h3 = nameCase(label) (computed); uppercase meta label not rendered.",
+      "_source": { "cards[].title": "nameCase(label)" }
+    },
+    {
+      "id": "sp-why",
+      "component": "SolutionPage",
+      "heading": "Young people in your community are already gaming.",
+      "headingHtml": "Young people in your community <span class=\"tg-grad\">are already gaming.</span>",
+      "lede": "Esports is one of the most effective ways to engage youth. Organizations that run structured programs see better attendance, deeper participation, and real paths into technology and workforce skills.",
+      "stats": [
+        { "value": "3B+", "label": "Gamers worldwide and growing", "countUp": { "pre": "", "val": "3", "dec": 0, "unit": "B+" } },
+        { "value": "96%", "label": "of US teens play video games", "countUp": { "pre": "", "val": "96", "dec": 0, "unit": "%" } },
+        { "value": "#1", "label": "Fastest growing youth activity in the US", "countUp": { "pre": "#", "val": "1", "dec": 0, "unit": "" } }
+      ],
+      "lists": [
+        {
+          "title": "An infrastructure partner that plans around your mission.",
+          "body": "Whether you need a few new stations or a full facility, every project gets the same network, security, and support we build for our IT clients.",
+          "items": [
+            { "label": "PROCUREMENT", "title": "Contracts that fit how you buy", "body": "GSA, OMNIA, and NCPA contracts give government agencies and nonprofits a compliant way to buy without the extra paperwork." },
+            { "label": "MISSION ALIGNMENT", "title": "Built around your program", "body": "We plan the room around your goals, whether that is youth development, workforce readiness, or public access." },
+            { "label": "SECURITY", "title": "Enterprise security on every build", "body": "Organizations serving youth need rooms that are safe, monitored, and compliant. Enterprise cybersecurity comes standard on every build." }
+          ]
+        }
+      ],
+      "ctas": [
+        { "label": "See how we build the network", "href": "/Technology", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "notes": "Heading split from whyTitle 'Young people in your community | are already gaming.'. Pillar labels not rendered."
+    },
+    {
+      "id": "sp-case",
+      "component": "SolutionPage",
+      "heading": "Muskogee needed gaming PCs when no one had them.",
+      "headingHtml": "Muskogee needed gaming PCs <span class=\"tg-sp-hi\">when no one had them.</span>",
+      "body": [
+        "The city was opening the Muskogee Esports Arena, a public gaming space, and needed the machines to run it. Gaming PCs were backordered everywhere. We found Lenovo Legion desktops through our manufacturer and distribution partners and shipped the full order within a week.",
+        "Want to talk to a city we’ve worked with? Just ask."
+      ],
+      "tags": ["Hardware Procurement", "Expedited Fulfillment"],
+      "stats": [{ "value": "1 week", "label": "to ship the full order while the market was out of stock" }],
+      "meta": "Community · Muskogee, OK",
+      "testimonials": [
+        { "quote": "The difference was obvious from day one. Better communication, faster answers, and better service than we’ve had from any vendor. TANCHES.GG treats our program like it’s their own.", "name": "James Felder", "role": "Director of Esports, City of Muskogee", "org": "City of Muskogee", "display": "blockquote wraps quote in “ ” (added by template)" }
+      ],
+      "ctas": [
+        { "label": "Read the case study", "href": "/Project-Muskogee", "style": "ghost", "icon": "arrow-right (16px)" },
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "View all projects", "href": "/Projects", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "images": [
+        { "src": "assets/muskogee-b.webp", "alt": "Lenovo Legion stations in the Muskogee Esports Arena", "loading": "lazy" },
+        { "src": "assets/district-muskogee-white.png", "alt": "City of Muskogee", "role": "client logo", "class": "is-tall" }
+      ],
+      "interactive": {
+        "type": "client-themed-case",
+        "clientColors": { "--a": "#03457F", "--b": "#0386D2", "--hi": "#5AB6F2", "--deep": "#021B33" },
+        "mascotWatermark": "MUSKOGEE",
+        "logoClass": "is-tall"
+      },
+      "notes": "Second body paragraph = csAsk, in the after-bar above buttons. hasCsNote false.",
+      "_source": { "heading": "d.csA + ' ' + d.csB" }
+    },
+    {
+      "id": "sp-curriculum",
+      "component": "SolutionPage",
+      "condition": "d.hasCurriculum === true",
+      "heading": "Programming that goes beyond open play.",
+      "lede": "We connect your organization with accredited curriculum partners, so esports becomes structured youth development, workforce readiness, and digital access programming.",
+      "tags": ["STEM.org accredited"],
+      "cards": [
+        { "title": "Artificial Intelligence", "tags": ["Gen-AI Programmer", "Data Scientist"], "icon": "lucide cpu" },
+        { "title": "Software & Product", "tags": ["Game Developer", "Product Manager"], "icon": "lucide code" },
+        { "title": "Hardware & IT", "tags": ["Network Engineer", "IT Technician"], "icon": "lucide server" },
+        { "title": "Cybersecurity", "tags": ["Security Analyst", "Penetration Tester"], "icon": "lucide lock" },
+        { "title": "Media Arts & Design", "tags": ["Shoutcaster", "Graphic Designer"], "icon": "lucide video" },
+        { "title": "Marketing & PR", "tags": ["Brand Manager", "Marketing Director"], "icon": "lucide megaphone" },
+        { "title": "Operations & Management", "tags": ["Data Analyst", "Esports Program Director"], "icon": "lucide chart-line" },
+        { "title": "Event Production", "tags": ["Production Manager", "A/V Technician"], "icon": "lucide radio" },
+        { "title": "Health Sciences", "tags": ["Physical Therapist", "Exercise Physiologist"], "icon": "lucide heart-pulse" },
+        { "title": "Business & Finance", "tags": ["Growth Strategist", "Treasurer"], "icon": "lucide circle-dollar-sign" }
+      ],
+      "notes": "Same TRACKS list as Education. Chip 'STEM.org accredited' hard-coded in template. curEyebrow 'CURRICULUM & PROGRAMMING' not rendered."
+    },
+    {
+      "id": "sp-fund",
+      "component": "SolutionPage",
+      "heading": "Funding is out there, and we help you find it.",
+      "headingHtml": "Funding is out there, <span class=\"tg-grad\">and we help you find it.</span>",
+      "lede": "Between cooperative contracts and grants that match your mission, budget doesn’t have to stop the project.",
+      "ctas": [
+        { "label": "See all contracts and funding options", "href": "/Procurement", "style": "link", "icon": "arrow-right (16px)" }
+      ],
+      "lists": [
+        {
+          "title": "Buy through a contract you already use",
+          "condition": "d.hasProcurement (kind !== 'commercial')",
+          "items": [
+            { "kind": "State contract", "name": "Texas DIR", "logo": "assets/proc-dir.png", "maxHeight": "60px" },
+            { "kind": "Cooperative", "name": "OMNIA Partners", "logo": "assets/proc-omnia.png", "maxHeight": "48px" },
+            { "kind": "Cooperative", "name": "NCPA", "logo": "assets/proc-ncpa.png", "maxHeight": "46px" },
+            { "kind": "Federal", "name": "GSA", "logo": "assets/proc-gsa-mono.svg", "maxHeight": "58px" }
+          ]
+        },
+        {
+          "title": "Ways to pay for it",
+          "items": [
+            { "title": "Federal & State Grants", "body": "Youth development, workforce readiness, and digital access grants that match community missions." },
+            { "title": "Leasing & HaaS", "body": "Spread the cost over time with predictable monthly payments. A good fit if you have an operating budget but limited capital." },
+            { "title": "Manufacturer Co-Funding", "body": "Through our OEM partners, co-funding may be available to help offset hardware costs." }
+          ]
+        }
+      ],
+      "images": [
+        { "src": "assets/proc-dir.png", "alt": "Texas DIR" },
+        { "src": "assets/proc-omnia.png", "alt": "OMNIA Partners" },
+        { "src": "assets/proc-ncpa.png", "alt": "NCPA" },
+        { "src": "assets/proc-gsa-mono.svg", "alt": "GSA" }
+      ],
+      "interactive": {
+        "type": "partner-logo-marquee",
+        "caption": "We build with hardware and software from these partners, and many more.",
+        "ref": "Identical list to Education.json sections[sp-fund].interactive.logos (shared PARTNERS constant)"
+      }
+    },
+    {
+      "id": "league",
+      "component": "SolutionPage",
+      "eyebrow": "TANCHES.GG League · Launching soon",
+      "heading": "A league gives your community something to play for.",
+      "lede": "The TANCHES.GG League brings structured competition to community organizations. We run the league, and you bring your players.",
+      "cards": [
+        { "title": "A reason to come back", "body": "Weekly match nights give young people a standing commitment and a team that counts on them." },
+        { "title": "One center or a network", "body": "Compete against other organizations, or link your own locations into one league." },
+        { "title": "Outcomes funders can see", "body": "A structured season is easier to document for boards, councils, and grant reports than drop-in play." }
+      ],
+      "ctas": [
+        { "label": "Explore the League", "href": "/League#community", "style": "primary", "icon": "arrow-right (16px)" },
+        { "label": "Contact for Pricing", "href": "/League#pricing", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/opt/league-swampy-conquest-v2.webp", "alt": "Students competing at TexSEF’s Swampy Conquest tournament on Alienware stations", "loading": "lazy", "role": "full-bleed background" }
+      ],
+      "notes": "hasFormat=false and hasGames=false, so no format strip and no games list on Community.",
+      "_source": { "ctas[0].href": "'/League#' + kind" }
+    },
+    {
+      "id": "sp-faq",
+      "component": "SolutionPage",
+      "heading": "Common questions from community organizations.",
+      "cards": [
+        { "title": "Not sure where to start?", "body": "Answer a few questions about your space and program, and we’ll send you a free readiness report.", "links": [{ "label": "Take the assessment", "href": "/Assessment", "style": "ink small button", "icon": "arrow-right (16px)" }] }
+      ],
+      "faqs": [
+        { "q": "Are there grants available to fund an esports facility for a nonprofit?", "a": "Yes. Federal, state, and private grants for youth development, digital access, and workforce readiness can fund esports facilities. We help you find and apply for the ones that fit your organization." },
+        { "q": "Can government agencies use cooperative purchasing contracts like GSA or DIR?", "a": "Yes. DIR, GSA, OMNIA, and NCPA cooperative contracts give government agencies, municipalities, and qualifying nonprofits a compliant way to buy without a separate bid." },
+        { "q": "Is the environment safe for youth programs?", "a": "Yes. Enterprise cybersecurity is standard on every build, so rooms serving youth are safe, monitored, and compliant." },
+        { "q": "Do we need technical staff to manage the facility after it’s built?", "a": "No. Our managed services cover lab operations, monitoring, and IT support after the build, so your team can focus on the program." },
+        { "q": "Can our organization participate in the TANCHES.GG League?", "a": "Yes. The League brings structured competition to community organizations, from a single location to a whole network of centers." },
+        { "q": "What if our budget is limited? Can we start small?", "a": "Yes. We scope to what you need, and grants, leasing, and manufacturer co-funding can help offset the cost." }
+      ],
+      "interactive": { "type": "accordion", "behaviour": "single-open; first item open by default" }
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ],
+  "unrenderedData": {
+    "note": "Fields present in SolutionPage DATA.community but not bound in the template.",
+    "caps": "COMMUNITY",
+    "cta": "Start a Project",
+    "curEyebrow": "CURRICULUM & PROGRAMMING",
+    "leagueCta": "Get in Touch",
+    "hasHandles": false,
+    "deliver": "DELIVER (same 8 items as Education)"
+  }
+}

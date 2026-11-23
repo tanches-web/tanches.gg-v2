@@ -1,0 +1,298 @@
+{
+  "slug": "Team",
+  "sourceFile": "Team.html",
+  "url": "https://tanches.gg/Team",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "team" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Team | TANCHES.GG",
+    "description": "The people behind TANCHES.GG: strategists, engineers, and esports operators who design, build, and run gaming programs.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Team",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Team | TANCHES.GG",
+    "ogDescription": "The people behind TANCHES.GG: strategists, engineers, and esports operators who design, build, and run gaming programs.",
+    "ogUrl": "https://tanches.gg/Team",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Team | TANCHES.GG",
+    "twitterDescription": "The people behind TANCHES.GG: strategists, engineers, and esports operators who design, build, and run gaming programs.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Team | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Team",
+            "url": "https://tanches.gg/Team",
+            "name": "Team | TANCHES.GG",
+            "description": "The people behind TANCHES.GG: strategists, engineers, and esports operators who design, build, and run gaming programs.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Team", "item": "https://tanches.gg/Team" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Team",
+      "p": [
+        "The people behind TANCHES.GG: strategists, engineers, and esports operators who design, build, and run gaming programs.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "viewport": "width=device-width, initial-scale=1",
+      "htmlLang": "en",
+      "base": "/",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js", "./image-slot.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css", "mobile.css"],
+      "themeInit": "localStorage 'tg-theme-v2' (default 'light') sets data-theme=\"light\" on <html>"
+    }
+  },
+  "people": [
+    {
+      "slot": "team-tanaz",
+      "group": "leadership",
+      "name": "Tanaz Choudhury",
+      "role": "PRESIDENT",
+      "bio": "A serial entrepreneur, Tanaz co-founded TanChes and has spent more than two decades aligning education with entrepreneurship. She leads with collaboration and a win-win focus, guiding client relationships across SMB, commercial, enterprise, and public-sector work and aligning expectations and delivery for growth on both sides. Her superpower is people: she collects them.",
+      "favoriteGame": "Tomb Raider",
+      "photo": "team/web/tanaz.jpg",
+      "toon": "team/web/tanaz-toon3.jpg",
+      "linkedin": "https://www.linkedin.com/in/tanazchoudhury/",
+      "linkedinAriaLabel": "Tanaz Choudhury on LinkedIn",
+      "frame": { "pl": "-38.2%", "pt": "-12%", "pw": "174.8%", "tl": "-31.2%", "tt": "-7.7%", "tw": "174.8%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    },
+    {
+      "slot": "team-chesley",
+      "group": "leadership",
+      "name": "Chesley Choudhury",
+      "role": "FOUNDER & CHAIRMAN",
+      "bio": "Chesley founded TanChes in 1998 with one focus: client success. A former IT director for a global manufacturer working with brands like Disney and Virgin Atlantic, he has shaped technology strategy for businesses, schools, and Texas cities, and saw early how esports could turn the after-school gap into a pathway.",
+      "favoriteGame": "Rainbow Six Siege",
+      "photo": "team/web/chesley.jpg",
+      "photoFallbackUnused": "assets/team-chesley.jpg",
+      "toon": "team/web/chesley-toon2.jpg",
+      "linkedin": "https://www.linkedin.com/in/chesleyc/",
+      "linkedinAriaLabel": "Chesley Choudhury on LinkedIn",
+      "frame": { "pl": "-91.3%", "pt": "-20.9%", "pw": "274.7%", "tl": "-73.4%", "tt": "-14.5%", "tw": "242.7%", "dl": "-12.5%", "dt": "0%", "dw": "125%" },
+      "_source": { "photo": "PH[slot] || photo  (PH['team-chesley'] overrides the P-array value 'assets/team-chesley.jpg')" }
+    },
+    {
+      "slot": "team-sayan-headshot",
+      "group": "point-of-contact",
+      "name": "Sayan Tarafder",
+      "role": "ESPORTS STRATEGIST",
+      "bio": "Sets the strategy behind every TANCHES.GG program, from the first walkthrough and facility design to curriculum, the League, and launch day. Sayan works directly with each partner to shape a program that fits their students, community, and goals, then keeps it growing season after season.",
+      "quote": "“The room is the easy part. What matters is that the program is still running, and still growing, in year three.”",
+      "favoriteGame": "Kingdom Hearts II",
+      "photo": "team/web/sayan.jpg",
+      "toon": "team/web/sayan-toon2.jpg",
+      "linkedin": "https://www.linkedin.com/in/sayant/",
+      "linkedinAriaLabel": "Sayan Tarafder on LinkedIn",
+      "frame": { "pl": "-11.7%", "pt": "0%", "pw": "125%", "tl": "-27.9%", "tt": "-4.9%", "tw": "162.4%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    },
+    {
+      "slot": "team-victoria",
+      "group": "rest-of-team",
+      "name": "Victoria Herrera",
+      "role": "OPERATIONS MANAGER",
+      "bio": "",
+      "favoriteGame": "Hogwarts Legacy",
+      "photo": "team/web/victoria.jpg",
+      "toon": "team/web/victoria-toon2.jpg",
+      "linkedin": "https://www.linkedin.com/in/victoria-herrera-a90baab9/",
+      "linkedinAriaLabel": "Victoria Herrera on LinkedIn",
+      "frame": { "pl": "-6.6%", "pt": "0%", "pw": "125%", "tl": "-22.7%", "tt": "-2.1%", "tw": "153.4%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    },
+    {
+      "slot": "team-sissi",
+      "group": "rest-of-team",
+      "name": "Sissi Pacho",
+      "role": "ACCOUNTING ASSISTANT",
+      "bio": "",
+      "favoriteGame": "Grand Theft Auto V",
+      "photo": "team/web/sissi.jpg",
+      "toon": "team/web/sissi-toon.jpg",
+      "linkedin": "https://www.linkedin.com/in/sissi-pacho-silva-865474279/",
+      "linkedinAriaLabel": "Sissi Pacho on LinkedIn",
+      "frame": { "pl": "-26.7%", "pt": "-7.1%", "pw": "149.7%", "tl": "-46.8%", "tt": "-6.9%", "tw": "185.2%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    },
+    {
+      "slot": "team-shamira",
+      "group": "rest-of-team",
+      "name": "Shamira Washington",
+      "role": "ADMIN. ASSISTANT",
+      "bio": "",
+      "favoriteGame": "Candy Crush",
+      "photo": "team/web/shamira.jpg",
+      "toon": "team/web/shamira-toon.jpg",
+      "linkedin": "https://www.linkedin.com/in/shamira-washington-6bb852236/",
+      "linkedinAriaLabel": "Shamira Washington on LinkedIn",
+      "frame": { "pl": "-56.2%", "pt": "-13.9%", "pw": "216.8%", "tl": "-48.6%", "tt": "-16%", "tw": "194.1%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    },
+    {
+      "slot": "team-jerika",
+      "group": "rest-of-team",
+      "name": "Jerika Ruiz Alvarez",
+      "role": "BUSINESS ADMIN. ASSISTANT",
+      "bio": "",
+      "favoriteGame": "Mortal Kombat",
+      "photo": "team/web/jerika-2.jpg",
+      "toon": "team/web/jerika-toon.jpg",
+      "linkedin": "https://www.linkedin.com/in/jerika-r-663561189/",
+      "linkedinAriaLabel": "Jerika Ruiz Alvarez on LinkedIn",
+      "frame": { "pl": "-28.8%", "pt": "-10.6%", "pw": "161.3%", "tl": "-36.6%", "tt": "-4.3%", "tw": "177.3%", "dl": "0%", "dt": "-5.4%", "dw": "100%" }
+    },
+    {
+      "slot": "team-nick",
+      "group": "rest-of-team",
+      "name": "Nick Trout",
+      "role": "SENIOR INFRASTRUCTURE ENGINEER",
+      "bio": "Nick turns ideas into infrastructure. With more than eleven years as a senior VMware systems engineer in Houston, he designs the networks, servers, and cloud systems behind every build. He moves easily between networking, virtualization, and the NOC, and he’s the one the team calls when something breaks.",
+      "bioRendered": false,
+      "favoriteGame": "The Legend of Zelda: Ocarina of Time",
+      "photo": "team/web/nick.jpg",
+      "toon": "team/web/nick-toon.jpg",
+      "linkedin": "https://www.linkedin.com/in/nick-trout-53340693/",
+      "linkedinAriaLabel": "Nick Trout on LinkedIn",
+      "frame": { "pl": "-26.4%", "pt": "0%", "pw": "150.6%", "tl": "-30.2%", "tt": "-16.4%", "tw": "162.3%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    },
+    {
+      "slot": "team-phu",
+      "group": "rest-of-team",
+      "name": "Phu Nguyen",
+      "role": "IT SUPPORT SPECIALIST",
+      "bio": "",
+      "favoriteGame": "Crash Bandicoot",
+      "photo": "team/web/phu.jpg",
+      "toon": "team/web/phu-toon3.jpg",
+      "linkedin": "https://www.linkedin.com/in/phunguyen284/",
+      "linkedinAriaLabel": "Phu Nguyen on LinkedIn",
+      "frame": { "pl": "-25.3%", "pt": "0%", "pw": "150.6%", "tl": "-38%", "tt": "-11%", "tw": "176.1%", "dl": "-12.5%", "dt": "0%", "dw": "125%" }
+    }
+  ],
+  "sections": [
+    {
+      "id": "team-head",
+      "heading": "The people you will work with.",
+      "headingHtml": "The people you will <span class=\"tg-grad\">work with.</span>",
+      "lede": "Enterprise IT leadership and esports strategy on one team. The people who plan your program are the same people who build it and support it after launch.",
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary" },
+        { "label": "Meet your point of contact", "href": "/Team#contact", "style": "ghost" }
+      ]
+    },
+    {
+      "id": "leadership",
+      "heading": "Leadership",
+      "lede": "Tanaz and Chesley Choudhury are the Tan and the Ches in TanChes. They founded the company in Houston in 1998 and still lead it today.",
+      "cards": [
+        {
+          "title": "Tanaz Choudhury",
+          "meta": "PRESIDENT",
+          "body": "A serial entrepreneur, Tanaz co-founded TanChes and has spent more than two decades aligning education with entrepreneurship. She leads with collaboration and a win-win focus, guiding client relationships across SMB, commercial, enterprise, and public-sector work and aligning expectations and delivery for growth on both sides. Her superpower is people: she collects them.",
+          "favoriteGame": "Tomb Raider",
+          "image": { "src": "team/web/tanaz.jpg", "alt": "Tanaz Choudhury" },
+          "toon": "team/web/tanaz-toon3.jpg",
+          "links": [{ "label": "Tanaz Choudhury on LinkedIn", "href": "https://www.linkedin.com/in/tanazchoudhury/", "icon": "linkedin", "target": "_blank" }]
+        },
+        {
+          "title": "Chesley Choudhury",
+          "meta": "FOUNDER & CHAIRMAN",
+          "body": "Chesley founded TanChes in 1998 with one focus: client success. A former IT director for a global manufacturer working with brands like Disney and Virgin Atlantic, he has shaped technology strategy for businesses, schools, and Texas cities, and saw early how esports could turn the after-school gap into a pathway.",
+          "favoriteGame": "Rainbow Six Siege",
+          "image": { "src": "team/web/chesley.jpg", "alt": "Chesley Choudhury" },
+          "toon": "team/web/chesley-toon2.jpg",
+          "links": [{ "label": "Chesley Choudhury on LinkedIn", "href": "https://www.linkedin.com/in/chesleyc/", "icon": "linkedin", "target": "_blank" }]
+        }
+      ],
+      "notes": "Each card shows 'Favorite game: <b>{game}</b>'. LinkedIn link is an icon button with aria-label '{name} on LinkedIn'."
+    },
+    {
+      "id": "contact",
+      "heading": "Sayan Tarafder",
+      "eyebrow": "ESPORTS STRATEGIST · Your point of contact",
+      "_source": { "eyebrow": "{{ feat.role }} · Your point of contact" },
+      "testimonials": [
+        { "quote": "“The room is the easy part. What matters is that the program is still running, and still growing, in year three.”", "name": "Sayan Tarafder", "role": "ESPORTS STRATEGIST", "org": "TANCHES.GG" }
+      ],
+      "body": [
+        "Sets the strategy behind every TANCHES.GG program, from the first walkthrough and facility design to curriculum, the League, and launch day. Sayan works directly with each partner to shape a program that fits their students, community, and goals, then keeps it growing season after season.",
+        "Favorite game: Kingdom Hearts II"
+      ],
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary" },
+        { "label": "Sayan Tarafder on LinkedIn", "href": "https://www.linkedin.com/in/sayant/", "style": "icon" },
+        { "label": "Or take the 4-minute assessment first", "href": "/Assessment", "style": "link" }
+      ],
+      "images": [
+        { "src": "assets/opt/home-swampy-floor.webp", "alt": "", "role": "section background" },
+        { "src": "team/web/sayan.jpg", "alt": "Sayan Tarafder" },
+        { "src": "team/web/sayan-toon2.jpg", "alt": "" }
+      ]
+    },
+    {
+      "id": "rest-of-team",
+      "heading": "The rest of the team",
+      "lede": "Operations, accounting, administration, infrastructure, and IT support. These are the people who keep projects on schedule and rooms running.",
+      "cards": [
+        { "title": "Victoria Herrera", "meta": "OPERATIONS MANAGER", "favoriteGame": "Hogwarts Legacy", "image": { "src": "team/web/victoria.jpg", "alt": "Victoria Herrera" }, "toon": "team/web/victoria-toon2.jpg", "links": [{ "label": "Victoria Herrera on LinkedIn", "href": "https://www.linkedin.com/in/victoria-herrera-a90baab9/", "icon": "linkedin", "target": "_blank" }] },
+        { "title": "Sissi Pacho", "meta": "ACCOUNTING ASSISTANT", "favoriteGame": "Grand Theft Auto V", "image": { "src": "team/web/sissi.jpg", "alt": "Sissi Pacho" }, "toon": "team/web/sissi-toon.jpg", "links": [{ "label": "Sissi Pacho on LinkedIn", "href": "https://www.linkedin.com/in/sissi-pacho-silva-865474279/", "icon": "linkedin", "target": "_blank" }] },
+        { "title": "Shamira Washington", "meta": "ADMIN. ASSISTANT", "favoriteGame": "Candy Crush", "image": { "src": "team/web/shamira.jpg", "alt": "Shamira Washington" }, "toon": "team/web/shamira-toon.jpg", "links": [{ "label": "Shamira Washington on LinkedIn", "href": "https://www.linkedin.com/in/shamira-washington-6bb852236/", "icon": "linkedin", "target": "_blank" }] },
+        { "title": "Jerika Ruiz Alvarez", "meta": "BUSINESS ADMIN. ASSISTANT", "favoriteGame": "Mortal Kombat", "image": { "src": "team/web/jerika-2.jpg", "alt": "Jerika Ruiz Alvarez" }, "toon": "team/web/jerika-toon.jpg", "links": [{ "label": "Jerika Ruiz Alvarez on LinkedIn", "href": "https://www.linkedin.com/in/jerika-r-663561189/", "icon": "linkedin", "target": "_blank" }] },
+        { "title": "Nick Trout", "meta": "SENIOR INFRASTRUCTURE ENGINEER", "favoriteGame": "The Legend of Zelda: Ocarina of Time", "image": { "src": "team/web/nick.jpg", "alt": "Nick Trout" }, "toon": "team/web/nick-toon.jpg", "links": [{ "label": "Nick Trout on LinkedIn", "href": "https://www.linkedin.com/in/nick-trout-53340693/", "icon": "linkedin", "target": "_blank" }], "notes": "Nick has a bio in the data (see people[]) but the grid template does not render bios." },
+        { "title": "Phu Nguyen", "meta": "IT SUPPORT SPECIALIST", "favoriteGame": "Crash Bandicoot", "image": { "src": "team/web/phu.jpg", "alt": "Phu Nguyen" }, "toon": "team/web/phu-toon3.jpg", "links": [{ "label": "Phu Nguyen on LinkedIn", "href": "https://www.linkedin.com/in/phunguyen284/", "icon": "linkedin", "target": "_blank" }] }
+      ]
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ],
+  "interactive": {
+    "type": "photo-toon-reveal",
+    "behaviour": "The character art (toon) shows by default; hover or focus (hover-capable devices) or tap (touch devices) reveals the photo. All 9 people have both a photo and a toon, so the 'noToon' cover-photo branch is never used.",
+    "toggleAriaLabel": "Show photo of {name} (default) / Show character art of {name} (when revealed)",
+    "_source": { "toggleAriaLabel": "(r ? 'Show character art of ' : 'Show photo of ') + name" },
+    "frameNote": "Percent offsets in a 4:5 frame. pl/pt/pw = photo left/top/width; tl/tt/tw = toon position when photo revealed; dl/dt/dw = toon default position. See people[].frame.",
+    "preload": "All PH and TOON images are preloaded with new Image() on first render."
+  }
+}

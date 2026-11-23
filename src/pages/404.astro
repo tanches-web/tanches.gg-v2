@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import page from '../content/pages/404.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: 'https://tanches.gg/404',
+  ogImage: '/assets/og-logo.png',
+  noindex: true,
+};
+const s = page.sections[0] as any;
+const list = s.lists[0];
+const img = s.images[0];
+---
+<Base seo={seo}>
+  <PageHero
+    title={s.heading.replace(' that page.', '')}
+    strong="that page."
+    lede={s.lede}
+    ctas={s.ctas.map((c: any) => ({ label: c.label, href: c.href, primary: c.style === 'primary' }))}
+  >
+    <nav slot="after-copy" class="goto" aria-label={list.ariaLabel}>
+      <span class="small">{list.title}</span>
+      <ul role="list">
+        {list.items.map((l: any) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+    <figure class="stage">
+      <div class="plate photo">
+        <img src={'/' + img.src} alt={img.alt} fetchpriority="high" />
+        <span class="code label-glass" aria-hidden="true"><span class="dot"></span>{s.interactive.bigText}</span>
+      </div>
+    </figure>
+  </PageHero>
+</Base>
+
+<style>
+  .goto { display: grid; justify-items: center; gap: .75rem; margin-top: 1rem; }
+  .goto ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; }
+  .goto a { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--line-2); font-size: .9375rem; font-weight: 600; text-decoration: none; color: var(--ink-2); transition: background-color .25s, color .25s, border-color .25s; }
+  .goto a:hover { background: var(--surface); color: var(--ink); border-color: var(--ink-3); }
+  .stage { width: min(1180px, 92vw); margin: clamp(2.5rem, 5vw, 4rem) auto 0; }
+  .plate { position: relative; aspect-ratio: 21 / 9; }
+  .plate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .code { position: absolute; left: 50%; top: 50%; translate: -50% -50%; font: 500 clamp(1.5rem, 1rem + 2vw, 2.5rem) var(--mono); letter-spacing: .12em; padding: .6rem 1.4rem .6rem .8rem; gap: .9rem; }
+  .code .dot { width: 1rem; height: 1rem; }
+  @media (prefers-reduced-motion: no-preference) { .plate { animation: rise 1.4s var(--ease-out) both .1s; } }
+  @keyframes rise { from { opacity: 0; transform: translateY(32px) scale(.98); filter: blur(6px); } }
+  @media (max-width: 760px) { .plate { aspect-ratio: 4 / 3; } }
+</style>

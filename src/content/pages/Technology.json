@@ -1,0 +1,221 @@
+{
+  "slug": "Technology",
+  "sourceFile": "Technology.html",
+  "url": "https://tanches.gg/Technology",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "technology", "tone": "dark" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Technology & Architecture | TANCHES.GG",
+    "description": "The architecture behind every TANCHES.GG build: networking, structured cabling, servers, AV, and enterprise cybersecurity.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Technology",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Technology & Architecture | TANCHES.GG",
+    "ogDescription": "The architecture behind every TANCHES.GG build: networking, structured cabling, servers, AV, and enterprise cybersecurity.",
+    "ogUrl": "https://tanches.gg/Technology",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Technology & Architecture | TANCHES.GG",
+    "twitterDescription": "The architecture behind every TANCHES.GG build: networking, structured cabling, servers, AV, and enterprise cybersecurity.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Technology & Architecture | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Technology",
+            "url": "https://tanches.gg/Technology",
+            "name": "Technology & Architecture | TANCHES.GG",
+            "description": "The architecture behind every TANCHES.GG build: networking, structured cabling, servers, AV, and enterprise cybersecurity.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Technology & Architecture", "item": "https://tanches.gg/Technology" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Technology & Architecture",
+      "p": [
+        "The architecture behind every TANCHES.GG build: networking, structured cabling, servers, AV, and enterprise cybersecurity.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "viewport": "width=device-width, initial-scale=1",
+      "htmlLang": "en",
+      "base": "/",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeInit": "localStorage 'tg-theme-v2' (default 'light') sets data-theme=\"light\" on <html>",
+      "noMobileCss": "Unlike most pages, the helmet does not link mobile.css."
+    }
+  },
+  "sections": [
+    {
+      "id": "tech-hero",
+      "heading": "The infrastructure under every build.",
+      "headingHtml": "The infrastructure <span class=\"tg-grad\">under every build.</span>",
+      "lede": "Every TANCHES.GG room sits on enterprise infrastructure: structured cabling, a managed network, local servers, and endpoint security. Here is what goes into a build and why each piece matters.",
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary" },
+        { "label": "How schools buy from us", "href": "/Procurement", "style": "ghost" }
+      ],
+      "images": [
+        { "src": "assets/banners/technology-server-room.jpg", "alt": "Rows of server racks in a data room", "fetchpriority": "high" },
+        { "src": "assets/opt/home-overhead-network.webp", "alt": "Overhead design render of an esports room wired back to one network closet" },
+        { "src": "assets/opt/home-broadcast-booth.webp", "alt": "Broadcast booth with a casting desk and wall displays at Longview ISD", "objectPosition": "50% 45%" }
+      ],
+      "interactive": {
+        "type": "hero-slideshow",
+        "panelCaption": "Pictured",
+        "slideDurationMs": 7000,
+        "autoAdvance": "Advances every 7000 ms; disabled (starts paused) when prefers-reduced-motion: reduce. Clicking a slide button pauses and jumps to it. Each button shows a progress bar that fills over 7000 ms.",
+        "pauseButton": { "ariaLabelPlaying": "Pause the photo slideshow", "ariaLabelPaused": "Play the photo slideshow" },
+        "slides": [
+          { "n": "01", "img": "assets/banners/technology-server-room.jpg", "pos": "50% 50%", "alt": "Rows of server racks in a data room", "label": "Server Infrastructure", "note": "Layer 04", "fit": "" },
+          { "n": "02", "img": "assets/opt/home-overhead-network.webp", "pos": "78% 55%", "alt": "Overhead design render of an esports room wired back to one network closet", "label": "Enterprise Networking", "note": "Layer 03 · Design render", "fit": "tg-tech-slide-render" },
+          { "n": "03", "img": "assets/opt/home-broadcast-booth.webp", "pos": "50% 45%", "alt": "Broadcast booth with a casting desk and wall displays at Longview ISD", "label": "AV & Streaming", "note": "Layer 07 · Longview ISD", "fit": "", "clientColors": { "a": "#046A38", "b": "#FFC72C", "usedFor": "two colour dots (Longview ISD client colours) on the slide button" } }
+        ],
+        "_source": { "slides[].n": "'0' + (i + 1)" }
+      },
+      "stats": [
+        { "value": "28+", "number": "28", "suffix": "+", "label": "Years of enterprise IT practice behind every build" },
+        { "value": "10", "number": "10", "suffix": "", "label": "Layers in a finished facility" },
+        { "value": "10", "number": "10", "suffix": "", "label": "Hardware brands we source and support" },
+        { "value": "24/7", "suffix": "", "label": "Platform support after launch", "isText": true }
+      ],
+      "notes": "Stats bar has aria-label 'The infrastructure in numbers'. Numeric stats count up (data-count); '24/7' is rendered as plain text."
+    },
+    {
+      "id": "the-stack",
+      "heading": "We start with the infrastructure.",
+      "body": [
+        "Most esports vendors start with the gaming PCs. We start with the infrastructure, and we design every build with the same enterprise practices we have used in IT environments for 28 years.",
+        "That gives you a room that works on day one and holds up for years. If you need the full build, we do that. If you only need the right hardware for your space, we do that too, at whatever scope makes sense for you."
+      ],
+      "interactive": {
+        "type": "accordion",
+        "caption": "Ten layers make up a finished facility. Open one to see what it covers and why it matters.",
+        "defaultOpenIndex": 0,
+        "behaviour": "One layer open at a time; clicking the open one closes it. Panel shows desc, then 'Why it matters.' (bold) followed by why.",
+        "whyPrefix": "Why it matters.",
+        "items": [
+          { "n": "01", "name": "Facility Design", "desc": "Space planning, power, HVAC, lighting, furniture, and finishes, designed around how the room will actually be used.", "why": "Every other layer lives inside the room. Getting power, cooling, and layout right up front prevents costly rework later." },
+          { "n": "02", "name": "Structured Cabling", "desc": "Certified copper and fiber runs, patch panels, and cable management, labeled and documented to standard.", "why": "Cabling is the hardest thing to change once the walls close. A clean plant supports today’s gear and the next two refresh cycles." },
+          { "n": "03", "name": "Enterprise Networking", "desc": "Managed switching, segmented VLANs, wireless, and QoS tuned for low-latency competitive play.", "why": "Lag and packet loss decide matches. A purpose-built network keeps gaming traffic fast and isolated from the rest of campus." },
+          { "n": "04", "name": "Server Infrastructure", "desc": "Local compute and storage for game caching, image deployment, and management tools.", "why": "Machines get re-imaged and patched in minutes instead of hours, and updates don’t saturate your internet connection." },
+          { "n": "05", "name": "Cybersecurity", "desc": "Endpoint protection, application control, firewall policy, and threat monitoring.", "why": "Gaming PCs are high-value targets on your network. Locking them down protects students, data, and the rest of your environment." },
+          { "n": "06", "name": "Gaming Hardware", "desc": "Workstations, displays, and peripherals sourced through our OEM partnerships and configured for your titles.", "why": "The right spec holds steady frame rates for years, so the program isn’t forced into an early refresh." },
+          { "n": "07", "name": "AV & Streaming", "desc": "Displays, audio, control systems, and broadcast workflows for casting, events, and streaming.", "why": "AV turns a computer lab into a venue that can host matches, events, and broadcasts, which grows the program’s visibility." },
+          { "n": "08", "name": "Managed Services & Lab Ops", "desc": "Session and billing management, monitoring, patching, and support after deployment.", "why": "Facilities fail when no one owns them. Managed ops keep the space running so staff can focus on players." },
+          { "n": "09", "name": "Curriculum", "desc": "STEM-accredited esports curriculum and programming that connects gameplay to career pathways.", "why": "Curriculum is what turns a gaming room into an educational asset, and it helps justify funding." },
+          { "n": "10", "name": "League", "desc": "Organized competition, scheduling, and seasons that give players something to train for.", "why": "Competition drives engagement and retention. It keeps the facility in daily use long after opening day." }
+        ],
+        "_source": { "items[].n": "(i < 9 ? '0' : '') + (i + 1)" }
+      }
+    },
+    {
+      "id": "services",
+      "heading": "What we can take on",
+      "lede": "The layers above are what a facility is made of. These are the services we deliver them through, from a single equipment deployment to a full build.",
+      "cards": [
+        { "meta": "Consulting", "title": "Advisory & Planning", "body": "We assess your space, goals, and constraints before you commit to anything, and tell you plainly what you need and what you don’t." },
+        { "meta": "Funding", "title": "Grants Research", "body": "We find grants, MDF, and co-funding that can offset or fully cover the cost of your build, and help you go after them." },
+        { "meta": "Design", "title": "Facility Design", "body": "Space planning, lighting, furniture, and finishes, built around how the room will be used and how it should feel." },
+        { "meta": "Infrastructure", "title": "Cabling & Networking", "body": "Structured cabling, enterprise switching, wireless, and network configuration, built for performance and room to grow." },
+        { "meta": "Audio Visual", "title": "AV Integration", "body": "Extron AV design, display systems, control panels, and broadcast infrastructure, designed and commissioned by certified integrators." },
+        { "meta": "Hardware", "title": "Gaming Hardware & Servers", "body": "Workstations, peripherals, displays, and servers, sourced through our OEM partnerships and configured for your environment." },
+        { "meta": "Programming", "title": "Curriculum & Programming", "body": "STEM-accredited esports curriculum and programming support, so the facility is used for teaching as well as play." },
+        { "meta": "Managed Services & Cybersecurity", "title": "Ongoing Support", "body": "Endpoint protection, threat monitoring, lab operations, and IT support. We manage the whole post-deployment layer so your team can focus on the program." }
+      ]
+    },
+    {
+      "id": "hardware-partners",
+      "heading": "We pick hardware for the job, not the brand.",
+      "headingHtml": "We pick hardware for the job, <span class=\"tg-grad\">not the brand.</span>",
+      "body": [
+        "We hold metallic-tier partnerships with leading manufacturers. That gets you better pricing, priority support, and access to current hardware. We are vendor-agnostic, so we spec what fits your environment, your budget, and your goals."
+      ],
+      "ctas": [
+        { "label": "See the Stafford MSD build", "href": "/Project-Stafford", "style": "link" }
+      ],
+      "images": [
+        { "src": "assets/stafford/stafford-04.jpg", "alt": "Students playing on Dell monitors in the Stafford MSD esports lab", "chip": "Stafford MSD · Stafford, TX", "clientColors": { "a": "#EA0000", "b": "#FCB326", "usedFor": "frame CSS vars --a/--b (stripe accent) and the two colour dots on the chip" } }
+      ],
+      "interactive": {
+        "type": "logo-marquee",
+        "caption": "Brands we source, configure, and support",
+        "animationDuration": "46s",
+        "loop": "list rendered twice; second copy has alt=\"\" and aria-hidden=\"true\"",
+        "items": [
+          { "name": "Lenovo", "alt": "Lenovo logo", "src": "assets/oem/lenovo.png", "srcLightUnused": "assets/oem/lenovo.png", "maxHeight": "30px" },
+          { "name": "Dell Technologies", "alt": "Dell Technologies logo", "src": "assets/oem/dell.png", "srcLightUnused": "assets/oem/dell.png", "maxHeight": "20px" },
+          { "name": "Cisco", "alt": "Cisco logo", "src": "assets/oem/cisco.png", "srcLightUnused": "assets/oem/cisco.png", "maxHeight": "40px" },
+          { "name": "Samsung", "alt": "Samsung logo", "src": "assets/oem/samsung.png", "srcLightUnused": "assets/oem/samsung.png", "maxHeight": "22px" },
+          { "name": "HPE", "alt": "HPE logo", "src": "assets/oem/hpe-dark.png", "srcLightUnused": "assets/oem/hpe-light.png", "maxHeight": "32px" },
+          { "name": "MSI", "alt": "MSI logo", "src": "assets/oem/msi-dark.png", "srcLightUnused": "assets/oem/msi-light.png", "maxHeight": "36px" },
+          { "name": "Acer", "alt": "Acer logo", "src": "assets/oem/acer.png", "srcLightUnused": "assets/oem/acer.png", "maxHeight": "30px" },
+          { "name": "Extron", "alt": "Extron logo", "src": "assets/oem/extron.png", "srcLightUnused": "assets/oem/extron.png", "maxHeight": "28px" },
+          { "name": "Logitech", "alt": "Logitech logo", "src": "assets/oem/logitech-dark.png", "srcLightUnused": "assets/oem/logitech-light.png", "maxHeight": "30px" },
+          { "name": "Alienware", "alt": "Alienware logo", "src": "assets/oem/alienware-dark.svg", "srcLightUnused": "assets/oem/alienware-light.svg", "maxHeight": "22px" }
+        ],
+        "_source": { "items[].src": "'assets/oem/' + d + ext  (ext = '.svg' for alienware, else '.png')", "items[].alt": "n + ' logo'", "srcLightUnused": "srcL is computed but never bound in the template" }
+      }
+    },
+    {
+      "id": "support-after-launch",
+      "heading": "Support after launch",
+      "lede": "After launch we keep running the lab and the systems under it. One contract and one point of contact cover both.",
+      "lists": [
+        { "eyebrow": "Lab operations", "title": "Day-to-day management", "items": ["Session & billing management", "Usage tracking & reporting", "24/7 platform support", "User access & permissions"] },
+        { "eyebrow": "IT & security", "title": "Infrastructure & cybersecurity", "items": ["Endpoint protection & application control", "Remote monitoring & patch management", "Backup & disaster recovery", "Dedicated IT support"] }
+      ],
+      "body": ["Bring your IT team. We will walk them through the network, security, and support plan."],
+      "ctas": [
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" },
+        { "label": "Talk to our engineers", "href": "/Contact", "style": "ink" }
+      ]
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

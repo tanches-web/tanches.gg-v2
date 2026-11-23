@@ -1,0 +1,399 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Icon from '../components/Icon.astro';
+import Swatches from '../components/brand/Swatches.astro';
+import LionTC from '../components/brand/LionTC.astro';
+import page from '../content/pages/brand.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+const sec = (id: string) => page.sections.find((s: any) => s.id === id) as any;
+const head = sec('page-header');
+const logos = sec('logos');
+const usage = sec('usage');
+const color = sec('color');
+const type = sec('type');
+const story = sec('story');
+const mark = sec('mark');
+const contact = sec('contact');
+const kit = head.ctas[0];
+const swatch = (name: string) => color.swatches.find((s: any) => s.name === name);
+const rules = usage.interactive.rules;
+const tc = mark.interactive.hiddenTC;
+const isDark = (bg: string) => bg !== '#FFFFFF';
+const scaleSize: Record<number, string> = { 0: 'clamp(3rem, 2rem + 4vw, 5.5rem)', 1: 'clamp(1.75rem, 1.3rem + 1.4vw, 2.375rem)', 2: '1.5rem', 3: '1rem', 4: '.6875rem' };
+const scaleWeight: Record<number, number> = { 0: 700, 1: 700, 2: 600, 3: 400, 4: 500 };
+---
+<Base seo={seo}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300..800&display=swap" />
+  </Fragment>
+
+  <PageHero title={head.heading.replace(' ready to use.', '')} strong="ready to use." lede={head.lede}>
+    <div slot="after-copy" class="kit">
+      <a class="btn btn-primary" href={'/' + kit.href} download={kit.download}>{kit.label} <Icon name="download" /></a>
+      <p class="spec">{kit.meta}</p>
+    </div>
+    <div class="hero-obj">
+      <figure class="mark-stage">
+        <img class="object lk-l" src="/assets/brand-kit/tanches-gg-lockup-color-light.svg" alt="TANCHES.GG full color lockup" fetchpriority="high" />
+        <img class="object lk-d" src="/assets/brand-kit/tanches-gg-lockup-color-dark.svg" alt="" aria-hidden="true" fetchpriority="high" />
+        <ul class="labels" role="list">
+          {[['Flame', 0, 18, true], ['Rose', 100, 50, false], ['Violet', 0, 84, true]].map(([n, x, y, left], i) => {
+            const s = swatch(n as string);
+            return <li class:list={['label-glass', { left }]} style={`--x:${x}%;--y:${y}%;--i:${i}`}><span class="dot" style={`background:${s.hex}`} aria-hidden="true"></span><span>{s.name} <span class="num hx">{s.hex}</span></span></li>;
+          })}
+        </ul>
+      </figure>
+      <nav class="jump" aria-label={head.interactive.jumpNav.ariaLabel}>
+        <ul role="list">
+          {head.interactive.jumpNav.items.map((j: any) => <li><a href={j.target}>{j.label}</a></li>)}
+        </ul>
+      </nav>
+    </div>
+  </PageHero>
+
+  <!-- Logos -->
+  <section class="section" id="logos" aria-labelledby="br-logos-title">
+    <div class="wrap">
+      <SectionHead id="br-logos-title" title="Logo files for" strong="light and dark." lede={logos.lede}>
+        <a class="link" href={'/' + logos.ctas[0].href} download={logos.ctas[0].download}>{logos.ctas[0].label} <Icon name="download" /></a>
+      </SectionHead>
+      {logos.downloads.map((g: any) => (
+        <div class="lgroup">
+          <div class="g-head">
+            <h3 class="h3">{g.group}</h3>
+            <p class="small">{g.note}</p>
+          </div>
+          <ul class:list={['tiles', `n${g.items.length}`]} role="list">
+            {g.items.map((it: any) => (
+              <li class="tile" data-reveal>
+                <div class:list={['plate', { dark: isDark(it.tileBg) }]} style={`background:${it.tileBg}`}>
+                  <span class="spec on">{it.tileLabel}</span>
+                  <img src={'/' + it.files[0].href} alt={it.alt} style={`max-height:${it.maxHeight === '100%' ? '46%' : '62%'}`} loading="lazy" />
+                </div>
+                <div class="t-info">
+                  <div>
+                    <p class="t-name">{it.name}</p>
+                    <p class="small">{it.use}</p>
+                  </div>
+                  <div class="dl">
+                    {it.files.map((f: any) => (
+                      <a class="btn btn-ghost btn-sm" href={'/' + f.href} download={f.download} aria-label={f.ariaLabel}><Icon name="download" size={16} />{f.format}</a>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Usage -->
+  <section class="section usage-sec sweep" id="usage" aria-labelledby="br-usage-title">
+    <div class="wrap">
+      <div class="clear">
+        <div class="c-copy">
+          <h2 id="br-usage-title" class="h2" data-reveal>Give it <strong>room.</strong></h2>
+          <p class="lede" data-reveal>{usage.body[0]}</p>
+          <dl class="mins" data-reveal>
+            {usage.stats.map((s: any) => (<div><dt class="spec">{s.label}</dt><dd class="num">{s.value}<span>{s.unit}</span></dd></div>))}
+          </dl>
+          <p class="small" data-reveal>{usage.footnote}</p>
+        </div>
+        <figure class="space" data-reveal>
+          <div class="space-box">
+            <span class="margin" aria-hidden="true"></span>
+            <img src={'/' + usage.images[0].src} alt={usage.images[0].alt} loading="lazy" />
+            <span class="half label-glass" aria-hidden="true">{usage.images[0].overlayLabel}</span>
+          </div>
+        </figure>
+      </div>
+
+      <div class="rules">
+        <div class="r-col">
+          <h3 class="r-title"><span class="ok"><Icon name="check" size={16} /></span>{rules.do.title}</h3>
+          <ul class="ex-grid do" role="list">
+            {rules.do.items.map((r: any) => (
+              <li data-reveal>
+                <div class:list={['ex', r.tile]}>
+                  {r.backgroundPhoto && <img class="ex-bg" src="/assets/opt/about-after.jpg" alt="" loading="lazy" />}
+                  <img class="ex-logo" src={'/' + r.src} alt="" loading="lazy" />
+                </div>
+                <p class="small">{r.label}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="r-col">
+          <h3 class="r-title"><span class="no"><Icon name="x" size={16} /></span>{rules.dont.title}</h3>
+          <ul class="ex-grid dont" role="list">
+            {rules.dont.items.map((r: any) => (
+              <li data-reveal>
+                <div class:list={['ex', r.tile]}>
+                  <img class:list={['ex-logo', r.effect]} src={'/' + r.src} alt="" loading="lazy" />
+                  <span class="x-mark" aria-hidden="true"><Icon name="x" size={14} /></span>
+                </div>
+                <p class="small">{r.label}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color -->
+  <section class="section" id="color" aria-labelledby="br-color-title">
+    <div class="wrap">
+      <SectionHead id="br-color-title" title="Six colors," strong="sampled from the lion." lede={color.body[0]} />
+      <Swatches swatches={color.swatches} spectrum={color.spectrum} inks={color.inks} meta={color.meta} />
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section" id="type" aria-labelledby="br-type-title">
+    <div class="wrap">
+      <SectionHead id="br-type-title" title={type.heading} lede={type.lede} />
+      <div class="faces">
+        {type.cards.map((c: any, i: number) => (
+          <article class:list={['face', i === 0 ? 'sora' : 'jb']} data-reveal>
+            <div class="f-top">
+              <h3 class="f-name">{c.title}</h3>
+              <p class="spec">{c.meta} · {c.weights}</p>
+            </div>
+            <p class="specimen">{c.specimen}</p>
+            <p class="small">{c.body}</p>
+            <a class="link" href={c.links[0].href} target="_blank" rel="noopener">{c.links[0].label} <Icon name="arrow-up-right" /></a>
+          </article>
+        ))}
+      </div>
+      <ol class="scale" role="list">
+        {type.typeScale.map((t: any, i: number) => (
+          <li data-reveal>
+            <span class="spec">{t.label}</span>
+            <span class:list={['sample', { mono: i === 4 }]} style={`font-size:${scaleSize[i]};font-weight:${scaleWeight[i]}`}>{t.sample}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Story: seal to lion -->
+  <section class="section story-sec sweep" id="story" aria-labelledby="br-story-title">
+    <div class="wrap story">
+      <div class="evo" role="img" aria-label={story.interactive.sealToLionAnimation.ariaLabel} data-reveal>
+        <img class="seal" src={'/' + story.images[0].src} alt="" loading="lazy" />
+        <img class="lionL" src={'/' + story.images[1].src} alt="" loading="lazy" />
+        <span class="scan" aria-hidden="true"></span>
+      </div>
+      <div class="st-copy">
+        <h2 id="br-story-title" class="h2" data-reveal>From TanChes to <strong>TANCHES.GG.</strong></h2>
+        <p class="lede" data-reveal>{story.lede}</p>
+        <ol class="then-now" role="list" data-reveal>
+          {story.lists[0].items.map((it: any, i: number) => (
+            <li class:list={['tn', i === 0 ? 'then' : 'now']}>
+              <span class="yr num">{it.year}</span>
+              <span class="spec">{it.meta}</span>
+              <p class="small">{it.body}</p>
+            </li>
+          ))}
+        </ol>
+        <a class="link" href={story.ctas[0].href} data-reveal>{story.ctas[0].label} <Icon name="arrow-down" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why a lion -->
+  <section class="section" id="mark" aria-labelledby="br-mark-title">
+    <div class="wrap why-lion">
+      <div class="wl-side">
+        <LionTC label={tc.buttonAriaLabel} chips={tc.chips} title={tc.secretButton.title} body={tc.secretButton.body} bodyTouch={tc.secretButton.bodyTouch} alt={mark.images[0].alt} />
+      </div>
+      <div class="wl-copy">
+        <h2 id="br-mark-title" class="h2" data-reveal>{mark.heading}</h2>
+        <p class="lede" data-reveal>{mark.lede}</p>
+        <ol class="reasons" role="list">
+          {mark.cards.map((c: any, i: number) => (
+            <li data-reveal>
+              <span class="spec rn">{String(i + 1).padStart(2, '0')}</span>
+              <div><h3 class="h3">{c.title}</h3><p class="body">{c.body}</p></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section ask sweep" aria-labelledby="br-contact-title">
+    <div class="wrap center ask-in">
+      <img src="/assets/brand-kit/tanches-gg-icon-color.svg" alt="" width="56" height="64" loading="lazy" />
+      <h2 id="br-contact-title" class="h2" data-reveal>{contact.heading}</h2>
+      <p class="lede" data-reveal>{contact.body[0]}</p>
+      <a class="btn btn-ghost" href={contact.ctas[0].href} data-reveal><Icon name="mail" />{contact.ctas[0].label}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .kit { display: grid; justify-items: center; gap: .75rem; margin-top: .5rem; }
+  .hero-obj { display: grid; justify-items: center; gap: clamp(2rem, 4vw, 3rem); margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .mark-stage { position: relative; width: min(620px, 78vw); padding: 2rem 0; }
+  .lk-d { display: none; }
+  :global([data-theme='dark']) .lk-l { display: none; }
+  :global([data-theme='dark']) .lk-d { display: block; }
+  .mark-stage .object { width: 100%; height: auto; }
+  .labels { list-style: none; padding: 0; margin: 0; position: absolute; inset: 0; }
+  .labels li { position: absolute; left: var(--x); top: var(--y); translate: 1rem -50%; }
+  .labels li.left { flex-direction: row-reverse; padding: .45rem .5rem .45rem .9rem; translate: calc(-100% - 1rem) -50%; }
+  .hx { font-family: var(--mono); font-size: .75rem; font-weight: 500; color: var(--ink-2); }
+  @media (prefers-reduced-motion: no-preference) {
+    .mark-stage { animation: rise 1.4s var(--ease-out) both .1s; }
+    .labels li { animation: pop .9s var(--ease-out) both; animation-delay: calc(.9s + var(--i) * 120ms); }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(32px) scale(.98); filter: blur(6px); } }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(.94); } }
+  .jump ul { list-style: none; padding: .35rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem; border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--shadow-float); }
+  .jump a { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0 1rem; border-radius: 999px; font-size: .9375rem; font-weight: 600; text-decoration: none; color: var(--ink-2); transition: background-color .25s, color .25s; }
+  .jump a:hover { background: var(--surface); color: var(--ink); }
+
+  /* Logos */
+  .lgroup + .lgroup { margin-top: clamp(3rem, 5vw, 4.5rem); }
+  .g-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.5rem; padding-bottom: 1.25rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+  .tiles { list-style: none; padding: 0; display: grid; gap: clamp(1rem, 2vw, 1.5rem); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tile { display: grid; gap: 1rem; }
+  .plate { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius); display: grid; place-items: center; border: 1px solid var(--line); box-shadow: var(--shadow-float); overflow: hidden; }
+  .tiles:not(.n3) .plate { aspect-ratio: 2 / 1; }
+  .tiles.n3 .plate { aspect-ratio: 4 / 3; }
+  .plate img { width: auto; max-width: 70%; height: auto; }
+  .plate .on { position: absolute; top: .9rem; left: 1rem; color: #5C616D; }
+  .plate.dark .on { color: #9196A1; }
+  .t-info { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: .75rem 1rem; }
+  .tiles.n3 .t-info { display: grid; justify-content: start; }
+  .t-name { font-weight: 640; }
+  .dl { display: flex; gap: .5rem; }
+  .dl .btn { gap: .4rem; }
+
+  /* Usage */
+  .usage-sec { padding-top: var(--section) !important; }
+  .clear { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .c-copy { display: grid; gap: 1.25rem; justify-items: start; }
+  .mins { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; border-top: 1px solid var(--line-2); }
+  .mins div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .4rem; padding: 1rem 1rem 0 0; }
+  .mins div + div { padding-left: 1.25rem; border-left: 1px solid var(--line); }
+  .mins dd { font-size: clamp(2rem, 1.5rem + 1.5vw, 2.75rem); font-weight: 380; letter-spacing: -0.035em; line-height: 1; }
+  .mins dd span { font-size: .5em; margin-left: .15em; color: var(--ink-2); }
+  .space { padding: clamp(1.5rem, 4vw, 3rem); border-radius: 28px; background: #FFFFFF; border: 1px solid var(--line); box-shadow: var(--shadow-object); }
+  .space-box { position: relative; padding: 9%; }
+  .margin { position: absolute; inset: 0; border: 1.5px dashed var(--rose); border-radius: 6px; background: color-mix(in srgb, var(--rose) 6%, transparent); }
+  .space-box img { position: relative; width: 100%; height: auto; outline: 1px solid rgba(226, 56, 105, .45); }
+  .half { position: absolute; top: 0; left: 50%; translate: -50% -50%; font: 500 .75rem var(--mono); padding: .35rem .7rem; background: #FFFFFF; color: #0E1016; }
+  .rules { margin-top: clamp(4rem, 7vw, 6rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(2rem, 4vw, 3rem); }
+  .r-title { display: flex; align-items: center; gap: .6rem; font-size: 1.125rem; font-weight: 660; margin-bottom: 1.25rem; }
+  .ok, .no { width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; }
+  .ok { background: #1FA35B; color: #FFFFFF; }
+  .no { background: #C2261B; color: #FFFFFF; }
+  .ex-grid { list-style: none; padding: 0; display: grid; gap: 1rem; }
+  .ex-grid.do { grid-template-columns: 1fr; }
+  .ex-grid.dont { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-grid li { display: grid; gap: .6rem; }
+  .ex { position: relative; aspect-ratio: 16 / 7; border-radius: 16px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--line); }
+  .ex.is-light { background: #FFFFFF; }
+  .ex.is-dark { background: #08080A; }
+  .ex.is-clash { background: linear-gradient(120deg, #F53F1D, #C92FD1); }
+  .ex.is-photo { background: #08080A; }
+  .ex-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.7); }
+  .ex-logo { position: relative; width: 58%; height: auto; }
+  .fx-stretch { max-width: 70%; transform: scaleX(1.5); }
+  .fx-rotate { transform: rotate(-12deg); }
+  .fx-recolor { filter: hue-rotate(150deg); }
+  .fx-shadow { filter: drop-shadow(6px 8px 6px rgba(0, 0, 0, .45)); }
+  .x-mark { position: absolute; top: .6rem; right: .6rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; background: #C2261B; color: #FFFFFF; }
+
+  /* Type */
+  .faces { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .face { display: grid; gap: 1.25rem; align-content: start; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px; background: var(--surface); border: 1px solid var(--line); }
+  .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 1rem; }
+  .f-name { font-size: 1.5rem; font-weight: 640; letter-spacing: -0.02em; }
+  .sora .f-name, .sora .specimen, .sample { font-family: 'Sora', var(--font); }
+  .specimen { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.75rem); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; overflow-wrap: anywhere; }
+  .jb .f-name { font-family: var(--mono); font-weight: 500; letter-spacing: 0; }
+  .jb .specimen { font-family: var(--mono); font-size: clamp(1rem, .85rem + .7vw, 1.5rem); font-weight: 500; letter-spacing: .12em; line-height: 1.4; }
+  .scale { list-style: none; padding: 0; margin-top: clamp(2.5rem, 4vw, 3.5rem); border-top: 1px solid var(--line-2); }
+  .scale li { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: 1.5rem; align-items: baseline; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+  .sample { line-height: 1.1; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  .sample.mono { font-family: var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+
+  /* Story */
+  .story-sec { padding-top: var(--section) !important; }
+  .story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .evo { position: relative; aspect-ratio: 1; width: min(100%, 460px); justify-self: center; border-radius: 40px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-object); overflow: hidden; }
+  .seal { position: absolute; left: 12%; top: 12%; width: 76%; height: 76%; object-fit: contain; }
+  .lionL { position: absolute; left: 50%; top: 50%; height: 74%; width: auto; translate: -50% -50%; }
+  .scan { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(128, 128, 140, .12) 0 1px, transparent 1px 3px); opacity: 0; pointer-events: none; }
+  .seal { opacity: 0; }
+  .st-copy { display: grid; gap: 1.5rem; justify-items: start; }
+  .then-now { list-style: none; padding: 0; display: grid; width: 100%; border-top: 1px solid var(--line-2); }
+  .tn { display: grid; grid-template-columns: 6rem 1fr; column-gap: 1.5rem; row-gap: .3rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+  .tn .yr { grid-row: span 2; font-size: 1.75rem; font-weight: 380; letter-spacing: -0.03em; line-height: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .seal { animation: seal 10s infinite; }
+    .lionL { animation: lion 10s infinite; }
+    .scan { animation: scan 10s infinite; }
+    .then { animation: then 10s infinite; }
+    .now { animation: now 10s infinite; }
+  }
+  @keyframes seal { 0%, 30% { opacity: 1; transform: none; filter: none; } 34% { transform: translateX(-4px); filter: hue-rotate(180deg) saturate(1.6); } 37% { transform: translateX(5px); filter: hue-rotate(250deg) saturate(1.6); } 40% { opacity: 1; transform: translateX(-2px); } 42%, 97% { opacity: 0; transform: none; filter: none; } 100% { opacity: 1; } }
+  @keyframes lion { 0%, 38% { opacity: 0; } 41% { opacity: 1; transform: translateX(4px); filter: hue-rotate(-50deg) saturate(1.4); } 44% { transform: translateX(-3px); filter: hue-rotate(70deg) saturate(1.4); } 48%, 96% { opacity: 1; transform: none; filter: none; } 100% { opacity: 0; } }
+  @keyframes scan { 0%, 29% { opacity: 0; } 32%, 48% { opacity: 1; } 52%, 100% { opacity: 0; } }
+  @keyframes then { 0%, 40% { opacity: 1; } 45%, 96% { opacity: .5; } 100% { opacity: 1; } }
+  @keyframes now { 0%, 40% { opacity: .5; } 45%, 96% { opacity: 1; } 100% { opacity: .5; } }
+
+  /* Why a lion */
+  .why-lion { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: start; }
+  .wl-side { position: sticky; top: 8rem; padding-inline: 3rem; }
+  .wl-copy { display: grid; gap: 1.25rem; }
+  .reasons { list-style: none; padding: 0; margin-top: 1rem; border-top: 1px solid var(--line-2); }
+  .reasons li { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .rn { padding-top: .45rem; }
+  .reasons .body { margin-top: .5rem; }
+
+  /* Ask */
+  .ask { padding-top: var(--section) !important; border-top: 1px solid var(--line); }
+  .ask-in { display: grid; justify-items: center; gap: 1.25rem; }
+  .ask-in img { width: 3.5rem; height: auto; margin-bottom: .5rem; }
+
+  @media (max-width: 960px) {
+    .clear, .story, .why-lion { grid-template-columns: 1fr; }
+    .rules { grid-template-columns: 1fr; }
+    .ex-grid.do { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .faces { grid-template-columns: 1fr; }
+    .wl-side { position: static; }
+  }
+  @media (max-width: 760px) {
+    .tiles, .tiles.n3 { grid-template-columns: 1fr; }
+    .ex-grid.do { grid-template-columns: 1fr; }
+    .scale li { grid-template-columns: 1fr; gap: .4rem; }
+    .labels { position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-top: 1.25rem; }
+    .labels li, .labels li.left { position: static; translate: none; flex-direction: row; padding: .45rem .9rem .45rem .5rem; font-size: .8125rem; }
+    .mark-stage { padding: 0; }
+  }
+  @media (max-width: 480px) {
+    .ex-grid.dont { grid-template-columns: 1fr; }
+    .wl-side { padding-inline: 1.5rem; }
+  }
+</style>

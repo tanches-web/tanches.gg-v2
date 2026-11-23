@@ -1,0 +1,394 @@
+---
+// Case study: the site's design language, worn in the client's colours.
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Work from '../components/Work.astro';
+import ProjectCTA from '../components/ProjectCTA.astro';
+import { projects, bySlug, themeVars, assetPath as a } from '../lib/projects';
+import { groupOf } from '../../scripts/image-groups.mjs';
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { project: p.slug } }));
+}
+
+const p = bySlug(Astro.params.project as string)!;
+const d = p.data;
+const r = p.rendered;
+const t = p.theme;
+const ready = p.ready;
+
+const seo = {
+  title: p.seo.title,
+  description: p.seo.description,
+  canonical: p.seo.canonical,
+  ogImage: p.img || '/assets/og-logo.png',
+  jsonLd: p.seo.jsonLd,
+};
+
+const hero = r.hero ?? {};
+const chips: { label: string; dots?: boolean }[] = (hero.chips ?? []).map((c: any) => ({ label: c.label, dots: !!c.dots }));
+const facts = r.facts?.cells ?? [];
+const results = r.results;
+const delivered = r.delivered;
+const quote = d.quote && !d.quote.placeholder && ready ? d.quote : null;
+// One appearance per photo on the page: the gallery skips shots already used as the hero or side image
+// (including the same photo saved under another file name).
+const used = new Set([p.img, a(d.sideImg)].filter(Boolean).map(groupOf));
+const gallery: string[] = (d.gallery ?? []).map(a).filter((g: string) => !used.has(groupOf(g)));
+
+const fallbackDeep = (hex?: string) => hex ?? '#0E1016';
+const more = (r.more?.items ?? []).map((m: any) => {
+  const mp = bySlug(m.href.replace(/^\//, ''));
+  const th = mp?.theme;
+  return {
+    title: m.title, meta: m.loc, body: mp?.lede ?? '', href: m.href, img: a(m.img), alt: m.title,
+    logo: th?.logoWhite ?? '', a: th?.a ?? '#E23869', b: th?.b ?? '#C92FD1', deep: fallbackDeep(th?.deep),
+  };
+});
+const logoLight = t?.logoColor || p.cardLogo;
+const logoDark = t?.logoWhite || p.cardLogo;
+const pendingLogo = r.pending?.logo;
+---
+<Base seo={seo} theme={themeVars(t)} bodyClass={t ? 'cs themed' : 'cs'}>
+  <section class="cs-hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <a class="crumb" href="/Projects"><Icon name="chevron-left" size={16} />All projects</a>
+      <div class="id">
+        {logoLight && (
+          <span class="logo">
+            <img class="lg-l" src={logoLight} alt={`${p.title} logo`} />
+            <img class="lg-d" src={logoDark} alt="" aria-hidden="true" />
+          </span>
+        )}
+        <h1 id="page-title" class="display">{p.title}</h1>
+        <p class="lede">{p.lede}</p>
+        <ul class="chips" role="list">
+          {!ready && t && <li class="status"><span class="pulse" aria-hidden="true"></span>In progress</li>}
+          {chips.map((c) => (
+            <li>{c.dots && t && <span class="dots" aria-hidden="true"><i style="background:var(--ca)"></i><i style="background:var(--cb)"></i></span>}{c.label}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {ready && p.img && (
+      <figure class="stage">
+        {t?.mascot && <span class="mascot" aria-hidden="true">{t.mascot}</span>}
+        <div class="plate"><img src={p.img} alt={hero.image?.alt ?? p.title} fetchpriority="high" /></div>
+        {d.tagline && <figcaption class="label-glass tag"><span class="dot" aria-hidden="true"></span>{d.tagline}</figcaption>}
+      </figure>
+    )}
+  </section>
+
+  {ready ? (
+    <>
+      {facts.length > 0 && (
+        <section class="wrap facts" aria-label="Project facts">
+          {facts.map((c: any) => (
+            <div class="fact">
+              <h2 class="spec">{c.heading}</h2>
+              {c.chips && <ul class="tags" role="list">{c.chips.map((x: string) => <li>{x}</li>)}</ul>}
+              {c.partners && (
+                <ul class="partners" role="list">
+                  {c.partners.map((pt: any) => (
+                    <li>
+                      <img class="lg-l mono-l" src={a(pt.logoLight ?? pt.logo)} alt={pt.name} style={`max-height:${pt.maxHeight}`} />
+                      <img class="lg-d mono-d" src={a(pt.logoDark ?? pt.logo)} alt="" aria-hidden="true" style={`max-height:${pt.maxHeight}`} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {c.items && (
+                <dl class="metrics">{c.items.map((m: any) => <div><dt>{m.label}</dt><dd class="num">{m.value}</dd></div>)}</dl>
+              )}
+              {c.value && <p class="sector">{c.value}{c.sub && <span class="small">{c.sub}</span>}</p>}
+            </div>
+          ))}
+        </section>
+      )}
+
+      {quote && (
+        <section class="quote-band" aria-label="Client testimonial">
+          <div class="wrap qb">
+            <blockquote><p>“{quote.text}”</p></blockquote>
+            <div class="who">
+              {t?.logoWhite && <img src={t.logoWhite} alt="" aria-hidden="true" />}
+              <p><strong>{quote.who}</strong><span>{quote.role}</span></p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section class="section story" aria-labelledby="story-title">
+        <div class="wrap story-grid">
+          <div class="story-copy">
+            <h2 id="story-title" class="h2" data-reveal>{d.storyTitle}</h2>
+            {(d.story ?? []).map((s: any) => (
+              <div class="block" data-reveal>
+                <h3 class="blabel">{s.label.charAt(0) + s.label.slice(1).toLowerCase()}</h3>
+                <div>{s.paras.map((para: string) => <p class="body">{para}</p>)}</div>
+              </div>
+            ))}
+            {d.pull && <p class="pull" data-reveal>{d.pull}</p>}
+          </div>
+          {d.sideImg && <figure class="side photo" data-reveal><img src={a(d.sideImg)} alt="" loading="lazy" /></figure>}
+        </div>
+      </section>
+
+      {delivered && (
+        <section class="section delivered" aria-labelledby="del-title">
+          <div class="wrap del-grid">
+            <div class="del-head">
+              <h2 id="del-title" class="h2" data-reveal>{delivered.heading}</h2>
+              {delivered.procuredThrough && (
+                <div class="proc" data-reveal>
+                  <p class="small">{delivered.procuredThrough.label}</p>
+                  <ul role="list">
+                    {delivered.procuredThrough.logos.map((l: any) => (
+                      <li><img class="lg-l" src={a(l.logoLight)} alt={l.name} /><img class="lg-d" src={a(l.logoDark)} alt="" aria-hidden="true" /></li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            <ol class="del-list">
+              {(d.delivered ?? []).map((x: any) => (
+                <li data-reveal><h3 class="h3">{x.title}</h3><p class="body">{x.body}</p></li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {results && (
+        <section class="section results" aria-label={results.srHeading ?? 'Results'}>
+          <div class="wrap res-grid">
+            <div class="res-card" data-reveal>
+              <p class="res-v num">{results.value}</p>
+              <p class="res-l">{results.label}</p>
+              {results.sub && <p class="res-s">{results.sub}</p>}
+            </div>
+            {d.features && (
+              <dl class="features" data-reveal>
+                {d.features.map((f: any) => <div><dt>{f.title}</dt><dd>{f.body}</dd></div>)}
+              </dl>
+            )}
+          </div>
+        </section>
+      )}
+
+      {gallery.length > 0 && (
+        <section class="section gallery" aria-labelledby="gal-title" data-gallery>
+          <div class="wrap gal-head">
+            <h2 id="gal-title" class="h2">{r.gallery?.heading ?? 'Photos from the build'}</h2>
+            <div class="gal-ctl">
+              <span class="spec num" data-count aria-live="polite">01 / {String(gallery.length).padStart(2, '0')}</span>
+              <button class="icon-round" data-prev aria-label="Previous photo"><Icon name="chevron-left" /></button>
+              <button class="icon-round" data-next aria-label="Next photo"><Icon name="chevron-right" /></button>
+            </div>
+          </div>
+          <ul class="strip" role="list" data-strip tabindex="0" aria-label="Project photos">
+            {gallery.map((g, i) => (
+              <li><img src={g} alt={`Project photo ${i + 1}`} loading="lazy" decoding="async" /></li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </>
+  ) : (
+    <section class="section pending">
+      <div class="narrow pend">
+        {pendingLogo && (
+          <span class="logo big">
+            <img class="lg-l" src={a(pendingLogo.light ?? pendingLogo.src)} alt={pendingLogo.alt} />
+            <img class:list={['lg-d', { invert: !pendingLogo.dark }]} src={a(pendingLogo.dark ?? pendingLogo.src)} alt="" aria-hidden="true" />
+          </span>
+        )}
+        <h2 class="h2">{r.pending?.heading ?? 'Project delivered.'}</h2>
+        <p class="lede">{r.pending?.body}</p>
+        <a class="btn btn-ghost" href="/Projects">{r.pending?.cta?.label ?? 'Browse other projects'}</a>
+      </div>
+    </section>
+  )}
+
+  {more.length > 0 && (
+    <section class="section more" aria-labelledby="more-title">
+      <div class="wrap">
+        <div class="more-head">
+          <h2 id="more-title" class="h2">{r.more?.heading ?? 'More projects'}</h2>
+          <a class="link" href="/Projects">{r.more?.cta?.label ?? 'View all projects'} <Icon name="arrow-right" /></a>
+        </div>
+        <Work items={more} />
+      </div>
+    </section>
+  )}
+
+  <ProjectCTA />
+</Base>
+
+<style>
+  /* Client colour roles: --ct is the text-safe accent, switched per theme */
+  :global(body.cs) { --ct: var(--ct-l, var(--accent)); --clbl: var(--clbl-l, var(--ink-2)); }
+  :global([data-theme='dark'] body.cs) { --ct: var(--ct-d, var(--accent)); --clbl: var(--clbl-d, var(--ink-2)); }
+
+  .cs-hero {
+    position: relative; overflow: clip; padding-top: clamp(7.5rem, 5rem + 5vw, 10rem); padding-bottom: clamp(3rem, 6vw, 5rem);
+    background:
+      linear-gradient(180deg, transparent 80%, var(--bg)),
+      radial-gradient(70% 45% at 50% 92%, color-mix(in srgb, var(--ca, var(--rose)) 22%, transparent), transparent 72%),
+      linear-gradient(180deg, var(--sweep-hi), var(--bg));
+  }
+  :global([data-theme='dark']) .cs-hero {
+    background:
+      radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--ca, var(--rose)) 30%, transparent), transparent 70%),
+      radial-gradient(70% 45% at 50% 95%, color-mix(in srgb, var(--cd, #000) 70%, transparent), transparent 72%),
+      var(--bg);
+  }
+  .crumb { display: inline-flex; align-items: center; gap: .3rem; font-size: .875rem; font-weight: 600; color: var(--ink-2); text-decoration: none; padding: .35rem .75rem .35rem .5rem; border-radius: 999px; border: 1px solid var(--line-2); }
+  .crumb:hover { color: var(--ink); border-color: var(--ink-3); }
+  .id { display: grid; justify-items: center; text-align: center; gap: 1.25rem; margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+  .logo { display: block; height: clamp(3rem, 5vw, 4.5rem); }
+  .logo img { height: 100%; width: auto; max-width: min(320px, 70vw); object-fit: contain; }
+  .lg-d { display: none; }
+  :global([data-theme='dark']) .lg-l { display: none; }
+  :global([data-theme='dark']) .lg-d { display: block; }
+  :global([data-theme='dark']) .lg-d.invert { filter: grayscale(1) brightness(0) invert(1); }
+  h1 { max-width: 20ch; }
+  .lede { max-width: 56ch; }
+  .chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+  .chips li { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .85rem; border-radius: 999px; font-size: .875rem; font-weight: 580; background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .dots { display: inline-flex; }
+  .status { font-weight: 640; }
+  .pulse { width: .55rem; height: .55rem; border-radius: 50%; background: var(--ca); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ca) 30%, transparent); }
+  @media (prefers-reduced-motion: no-preference) { .pulse { animation: pulse 2s ease-in-out infinite; } }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--ca) 0%, transparent); } }
+  .dots i { width: .8rem; height: .8rem; border-radius: 50%; box-shadow: 0 0 0 2px var(--surface); }
+  .dots i + i { margin-left: -.3rem; }
+
+  .stage { position: relative; width: min(1180px, 92vw); margin: clamp(4.5rem, 9vw, 8rem) auto 0; }
+  .mascot {
+    position: absolute; left: 50%; top: -0.38em; translate: -50% 0; z-index: 0; white-space: nowrap;
+    font-weight: 820; font-variation-settings: 'wdth' 72; font-size: clamp(5rem, 17vw, 15rem); line-height: 1; letter-spacing: -0.035em;
+    color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--ca) 55%, transparent); user-select: none;
+  }
+  .plate {
+    position: relative; z-index: 1; aspect-ratio: 21 / 9; border-radius: var(--radius); overflow: hidden; background: var(--cd);
+    box-shadow: 0 60px 80px -40px color-mix(in srgb, var(--ca, #000) 65%, transparent), var(--shadow-float);
+  }
+  .plate::before { content: ''; position: absolute; inset: 0 0 auto; height: 6px; z-index: 1; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  .plate img { width: 100%; height: 100%; object-fit: cover; }
+  .tag { position: absolute; z-index: 2; left: 1.25rem; bottom: 1.25rem; font-size: .8125rem; }
+  .tag .dot { background: linear-gradient(135deg, var(--ca), var(--cb)); }
+
+  /* Facts: a spec sheet */
+  .facts { display: grid; grid-template-columns: 1.4fr 1fr 1fr; border-top: 1px solid var(--line-2); margin-top: clamp(1rem, 3vw, 2rem); }
+  .fact { padding: 1.5rem 1.75rem 0 0; display: grid; gap: .9rem; align-content: start; }
+  .fact + .fact { padding-left: 1.75rem; border-left: 1px solid var(--line); }
+  .tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tags li { font-size: .8125rem; font-weight: 560; padding: .3rem .7rem; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); }
+  .partners { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, auto); justify-content: start; gap: 1rem 1.75rem; align-items: center; }
+  .partners img { width: auto; height: auto; max-width: 120px; }
+  .mono-l { filter: brightness(0); opacity: .8; }
+  .mono-d { filter: brightness(0) invert(1); opacity: .85; }
+  .metrics { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .metrics div { display: flex; flex-direction: column-reverse; gap: .2rem; }
+  .metrics dd { font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1; color: var(--ct); }
+  .metrics dt { font-size: var(--t-small); color: var(--ink-2); }
+  .sector { font-size: 1.5rem; font-weight: 420; letter-spacing: -0.02em; display: grid; gap: .3rem; }
+
+  /* Quote band: the one place the client colour fills the page */
+  .quote-band { margin-top: var(--section); color: #fff; background: radial-gradient(80% 120% at 85% 0%, var(--cd2), transparent 60%), var(--cd); }
+  .qb { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem 4rem; align-items: end; padding-block: clamp(4rem, 8vw, 7rem); }
+  .qb blockquote { font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.5rem); line-height: 1.25; letter-spacing: -0.02em; font-weight: 360; max-width: 34ch; }
+  .who { display: grid; gap: 1rem; justify-items: start; }
+  .who img { height: 3rem; width: auto; max-width: 220px; object-fit: contain; }
+  .who strong { display: block; font-weight: 660; }
+  .who span { color: rgba(255,255,255,.78); font-size: var(--t-small); }
+
+  /* Story */
+  .story-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .story-copy { display: grid; gap: 2rem; }
+  .block { display: grid; grid-template-columns: 8rem 1fr; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .blabel { font-size: 1rem; font-weight: 660; color: var(--ct); letter-spacing: -0.005em; }
+  .block .body + .body { margin-top: 1rem; }
+  .pull { font-size: clamp(1.25rem, 1.05rem + .7vw, 1.75rem); line-height: 1.35; letter-spacing: -0.015em; font-weight: 420; padding-top: 1.5rem; position: relative; }
+  .pull::before { content: ''; position: absolute; top: 0; left: 0; width: 5rem; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--ca) 70%, var(--cb) 70%); }
+  .side { position: sticky; top: 7rem; aspect-ratio: 4 / 5; }
+
+  /* Delivered */
+  .del-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .del-head { position: sticky; top: 7rem; display: grid; gap: 2rem; }
+  .proc { padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
+  .proc ul { list-style: none; padding: 0; display: flex; gap: 1.5rem; align-items: center; margin-top: .75rem; }
+  .proc img { height: 28px; width: auto; }
+  .del-list { list-style: none; padding: 0; counter-reset: d; border-top: 1px solid var(--line-2); }
+  .del-list li { counter-increment: d; display: grid; grid-template-columns: 3rem 1fr; column-gap: 1rem; row-gap: .5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .del-list li::before { content: counter(d, decimal-leading-zero); grid-row: span 2; font: 500 .8125rem var(--mono); color: var(--ct); padding-top: .4rem; }
+
+  /* Results */
+  .res-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .res-card { color: #fff; border-radius: 32px; padding: clamp(2rem, 4vw, 3.5rem); background: radial-gradient(90% 90% at 100% 0%, var(--cd2), transparent 65%), var(--cd); box-shadow: 0 50px 70px -40px color-mix(in srgb, var(--ca) 70%, transparent); }
+  .res-v { font-size: clamp(4rem, 2.5rem + 6vw, 8rem); line-height: .9; font-weight: 300; letter-spacing: -0.04em; color: var(--chi); }
+  .res-l { font-size: 1.25rem; font-weight: 600; margin-top: 1rem; }
+  .res-s { color: rgba(255,255,255,.78); margin-top: .35rem; }
+  .features { border-top: 1px solid var(--line-2); }
+  .features div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+  .features dt { font-weight: 640; }
+  .features dd { color: var(--ink-2); font-size: var(--t-small); }
+
+  /* Gallery: a horizontal strip, snap to each photo */
+  .gal-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; }
+  .gal-ctl { display: flex; align-items: center; gap: .5rem; }
+  .gal-ctl .spec { margin-right: .5rem; }
+  .icon-round { width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-2); transition: background-color .2s; }
+  .icon-round:hover { background: var(--line); }
+  .strip { list-style: none; margin: 0; display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 max(var(--gutter), calc((100vw - var(--max)) / 2)) 2rem; scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2)); }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip li { flex: none; width: min(78vw, 760px); aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; scroll-snap-align: start; background: var(--surface-2); box-shadow: var(--shadow-float); }
+  .strip img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Pending */
+  .pend { display: grid; justify-items: center; text-align: center; gap: 1.25rem; padding: clamp(2rem, 4vw, 3rem); border-radius: 32px; background: var(--surface); border: 1px solid var(--line); }
+  .logo.big { height: 4rem; }
+
+  .more { border-top: 1px solid var(--line); padding-top: var(--section) !important; }
+  .more-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+  @media (max-width: 960px) {
+    .facts { grid-template-columns: 1fr; }
+    .fact + .fact { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 1.5rem; }
+    .qb, .story-grid, .del-grid, .res-grid { grid-template-columns: 1fr; }
+    .side, .del-head { position: static; }
+    .side { aspect-ratio: 16 / 10; }
+    .block { grid-template-columns: 1fr; gap: .5rem; }
+    .plate { aspect-ratio: 4 / 3; }
+    .features div { grid-template-columns: 1fr; gap: .35rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((g) => {
+    const strip = g.querySelector<HTMLElement>('[data-strip]')!;
+    const items = [...strip.children] as HTMLElement[];
+    const count = g.querySelector<HTMLElement>('[data-count]')!;
+    const total = String(items.length).padStart(2, '0');
+    const current = () => {
+      const left = strip.getBoundingClientRect().left + parseFloat(getComputedStyle(strip).scrollPaddingLeft || '0');
+      let best = 0, dist = Infinity;
+      items.forEach((it, i) => { const d = Math.abs(it.getBoundingClientRect().left - left); if (d < dist) { dist = d; best = i; } });
+      return best;
+    };
+    const go = (i: number) => {
+      const target = items[Math.max(0, Math.min(items.length - 1, i))];
+      strip.scrollTo({ left: target.offsetLeft - parseFloat(getComputedStyle(strip).scrollPaddingLeft || '0'), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    g.querySelector('[data-prev]')!.addEventListener('click', () => go(current() - 1));
+    g.querySelector('[data-next]')!.addEventListener('click', () => go(current() + 1));
+    strip.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current() + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current() - 1); }
+    });
+    let raf = 0;
+    strip.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { count.textContent = `${String(current() + 1).padStart(2, '0')} / ${total}`; }); }, { passive: true });
+  });
+</script>

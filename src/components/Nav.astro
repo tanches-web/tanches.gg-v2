@@ -1,0 +1,220 @@
+---
+import { NAV } from '../lib/site';
+import Icon from './Icon.astro';
+interface Props { /** 'dark' when the page opens on a dark stage (the home hero): the bar starts in dark glass. */ tone?: 'dark' }
+const { tone } = Astro.props;
+const path = Astro.url.pathname.replace(/\.html$/, '');
+const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : path.toLowerCase().startsWith(href.toLowerCase()));
+---
+<header class:list={['nav-shell', { 'on-dark': tone === 'dark' }]} data-nav>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="/" aria-label="TANCHES.GG home">
+      <img class="logo logo-light" src="/assets/brand-kit/tanches-gg-lockup-color-light.svg" alt="" width="152" height="36" />
+      <img class="logo logo-dark" src="/assets/brand-kit/tanches-gg-lockup-color-dark.svg" alt="" width="152" height="36" />
+    </a>
+
+    <ul class="menu" role="list">
+      {NAV.map((item, i) => (
+        <li class="menu-item">
+          {item.children ? (
+            <>
+              <button class="menu-link" aria-expanded="false" aria-controls={`dd-${i}`} data-dd-toggle>
+                {item.label}<Icon name="chevron-down" size={16} />
+              </button>
+              <div class="dropdown" id={`dd-${i}`} data-dd>
+                <ul role="list">
+                  {item.children.map((c) => (
+                    <li><a href={c.href} aria-current={isActive(c.href) ? 'page' : undefined}>
+                      <span class="dd-label">{c.label}</span>
+                      {c.note && <span class="dd-note">{c.note}</span>}
+                    </a></li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ) : (
+            <a class="menu-link" href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+              {item.live && <span class="live" aria-hidden="true"></span>}{item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <div class="actions">
+      <button class="icon-btn theme-toggle" data-theme-toggle aria-label="Switch to dark mode" title="Toggle theme">
+        <Icon name="moon" class="i-moon" />
+        <Icon name="sun" class="i-sun" />
+      </button>
+      <a class="btn btn-primary btn-sm nav-cta" href="/Contact">Start Planning</a>
+      <button class="icon-btn menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-menu-toggle>
+        <Icon name="menu" class="i-open" />
+        <Icon name="x" class="i-close" />
+      </button>
+    </div>
+  </nav>
+
+  <div class="sheet" id="mobile-menu" data-sheet hidden>
+    <ul role="list">
+      {NAV.map((item) => item.children ? (
+        <li class="sheet-group">
+          <span class="spec">{item.label}</span>
+          <ul role="list">{item.children.map((c) => <li><a href={c.href}>{c.label}</a></li>)}</ul>
+        </li>
+      ) : (
+        <li class="sheet-group"><a class="sheet-top" href={item.href}>{item.label}</a></li>
+      ))}
+    </ul>
+    <a class="btn btn-primary" href="/Contact">Start Planning <Icon name="arrow-right" /></a>
+  </div>
+</header>
+
+<style>
+  .nav-shell { position: fixed; inset: 0.875rem var(--gutter) auto; z-index: 50; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
+  .nav {
+    pointer-events: auto; width: min(100%, 1200px); height: 3.75rem; display: flex; align-items: center; gap: 1rem;
+    padding: 0 .5rem 0 1.125rem; border-radius: 999px;
+    background: var(--glass); border: 1px solid var(--glass-line);
+    backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 10px 30px -18px rgba(14,16,22,.35);
+    transition: box-shadow .4s var(--ease-out), background-color .3s;
+  }
+  :global([data-theme='dark']) .nav { box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 10px 30px -14px rgba(0,0,0,.7); }
+  /* Over a dark stage (the home hero) the bar is dark glass with light type, whatever the theme */
+  .nav-shell.on-dark {
+    --ink: #F4F5F7; --ink-2: #C6C9D1; --ink-3: #A6AAB4; --on-ink: #0E1016; --accent: #F2628C;
+    --line: rgba(255, 255, 255, .12); --line-2: rgba(255, 255, 255, .24);
+    --glass: rgba(14, 16, 22, .36); --glass-hi: rgba(20, 21, 27, .88); --glass-line: rgba(255, 255, 255, .16);
+    color: var(--ink);
+  }
+  .nav-shell.on-dark .nav { box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 10px 30px -14px rgba(0, 0, 0, .6); }
+  .nav-shell.on-dark .logo-light { display: none; }
+  .nav-shell.on-dark .logo-dark { display: block; }
+  .brand { display: flex; align-items: center; flex: none; }
+  .logo { height: 1.75rem; width: auto; }
+  .logo-dark { display: none; }
+  :global([data-theme='dark']) .logo-light { display: none; }
+  :global([data-theme='dark']) .logo-dark { display: block; }
+
+  .menu { display: flex; align-items: center; gap: .125rem; list-style: none; padding: 0; margin: 0 auto; }
+  .menu-item { position: relative; }
+  .menu-link {
+    display: inline-flex; align-items: center; gap: .3rem; height: 2.5rem; padding: 0 .85rem; border-radius: 999px;
+    font-size: .9375rem; font-weight: 560; color: var(--ink); text-decoration: none; white-space: nowrap;
+    transition: background-color .2s;
+  }
+  .menu-link:hover, .menu-link[aria-expanded='true'] { background: var(--line); }
+  .menu-link[aria-current='page'] { background: var(--line); }
+  .menu-link :global(svg) { transition: transform .3s var(--ease-out); opacity: .7; }
+  .menu-link[aria-expanded='true'] :global(svg) { transform: rotate(180deg); }
+  .live { width: .5rem; height: .5rem; border-radius: 50%; background: var(--rose); margin-right: .2rem; box-shadow: 0 0 0 3px color-mix(in srgb, var(--rose) 22%, transparent); }
+
+  .dropdown {
+    position: absolute; top: calc(100% + .75rem); left: 50%; translate: -50% 0; min-width: 18rem;
+    padding: .5rem; border-radius: 20px; background: var(--glass-hi); border: 1px solid var(--glass-line);
+    backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    box-shadow: var(--shadow-float);
+    opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.98); transform-origin: top center;
+    transition: opacity .25s var(--ease-out), transform .35s var(--ease-out), visibility 0s .35s;
+  }
+  .dropdown.open { opacity: 1; visibility: visible; transform: none; transition: opacity .25s var(--ease-out), transform .35s var(--ease-out); }
+  .dropdown ul { list-style: none; padding: 0; margin: 0; }
+  .dropdown a { display: grid; gap: .1rem; padding: .7rem .9rem; border-radius: 14px; text-decoration: none; }
+  .dropdown a:hover, .dropdown a[aria-current='page'] { background: var(--line); }
+  .dd-label { font-weight: 620; font-size: .9375rem; }
+  .dd-note { font-size: .8125rem; color: var(--ink-2); line-height: 1.4; }
+
+  .actions { display: flex; align-items: center; gap: .375rem; flex: none; }
+  .icon-btn { width: 2.625rem; height: 2.625rem; border-radius: 50%; display: grid; place-items: center; color: var(--ink); transition: background-color .2s; }
+  .icon-btn:hover { background: var(--line); }
+  .theme-toggle :global(.i-sun) { display: none; }
+  :global([data-theme='dark']) .theme-toggle :global(.i-sun) { display: block; }
+  :global([data-theme='dark']) .theme-toggle :global(.i-moon) { display: none; }
+  .menu-btn { display: none; }
+  .menu-btn :global(.i-close) { display: none; }
+  .menu-btn[aria-expanded='true'] :global(.i-open) { display: none; }
+  .menu-btn[aria-expanded='true'] :global(.i-close) { display: block; }
+
+  .sheet {
+    pointer-events: auto; width: min(100%, 1200px); margin-top: .5rem; padding: 1.25rem 1.25rem 1.5rem; border-radius: 26px;
+    background: var(--glass-hi); border: 1px solid var(--glass-line);
+    backdrop-filter: blur(24px) saturate(1.6); -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    box-shadow: var(--shadow-float); max-height: calc(100dvh - 6rem); overflow: auto;
+  }
+  .sheet > ul { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 1.25rem; }
+  .sheet-group ul { list-style: none; padding: 0; margin: .4rem 0 0; }
+  .sheet a:not(.btn) { display: block; padding: .45rem 0; font-size: 1.25rem; font-weight: 560; text-decoration: none; letter-spacing: -0.01em; }
+  .sheet .btn { width: 100%; }
+
+  @media (max-width: 1080px) {
+    .menu { display: none; }
+    .menu-btn { display: grid; }
+    .actions { margin-left: auto; }
+  }
+  @media (max-width: 480px) {
+    .nav-cta { display: none; }
+  }
+</style>
+
+<script>
+  // Dark-glass bar while it sits over a dark stage (elements marked data-nav-tone="dark").
+  const shell = document.querySelector<HTMLElement>('[data-nav]');
+  const zones = [...document.querySelectorAll<HTMLElement>('[data-nav-tone="dark"]')];
+  if (shell && zones.length) {
+    let queued = 0;
+    const check = () => {
+      queued = 0;
+      const y = shell.getBoundingClientRect().top + 30;
+      shell.classList.toggle('on-dark', zones.some((z) => { const r = z.getBoundingClientRect(); return r.top <= y && r.bottom >= y; }));
+    };
+    addEventListener('scroll', () => { if (!queued) queued = requestAnimationFrame(check); }, { passive: true });
+    addEventListener('resize', check);
+    check();
+  }
+
+  const root = document.documentElement;
+  const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const label = () => toggle?.setAttribute('aria-label', root.dataset.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  label();
+  toggle?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('tg-theme-v2', next); } catch {}
+    label();
+  });
+
+  // Dropdowns: click to toggle, hover-intent on fine pointers, Escape and outside-click close.
+  const toggles = [...document.querySelectorAll<HTMLButtonElement>('[data-dd-toggle]')];
+  const closeAll = (except?: HTMLButtonElement) => toggles.forEach((t) => {
+    if (t === except) return;
+    t.setAttribute('aria-expanded', 'false');
+    document.getElementById(t.getAttribute('aria-controls')!)?.classList.remove('open');
+  });
+  const open = (t: HTMLButtonElement, on: boolean) => {
+    closeAll(t);
+    t.setAttribute('aria-expanded', String(on));
+    document.getElementById(t.getAttribute('aria-controls')!)?.classList.toggle('open', on);
+  };
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  toggles.forEach((t) => {
+    t.addEventListener('click', () => open(t, t.getAttribute('aria-expanded') !== 'true'));
+    if (fine) {
+      const li = t.closest('li')!;
+      let timer: number | undefined;
+      li.addEventListener('pointerenter', () => { clearTimeout(timer); open(t, true); });
+      li.addEventListener('pointerleave', () => { timer = window.setTimeout(() => open(t, false), 160); });
+    }
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { const o = toggles.find((t) => t.getAttribute('aria-expanded') === 'true'); closeAll(); o?.focus(); } });
+  document.addEventListener('click', (e) => { if (!(e.target as Element).closest('.menu-item')) closeAll(); });
+
+  // Mobile sheet
+  const mb = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const sheet = document.querySelector<HTMLElement>('[data-sheet]');
+  mb?.addEventListener('click', () => {
+    const on = mb.getAttribute('aria-expanded') !== 'true';
+    mb.setAttribute('aria-expanded', String(on));
+    mb.setAttribute('aria-label', on ? 'Close menu' : 'Open menu');
+    if (sheet) sheet.hidden = !on;
+  });
+</script>

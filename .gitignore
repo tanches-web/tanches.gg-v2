@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.impeccable/config.local.json
+
+# Local editor/agent config
+.claude/
+
+# Unused duplicate of public/assets (nothing references it)
+src/assets/assets/
+
+# Design-review working files (screenshots, mocks); DESIGN.md, design.json and the surface briefs stay
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/hook.cache.json

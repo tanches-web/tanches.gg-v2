@@ -1,0 +1,125 @@
+---
+// The six-stop spectrum as precise swatches, the gradient they make, and the neutral inks.
+// Each swatch is a button that copies its hex value; a polite live region confirms the copy.
+import Icon from '../Icon.astro';
+interface Swatch { name: string; hex: string; rgb: string; tag: string; ariaLabel: string }
+interface Ink { hex: string; rgb: string; ariaLabel: string }
+interface Props { swatches: Swatch[]; spectrum: { label: string }; inks: { title: string; note: string; items: Ink[] }; meta: string }
+const { swatches, spectrum, inks, meta } = Astro.props;
+---
+<div class="sw-root" data-swatches>
+  <p class="spec meta"><Icon name="copy" size={14} />{meta}</p>
+  <ul class="stops" role="list">
+    {swatches.map((s) => (
+      <li>
+        <button type="button" class="chip" style={`--c:${s.hex}`} data-copy={s.hex} aria-label={s.ariaLabel}>
+          <span class="fill" aria-hidden="true"></span>
+          <span class="copied label-glass" aria-hidden="true"><Icon name="check" size={14} />Copied</span>
+        </button>
+        <div class="info">
+          <p class="nm">{s.name}{s.tag && <span class="tag spec">{s.tag}</span>}</p>
+          <p class="hex num">{s.hex}</p>
+          <p class="spec rgb">{s.rgb}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <figure class="grad">
+    <div class="bar" aria-hidden="true"></div>
+    <figcaption class="spec">{spectrum.label}</figcaption>
+  </figure>
+
+  <div class="inks">
+    <div class="ink-head">
+      <h3 class="h3">{inks.title}</h3>
+      <p class="small">{inks.note}</p>
+    </div>
+    <ul class="ink-row" role="list">
+      {inks.items.map((k) => (
+        <li>
+          <button type="button" class="ink" style={`--c:${k.hex}`} data-copy={k.hex} aria-label={`Copy ${k.hex}`}>
+            <span class="ink-fill" aria-hidden="true"></span>
+            <span class="spec">{k.hex}</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <p class="toast label-glass" role="status" aria-live="polite"><span class="tdot" aria-hidden="true"></span><span class="tmsg"></span></p>
+</div>
+
+<style>
+  .meta { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.25rem; }
+  .stops { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; }
+  .chip { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; }
+  .fill { position: absolute; inset: 0; background: var(--c); transition: transform .5s var(--ease-out); }
+  .stops li:first-child .chip { border-radius: var(--radius) 0 0 var(--radius); }
+  .stops li:last-child .chip { border-radius: 0 var(--radius) var(--radius) 0; }
+  .chip:hover .fill { transform: scaleY(1.03); }
+  .chip:focus-visible { outline-offset: -4px; outline-color: #FFFFFF; border-radius: 6px; }
+  .copied { position: absolute; left: 50%; bottom: 1rem; translate: -50% 0; opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .4s var(--ease-out); font-size: .75rem; padding: .35rem .7rem; gap: .35rem; }
+  .chip.is-copied .copied { opacity: 1; transform: none; }
+  .info { padding: 1rem .9rem 0 0; display: grid; gap: .2rem; }
+  .stops li + li .info { padding-left: .9rem; border-left: 1px solid var(--line); }
+  .nm { font-weight: 640; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+  .tag { padding: .1rem .45rem; border: 1px solid var(--line-2); border-radius: 999px; font-size: .625rem; }
+  .hex { font-family: var(--mono); font-size: .9375rem; }
+  .rgb { text-transform: none; letter-spacing: .02em; }
+  .grad { margin-top: 2rem; display: grid; gap: .75rem; }
+  .bar { height: 3.5rem; border-radius: 999px; background: var(--spectrum); }
+  .inks { margin-top: clamp(3rem, 5vw, 4.5rem); }
+  .ink-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 2rem; margin-bottom: 1.25rem; }
+  .ink-row { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: .5rem; }
+  .ink { width: 100%; display: grid; gap: .5rem; justify-items: start; text-align: left; border-radius: 10px; }
+  .ink-fill { width: 100%; aspect-ratio: 1; border-radius: 12px; background: var(--c); border: 1px solid var(--line-2); transition: transform .4s var(--ease-out); }
+  .ink:hover .ink-fill { transform: translateY(-3px); }
+  .ink .spec { font-size: .6875rem; letter-spacing: .04em; }
+  .toast { position: fixed; left: 50%; bottom: 1.5rem; translate: -50% 0; z-index: 60; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .3s, transform .4s var(--ease-out); }
+  .toast.on { opacity: 1; transform: none; }
+  .tdot { width: .9rem; height: .9rem; border-radius: 50%; background: var(--tc, var(--rose)); border: 1px solid var(--line-2); }
+  @media (max-width: 900px) {
+    .stops { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.75rem; }
+    .stops li .chip { border-radius: 0 !important; }
+    .stops li:nth-child(1) .chip { border-radius: var(--radius) 0 0 0 !important; }
+    .stops li:nth-child(3) .chip { border-radius: 0 var(--radius) 0 0 !important; }
+    .stops li:nth-child(4) .chip { border-radius: 0 0 0 var(--radius) !important; }
+    .stops li:nth-child(6) .chip { border-radius: 0 0 var(--radius) 0 !important; }
+    .stops li + li:nth-child(4) .info { padding-left: 0; border-left: 0; }
+    .chip { aspect-ratio: 4 / 3; }
+    .ink-row { grid-template-columns: repeat(6, minmax(0, 1fr)); row-gap: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .stops { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stops li:nth-child(n) .chip { border-radius: 14px !important; }
+    .stops li + li:nth-child(odd) .info { padding-left: 0; border-left: 0; }
+    .stops li + li:nth-child(even) .info { padding-left: .9rem; border-left: 1px solid var(--line); }
+    .stops { column-gap: .5rem; }
+    .ink-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-swatches]').forEach((root) => {
+    const toast = root.querySelector<HTMLElement>('.toast')!;
+    const msg = toast.querySelector<HTMLElement>('.tmsg')!;
+    let t = 0;
+    const copyText = async (hex: string) => {
+      try { await navigator.clipboard.writeText(hex); return true; } catch {
+        const ta = document.createElement('textarea'); ta.value = hex; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.append(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch {} ta.remove(); return ok;
+      }
+    };
+    root.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => {
+      b.addEventListener('click', async () => {
+        const hex = b.dataset.copy!;
+        const ok = await copyText(hex);
+        msg.textContent = ok ? `Copied ${hex}` : hex;
+        toast.style.setProperty('--tc', hex);
+        toast.classList.add('on');
+        b.classList.add('is-copied');
+        clearTimeout(t);
+        t = window.setTimeout(() => { toast.classList.remove('on'); root.querySelectorAll('.is-copied').forEach((e) => e.classList.remove('is-copied')); }, 1600);
+      });
+    });
+  });
+</script>

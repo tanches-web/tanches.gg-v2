@@ -1,0 +1,768 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-12T21:08:37.066Z",
+  "title": "Design System: TANCHES.GG",
+  "extensions": {
+    "colorMeta": {
+      "flame": {
+        "role": "primary",
+        "displayName": "Flame",
+        "canonical": "#F53F1D",
+        "purpose": "Spectrum start; first stop of the 105deg brand gradient.",
+        "tonalRamp": [
+          "#1D0100",
+          "#4C0800",
+          "#811501",
+          "#BA2302",
+          "#ED4324",
+          "#FF8167",
+          "#FFB29C",
+          "#FFD8C7"
+        ]
+      },
+      "ember": {
+        "role": "primary",
+        "displayName": "Ember",
+        "canonical": "#EE3C37",
+        "purpose": "Spectrum stop two.",
+        "tonalRamp": [
+          "#1D0201",
+          "#4B0908",
+          "#7F1715",
+          "#B82523",
+          "#EB453E",
+          "#FF8174",
+          "#FFB1A5",
+          "#FFD8CE"
+        ]
+      },
+      "rose": {
+        "role": "primary",
+        "displayName": "Signature Rose",
+        "canonical": "#E23869",
+        "purpose": "Signature stop; live dots and program network lines.",
+        "tonalRamp": [
+          "#1C0207",
+          "#490A1D",
+          "#7C1836",
+          "#B22750",
+          "#E54670",
+          "#FE8099",
+          "#FFB0C1",
+          "#FFD7E2"
+        ]
+      },
+      "magenta": {
+        "role": "primary",
+        "displayName": "Magenta",
+        "canonical": "#DA358B",
+        "purpose": "Spectrum stop four.",
+        "tonalRamp": [
+          "#1B020D",
+          "#470A2A",
+          "#78184A",
+          "#AE276D",
+          "#DF4592",
+          "#F97FB5",
+          "#FFB0D7",
+          "#FFD6F3"
+        ]
+      },
+      "fuchsia": {
+        "role": "primary",
+        "displayName": "Fuchsia",
+        "canonical": "#D031B2",
+        "purpose": "Spectrum stop five.",
+        "tonalRamp": [
+          "#190114",
+          "#430938",
+          "#731661",
+          "#A6248E",
+          "#D643B8",
+          "#F17ED5",
+          "#FFAFF0",
+          "#FFD6FF"
+        ]
+      },
+      "violet": {
+        "role": "primary",
+        "displayName": "Violet",
+        "canonical": "#C92FD1",
+        "purpose": "Spectrum end.",
+        "tonalRamp": [
+          "#170119",
+          "#400743",
+          "#6E1372",
+          "#9F20A6",
+          "#CD40D4",
+          "#E97EED",
+          "#FFAFFF",
+          "#FFD6FF"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Text-Safe Rose",
+        "canonical": "#B81E4E",
+        "purpose": "Links, focus rings, field focus in light theme.",
+        "tonalRamp": [
+          "#1A0307",
+          "#460F1D",
+          "#782036",
+          "#AD3251",
+          "#DE5070",
+          "#F8869A",
+          "#FFB4C1",
+          "#FFDAE3"
+        ]
+      },
+      "accent-dark": {
+        "role": "primary",
+        "displayName": "Lit Rose",
+        "canonical": "#F2628C",
+        "purpose": "Links, focus rings, field focus in dark theme and over the stage.",
+        "tonalRamp": [
+          "#1A0309",
+          "#451021",
+          "#75223D",
+          "#A9355A",
+          "#D9537B",
+          "#F487A2",
+          "#FFB5C8",
+          "#FFDAE8"
+        ]
+      },
+      "sweep-ground": {
+        "role": "neutral",
+        "displayName": "Sweep Ground",
+        "canonical": "#F6F7F9",
+        "purpose": "Light page ground and input fill.",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#262627",
+          "#444546",
+          "#656667",
+          "#88898B",
+          "#ADAEAF",
+          "#D0D1D2",
+          "#EEEEEF"
+        ]
+      },
+      "sweep-high": {
+        "role": "neutral",
+        "displayName": "Sweep Light",
+        "canonical": "#FFFFFF",
+        "purpose": "Top light of the studio sweep.",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#AEAEAE",
+          "#D1D1D1",
+          "#EEEEEE"
+        ]
+      },
+      "sweep-floor": {
+        "role": "neutral",
+        "displayName": "Sweep Floor",
+        "canonical": "#E3E6EB",
+        "purpose": "Floor pool of the sweep under objects.",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#252628",
+          "#434548",
+          "#64666A",
+          "#87898E",
+          "#ACAEB2",
+          "#CFD1D4",
+          "#EDEEF1"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#FFFFFF",
+        "purpose": "Raised cards and tags.",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#AEAEAE",
+          "#D1D1D1",
+          "#EEEEEE"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Surface Recess",
+        "canonical": "#EEF0F3",
+        "purpose": "Photo placeholders and control tracks.",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#262627",
+          "#444547",
+          "#656668",
+          "#87898C",
+          "#ACAEB0",
+          "#D0D1D3",
+          "#EEEEF0"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Studio Ink",
+        "canonical": "#0E1016",
+        "purpose": "Headings, primary text, primary button fill.",
+        "tonalRamp": [
+          "#0B0B0D",
+          "#252629",
+          "#43454A",
+          "#64666D",
+          "#868991",
+          "#ABAEB4",
+          "#CFD1D6",
+          "#EDEEF2"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#464B57",
+        "purpose": "Ledes and body copy.",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#24262B",
+          "#42454D",
+          "#616671",
+          "#848996",
+          "#A9AEB8",
+          "#CDD1D9",
+          "#ECEEF5"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Slate",
+        "canonical": "#5C616D",
+        "purpose": "Spec lines, captions, secondary labels.",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#24262B",
+          "#42454C",
+          "#626670",
+          "#848995",
+          "#AAAEB8",
+          "#CED1D9",
+          "#ECEEF4"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(14, 16, 22, 0.10)",
+        "purpose": "Dividers and hover tints."
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "rgba(14, 16, 22, 0.18)",
+        "purpose": "Field borders and stronger rules."
+      },
+      "glass": {
+        "role": "neutral",
+        "displayName": "Frost",
+        "canonical": "rgba(255, 255, 255, 0.64)",
+        "purpose": "Nav, ghost buttons, spec callouts (light)."
+      },
+      "stage-ground": {
+        "role": "neutral",
+        "displayName": "Stage Black",
+        "canonical": "#0A0B0E",
+        "purpose": "Dark theme page ground.",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#262628",
+          "#444547",
+          "#656669",
+          "#88898D",
+          "#ADAEB1",
+          "#D0D1D3",
+          "#EEEEF0"
+        ]
+      },
+      "stage-light": {
+        "role": "neutral",
+        "displayName": "Overhead Light",
+        "canonical": "#22242B",
+        "purpose": "Dark theme overhead pool at the top of a sweep.",
+        "tonalRamp": [
+          "#0B0B0D",
+          "#252629",
+          "#43454A",
+          "#64666D",
+          "#868991",
+          "#ACAEB4",
+          "#CFD1D6",
+          "#EDEEF2"
+        ]
+      },
+      "stage-surface": {
+        "role": "neutral",
+        "displayName": "Stage Surface",
+        "canonical": "#131419",
+        "purpose": "Dark raised surfaces.",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#262629",
+          "#444549",
+          "#65666B",
+          "#87898F",
+          "#ACAEB3",
+          "#D0D1D5",
+          "#EDEEF1"
+        ]
+      },
+      "stage-surface-2": {
+        "role": "neutral",
+        "displayName": "Stage Recess",
+        "canonical": "#1A1B21",
+        "purpose": "Dark placeholders and tracks.",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#262629",
+          "#444549",
+          "#64666C",
+          "#878990",
+          "#ACADB4",
+          "#D0D1D5",
+          "#EDEEF2"
+        ]
+      },
+      "stage-ink": {
+        "role": "neutral",
+        "displayName": "Stage Ink",
+        "canonical": "#F2F3F5",
+        "purpose": "Dark theme primary text.",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#262627",
+          "#444546",
+          "#656667",
+          "#88898B",
+          "#ADAEAF",
+          "#D0D1D2",
+          "#EEEEEF"
+        ]
+      },
+      "stage-ink-2": {
+        "role": "neutral",
+        "displayName": "Stage Graphite",
+        "canonical": "#B7BBC5",
+        "purpose": "Dark theme body copy.",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#25262A",
+          "#43454A",
+          "#63666E",
+          "#858992",
+          "#ABAEB5",
+          "#CED1D7",
+          "#EDEEF3"
+        ]
+      },
+      "stage-ink-3": {
+        "role": "neutral",
+        "displayName": "Stage Slate",
+        "canonical": "#9196A1",
+        "purpose": "Dark theme spec lines.",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#25262A",
+          "#42454B",
+          "#62666F",
+          "#848993",
+          "#AAAEB6",
+          "#CED1D8",
+          "#ECEEF3"
+        ]
+      },
+      "stage-glass": {
+        "role": "neutral",
+        "displayName": "Smoked Frost",
+        "canonical": "rgba(22, 23, 29, 0.62)",
+        "purpose": "Glass in dark theme."
+      },
+      "showcase-black": {
+        "role": "neutral",
+        "displayName": "Showcase Black",
+        "canonical": "#0B0C10",
+        "purpose": "Home hero stage, dark in both themes.",
+        "tonalRamp": [
+          "#0B0B0C",
+          "#262628",
+          "#444548",
+          "#65666A",
+          "#87898E",
+          "#ACAEB2",
+          "#D0D1D4",
+          "#EEEEF1"
+        ]
+      },
+      "showcase-ink": {
+        "role": "neutral",
+        "displayName": "Showcase Ink",
+        "canonical": "#F4F5F7",
+        "purpose": "Type and primary button on the hero stage.",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#262627",
+          "#444546",
+          "#656667",
+          "#88898B",
+          "#ADAEAF",
+          "#D0D1D2",
+          "#EEEEEF"
+        ]
+      }
+    },
+    "gradients": [
+      {
+        "name": "spectrum",
+        "value": "linear-gradient(105deg, #F53F1D 0%, #EE3C37 20%, #E23869 40%, #DA358B 60%, #D031B2 80%, #C92FD1 100%)",
+        "purpose": "Brand spectrum; rationed to tagline line two, primary hover halo, spec dots and pins."
+      },
+      {
+        "name": "sweep-light",
+        "value": "linear-gradient(180deg, transparent 78%, var(--bg) 100%), radial-gradient(110% 55% at 50% 82%, var(--sweep-floor) 0%, transparent 72%), linear-gradient(180deg, var(--sweep-hi) 0%, var(--bg) 100%)",
+        "purpose": "Studio sweep behind openings (light theme)."
+      },
+      {
+        "name": "sweep-dark",
+        "value": "radial-gradient(60% 50% at 50% 0%, var(--sweep-hi) 0%, transparent 72%), var(--bg)",
+        "purpose": "Single overhead light on the black stage (dark theme)."
+      }
+    ],
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Interior page titles; light weight with a 720 continuation."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings, one sentence in two weights."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card, tile and step titles."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Sentence under a heading, ink-2, max 46-60ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy, ink-2, max 66ch."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Card body, figure labels, notes."
+      },
+      "label": {
+        "displayName": "Spec",
+        "purpose": "Uppercase mono for segments, places, figures and data. Never an eyebrow."
+      }
+    },
+    "shadows": [
+      {
+        "name": "object",
+        "value": "0 50px 60px -30px rgba(14,16,22,.30), 0 18px 24px -18px rgba(14,16,22,.25)",
+        "valueDark": "0 50px 70px -30px rgba(0,0,0,.8), 0 0 120px -40px rgba(226,56,105,.18)",
+        "purpose": "Photo plates and renders on the sweep."
+      },
+      {
+        "name": "float",
+        "value": "0 12px 30px -12px rgba(14,16,22,.22), 0 2px 6px -2px rgba(14,16,22,.10)",
+        "valueDark": "0 14px 34px -12px rgba(0,0,0,.65), 0 2px 6px -2px rgba(0,0,0,.5)",
+        "purpose": "Buttons, glass labels, dropdowns, mobile CTA bar."
+      },
+      {
+        "name": "client-glow",
+        "value": "0 40px 60px -34px color-mix(in srgb, var(--ca) 70%, transparent)",
+        "purpose": "Under client builds, combined with float."
+      },
+      {
+        "name": "cutout-drop",
+        "value": "drop-shadow(0 40px 34px rgba(14,16,22,.22))",
+        "purpose": "filter for transparent renders on the sweep."
+      }
+    ],
+    "glass": [
+      {
+        "name": "glass-control",
+        "value": "blur(12px)",
+        "purpose": "Ghost buttons."
+      },
+      {
+        "name": "glass-label",
+        "value": "blur(14px) saturate(1.4)",
+        "purpose": "Spec callouts."
+      },
+      {
+        "name": "glass-bar",
+        "value": "blur(22px) saturate(1.6)",
+        "purpose": "Nav bar, mobile CTA bar, hero dock (saturate 1.5)."
+      },
+      {
+        "name": "glass-panel",
+        "value": "blur(24px) saturate(1.6)",
+        "purpose": "Dropdowns and mobile sheet."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve; all state and entrance transitions."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 1s, translateY(24px) to 0 1.1s, blur(6px) to 0 1s",
+        "purpose": "Scroll reveal on [data-reveal]; content visible without JS or with reduced motion."
+      },
+      {
+        "name": "hover-nudge",
+        "value": "translateX(3px) over .35-.4s",
+        "purpose": "Arrow icons in buttons and links."
+      },
+      {
+        "name": "showcase-crossfade",
+        "value": "opacity 1.3s",
+        "purpose": "Hero lab and shot cross-fades; client colour tint transitions over 1.4s."
+      },
+      {
+        "name": "showcase-push",
+        "value": "scale(1.02) to scale(1.1) over 14s linear",
+        "purpose": "Slow push-in on hero shots."
+      },
+      {
+        "name": "marquee",
+        "value": "translateX(-50%) linear infinite, 45-60s",
+        "purpose": "Logo marquees; never pause on hover; static wrapped row under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "380px"
+      },
+      {
+        "name": "phone",
+        "value": "560px"
+      },
+      {
+        "name": "sm",
+        "value": "760px"
+      },
+      {
+        "name": "md",
+        "value": "860px"
+      },
+      {
+        "name": "lg",
+        "value": "960px"
+      },
+      {
+        "name": "nav",
+        "value": "1080px"
+      },
+      {
+        "name": "xl",
+        "value": "1100px"
+      }
+    ],
+    "theming": {
+      "attribute": "data-theme on <html>",
+      "default": "light",
+      "storageKey": "tg-theme-v2",
+      "darkZones": "Elements marked data-nav-tone=\"dark\" switch the nav to dark glass while it overlaps them.",
+      "clientTheme": "themeVars() in src/lib/projects.ts sets --ca, --cb, --cd, --cd2, --chi, --ct-l, --ct-d, --clbl-l, --clbl-d on case-study pages."
+    },
+    "ctaLabels": {
+      "target": "/Contact",
+      "status": "Mixed, pending a copy decision by the owner; recorded as shipped, not as a rule.",
+      "current": [
+        {
+          "label": "Start Planning",
+          "where": "Nav bar and mobile sheet"
+        },
+        {
+          "label": "Book a free consultation",
+          "where": "Hero; process section"
+        },
+        {
+          "label": "Start your project",
+          "where": "Ecosystem"
+        },
+        {
+          "label": "Book a call",
+          "where": "Phone CTA bar"
+        },
+        {
+          "label": "Request my consultation",
+          "where": "Contact form submit"
+        },
+        {
+          "label": "Ask for a reference",
+          "where": "Work section"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action; ink pill whose spectrum halo appears on hover and focus.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a free consultation <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-primary { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: .6rem; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 999px; background: var(--ink, #0E1016); color: var(--on-ink, #fff); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); font-weight: 620; font-size: 1rem; letter-spacing: -0.005em; text-decoration: none; box-shadow: var(--shadow-float, 0 12px 30px -12px rgba(14,16,22,.22), 0 2px 6px -2px rgba(14,16,22,.10)); transition: transform .4s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary::before { content: ''; position: absolute; inset: -2px; border-radius: inherit; z-index: -1; background: linear-gradient(105deg, #F53F1D 0%, #EE3C37 20%, #E23869 40%, #DA358B 60%, #D031B2 80%, #C92FD1 100%); opacity: 0; transition: opacity .35s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover::before, .ds-btn-primary:focus-visible::before { opacity: 1; } .ds-btn-primary svg { transition: transform .4s cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover svg { transform: translateX(3px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent, #B81E4E); outline-offset: 3px; } .ds-btn-primary:active { transform: scale(.98); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action in frosted glass.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Take the 4-minute assessment</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; min-height: 3.25rem; padding: 0 1.5rem; border-radius: 999px; background: var(--glass, rgba(255,255,255,.64)); color: var(--ink, #0E1016); border: 1px solid var(--line-2, rgba(14,16,22,.18)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); font-weight: 620; font-size: 1rem; text-decoration: none; transition: background-color .25s, border-color .25s; } .ds-btn-ghost:hover { background: var(--glass-hi, rgba(255,255,255,.85)); border-color: var(--ink-3, #5C616D); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--accent, #B81E4E); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Inline next step in text-safe rose with a nudging arrow.",
+      "html": "<a class=\"ds-link\" href=\"#\">See the build <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: .4rem; color: var(--accent, #B81E4E); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); font-weight: 600; text-decoration: none; text-underline-offset: .22em; } .ds-link:hover { text-decoration: underline; } .ds-link svg { transition: transform .35s cubic-bezier(0.16,1,0.3,1); } .ds-link:hover svg { transform: translateX(3px); } .ds-link:focus-visible { outline: 2px solid var(--accent, #B81E4E); outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field with accent focus ring.",
+      "html": "<label class=\"ds-field\"><span>Work email</span><input type=\"email\" placeholder=\"name@district.org\"></label>",
+      "css": ".ds-field { display: grid; gap: .45rem; font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); color: var(--ink, #0E1016); } .ds-field span { font-size: .875rem; font-weight: 600; } .ds-field input { min-height: 3rem; padding: .75rem .95rem; border-radius: 14px; font: inherit; font-size: 1rem; background: var(--bg, #F6F7F9); border: 1px solid var(--line-2, rgba(14,16,22,.18)); color: inherit; transition: border-color .2s, box-shadow .2s, background-color .2s; } .ds-field input:hover { border-color: var(--ink-3, #5C616D); } .ds-field input:focus { outline: none; border-color: var(--accent, #B81E4E); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, #B81E4E) 18%, transparent); background: var(--surface, #fff); }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Floating frosted pill with bracketed wordmark, links and the small primary action.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">[TANCHES.GG]</span><a href=\"#\" aria-current=\"page\">Projects</a><a href=\"#\">Contact</a><a href=\"#\" class=\"ds-nav-cta\">Start Planning</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: .25rem; height: 3.75rem; padding: 0 .5rem 0 1.125rem; border-radius: 999px; background: var(--glass, rgba(255,255,255,.64)); border: 1px solid var(--glass-line, rgba(14,16,22,.10)); backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 10px 30px -18px rgba(14,16,22,.35); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); color: var(--ink, #0E1016); } .ds-nav-brand { font-weight: 700; letter-spacing: -0.01em; margin-right: auto; } .ds-nav a { display: inline-flex; align-items: center; height: 2.5rem; padding: 0 .85rem; border-radius: 999px; font-size: .9375rem; font-weight: 560; color: inherit; text-decoration: none; transition: background-color .2s; } .ds-nav a:hover, .ds-nav a[aria-current='page'] { background: var(--line, rgba(14,16,22,.10)); } .ds-nav a.ds-nav-cta { height: 2.625rem; margin-left: .5rem; padding: 0 1.1rem; background: var(--ink, #0E1016); color: var(--on-ink, #fff); font-weight: 620; } .ds-nav a:focus-visible { outline: 2px solid var(--accent, #B81E4E); outline-offset: 3px; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Capability tag on solution cards.",
+      "html": "<ul class=\"ds-tags\"><li>K-12</li><li>CTE pathways</li><li>E-Rate</li></ul>",
+      "css": ".ds-tags { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; margin: 0; } .ds-tags li { font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); font-size: .8125rem; font-weight: 560; padding: .25rem .65rem; border-radius: 999px; background: var(--surface, #fff); border: 1px solid var(--line, rgba(14,16,22,.10)); color: var(--ink-2, #464B57); }"
+    },
+    {
+      "name": "Frosted Spec Label",
+      "kind": "custom",
+      "refersTo": "label-glass",
+      "description": "Glass callout with a spectrum dot, floated over a photo or render.",
+      "html": "<span class=\"ds-label-glass\"><span class=\"ds-dot\"></span>LED walls · AV · Stations</span>",
+      "css": ".ds-label-glass { display: inline-flex; align-items: center; gap: .55rem; padding: .45rem .9rem .45rem .5rem; border-radius: 999px; background: var(--glass, rgba(255,255,255,.64)); border: 1px solid var(--glass-line, rgba(14,16,22,.10)); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); box-shadow: var(--shadow-float, 0 12px 30px -12px rgba(14,16,22,.22), 0 2px 6px -2px rgba(14,16,22,.10)); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); font-size: .875rem; font-weight: 600; color: var(--ink, #0E1016); white-space: nowrap; } .ds-dot { width: 1.25rem; height: 1.25rem; border-radius: 50%; flex: none; background: linear-gradient(105deg, #F53F1D 0%, #EE3C37 20%, #E23869 40%, #DA358B 60%, #D031B2 80%, #C92FD1 100%); box-shadow: inset 0 0 0 3px rgba(255,255,255,.35); }"
+    },
+    {
+      "name": "Work Tile",
+      "kind": "card",
+      "refersTo": "photo-plate",
+      "description": "A client build on a plate lit in the client colours, with a two-colour top stripe.",
+      "html": "<a class=\"ds-tile\" href=\"#\" style=\"--ca:#C10230;--cb:#E5577A;--cd:#3A0614\"><div class=\"ds-plate\"></div><strong>Alvin College</strong><span class=\"ds-spec\">Higher Ed · Alvin, TX</span></a>",
+      "css": ".ds-tile { display: grid; gap: .6rem; max-width: 22rem; text-decoration: none; color: var(--ink, #0E1016); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); } .ds-plate { position: relative; aspect-ratio: 16 / 10; border-radius: 22px; overflow: hidden; background: var(--cd); box-shadow: 0 40px 60px -34px color-mix(in srgb, var(--ca) 70%, transparent), 0 12px 30px -12px rgba(14,16,22,.22); transition: transform .7s cubic-bezier(0.16,1,0.3,1), box-shadow .7s cubic-bezier(0.16,1,0.3,1); } .ds-plate::before { content: ''; position: absolute; inset: 0 0 auto; height: 6px; background: linear-gradient(90deg, var(--ca), var(--cb)); } .ds-tile:hover .ds-plate { transform: translateY(-4px); box-shadow: 0 50px 70px -30px color-mix(in srgb, var(--ca) 80%, transparent), 0 12px 30px -12px rgba(14,16,22,.22); } .ds-tile strong { font-size: 1.375rem; font-weight: 640; letter-spacing: -0.02em; } .ds-spec { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .75rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3, #5C616D); } .ds-tile:focus-visible { outline: 2px solid var(--accent, #B81E4E); outline-offset: 3px; border-radius: 6px; }"
+    },
+    {
+      "name": "Showcase Dock Tab",
+      "kind": "custom",
+      "refersTo": "hero-dock",
+      "description": "Hero dock tabs on the dark stage; the progress bar fills in the client colours.",
+      "html": "<div class=\"ds-dock\"><button class=\"ds-dtab\" aria-selected=\"true\" style=\"--t1:#C10230;--t2:#E5577A;--p:.6\"><span>Alvin College</span><small>HIGHER ED · ALVIN, TX</small><i></i></button><button class=\"ds-dtab\" aria-selected=\"false\" style=\"--t1:#0386D2;--t2:#5AB6F2;--p:0\"><span>City of Muskogee</span><small>COMMUNITY · MUSKOGEE, OK</small><i></i></button></div>",
+      "css": ".ds-dock { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; padding: .4rem; border-radius: 22px; background: rgba(14,16,22,.82); border: 1px solid rgba(255,255,255,.14); font-family: var(--font, 'Archivo Variable', 'Archivo', system-ui, sans-serif); } .ds-dtab { display: grid; gap: .15rem; text-align: left; padding: .65rem 1rem .8rem; border: 0; border-radius: 16px; background: none; color: rgba(244,245,247,.66); font: inherit; cursor: pointer; transition: background-color .25s, color .25s; } .ds-dtab:hover { background: rgba(255,255,255,.07); color: #fff; } .ds-dtab[aria-selected='true'] { background: rgba(255,255,255,.1); color: #fff; } .ds-dtab span { font-weight: 640; font-size: 1rem; } .ds-dtab small { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .6875rem; letter-spacing: .08em; opacity: .82; } .ds-dtab i { display: block; height: 3px; margin-top: .55rem; border-radius: 3px; background: linear-gradient(90deg, var(--t1), var(--t2)) 0 0 / calc(var(--p) * 100%) 100% no-repeat, rgba(255,255,255,.2); } .ds-dtab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Seamless",
+    "overview": "The finished room is the product, so every page presents it the way flagship hardware launches: one object on a seamless studio sweep, specified with precision. In light theme the page is a studio backdrop that falls from white to a cool grey floor, with near-black ink and objects that throw soft floor shadows. In dark theme it is a black stage lit by one overhead light. Real photographs of finished builds are the objects; the interface stays quiet around them.\n\nDensity is low and confident. Statements are huge and light, emphasis is the same family at bold weight, and the only other voice is a small monospace spec line for figures, locations and data. Frosted glass appears only where something floats over an object or a photo (the nav, captions, the hero dock, spec callouts). The six-stop brand spectrum is rationed, so that a client's own colours can take over whenever that client's build is on screen.\n\nThe system refuses the category default of a dark neon gamer hero over grids of identical cards. Trust reads first; esports energy arrives through the photographs, the spectrum accents and the client colours.",
+    "keyCharacteristics": [
+      "Studio sweep (light) and single-light stage (dark), both with a visible theme toggle; light is the default.",
+      "One variable grotesk (Archivo), light and huge for statements, 700+ for emphasis; JetBrains Mono only for specs.",
+      "Spectrum rationed to tagline line two, the primary action's hover, spec markers and live dots.",
+      "Client colours replace the spectrum wherever a client's build is shown.",
+      "Pill-shaped controls, generously rounded photo plates, frosted glass only over imagery.",
+      "Real finished builds as page openings; a photo never repeats on one page."
+    ],
+    "rules": [
+      {
+        "name": "The Rationed Spectrum Rule",
+        "body": "The spectrum appears only on the bold half of headlines (the tagline's second line and every headline's `<strong>` continuation), the primary action's hover halo, spec dots, hotspot pins and cable runs. If a screen shows the spectrum anywhere else, remove it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Client Is the Colour Rule",
+        "body": "Wherever a client's build is on screen (hero lab, work tile, case study), that client's two colours replace the spectrum for glows, top stripes, progress bars and status pulses.",
+        "section": "colors"
+      },
+      {
+        "name": "The Text-Safe Rose Rule",
+        "body": "Rose as text is always `accent` (light) or `accent-dark` (dark), never a raw spectrum stop.",
+        "section": "colors"
+      },
+      {
+        "name": "The Statement and Emphasis Rule",
+        "body": "Headlines are one sentence in two weights: the plain part light (330–360), the continuation bold (720) in the brand spectrum. Do not add a second typeface or any other colour for emphasis.",
+        "section": "typography"
+      },
+      {
+        "name": "The Spec Voice Rule",
+        "body": "Mono is only for specs, figures, places and data labels. It never sits above a heading as an eyebrow or kicker; the heading carries the section on its own.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glass Over Objects Rule",
+        "body": "Frosted glass (blur 12–24px, saturate 1.4–1.6) is used only for things that float over a photo or object: nav, dropdowns, hero caption and dock, spec callouts, the mobile CTA bar, the league card. Content cards on the sweep are solid or borderless.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Floor Shadow Rule",
+        "body": "Shadows fall long and below (negative spread, large y offset) like a product on a studio floor. No hard offset shadows, no even all-round halos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do open pages with a real finished build on the sweep or stage; renders are for the ecosystem drawing and plans.",
+      "Do keep every photo unique on a page; register files that show the same shot in `scripts/image-groups.mjs` and run `node scripts/check-images.mjs`.",
+      "Do set headings as one sentence in two weights (light plain part, 720 continuation).",
+      "Do let a client's two colours replace the spectrum wherever their build is shown, via `themeVars` on case studies and `--ca`/`--cb`/`--cd` on tiles.",
+      "Do use the mono spec voice for segment, place and figure lines.",
+      "Do use glass only over photos or objects, and re-scope the nav to dark glass over `data-nav-tone=\"dark\"` areas.",
+      "Do keep logo marquees single-tone, colour on hover, and never paused; keep the hero showcase pausable.",
+      "Do honour reduced motion: content is visible by default, reveals and push-ins are opt-in, the showcase starts paused.",
+      "Do persist the theme choice under `localStorage` key `tg-theme-v2` with light as the default."
+    ],
+    "donts": [
+      "Don't spread the spectrum beyond the tagline's second line, the primary hover halo, spec dots and pins, or use it as a section fill.",
+      "Don't use raw spectrum stops as text colour; use `accent` / `accent-dark`.",
+      "Don't put bracketed or mono labels above headings as eyebrows or kickers; carry the `[ BRACKETED ]` device in the wordmark, spec labels, captions and data.",
+      "Don't build a dark neon gamer hero over grids of identical cards.",
+      "Don't add a second display typeface or decorative fonts.",
+      "Don't use hard offset shadows or square corners on controls.",
+      "Don't pause a logo marquee on hover."
+    ]
+  }
+}

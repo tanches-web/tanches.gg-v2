@@ -1,0 +1,97 @@
+---
+// Ten layers of a finished facility. Left: a rack elevation that builds from the room up and lights the
+// open layer. Right: one disclosure per layer (native <details>, one open at a time, works without JS).
+import Icon from '../Icon.astro';
+interface Layer { n: string; name: string; desc: string; why: string }
+interface Props { heading: string; body: string[]; caption: string; whyPrefix: string; items: Layer[] }
+const { heading, body, caption, whyPrefix, items } = Astro.props;
+---
+<div class="stack-grid" data-stack>
+  <div class="side">
+    <h2 id="stack-title" class="h2" data-reveal>{heading}</h2>
+    {body.map((p) => <p class="body" data-reveal>{p}</p>)}
+    <ol class="rack" aria-hidden="true">
+      {items.map((l, i) => (
+        <li data-u={i} class:list={{ on: i === 0 }}>
+          <span class="led"></span>
+          <span class="u spec">U{l.n}</span>
+          <span class="u-name">{l.name}</span>
+          <span class="ports"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </li>
+      ))}
+    </ol>
+  </div>
+  <div class="main">
+    <p class="small cap">{caption}</p>
+    <div class="layers">
+      {items.map((l, i) => (
+        <details name="layers" open={i === 0} data-layer={i} id={`layer-${l.n}`}>
+          <summary>
+            <span class="spec n">{l.n}</span>
+            <span class="name">{l.name}</span>
+            <span class="plus" aria-hidden="true"><Icon name="plus" size={18} /></span>
+          </summary>
+          <div class="ans">
+            <p>{l.desc}</p>
+            <p class="why"><strong>{whyPrefix}</strong> {l.why}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .stack-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .side { position: sticky; top: 6.5rem; display: grid; gap: 1.25rem; }
+
+  /* Rack elevation: layer 01 at the bottom, the program on top */
+  .rack { list-style: none; padding: .6rem; margin: .75rem 0 0; display: flex; flex-direction: column-reverse; gap: 4px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-float); }
+  .rack li { display: grid; grid-template-columns: .5rem 2.75rem minmax(0, 1fr) auto; align-items: center; gap: .75rem; height: 2.15rem; padding: 0 .85rem; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--line); transition: background-color .35s, border-color .35s, color .35s; }
+  .led { width: .5rem; height: .5rem; border-radius: 50%; background: var(--line-2); transition: background-color .35s, box-shadow .35s; }
+  .u { font-size: .6875rem; }
+  .u-name { font-size: .8125rem; font-weight: 600; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ports { display: flex; gap: 3px; }
+  .ports i { width: 7px; height: 6px; border-radius: 1.5px; background: var(--line-2); }
+  .rack li.on { background: var(--ink); border-color: var(--ink); }
+  .rack li.on .u, .rack li.on .u-name { color: var(--on-ink); }
+  .rack li.on .led { background: var(--rose); box-shadow: 0 0 0 3px rgba(226, 56, 105, .3); }
+  .rack li.on .ports i { background: var(--spectrum); }
+
+  .cap { margin-bottom: 1.25rem; max-width: 52ch; }
+  .layers { border-top: 1px solid var(--line-2); }
+  details { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) auto; align-items: center; gap: 1rem; padding: 1.2rem 0; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  .name { font-size: clamp(1.0625rem, 1rem + .35vw, 1.25rem); font-weight: 620; letter-spacing: -0.01em; }
+  summary:hover .name { color: var(--accent); }
+  .plus { width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-2); transition: transform .45s var(--ease-out), background-color .3s, color .3s; }
+  details[open] .plus { transform: rotate(45deg); background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .ans { display: grid; gap: .75rem; padding: 0 3.25rem 1.5rem 3.5rem; color: var(--ink-2); max-width: 70ch; }
+  .why { padding: .85rem 1rem; border-radius: 14px; background: var(--surface-2); }
+  .why strong { color: var(--ink); font-weight: 640; }
+  @media (prefers-reduced-motion: no-preference) {
+    details::details-content { block-size: 0; overflow: clip; transition: block-size .5s var(--ease-out), content-visibility .5s allow-discrete; }
+    details[open]::details-content { block-size: auto; }
+  }
+  @media (max-width: 960px) {
+    .stack-grid { grid-template-columns: 1fr; }
+    .side { position: static; }
+    .rack { display: none; }
+    .ans { padding: 0 0 1.4rem 3.5rem; }
+  }
+  @media (max-width: 420px) { .ans { padding-left: 0; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-stack]').forEach((root) => {
+    const units = [...root.querySelectorAll<HTMLElement>('.rack li')];
+    const sync = () => {
+      const open = root.querySelector<HTMLDetailsElement>('details[open]');
+      const i = open ? Number(open.dataset.layer) : -1;
+      units.forEach((u, k) => u.classList.toggle('on', k === i));
+    };
+    root.querySelectorAll('details').forEach((d) => d.addEventListener('toggle', sync));
+    sync();
+  });
+</script>

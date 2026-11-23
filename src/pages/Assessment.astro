@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import AssessmentApp from '../components/assessment/AssessmentApp.astro';
+import page from '../content/pages/Assessment.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+---
+<Base seo={seo}>
+  <AssessmentApp />
+</Base>

@@ -1,0 +1,116 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/r2-assigned.html"
+        ],
+        "createdAt": "2026-11-11T17:12:29.319Z",
+        "reason": "Claude: throwaway direction sketch for the decision round, not shipped UI; the real build is checked separately"
+      },
+      {
+        "rule": "oversized-h1",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/r2-assigned.html"
+        ],
+        "createdAt": "2026-11-11T17:12:29.575Z",
+        "reason": "Claude: throwaway direction sketch for the decision round, not shipped UI; the real build is checked separately"
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/r2-pick.html"
+        ],
+        "createdAt": "2026-11-11T17:12:29.813Z",
+        "reason": "Claude: throwaway direction sketch for the decision round, not shipped UI; the real build is checked separately"
+      },
+      {
+        "rule": "oversized-h1",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/r2-pick.html"
+        ],
+        "createdAt": "2026-11-11T17:12:30.034Z",
+        "reason": "Claude: throwaway direction sketch for the decision round, not shipped UI; the real build is checked separately"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/components/Work.astro"
+        ],
+        "createdAt": "2026-11-11T17:38:06.493Z",
+        "reason": "Claude: 6px top stripe in the client's two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), not a side accent on a card"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/components/assessment/AssessmentApp.astro"
+        ],
+        "createdAt": "2026-11-11T21:25:34.585Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/components/solution/SolutionPage.astro"
+        ],
+        "createdAt": "2026-11-11T21:25:34.831Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/Procurement.astro"
+        ],
+        "createdAt": "2026-11-11T21:25:35.077Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/Projects.astro"
+        ],
+        "createdAt": "2026-11-11T21:25:35.311Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/Team.astro"
+        ],
+        "createdAt": "2026-11-11T21:25:35.562Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/Technology.astro"
+        ],
+        "createdAt": "2026-11-11T21:25:35.793Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/[project].astro"
+        ],
+        "createdAt": "2026-11-11T21:25:36.038Z",
+        "reason": "Claude: thin top stripe in the client's own two colours on case-study photo plates; deliberate client-colour band per the brief (case studies wear client colours), applied consistently site-wide"
+      }
+    ]
+  }
+}

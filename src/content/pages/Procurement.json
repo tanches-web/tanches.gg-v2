@@ -1,0 +1,276 @@
+{
+  "slug": "Procurement",
+  "sourceFile": "Procurement.html",
+  "url": "https://tanches.gg/Procurement",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "procurement" } },
+    { "name": "ProjectCTA", "props": {} },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Procurement & Funding | TANCHES.GG",
+    "description": "Buy through cooperative contracts including DIR, OMNIA Partners, NCPA, and GSA, with grant and funding guidance for your esports program.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Procurement",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Procurement & Funding | TANCHES.GG",
+    "ogDescription": "Buy through cooperative contracts including DIR, OMNIA Partners, NCPA, and GSA, with grant and funding guidance for your esports program.",
+    "ogUrl": "https://tanches.gg/Procurement",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Procurement & Funding | TANCHES.GG",
+    "twitterDescription": "Buy through cooperative contracts including DIR, OMNIA Partners, NCPA, and GSA, with grant and funding guidance for your esports program.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Procurement & Funding | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Procurement",
+            "url": "https://tanches.gg/Procurement",
+            "name": "Procurement & Funding | TANCHES.GG",
+            "description": "Buy through cooperative contracts including DIR, OMNIA Partners, NCPA, and GSA, with grant and funding guidance for your esports program.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Procurement & Funding", "item": "https://tanches.gg/Procurement" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Procurement & Funding",
+      "p": [
+        "Buy through cooperative contracts including DIR, OMNIA Partners, NCPA, and GSA, with grant and funding guidance for your esports program.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "viewport": "width=device-width, initial-scale=1",
+      "htmlLang": "en",
+      "base": "/",
+      "scripts": ["./support.js", "/tracking.js", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "themeInit": "localStorage 'tg-theme-v2' (default 'light') sets data-theme=\"light\" on <html>",
+      "noMobileCss": "Unlike most pages, the helmet does not link mobile.css."
+    }
+  },
+  "sections": [
+    {
+      "id": "proc-head",
+      "heading": "How to buy it, and how to pay for it.",
+      "headingHtml": "How to buy it, and <span class=\"tg-grad\">how to pay for it.</span>",
+      "lede": "School districts, cities, and businesses each have a path. You can buy through a cooperative contract, go after grant money with our help, or spread the cost with a lease.",
+      "ctas": [
+        { "label": "Book a free consultation", "href": "/Contact", "style": "primary" },
+        { "label": "Take the 4-minute assessment", "href": "/Assessment", "style": "ghost" }
+      ],
+      "lists": [
+        {
+          "title": "On this page",
+          "items": [
+            { "label": "Contracts", "href": "/Procurement#contracts" },
+            { "label": "Purchasing office IDs", "href": "/Procurement#office" },
+            { "label": "Grants", "href": "/Procurement#grants" },
+            { "label": "Leasing", "href": "/Procurement#leasing" },
+            { "label": "Questions", "href": "/Procurement#questions" }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/opt/home-hero-stafford.webp",
+          "alt": "Students at white Alienware stations in the Stafford MSD esports lab",
+          "fetchpriority": "high",
+          "chip": { "label": "Stafford MSD · bought through DIR and OMNIA", "href": "/Project-Stafford" },
+          "clientColors": { "a": "#EA0000", "b": "#FCB326", "usedFor": "frame CSS vars --a/--b (stripe accent) and the two colour dots on the chip" }
+        }
+      ]
+    },
+    {
+      "id": "contracts",
+      "heading": "Buy through a contract you already have.",
+      "body": [
+        "Our cooperative purchasing contracts let public institutions, school districts, and government entities buy from us without running a standalone RFP or bid.",
+        "That means faster timelines, less paperwork, and full compliance with state and federal purchasing guidelines."
+      ],
+      "cards": [
+        {
+          "code": "DIR",
+          "kind": "State contract",
+          "meta": "DIR · State contract",
+          "title": "Texas Dept. of Information Resources",
+          "body": "Texas state contract for technology goods and services. Available to all Texas public entities.",
+          "image": { "src": "assets/logo-dir-black.png", "alt": "Texas Dept. of Information Resources logo", "darkSrc": "assets/logo-dir-white.png" },
+          "links": [{ "label": "Verify on DIR", "host": "dir.texas.gov ↗", "href": "https://dir.texas.gov", "target": "_blank", "srText": " (opens in a new tab)" }]
+        },
+        {
+          "code": "OMNIA",
+          "kind": "Cooperative",
+          "meta": "OMNIA · Cooperative",
+          "title": "OMNIA Partners",
+          "body": "National cooperative purchasing program for the public sector and education. TANCHES sources through authorized OMNIA contract holders.",
+          "tags": ["TD SYNNEX", "D&H", "Ingram Micro", "Carahsoft"],
+          "tagsAriaLabel": "Authorized OMNIA contract holders",
+          "image": { "src": "assets/logo-omnia-black.png", "alt": "OMNIA Partners logo", "darkSrc": "assets/logo-omnia-white.png" },
+          "links": [{ "label": "Verify on OMNIA", "host": "omniapartners.com ↗", "href": "https://omniapartners.com", "target": "_blank", "srText": " (opens in a new tab)" }]
+        },
+        {
+          "code": "NCPA",
+          "kind": "Cooperative",
+          "meta": "NCPA · Cooperative",
+          "title": "National Cooperative Purchasing Alliance",
+          "body": "National cooperative contracts available to public agencies, school districts, higher education, and nonprofits.",
+          "image": { "src": "assets/logo-ncpa-black.png", "alt": "National Cooperative Purchasing Alliance logo", "darkSrc": "assets/logo-ncpa-white.png" },
+          "links": [{ "label": "Verify on NCPA", "host": "ncpa.us ↗", "href": "https://www.ncpa.us", "target": "_blank", "srText": " (opens in a new tab)" }]
+        },
+        {
+          "code": "GSA",
+          "kind": "Federal",
+          "meta": "GSA · Federal",
+          "title": "General Services Administration",
+          "body": "Federal purchasing schedule. Available to federal agencies and qualifying entities.",
+          "image": { "src": "assets/logo-gsa-black.png", "alt": "General Services Administration logo", "darkSrc": "assets/logo-gsa-white.png" },
+          "links": [{ "label": "Verify on SAM.gov", "host": "sam.gov ↗", "href": "https://sam.gov", "target": "_blank", "srText": " (opens in a new tab)" }]
+        }
+      ],
+      "_source": {
+        "cards[].image.src": "'assets/logo-' + c.logo + '-black.png' (shown in light theme, class tg-logo-l)",
+        "cards[].image.darkSrc": "'assets/logo-' + c.logo + '-white.png' (dark theme, class tg-logo-d, alt=\"\" aria-hidden)",
+        "cards[].meta": "{{ c.code }} · {{ c.kind }}",
+        "cards[].image.alt": "{{ c.name }} logo"
+      },
+      "notes": "No contract numbers are listed on the page; only programme names, kinds, descriptions and verify links. 'afterBody' is the mid-page CTA row text shown below the contract cards.",
+      "afterBody": ["Need contract numbers or paperwork for your board? We send what your business office asks for."],
+      "ctas": [
+        { "label": "See our vendor IDs", "href": "/Procurement#office", "style": "ghost" },
+        { "label": "Request contract documents", "href": "/Contact", "style": "ink" }
+      ]
+    },
+    {
+      "id": "office",
+      "heading": "For your purchasing office",
+      "lede": "The identifiers and certifications your business office will ask for.",
+      "stats": [
+        { "label": "DUNS", "value": "070841700" },
+        { "label": "CAGE", "value": "7XTE4" },
+        { "label": "NAICS", "value": "541512, 541519" },
+        { "label": "E-Rate SPIN", "value": "143052684" },
+        { "label": "Unique Entity ID", "value": "FFEYNRXJARF8" }
+      ],
+      "interactive": {
+        "type": "copy-to-clipboard",
+        "buttonLabel": "Copy",
+        "buttonLabelCopied": "Copied",
+        "ariaLabel": "Copy {k} {v}",
+        "liveRegion": "{k} copied to the clipboard",
+        "resetMs": 2400,
+        "_source": { "ariaLabel": "'Copy ' + k + ' ' + v", "liveRegion": "IDS[S.copied][0] + ' copied to the clipboard'" }
+      },
+      "lists": [
+        { "title": "Certifications", "items": ["HUB", "MBE", "WBE", "SBE", "DBE", "NMSDC", "CMBL", "Metro SBE", "Hire Houston First"] }
+      ]
+    },
+    {
+      "id": "grants",
+      "heading": "We help you find grant money.",
+      "headingHtml": "We help you find <span class=\"tg-grad\">grant money.</span>",
+      "body": [
+        "Many of our clients don’t realize funding already exists for esports, STEM, CTE, and workforce development programs. We research the grants that fit and help you apply for ones that can offset or fully cover the cost of your build."
+      ],
+      "ctas": [
+        { "label": "Ask Us About Funding", "href": "/Contact", "style": "primary" },
+        { "label": "Pictured: Alvin College · Alvin, TX", "href": "/Project-Alvin", "style": "chip" }
+      ],
+      "cards": [
+        { "title": "ESSER / Federal Education Funds", "body": "Federal relief funding with broad discretion for technology, infrastructure, and CTE program development." },
+        { "title": "CTE Perkins Grants", "body": "Carl D. Perkins Career and Technical Education Act funding for equipment and programs that support workforce development pathways." },
+        { "title": "State & Local Technology Grants", "body": "State-level discretionary grants for technology infrastructure, STEM programming, and digital access initiatives." },
+        { "title": "Manufacturer MDF & Co-Funding", "body": "Market development funds and co-investment programs available through our OEM partnerships." }
+      ],
+      "images": [
+        { "src": "assets/alvin-showcase.jpg", "alt": "Students competing in the Alvin College esports lab", "role": "section background" }
+      ],
+      "clientColors": { "a": "#C10230", "b": "#66191D", "deep": "102,25,29", "usedFor": "section CSS vars --a/--b/--deep (Alvin College colours: stripe, tint) and the two dots on the 'Pictured' chip" }
+    },
+    {
+      "id": "leasing",
+      "heading": "Leasing and payment plans",
+      "body": [
+        "Not every organization has capital budget ready to go. Leasing and Hardware-as-a-Service get you the facility now, with predictable monthly costs and hardware refresh cycles built in."
+      ],
+      "notes": "The 'lede' here is actually a small note rendered after the body paragraph (class tg-procp-note).",
+      "lede":"A good fit for commercial operators, nonprofits, and institutions with operating budget but limited capital spend.",
+      "interactive": {
+        "type": "term-toggle",
+        "ariaLabel": "Lease term",
+        "options": ["12 months", "24 months", "36 months"],
+        "defaultIndex": 1,
+        "note": "Fixed monthly · Refresh built in · 24 months",
+        "_source": { "note": "'Fixed monthly · Refresh built in · ' + TERMS[S.term]  (changes to the selected term; toggle changes nothing else)" }
+      },
+      "cards": [
+        { "title": "Low Upfront Cost", "body": "Get a fully deployed facility without a large capital outlay. Spread the cost over 12, 24, or 36 months." },
+        { "title": "Hardware Refresh Cycles", "body": "Refresh cycles are built in, so your lab stays current and you avoid a large replacement bill down the road." },
+        { "title": "Predictable Monthly Cost", "body": "Fixed monthly payments make budgeting simple for finance teams and board approvals." },
+        { "title": "Bundled with MSP", "body": "Pair leasing with managed services for one monthly cost that covers hardware, support, and cybersecurity." }
+      ]
+    },
+    {
+      "id": "questions",
+      "heading": "Common questions about paying for your program.",
+      "cards": [
+        {
+          "title": "Not sure where to start?",
+          "body": "Answer eight questions about your space and program. You get a free readiness report you can share with your team.",
+          "links": [{ "label": "Take the assessment", "href": "/Assessment" }]
+        }
+      ],
+      "faqs": [
+        { "q": "How does a cooperative purchasing contract work?", "a": "Your organization buys through a contract that has already been competitively bid, such as DIR, OMNIA Partners, NCPA, or GSA. For eligible entities that satisfies the bidding requirement, so you don’t need to run a standalone RFP." },
+        { "q": "Do we still need board approval or quotes?", "a": "That depends on your local policy. Many organizations still take the purchase to their board or compare quotes. We provide the contract numbers and documentation for both." },
+        { "q": "How long does grant funding take?", "a": "It varies by program. Most federal and state grants run on an annual cycle with set application windows, so the earlier you plan, the more options you have. We help you find the programs that fit and build your timeline around their deadlines." },
+        { "q": "Can we combine more than one funding source?", "a": "Yes. Many projects pair a contract purchase with grant funds, E-Rate discounts on eligible networking, or manufacturer co-funding. We map which source covers which part of the build." },
+        { "q": "What lease terms are available?", "a": "12, 24, or 36 months, with predictable monthly payments and built-in hardware refresh cycles. Leasing can be bundled with managed services for a single monthly cost." },
+        { "q": "Does it cost anything to find out what we qualify for?", "a": "No. Your consultation is no-cost. We walk through contracts, grants, and leasing for your organization before you commit to anything." }
+      ],
+      "interactive": { "type": "accordion", "defaultOpenIndex": 0, "behaviour": "One FAQ open at a time; clicking the open one closes it." }
+    },
+    { "id": "project-cta", "component": "ProjectCTA", "ref": "site.json#projectCTA" },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

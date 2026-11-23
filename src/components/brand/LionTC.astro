@@ -1,0 +1,71 @@
+---
+// The lion mark with its hidden T and C. Hover or focus reveals them on pointer devices;
+// a tap (or click) toggles them anywhere. Both the mark and the note below drive the same state.
+interface Props { label: string; chips: { letter: string; name: string }[]; title: string; body: string; bodyTouch: string; alt: string }
+const { label, chips, title, body, bodyTouch, alt } = Astro.props;
+const c = chips.find((x) => x.letter === 'C')!;
+const t = chips.find((x) => x.letter === 'T')!;
+const lead = body.replace(/ Hover to find them\.$/, '');
+---
+<div class="tc-root" data-tc>
+  <button type="button" class="lion" aria-label={label} aria-pressed="false">
+    <img src="/assets/brand-kit/tanches-gg-icon-color.svg" alt={alt} width="206" height="237" />
+    <svg viewBox="0 0 205.6 237" class="tc" aria-hidden="true">
+      <rect x="0" y="0" width="205.6" height="237" rx="48" fill="#0B0B0F" opacity="0.78"></rect>
+      <svg x="26" y="26" width="153.6" height="185" viewBox="0 0 617.40002 743.59998" overflow="visible">
+        <defs><clipPath id="tcclip"><rect x="540" y="560" width="160" height="360"></rect></clipPath></defs>
+        <polygon points="338.4,112.7 228.7,115.8 177.6,175.2 226.8,175.2 174.5,245.7 272.4,245.7 281,198.9 271.2,173 364.7,167.5 394.8,167.5" fill="#FFFFFF"></polygon>
+        <g transform="translate(-231.3,-170.3)"><polygon points="398.4,804.2 540,913.9 681.6,804.2 681.6,756.8 681.6,710.6 600.3,773.2 600.3,665.9 624.6,653.6 624.6,704.3 689.3,648 682.2,624.7 661.6,574.9 540,637.5 418.4,574.9 397.8,624.7 391.1,651.7 422.8,677.1 453.8,704.3 453.8,652.9 479.7,665.9 479.7,773.2 398.4,710.6 398.4,756.8" fill="#FFFFFF" clip-path="url(#tcclip)"></polygon></g>
+      </svg>
+    </svg>
+    <span class="tchip label-glass c" aria-hidden="true"><b>{c.letter}</b>{c.name}</span>
+    <span class="tchip label-glass t" aria-hidden="true"><b>{t.letter}</b>{t.name}</span>
+  </button>
+  <button type="button" class="secret" aria-pressed="false">
+    <span class="s-title">{title}</span>
+    <span class="small">{lead} <span class="h-hover">Hover to find them.</span><span class="h-touch">{bodyTouch.replace(lead, '').trim()}</span></span>
+  </button>
+</div>
+
+<style>
+  .tc-root { display: grid; gap: 2.5rem; justify-items: center; }
+  .lion { position: relative; width: min(100%, 300px); aspect-ratio: 205.6 / 237; border-radius: 48px; }
+  .lion img, .tc { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .lion img { filter: drop-shadow(0 40px 34px rgba(14, 16, 22, .25)); }
+  :global([data-theme='dark']) .lion img { filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .7)); }
+  .tc { opacity: 0; transition: opacity .36s var(--ease-out); }
+  .tchip { position: absolute; gap: .5rem; padding: .3rem .8rem .3rem .3rem; font: 500 .6875rem var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: 0; transition: opacity .36s var(--ease-out), transform .45s var(--ease-out); }
+  .tchip b { display: grid; place-items: center; width: 1.375rem; height: 1.375rem; border-radius: 50%; background: var(--ink); color: var(--on-ink); font-weight: 600; letter-spacing: 0; }
+  .tchip.c { left: calc(100% + .75rem); top: 69%; transform: translate(-6px, -50%); }
+  .tchip.t { right: calc(100% + .75rem); top: 29%; transform: translate(6px, -50%); }
+  .tc-root.is-on .tc, .tc-root.is-on .tchip { opacity: 1; }
+  .tc-root.is-on .tchip { transform: translate(0, -50%); }
+  @media (hover: hover) {
+    .tc-root:has(.lion:hover) .tc, .tc-root:has(.lion:hover) .tchip,
+    .tc-root:has(.secret:hover) .tc, .tc-root:has(.secret:hover) .tchip { opacity: 1; }
+    .tc-root:has(.lion:hover) .tchip, .tc-root:has(.secret:hover) .tchip { transform: translate(0, -50%); }
+  }
+  .tc-root:has(:focus-visible) .tc, .tc-root:has(:focus-visible) .tchip { opacity: 1; }
+  .tc-root:has(:focus-visible) .tchip { transform: translate(0, -50%); }
+  .secret { display: grid; gap: .35rem; text-align: left; width: 100%; padding: 1.1rem 1.25rem; border-radius: 18px; border: 1px dashed var(--line-2); transition: background-color .25s, border-color .25s; }
+  .secret:hover { background: var(--surface); border-color: var(--ink-3); }
+  .s-title { font-weight: 660; }
+  .h-touch { display: none; }
+  @media (hover: none) { .h-hover { display: none; } .h-touch { display: inline; } }
+  @media (max-width: 520px) {
+    .lion { width: min(70%, 240px); }
+    .tchip.c { left: auto; right: -1.5rem; top: auto; bottom: -1rem; transform: none !important; }
+    .tchip.t { right: auto; left: -1.5rem; top: -1rem; transform: none !important; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tc]').forEach((root) => {
+    const btns = [...root.querySelectorAll<HTMLButtonElement>('button')];
+    btns.forEach((b) => b.addEventListener('click', () => {
+      const on = !root.classList.contains('is-on');
+      root.classList.toggle('is-on', on);
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(on)));
+    }));
+  });
+</script>

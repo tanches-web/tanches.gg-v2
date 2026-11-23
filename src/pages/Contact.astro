@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactHero from '../components/contact/ContactHero.astro';
+import Icon from '../components/Icon.astro';
+import page from '../content/pages/Contact.json';
+
+const seo = {
+  title: page.seo.title,
+  description: page.seo.description,
+  canonical: page.seo.canonical,
+  ogImage: '/assets/og-logo.png',
+  jsonLd: page.seo.jsonLd,
+};
+const next = page.sections.find((s: any) => s.id === 'ct-next') as any;
+const steps = next.lists[0].items;
+const t = next.testimonials[0];
+const [ghost, ink] = next.ctas;
+---
+<Base seo={seo}>
+  <ContactHero />
+
+  <section class="section next" aria-labelledby="ct-next-title">
+    <div class="wrap grid">
+      <div class="copy">
+        <h2 id="ct-next-title" class="h2" data-reveal>What happens after <strong>you write to us.</strong></h2>
+        <ol class="steps" role="list" data-reveal>
+          {steps.map((s: any) => (
+            <li><span class="spec num">{s.n}</span><strong>{s.title}</strong><span>{s.body}</span></li>
+          ))}
+        </ol>
+      </div>
+      <div class="proof" data-reveal>
+        <div class="photo shot"><img src={'/' + next.images[0].src} alt={next.images[0].alt} loading="lazy" decoding="async" /></div>
+        <figure class="quote" style="--ca:#C10230;--cb:#66191D;--cd:#3A0E12">
+          <span class="bar" aria-hidden="true"></span>
+          <blockquote><p>{t.quote}</p></blockquote>
+          <figcaption>
+            <span class="logo"><img src={'/' + t.image} alt="" loading="lazy" /></span>
+            <span><strong>{t.name}</strong><span class="role">{t.roleLine}</span></span>
+            <a class="cs" href={t.link.href} aria-label={t.link.ariaLabel}>Case study <Icon name="arrow-right" size={16} /></a>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="wrap after" data-reveal>
+      <p>{next.body[0]}</p>
+      <div class="btns">
+        <a class="btn btn-ghost" href={ghost.href}>{ghost.label} <Icon name="arrow-right" /></a>
+        <a class="btn btn-primary" href={ink.href}>{ink.label} <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  .copy { display: grid; gap: 2.25rem; position: sticky; top: 7rem; }
+  .copy :global(strong) { font-weight: 720; }
+  .steps { list-style: none; padding: 0; border-top: 1px solid var(--line-2); }
+  .steps li { display: grid; grid-template-columns: 3rem 1fr; column-gap: .75rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  .steps .spec { grid-row: span 2; padding-top: .3rem; }
+  .steps strong { font-weight: 640; font-size: 1.125rem; }
+  .steps li > span:last-child { color: var(--ink-2); font-size: var(--t-small); }
+  .proof { display: grid; gap: 1.5rem; }
+  .shot { aspect-ratio: 16 / 10; }
+  .quote { display: grid; gap: 1.25rem; padding: clamp(1.25rem, 3vw, 2rem); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-float); }
+  .bar { display: block; height: 4px; width: 3rem; border-radius: 4px; background: linear-gradient(90deg, var(--ca), var(--cb)); }
+  blockquote { font-size: clamp(1.125rem, 1rem + .4vw, 1.375rem); line-height: 1.45; letter-spacing: -0.012em; }
+  figcaption { display: grid; grid-template-columns: auto 1fr auto; gap: .25rem .9rem; align-items: center; font-size: var(--t-small); padding-top: 1.1rem; border-top: 1px solid var(--line); }
+  .logo { width: 3rem; height: 3rem; border-radius: 12px; overflow: hidden; background: var(--cd); display: grid; place-items: center; }
+  .logo img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+  figcaption strong { display: block; font-weight: 640; }
+  .role { color: var(--ink-2); }
+  .cs { display: inline-flex; align-items: center; gap: .35rem; color: var(--accent); font-weight: 600; text-decoration: none; }
+  .cs:hover { text-decoration: underline; }
+  .after { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: clamp(3rem, 5vw, 4.5rem); padding-top: 1.75rem; border-top: 1px solid var(--line); }
+  .after p { color: var(--ink-2); font-size: var(--t-lede); }
+  .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; }
+    .copy { position: static; }
+  }
+  @media (max-width: 560px) {
+    figcaption { grid-template-columns: auto 1fr; }
+    .cs { grid-column: 2; }
+    .btns, .btns .btn { width: 100%; }
+  }
+</style>

@@ -1,0 +1,242 @@
+{
+  "slug": "Assessment",
+  "sourceFile": "Assessment.html",
+  "url": "https://tanches.gg/Assessment",
+  "components": [
+    { "name": "SiteNav", "props": { "active": "contact", "tone": "{{ navTone }}" }, "_source": { "tone": "S.screen === 'path' ? 'dark' : ''" } },
+    { "name": "SiteFooter", "props": {} }
+  ],
+  "seo": {
+    "title": "Facility Readiness Assessment | TANCHES.GG",
+    "description": "Take the free Facility Readiness Assessment: eight questions, a readiness score, and a prioritized action plan for your esports program.",
+    "robots": "index, follow, max-image-preview:large",
+    "canonical": "https://tanches.gg/Assessment",
+    "themeColor": "#08080A",
+    "ogType": "website",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "ogTitle": "Facility Readiness Assessment | TANCHES.GG",
+    "ogDescription": "Take the free Facility Readiness Assessment: eight questions, a readiness score, and a prioritized action plan for your esports program.",
+    "ogUrl": "https://tanches.gg/Assessment",
+    "ogImage": "https://tanches.gg/assets/og-logo.png",
+    "ogImageWidth": "1200",
+    "ogImageHeight": "1200",
+    "ogImageAlt": "TANCHES.GG lion mark",
+    "twitterCard": "summary",
+    "twitterTitle": "Facility Readiness Assessment | TANCHES.GG",
+    "twitterDescription": "Take the free Facility Readiness Assessment: eight questions, a readiness score, and a prioritized action plan for your esports program.",
+    "twitterImage": "https://tanches.gg/assets/og-logo.png",
+    "icons": [
+      { "rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png" },
+      { "rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png" },
+      { "rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png" }
+    ],
+    "helmetTitle": "Facility Readiness Assessment | TANCHES.GG",
+    "jsonLd": [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://tanches.gg/Assessment",
+            "url": "https://tanches.gg/Assessment",
+            "name": "Facility Readiness Assessment | TANCHES.GG",
+            "description": "Take the free Facility Readiness Assessment: eight questions, a readiness score, and a prioritized action plan for your esports program.",
+            "isPartOf": { "@type": "WebSite", "name": "TANCHES.GG", "url": "https://tanches.gg/" },
+            "publisher": { "@type": "Organization", "name": "TANCHES.GG", "url": "https://tanches.gg/" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tanches.gg/" },
+              { "@type": "ListItem", "position": 2, "name": "Facility Readiness Assessment", "item": "https://tanches.gg/Assessment" }
+            ]
+          }
+        ]
+      }
+    ],
+    "noscript": {
+      "h1": "Facility Readiness Assessment",
+      "p": [
+        "Take the free Facility Readiness Assessment: eight questions, a readiness score, and a prioritized action plan for your esports program.",
+        "Call (281) 826-2437 or email contact@tanches.gg."
+      ],
+      "links": [
+        { "label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg" },
+        { "label": "Home", "href": "/" },
+        { "label": "Education", "href": "/Education" },
+        { "label": "Community", "href": "/Community" },
+        { "label": "Commercial", "href": "/Commercial" },
+        { "label": "Esports League", "href": "/League" },
+        { "label": "Technology", "href": "/Technology" },
+        { "label": "Procurement & Funding", "href": "/Procurement" },
+        { "label": "Projects", "href": "/Projects" },
+        { "label": "Facility Readiness Assessment", "href": "/Assessment" },
+        { "label": "About", "href": "/About" },
+        { "label": "Team", "href": "/Team" },
+        { "label": "Brand Center", "href": "/brand" },
+        { "label": "Contact", "href": "/Contact" }
+      ]
+    },
+    "other": {
+      "viewport": "width=device-width, initial-scale=1",
+      "htmlLang": "en",
+      "base": "/",
+      "scripts": [
+        "./support.js",
+        "/tracking.js",
+        "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      ],
+      "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css"],
+      "runtimeFetches": "PDF fonts fetched at runtime from https://cdn.jsdelivr.net/fontsource/fonts/ (Sora 400/600/700, JetBrains Mono 500/600)",
+      "themeBootstrap": "Inline script reads localStorage 'tg-theme-v2' (default \"light\") and sets data-theme=\"light\" on <html>.",
+      "pageClasses": "tg-page tg-asp (no mobile.css link on this page)"
+    }
+  },
+  "notes": "Single-page app with four screens driven by state.screen: 'path' (landing: hero + track picker + 'what you get'), 'intake' (lead form), 'q' (questions), 'res' (results). Full question bank, scoring and PDF text are in forms.json → assessment.",
+  "sections": [
+    {
+      "id": "as-hero",
+      "condition": "screen === 'path' (showPath)",
+      "heading": "Is your organization ready to build?",
+      "headingHtml": "Is your organization <span class=\"tg-grad\">ready to build?</span>",
+      "lede": "Answer eight questions in about four minutes. You get a readiness score, a breakdown by area, and an action plan in order, as a PDF you can share with your team.",
+      "lists": [{ "title": "facts", "items": ["8 questions", "About 4 minutes", "Free PDF report"] }],
+      "images": [
+        { "src": "assets/opt/home-swampy-floor.webp", "alt": "Students competing on the tournament floor at TexSEF’s Swampy Conquest", "role": "hero background" },
+        { "src": "assets/clients/texsef-light.png", "alt": "", "role": "\"Pictured\" badge logo" }
+      ],
+      "pictured": {
+        "href": "/Project-Swampy",
+        "ariaLabel": "Pictured: TexSEF’s Swampy Conquest. Read the case study",
+        "small": "Pictured",
+        "text": "TexSEF Swampy Conquest",
+        "logo": "assets/clients/texsef-light.png"
+      },
+      "interactive": {
+        "type": "track picker (buttons start the intake screen)",
+        "heading": "What are you building for? Pick one to start.",
+        "groupAriaLabelledBy": "as-paths-title",
+        "paths": [
+          { "key": "education", "title": "Education", "sub": "K-12 districts, colleges, and universities", "icon": "graduation cap (lucide)", "go": "Start assessment" },
+          { "key": "community", "title": "Community", "sub": "Nonprofits, government, and community centers", "icon": "civic building / columns", "go": "Start assessment" },
+          { "key": "commercial", "title": "Commercial", "sub": "LAN centers, hotels, casinos, and healthcare", "icon": "office building", "go": "Start assessment" }
+        ]
+      }
+    },
+    {
+      "id": "as-get",
+      "condition": "screen === 'path' (showPath)",
+      "heading": "A report you can take to leadership.",
+      "headingHtml": "A report you can take <span class=\"tg-grad\">to leadership.</span>",
+      "lede": "Your results show up on screen as soon as you finish, and the PDF is yours to keep.",
+      "cards": [
+        { "meta": "01", "title": "Score and tier", "body": "A readiness score out of 100 and a tier: Foundation, Growth Ready, or Premier." },
+        { "meta": "02", "title": "Five areas", "body": "Space, infrastructure, funding, program, and timeline, each marked strong, developing, or a gap." },
+        { "meta": "03", "title": "Action plan", "body": "Next steps ranked by how much each one moves your readiness." },
+        { "meta": "04", "title": "Two-page PDF", "body": "Download it from the results page and pass it to your team or board." }
+      ],
+      "body": ["Rather talk it through first? The consultation is free."],
+      "ctas": [{ "label": "Book a free consultation", "href": "/Contact", "style": "ink" }]
+    },
+    {
+      "id": "as-intake",
+      "condition": "screen === 'intake' (showIntake)",
+      "barBack": "Back",
+      "barMeta": "{PATH LABEL UPPERCASE} · Before you start",
+      "_source": { "barMeta": "pathLabelUp + ' · Before you start'" },
+      "heading": "Who is this report for?",
+      "body": ["Your results appear as soon as you finish, with a PDF you can download. Someone from TANCHES.GG may follow up to walk you through them."],
+      "formRef": "forms.json#forms[assessment-intake]",
+      "ctas": [{ "label": "Start the assessment", "type": "submit", "style": "primary" }],
+      "formNote": "By continuing, you agree to our Terms & Privacy Policy.",
+      "errors": ["Add your name and a valid email to start."]
+    },
+    {
+      "id": "as-question",
+      "condition": "screen === 'q' (showQ)",
+      "srHeading": "Facility Readiness Assessment",
+      "barBack": "Back",
+      "stepLabel": "QUESTION {n} OF {total}",
+      "stepLabelSr": "Question {n} of {total}",
+      "progressMeta": "{PATH LABEL UPPERCASE} · {QUESTION DIMENSION UPPERCASE}",
+      "progressAriaLabel": "Assessment progress",
+      "optionKeys": ["A", "B", "C", "D"],
+      "hint": "Pick the answer that fits best. You can go back at any time.",
+      "_source": {
+        "stepLabel": "'QUESTION ' + (S.step + 1) + ' OF ' + qs.length",
+        "progress": "Math.round(((S.step + (answered current ? 1 : 0)) / qs.length) * 100)"
+      },
+      "interactive": {
+        "behaviour": "Picking an option records it, then after 220 ms auto-advances; after the last question a reference is generated and the results screen is shown. Back goes to the previous question, or to the intake screen from question 1. Segmented progress bar: current = is-on, answered = is-done.",
+        "questionsRef": "forms.json#assessment.tracks"
+      }
+    },
+    {
+      "id": "as-results-head",
+      "condition": "screen === 'res' (showRes)",
+      "heading": "Your readiness tier is {tierName}",
+      "headingHtml": "<span class=\"tg-as-soft\">Your readiness tier is</span> <span class=\"tg-grad\">{{ tierName }}</span>",
+      "lede": "{tierDesc}",
+      "meta": "{PATH LABEL UPPERCASE} track · Prepared for {preparedFor}",
+      "scoreCard": {
+        "label": "TANCHES.GG readiness index",
+        "value": "{score}",
+        "suffix": "/ 100",
+        "scale": ["Foundation", "Growth Ready", "Premier"]
+      },
+      "_source": {
+        "preparedFor": "[S.fName.trim(), S.fOrg.trim()].filter(Boolean).join(', ') || (path ? path.label + ' organization' : '')"
+      }
+    },
+    {
+      "id": "as-areas",
+      "condition": "screen === 'res'",
+      "ariaLabel": "Your results by area",
+      "lists": [
+        { "title": "Readiness by area", "items": ["{dim.name} · bar {dim.w} · {dim.status} (STRONG | DEVELOPING | GAP), sr: \", {pct} percent\""] },
+        { "title": "What you already have", "items": ["{strength.t} · {strength.dimUp}"] }
+      ],
+      "emptyState": {
+        "condition": "no strengths",
+        "body": "Nothing is locked in yet, which means every decision is still open. This is the best time to get the order of operations right."
+      }
+    },
+    {
+      "id": "as-plan",
+      "condition": "screen === 'res'",
+      "heading": "What to do next, in order.",
+      "lede": "Ranked by how much each step moves your readiness, based on your answers.",
+      "lists": [
+        { "title": "plan steps", "items": ["{n} · {t} · chip {priority} · chip {dimUp} · {d} · \"You answered: {ANSWER UPPERCASE}\" (when it came from an answer)"] }
+      ],
+      "cards": [
+        {
+          "title": "Hardware is one part of the ecosystem.",
+          "body": "A program that lasts needs more than PCs: facility design, network and cybersecurity, hardware, the program itself, competition in the TANCHES.GG League, and support long after launch. We design, build, and run every piece together with Dell, Lenovo, and other leading manufacturers, and one team is accountable for all of it."
+        }
+      ]
+    },
+    {
+      "id": "asm-cta",
+      "condition": "screen === 'res'",
+      "heading": "Turn this report into a plan, {firstName}.",
+      "headingHtml": "Turn this report into <span class=\"tg-grad\">a plan</span>, {{ firstName }}.",
+      "_source": {
+        "firstName": "S.fName.trim().split(' ')[0] || 'there'",
+        "bookHref": "'/Contact?' + new URLSearchParams({ name, email, org, tier: tierName, score, ref, track: path.label } (empty values dropped))"
+      },
+      "lede": "Book a no-cost consultation and we’ll work through every item in your action plan. We evaluate your space, review your infrastructure, and scope a build to your budget and timeline.",
+      "ctas": [
+        { "label": "Book my consultation", "href": "/Contact?name=…&email=…&org=…&tier=…&score=…&ref=…&track=…", "style": "primary" },
+        { "label": "Download PDF report", "labelBusy": "Building your PDF…", "type": "button", "style": "ghost", "action": "download PDF" },
+        { "label": "Retake", "type": "button", "style": "text", "action": "reset to path screen" },
+        { "label": "Prefer to talk? Call (281) 826-2437", "href": "tel:2818262437", "style": "link" }
+      ],
+      "meta": "Your report reference · {ref}",
+      "images": [{ "src": "assets/opt/alvin-side.webp", "alt": "", "role": "CTA background (loading=lazy)" }]
+    },
+    { "id": "footer", "component": "SiteFooter", "ref": "site.json#footer" }
+  ]
+}

@@ -1,0 +1,5419 @@
+[
+  {
+    "slug": "Project-Stafford",
+    "key": "stafford",
+    "order": 1,
+    "sourceFile": "Project-Stafford.html",
+    "url": "https://tanches.gg/Project-Stafford",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects",
+          "tone": "dark"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "stafford"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": false,
+      "ready": true,
+      "source": "PROJECTS.stafford literal (CaseStudy.dc.html line 295-311); also the fallback project when the prop is unknown"
+    },
+    "seo": {
+      "title": "Stafford Municipal School District | TANCHES.GG",
+      "helmetTitle": "Stafford Municipal School District | TANCHES.GG",
+      "description": "Stafford Municipal School District: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-Stafford",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "Stafford Municipal School District | TANCHES.GG",
+      "ogDescription": "Stafford Municipal School District: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-Stafford",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "Stafford Municipal School District | TANCHES.GG",
+      "twitterDescription": "Stafford Municipal School District: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-Stafford",
+              "description": "Stafford Municipal School District: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "Stafford Municipal School District | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-Stafford",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "Stafford Municipal School District",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-Stafford",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "Stafford Municipal School District",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "Stafford Municipal School District: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "/Project-Stafford",
+      "title": "Stafford Municipal School District",
+      "loc": "STAFFORD, TX · K-12",
+      "img": "assets/opt/home-hero-stafford.webp",
+      "lede": "First district in the region to build a dedicated esports facility. Home of the Stafford Spartans.",
+      "meta": [
+        "K-12 Education",
+        "Stafford, TX",
+        "2022–2023"
+      ],
+      "tagline": "FIRST IN THE REGION",
+      "theme": {
+        "a": "#EA0000",
+        "b": "#FCB326",
+        "name": "Spartans · Scarlet & Gold",
+        "mascot": "SPARTANS",
+        "logoWhite": "assets/district-stafford-h-white.png",
+        "logoColor": "assets/district-stafford-h.png",
+        "deep": "#4E060C",
+        "deepLight": "#82000D",
+        "textDark": [
+          "#FF4A3D",
+          "#FCB326"
+        ],
+        "textLight": [
+          "#B60007",
+          "#82000D"
+        ],
+        "labelDark": "#FFD55F",
+        "labelLight": "#82000D",
+        "pal": {
+          "banana": "#FFD55F",
+          "brick": "#B60007",
+          "mahogany": "#4E060C",
+          "maroon": "#82000D",
+          "sand": "#EDD3B3"
+        }
+      },
+      "proc": [
+        "DIR",
+        "OMNIA"
+      ],
+      "scope": [
+        "Consulting",
+        "Electrical & Cabling",
+        "Hardware",
+        "Networking",
+        "Ongoing Support"
+      ],
+      "metrics": [
+        {
+          "label": "Student attendance",
+          "value": "90%"
+        },
+        {
+          "label": "Grades",
+          "value": "A+"
+        },
+        {
+          "label": "GPA",
+          "value": "3.5"
+        }
+      ],
+      "quote": {
+        "who": "Colt Berry",
+        "role": "Esports Head Coach · Stafford MSD",
+        "text": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth. We’re grateful for their commitment to helping our esports program thrive."
+      },
+      "storyTitle": "A full-facility esports lab, built from scratch.",
+      "sideImg": "assets/stafford/stafford-12.jpg",
+      "story": [
+        {
+          "label": "OBJECTIVE",
+          "paras": [
+            "Stafford Municipal School District knew what they wanted to build. They saw where esports and STEM were heading and set out to get their students there first. No other district in the region had created an esports facility at the time, and SMSD’s leadership had done the homework to know it was worth doing, and worth doing right.",
+            "They also knew a build at this level goes best as a collaboration, so they turned to a partner they already trusted. TanChes had supported SMSD’s IT and technology infrastructure for years, and when the district set its sights on esports, they came to us to see if we could help bring it to life. We worked alongside the district’s team from the start, aligned on their goals for the program, and then designed, procured, and deployed the facility utilizing DIR and OMNIA contracts. That kept the entire project under one contract and took the burden of a standalone bid off the district’s plate."
+          ]
+        },
+        {
+          "label": "OVERVIEW",
+          "paras": [
+            "The result is an esports lab tied to STEM education, and we built every layer of it. We brought in an electrician for the electrical work and ran the structured cabling throughout the facility ourselves, placing data drops and power where the room needed them, then set up a fast, low-latency network made for competitive play. We sourced and deployed the full hardware lineup, working alongside Dell/Alienware, MSI, Samsung, and others to bring added resources to the program, and researched grants to help fund what comes next. After go-live, we stayed on for ongoing support and maintenance, so the lab keeps performing and the district always has someone to call."
+          ]
+        }
+      ],
+      "pull": "SMSD set the direction, and we delivered the build to match it. First in the region, and built to scale from here.",
+      "partners": [
+        "Alienware",
+        "Dell",
+        "MSI",
+        "Samsung"
+      ],
+      "delivered": [
+        {
+          "title": "Consulting & Program Approval",
+          "body": "SMSD’s Superintendent and STEM Director already had esports on their radar. We consulted with them and their IT Director on the technology side, helping shape what the program would need as they aligned it with their STEM goals and carried it through to district leadership approval."
+        },
+        {
+          "title": "Electrical & Structured Cabling",
+          "body": "We worked with their electrician on the electrical work and handled the structured cabling throughout the facility ourselves, placing data drops and power connections for performance and ease of use."
+        },
+        {
+          "title": "Hardware Procurement",
+          "body": "We sourced and deployed the full gaming hardware lineup via DIR and OMNIA state purchasing contracts: high-end PCs, monitors, gaming consoles, peripherals, and professional-grade displays. The centerpiece is white Alienware Aurora R13 gaming stations with matching white peripherals, RGB-backlit mechanical keyboards, precision gaming mice, and high-refresh-rate monitors."
+        },
+        {
+          "title": "Network Setup",
+          "body": "We designed and set up a fast, low-latency network built for competitive play, with room to scale as the program grows."
+        },
+        {
+          "title": "Grants Research",
+          "body": "We researched K-12 ed-tech and esports grants to help SMSD fund what comes next for the program."
+        },
+        {
+          "title": "Vendor Liaison",
+          "body": "We connected SMSD with manufacturer partners including Dell/Alienware, MSI, and Samsung, opening up added resources and support tailored to the program."
+        },
+        {
+          "title": "After-Sales Support & Ongoing Maintenance",
+          "body": "We stayed on after go-live for troubleshooting, system updates, and regular maintenance, so the lab keeps performing and the district always has someone to call."
+        }
+      ],
+      "gallery": [
+        "assets/stafford/stafford-01.jpg",
+        "assets/stafford/stafford-02.jpg",
+        "assets/stafford/stafford-03.jpg",
+        "assets/stafford/stafford-04.jpg",
+        "assets/stafford/stafford-05.jpg",
+        "assets/stafford/stafford-06.jpg",
+        "assets/stafford/stafford-07.jpg",
+        "assets/stafford/stafford-08.jpg",
+        "assets/stafford/stafford-09.jpg",
+        "assets/stafford/stafford-10.jpg",
+        "assets/stafford/stafford-11.jpg",
+        "assets/stafford/stafford-12.jpg"
+      ],
+      "result": {
+        "v": "+65%",
+        "l": "Increase in student engagement",
+        "sub": "Fully integrated, scalable infrastructure."
+      },
+      "features": [
+        {
+          "title": "Custom esports facility",
+          "body": "From planning to execution, we built a space where students practice, compete, and work together."
+        },
+        {
+          "title": "Integrated technology",
+          "body": "Equipped with the latest hardware and software, ensuring a high-performance environment for esports."
+        },
+        {
+          "title": "Future-proof design",
+          "body": "Built with scalability in mind, ready to adapt to future tech and learning needs."
+        }
+      ],
+      "_source": {
+        "gallery": "Array.from({ length: 12 }, (_, i) => 'assets/stafford/stafford-' + String(i + 1).padStart(2, '0') + '.jpg')",
+        "metrics/delivered/features/story": "source tuples [a, b] converted to named objects exactly as renderVals() maps them ({v,l}, {t,d}, {label,paras})"
+      }
+    },
+    "cssVars": {
+      "--a": {
+        "value": "#EA0000",
+        "from": "theme.a",
+        "usedFor": "Primary client accent: hero colour-chip dot 1 (inline background: var(--a)); mascot word outline/fill sweep (.tg-cs-mascot / .x-cs-mascot -webkit-text-stroke + background); left 70% of the pull-quote rule (.tg-cs-pull::before); start of the --progress gradient."
+      },
+      "--b": {
+        "value": "#FCB326",
+        "from": "theme.b",
+        "usedFor": "Secondary client accent: hero colour-chip dot 2; right 30% of the pull-quote rule; end of the --progress gradient; default for --hi."
+      },
+      "--ct": {
+        "dark": "#FF4A3D",
+        "from": "(light ? theme.textLight : theme.textDark)[0]",
+        "light": "#B60007",
+        "usedFor": "Coloured text class .tg-cs-ct: story block labels, metric values, delivered item numbers (01, 02...)."
+      },
+      "--ct2": {
+        "dark": "#FCB326",
+        "from": "(light ? theme.textLight : theme.textDark)[1]",
+        "light": "#82000D",
+        "usedFor": "Second coloured-text tone (set; no direct use in CaseStudy.dc.html template)."
+      },
+      "--deep": {
+        "value": "#4E060C",
+        "from": "theme.pal.mahogany || theme.deep",
+        "usedFor": "Dark base of the testimonial band (.tg-cs-quote) and results card (.tg-cs-result) radial gradients; hero photo tint (.x-cs-tint)."
+      },
+      "--deep-2": {
+        "value": "#82000D",
+        "from": "theme.pal.maroon || theme.deepLight || theme.a",
+        "usedFor": "Glow stop of the testimonial band and results card radial gradients."
+      },
+      "--hi": {
+        "value": "#FCB326",
+        "from": "theme.hi || theme.b",
+        "usedFor": "Highlight: big opening quote mark (.tg-cs-qmark) and results headline value (.tg-cs-result-v); fallback for --label."
+      },
+      "--label": {
+        "dark": "#FFD55F",
+        "from": "light ? theme.labelLight : theme.labelDark",
+        "light": "#82000D",
+        "usedFor": "Label accent colour (design-system CSS, e.g. color: var(--label, var(--hi)))."
+      },
+      "--progress": {
+        "value": "linear-gradient(90deg, #EA0000, #FCB326)",
+        "setOn": "document.documentElement",
+        "usedFor": "Top scroll-progress bar (.tg-progress)."
+      },
+      "unusedPaletteKeys": {
+        "pal.banana": "#FFD55F",
+        "pal.brick": "#B60007",
+        "pal.sand": "#EDD3B3"
+      },
+      "_note": "Set by applyTheme() on [data-cs-root] (main.tg-case). light = default site theme (localStorage tg-theme-v2 defaults to 'light'); dark when the visitor toggles the theme."
+    },
+    "rendered": {
+      "quote": {
+        "name": "Colt Berry",
+        "role": "Esports Head Coach · Stafford MSD",
+        "text": "TANCHES.GG has been an outstanding technology sponsor for Stafford MSD’s esports program. Their partnership and support have played an important role in our students’ success and growth. We’re grateful for their commitment to helping our esports program thrive.",
+        "ariaLabel": "Client testimonial",
+        "plateLogo": {
+          "alt": "",
+          "ariaHidden": true,
+          "src": "assets/district-stafford-h.png"
+        },
+        "qmark": "“"
+      },
+      "story": {
+        "pull": "SMSD set the direction, and we delivered the build to match it. First in the region, and built to scale from here.",
+        "heading": "A full-facility esports lab, built from scratch.",
+        "blocks": "data.story (labels OBJECTIVE, OVERVIEW)",
+        "sideImage": {
+          "alt": "",
+          "src": "assets/stafford/stafford-12.jpg"
+        }
+      },
+      "delivered": {
+        "heading": "Every layer. One partner.",
+        "items": "data.delivered, numbered '01'..'07' ('0' + (i + 1))",
+        "procuredThrough": {
+          "label": "Procured through",
+          "logos": [
+            {
+              "name": "DIR",
+              "logoDark": "assets/logo-dir-white.png",
+              "logoLight": "assets/logo-dir-black.png"
+            },
+            {
+              "name": "OMNIA",
+              "logoDark": "assets/logo-omnia-white.png",
+              "logoLight": "assets/logo-omnia-black.png"
+            }
+          ]
+        },
+        "_source": {
+          "heading": "r.deliveredTitle || 'Every layer. One partner.'"
+        }
+      },
+      "gallery": {
+        "heading": "Photos from the build",
+        "counter": "01 / 12",
+        "imageAlt": "Project photo {n} (1-12)",
+        "images": "data.gallery"
+      },
+      "hero": {
+        "lede": "First district in the region to build a dedicated esports facility. Home of the Stafford Spartans.",
+        "mascot": "SPARTANS",
+        "variant": "photo hero (section.x-hero.x-cs-hero, shown when d.ready)",
+        "image": {
+          "alt": "Stafford Municipal School District esports facility",
+          "src": "assets/opt/home-hero-stafford.webp"
+        },
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": {
+          "alt": "Stafford Municipal School District logo",
+          "src": "assets/district-stafford-h-white.png"
+        },
+        "h1": "Stafford Municipal School District",
+        "chips": [
+          {
+            "label": "Spartans · Scarlet & Gold",
+            "dots": [
+              "--a",
+              "--b"
+            ]
+          },
+          {
+            "label": "K-12 Education"
+          },
+          {
+            "label": "Stafford, TX"
+          },
+          {
+            "label": "2022–2023"
+          }
+        ],
+        "taglineChip": {
+          "label": "FIRST IN THE REGION",
+          "dots": [
+            "--a",
+            "--b"
+          ]
+        }
+      },
+      "facts": {
+        "cells": [
+          {
+            "chips": [
+              "Consulting",
+              "Electrical & Cabling",
+              "Hardware",
+              "Networking",
+              "Ongoing Support"
+            ],
+            "heading": "Scope"
+          },
+          {
+            "partners": [
+              {
+                "name": "Alienware",
+                "logoDark": "assets/oem/alienware-dark.svg",
+                "logoLight": "assets/oem/alienware-light.svg",
+                "maxHeight": "13px"
+              },
+              {
+                "name": "Dell",
+                "logo": "assets/oem/dell.png",
+                "maxHeight": "15px"
+              },
+              {
+                "name": "MSI",
+                "logoDark": "assets/oem/msi-dark.png",
+                "logoLight": "assets/oem/msi-light.png",
+                "maxHeight": "23px"
+              },
+              {
+                "name": "Samsung",
+                "logo": "assets/oem/samsung.png",
+                "maxHeight": "16px"
+              }
+            ],
+            "heading": "Technology partners",
+            "columns": 2,
+            "logoFilter": {
+              "dark": "brightness(0) invert(1)",
+              "light": "brightness(0)"
+            }
+          },
+          {
+            "heading": "Metrics",
+            "items": [
+              {
+                "label": "Student attendance",
+                "value": "90%"
+              },
+              {
+                "label": "Grades",
+                "value": "A+"
+              },
+              {
+                "label": "GPA",
+                "value": "3.5"
+              }
+            ]
+          }
+        ],
+        "ariaLabel": "Project facts"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          },
+          {
+            "href": "/Project-Muskogee",
+            "title": "City of Muskogee",
+            "loc": "MUSKOGEE, OK · COMMUNITY",
+            "img": "assets/muskogee-b.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      },
+      "results": {
+        "features": "data.features",
+        "label": "Increase in student engagement",
+        "value": "+65%",
+        "sub": "Fully integrated, scalable infrastructure.",
+        "srHeading": "Results"
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    }
+  },
+  {
+    "slug": "Project-Longview",
+    "key": "longview",
+    "order": 2,
+    "sourceFile": "Project-Longview.html",
+    "url": "https://tanches.gg/Project-Longview",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "longview"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "PROJECTS.longview literal (CaseStudy.dc.html line 312-316) with loading: true"
+    },
+    "placeholder": true,
+    "placeholderNote": "KNOWN PLACEHOLDER: the Longview ISD quote text is 'Placeholder: add Jeremy’s quote about the Longview ISD deployment.' with who 'Jeremy' and role 'Title · Longview ISD'. It is NOT rendered: hasQuote = !!r.quote && !r.loading && !/^placeholder/i.test(r.quote.text). Needs the real quote, Jeremy's surname and job title.",
+    "seo": {
+      "title": "Longview ISD | TANCHES.GG",
+      "helmetTitle": "Longview ISD | TANCHES.GG",
+      "description": "Longview ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-Longview",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "Longview ISD | TANCHES.GG",
+      "ogDescription": "Longview ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-Longview",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "Longview ISD | TANCHES.GG",
+      "twitterDescription": "Longview ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-Longview",
+              "description": "Longview ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "Longview ISD | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-Longview",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "Longview ISD",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-Longview",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "Longview ISD",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "Longview ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "/Project-Longview",
+      "title": "Longview Independent School District",
+      "loading": true,
+      "cardLogo": "assets/district-longview-h.png",
+      "loc": "LONGVIEW, TX · K-12",
+      "img": "assets/arena-longview.jpg",
+      "lede": "Multi-phase district-wide esports deployment across multiple campuses.",
+      "meta": [
+        "K-12 Education",
+        "Longview, TX",
+        "2023"
+      ],
+      "tagline": "LONGVIEW LOBOS · ARENA",
+      "theme": {
+        "a": "#046A38",
+        "b": "#FFC72C",
+        "name": "Lobos · Evergreen & Gold",
+        "mascot": "LOBOS",
+        "logoWhite": "assets/district-longview-h-white.png",
+        "logoColor": "assets/district-longview-h.png",
+        "deep": "#032B17",
+        "deepLight": "#046A38",
+        "textDark": [
+          "#34B26E",
+          "#FFC72C"
+        ],
+        "textLight": [
+          "#046A38",
+          "#A87B00"
+        ],
+        "labelDark": "#FFC72C",
+        "labelLight": "#046A38"
+      },
+      "scope": [
+        "Extron AV",
+        "Structured Cabling",
+        "Server Infrastructure",
+        "Enterprise Cybersecurity"
+      ],
+      "quote": {
+        "placeholder": true,
+        "who": "Jeremy",
+        "role": "Title · Longview ISD",
+        "text": "Placeholder: add Jeremy’s quote about the Longview ISD deployment."
+      },
+      "storyTitle": "District-wide, multi-phase, multi-campus.",
+      "sideImg": "assets/broadcast-booth.jpg",
+      "story": [
+        {
+          "label": "OVERVIEW",
+          "paras": [
+            "Multi-phase district-wide esports deployment: Extron AV, structured cabling, server infrastructure, and enterprise cybersecurity across multiple campuses."
+          ]
+        }
+      ],
+      "partners": [
+        "Extron"
+      ]
+    },
+    "notRendered": "Because loading is true, the template hides: photo hero (img, tagline), facts (scope, partners), story (storyTitle, sideImg, story), quote. Those values exist in data only.",
+    "cssVars": {
+      "--a": {
+        "value": "#046A38",
+        "from": "theme.a",
+        "usedFor": "Primary client accent: hero colour-chip dot 1; mascot word outline/fill sweep; start of --progress gradient."
+      },
+      "--b": {
+        "value": "#FFC72C",
+        "from": "theme.b",
+        "usedFor": "Secondary client accent: hero colour-chip dot 2; end of --progress gradient; default for --hi."
+      },
+      "--ct": {
+        "dark": "#34B26E",
+        "from": "(light ? theme.textLight : theme.textDark)[0]",
+        "light": "#046A38",
+        "usedFor": "Coloured text class .tg-cs-ct."
+      },
+      "--ct2": {
+        "dark": "#FFC72C",
+        "from": "(light ? theme.textLight : theme.textDark)[1]",
+        "light": "#A87B00",
+        "usedFor": "Second coloured-text tone."
+      },
+      "--deep": {
+        "value": "#032B17",
+        "from": "theme.pal.mahogany || theme.deep",
+        "usedFor": "Dark base of testimonial/results gradients (not shown on this loading page)."
+      },
+      "--deep-2": {
+        "value": "#046A38",
+        "from": "theme.pal.maroon || theme.deepLight || theme.a",
+        "usedFor": "Glow stop of testimonial/results gradients (not shown on this loading page)."
+      },
+      "--hi": {
+        "value": "#FFC72C",
+        "from": "theme.hi || theme.b",
+        "usedFor": "Highlight (quote mark / results value; not shown on this loading page); fallback for --label."
+      },
+      "--label": {
+        "dark": "#FFC72C",
+        "from": "light ? theme.labelLight : theme.labelDark",
+        "light": "#046A38",
+        "usedFor": "Label accent colour."
+      },
+      "--progress": {
+        "value": "linear-gradient(90deg, #046A38, #FFC72C)",
+        "setOn": "document.documentElement",
+        "usedFor": "Top scroll-progress bar (.tg-progress)."
+      },
+      "_note": "Set by applyTheme() on [data-cs-root]. light = default site theme; dark when toggled."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Multi-phase district-wide esports deployment across multiple campuses.",
+        "mascot": "LOBOS",
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": {
+          "alt": "Longview Independent School District logo",
+          "dark": "assets/district-longview-h-white.png",
+          "light": "assets/district-longview-h.png",
+          "_source": "districtLogo: L ? theme.logoColor : theme.logoWhite"
+        },
+        "h1": "Longview Independent School District",
+        "chips": [
+          {
+            "label": "Lobos · Evergreen & Gold",
+            "dots": [
+              "--a",
+              "--b"
+            ]
+          },
+          {
+            "label": "K-12 Education"
+          },
+          {
+            "label": "Longview, TX"
+          },
+          {
+            "label": "2023"
+          }
+        ]
+      },
+      "pending": {
+        "logo": {
+          "alt": "Longview Independent School District",
+          "dark": "assets/district-longview-h-white.png",
+          "filter": "none",
+          "light": "assets/district-longview-h.png"
+        },
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        }
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    }
+  },
+  {
+    "slug": "Project-Alvin",
+    "key": "alvin",
+    "order": 3,
+    "sourceFile": "Project-Alvin.html",
+    "url": "https://tanches.gg/Project-Alvin",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects",
+          "tone": "dark"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "alvin"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": false,
+      "ready": true,
+      "source": "PROJECTS.alvin literal (CaseStudy.dc.html line 317-321)"
+    },
+    "seo": {
+      "title": "Alvin College | TANCHES.GG",
+      "helmetTitle": "Alvin College | TANCHES.GG",
+      "description": "Alvin College: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-Alvin",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "Alvin College | TANCHES.GG",
+      "ogDescription": "Alvin College: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-Alvin",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "Alvin College | TANCHES.GG",
+      "twitterDescription": "Alvin College: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-Alvin",
+              "description": "Alvin College: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "Alvin College | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-Alvin",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "Alvin College",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-Alvin",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "Alvin College",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "Alvin College: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "/Project-Alvin",
+      "title": "Alvin College",
+      "loc": "ALVIN, TX · HIGHER ED",
+      "img": "assets/alvin-showcase.jpg",
+      "lede": "A new esports lab that keeps students engaged and supports a competitive collegiate program.",
+      "meta": [
+        "Higher Education",
+        "Alvin, TX"
+      ],
+      "tagline": "ALVIN COMMUNITY COLLEGE",
+      "theme": {
+        "a": "#C10230",
+        "b": "#66191D",
+        "hi": "color-mix(in oklch, #C10230 62%, #FFFFFF)",
+        "name": "Finz · Red & Burgundy",
+        "mascot": "FINZ",
+        "logoWhite": "assets/clients/alvin-dark.png",
+        "logoColor": "assets/clients/alvin-light.png",
+        "deep": "#4D4D4F",
+        "deepLight": "#66191D",
+        "textDark": [
+          "color-mix(in oklch, #C10230 62%, #FFFFFF)",
+          "#C10230"
+        ],
+        "textLight": [
+          "#C10230",
+          "#66191D"
+        ],
+        "labelDark": "color-mix(in oklch, #C10230 62%, #FFFFFF)",
+        "labelLight": "#66191D",
+        "pal": {
+          "brick": "#C10230",
+          "mahogany": "#4D4D4F",
+          "maroon": "#66191D",
+          "sand": "#E4E4E6"
+        }
+      },
+      "scope": [
+        "Consulting",
+        "Facility Design",
+        "Hardware",
+        "Structured Cabling",
+        "Networking",
+        "Furniture",
+        "Ongoing Support"
+      ],
+      "quote": {
+        "who": "Huff Mann",
+        "role": "Director, Distance Education · Alvin College",
+        "text": "TANCHES.GG made the entire process easy. They helped us present the vision to our President, got it approved, and delivered our lab under budget. We couldn’t have asked for a better partner."
+      },
+      "storyTitle": "From proposal to a collegiate esports hub.",
+      "sideImg": "assets/opt/alvin-side.webp",
+      "story": [
+        {
+          "label": "OVERVIEW",
+          "paras": [
+            "Alvin College partnered with TANCHES.GG to establish an esports lab that would drive student engagement and grow the college’s competitive gaming program. We worked closely with college leadership on an all-encompassing solution, from consulting and design to installation and ongoing support."
+          ]
+        },
+        {
+          "label": "OUTCOME",
+          "paras": [
+            "The lab now serves as a hub for both practice and competitive events, giving students a professional-grade environment for teamwork and competition. It also established Alvin as a leader in collegiate esports with the infrastructure to sustain a thriving program."
+          ]
+        }
+      ],
+      "partners": [
+        "Lenovo",
+        "Samsung",
+        "Logitech"
+      ],
+      "delivered": [
+        {
+          "title": "Consulting & Program Approval",
+          "body": "We consulted with administration on their vision, then presented a comprehensive proposal to college leadership covering the academic and engagement benefits. That proposal was instrumental in getting the program approved."
+        },
+        {
+          "title": "Initial Design & Layout",
+          "body": "Custom designs optimized the space for performance, aesthetics, and function, balancing team collaboration and individual practice."
+        },
+        {
+          "title": "Hardware Procurement & Installation",
+          "body": "We sourced and installed high-end PCs, monitors, peripherals, and networking equipment, configuring every station for peak performance."
+        },
+        {
+          "title": "Structured Cabling & Network",
+          "body": "Structured cabling and a well-planned network support low-latency play and future expansion, with data drops placed to minimize clutter."
+        },
+        {
+          "title": "Furniture Provision & Setup",
+          "body": "Ergonomic, durable desks and chairs built for long sessions."
+        },
+        {
+          "title": "Vendor Liaison",
+          "body": "We connected the college with our OEM partners to pursue sponsorship and added resources for the program."
+        },
+        {
+          "title": "After-Sales Support & Maintenance",
+          "body": "Troubleshooting, updates, and regular maintenance keep the lab running at peak performance."
+        }
+      ],
+      "gallery": [
+        "assets/alvin/alvin-01.jpg",
+        "assets/alvin/alvin-02.jpg",
+        "assets/alvin/alvin-03.jpg",
+        "assets/alvin/alvin-04.jpg",
+        "assets/alvin/alvin-05.jpg",
+        "assets/alvin/alvin-06.jpg",
+        "assets/alvin/alvin-07.jpg",
+        "assets/alvin/alvin-08.jpg",
+        "assets/alvin/alvin-09.jpg",
+        "assets/alvin/alvin-10.jpg",
+        "assets/alvin/alvin-11.jpg"
+      ],
+      "_source": {
+        "delivered/story": "source tuples converted to named objects as renderVals() maps them"
+      }
+    },
+    "cssVars": {
+      "--a": {
+        "value": "#C10230",
+        "from": "theme.a",
+        "usedFor": "Primary client accent: hero colour-chip dot 1; mascot word outline/fill sweep; left 70% of pull-quote rule (no pull on this project); start of --progress gradient."
+      },
+      "--b": {
+        "value": "#66191D",
+        "from": "theme.b",
+        "usedFor": "Secondary client accent: hero colour-chip dot 2; end of --progress gradient."
+      },
+      "--ct": {
+        "dark": "color-mix(in oklch, #C10230 62%, #FFFFFF)",
+        "from": "(light ? theme.textLight : theme.textDark)[0]",
+        "light": "#C10230",
+        "usedFor": "Coloured text class .tg-cs-ct: story block labels, delivered item numbers."
+      },
+      "--ct2": {
+        "dark": "#C10230",
+        "from": "(light ? theme.textLight : theme.textDark)[1]",
+        "light": "#66191D",
+        "usedFor": "Second coloured-text tone."
+      },
+      "--deep": {
+        "value": "#4D4D4F",
+        "from": "theme.pal.mahogany || theme.deep",
+        "usedFor": "Dark base of the testimonial band radial gradient; hero photo tint."
+      },
+      "--deep-2": {
+        "value": "#66191D",
+        "from": "theme.pal.maroon || theme.deepLight || theme.a",
+        "usedFor": "Glow stop of the testimonial band radial gradient."
+      },
+      "--hi": {
+        "value": "color-mix(in oklch, #C10230 62%, #FFFFFF)",
+        "from": "theme.hi || theme.b",
+        "usedFor": "Highlight: big opening quote mark (.tg-cs-qmark); fallback for --label."
+      },
+      "--label": {
+        "dark": "color-mix(in oklch, #C10230 62%, #FFFFFF)",
+        "from": "light ? theme.labelLight : theme.labelDark",
+        "light": "#66191D",
+        "usedFor": "Label accent colour."
+      },
+      "--progress": {
+        "value": "linear-gradient(90deg, #C10230, #66191D)",
+        "setOn": "document.documentElement",
+        "usedFor": "Top scroll-progress bar (.tg-progress)."
+      },
+      "unusedPaletteKeys": {
+        "pal.brick": "#C10230",
+        "pal.sand": "#E4E4E6"
+      },
+      "_note": "Set by applyTheme() on [data-cs-root]. light = default site theme; dark when toggled."
+    },
+    "rendered": {
+      "quote": {
+        "name": "Huff Mann",
+        "role": "Director, Distance Education · Alvin College",
+        "text": "TANCHES.GG made the entire process easy. They helped us present the vision to our President, got it approved, and delivered our lab under budget. We couldn’t have asked for a better partner.",
+        "ariaLabel": "Client testimonial",
+        "plateLogo": {
+          "alt": "",
+          "ariaHidden": true,
+          "src": "assets/clients/alvin-light.png"
+        },
+        "qmark": "“"
+      },
+      "story": {
+        "pull": null,
+        "heading": "From proposal to a collegiate esports hub.",
+        "blocks": "data.story (labels OVERVIEW, OUTCOME)",
+        "sideImage": {
+          "alt": "",
+          "src": "assets/opt/alvin-side.webp"
+        }
+      },
+      "delivered": {
+        "heading": "Every layer. One partner.",
+        "items": "data.delivered, numbered '01'..'07'",
+        "procuredThrough": null,
+        "_source": {
+          "heading": "r.deliveredTitle || 'Every layer. One partner.'"
+        }
+      },
+      "gallery": {
+        "heading": "Photos from the build",
+        "counter": "01 / 11",
+        "imageAlt": "Project photo {n} (1-11)",
+        "images": "data.gallery"
+      },
+      "hero": {
+        "lede": "A new esports lab that keeps students engaged and supports a competitive collegiate program.",
+        "mascot": "FINZ",
+        "variant": "photo hero (section.x-hero.x-cs-hero, shown when d.ready)",
+        "image": {
+          "alt": "Alvin College esports facility",
+          "src": "assets/alvin-showcase.jpg"
+        },
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": {
+          "alt": "Alvin College logo",
+          "src": "assets/clients/alvin-dark.png"
+        },
+        "h1": "Alvin College",
+        "chips": [
+          {
+            "label": "Finz · Red & Burgundy",
+            "dots": [
+              "--a",
+              "--b"
+            ]
+          },
+          {
+            "label": "Higher Education"
+          },
+          {
+            "label": "Alvin, TX"
+          }
+        ],
+        "taglineChip": {
+          "label": "ALVIN COMMUNITY COLLEGE",
+          "dots": [
+            "--a",
+            "--b"
+          ]
+        }
+      },
+      "facts": {
+        "cells": [
+          {
+            "chips": [
+              "Consulting",
+              "Facility Design",
+              "Hardware",
+              "Structured Cabling",
+              "Networking",
+              "Furniture",
+              "Ongoing Support"
+            ],
+            "heading": "Scope"
+          },
+          {
+            "partners": [
+              {
+                "name": "Lenovo",
+                "logo": "assets/oem/lenovo.png",
+                "maxHeight": "19px"
+              },
+              {
+                "name": "Samsung",
+                "logo": "assets/oem/samsung.png",
+                "maxHeight": "16px"
+              },
+              {
+                "name": "Logitech",
+                "logoDark": "assets/oem/logitech-dark.png",
+                "logoLight": "assets/oem/logitech-light.png",
+                "maxHeight": "23px"
+              }
+            ],
+            "heading": "Technology partners",
+            "columns": 2,
+            "logoFilter": {
+              "dark": "brightness(0) invert(1)",
+              "light": "brightness(0)"
+            }
+          },
+          {
+            "value": "Higher Education",
+            "sub": "",
+            "heading": "Sector",
+            "_source": {
+              "value": "r.sector || { v: (r.meta || [])[0] || '', sub: '' }"
+            }
+          }
+        ],
+        "ariaLabel": "Project facts"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          },
+          {
+            "href": "/Project-Muskogee",
+            "title": "City of Muskogee",
+            "loc": "MUSKOGEE, OK · COMMUNITY",
+            "img": "assets/muskogee-b.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      },
+      "results": null
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    }
+  },
+  {
+    "slug": "Project-Swampy",
+    "key": "swampy",
+    "order": 4,
+    "sourceFile": "Project-Swampy.html",
+    "url": "https://tanches.gg/Project-Swampy",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects",
+          "tone": "dark"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "swampy"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": false,
+      "ready": true,
+      "source": "PROJECTS.swampy literal (CaseStudy.dc.html line 322-327)"
+    },
+    "seo": {
+      "title": "TexSEF’s Swampy Conquest | TANCHES.GG",
+      "helmetTitle": "TexSEF’s Swampy Conquest | TANCHES.GG",
+      "description": "TexSEF’s Swampy Conquest: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-Swampy",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "TexSEF’s Swampy Conquest | TANCHES.GG",
+      "ogDescription": "TexSEF’s Swampy Conquest: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-Swampy",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "TexSEF’s Swampy Conquest | TANCHES.GG",
+      "twitterDescription": "TexSEF’s Swampy Conquest: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-Swampy",
+              "description": "TexSEF’s Swampy Conquest: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "TexSEF’s Swampy Conquest | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-Swampy",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "TexSEF’s Swampy Conquest",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-Swampy",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "TexSEF’s Swampy Conquest",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "TexSEF’s Swampy Conquest: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "/Project-Swampy",
+      "title": "TexSEF’s Swampy Conquest",
+      "loc": "HOUSTON, TX · EVENT",
+      "img": "assets/opt/home-swampy-floor.webp",
+      "lede": "A large-scale scholastic esports tournament hosted by Stafford MSD and UH-Downtown, bringing multiple districts together to compete.",
+      "meta": [
+        "Event",
+        "Houston, TX"
+      ],
+      "tagline": "MULTI-DISTRICT TOURNAMENT",
+      "theme": {
+        "a": "#1F51FF",
+        "b": "#FF3131",
+        "hi": "#FF3131",
+        "name": "TexSEF · Red, White & Blue",
+        "mascot": "TEXSEF",
+        "logoWhite": "assets/clients/texsef-dark.png",
+        "logoColor": "assets/clients/texsef-light.png",
+        "deep": "#000000",
+        "deepLight": "#1F51FF",
+        "textDark": [
+          "color-mix(in oklch, #1F51FF 55%, #FFFFFF)",
+          "#FF3131"
+        ],
+        "textLight": [
+          "#1F51FF",
+          "#D92525"
+        ],
+        "labelDark": "color-mix(in oklch, #1F51FF 55%, #FFFFFF)",
+        "labelLight": "#1F51FF",
+        "pal": {
+          "brick": "#1F51FF",
+          "mahogany": "#000000",
+          "maroon": "#1F51FF",
+          "sand": "#E3E8F7"
+        }
+      },
+      "scope": [
+        "Hardware Rental & Setup",
+        "On-Site Support",
+        "Network Optimization",
+        "Event Coordination"
+      ],
+      "storyTitle": "A pro-grade tournament, set up in a day.",
+      "sideImg": "assets/opt/league-swampy-education-v2.webp",
+      "story": [
+        {
+          "label": "OVERVIEW",
+          "paras": [
+            "Swampy Conquest was organized by Stafford Municipal School District and the University of Houston-Downtown, with TexSEF spearheading the initiative to give students a high-stakes, competitive stage to showcase their esports skills."
+          ]
+        },
+        {
+          "label": "OUTCOME",
+          "paras": [
+            "The event drew multiple school districts and delivered a professional-grade competition experience. It strengthened collaboration between schools and esports organizations, showcasing high-end hardware in an academic setting, and boosting student engagement in STEM through esports."
+          ]
+        }
+      ],
+      "partners": [
+        "Dell",
+        "Alienware",
+        "MSI"
+      ],
+      "delivered": [
+        {
+          "title": "Hardware Rental & Setup",
+          "body": "We coordinated with Dell and Alienware to rent high-end gaming PCs for smooth, high-performance play."
+        },
+        {
+          "title": "On-Site Technical Support",
+          "body": "Our team set up and optimized every station and troubleshot issues live so participants never missed a match."
+        },
+        {
+          "title": "Network & Performance Optimization",
+          "body": "We configured the tournament setup for high-demand play, keeping latency low and competition fair."
+        },
+        {
+          "title": "Event Day Coordination",
+          "body": "We worked side by side with TexSEF, Stafford MSD, and UH-Downtown staff to run the event day."
+        }
+      ],
+      "gallery": [
+        "assets/opt/league-swampy-hero-v2.webp",
+        "assets/opt/home-swampy-floor.webp",
+        "assets/opt/league-swampy-conquest-v2.webp",
+        "assets/opt/league-swampy-community-v2.webp",
+        "assets/opt/league-swampy-commercial-v2.webp"
+      ],
+      "_source": {
+        "gallery": "['league-swampy-hero-v2', 'home-swampy-floor', 'league-swampy-conquest-v2', 'league-swampy-community-v2', 'league-swampy-commercial-v2'].map((f) => 'assets/opt/' + f + '.webp')",
+        "delivered/story": "source tuples converted to named objects as renderVals() maps them"
+      }
+    },
+    "noQuote": "No quote field: testimonial section not rendered.",
+    "cssVars": {
+      "--a": {
+        "value": "#1F51FF",
+        "from": "theme.a",
+        "usedFor": "Primary client accent: hero colour-chip dot 1; mascot word outline/fill sweep; start of --progress gradient."
+      },
+      "--b": {
+        "value": "#FF3131",
+        "from": "theme.b",
+        "usedFor": "Secondary client accent: hero colour-chip dot 2; end of --progress gradient."
+      },
+      "--ct": {
+        "dark": "color-mix(in oklch, #1F51FF 55%, #FFFFFF)",
+        "from": "(light ? theme.textLight : theme.textDark)[0]",
+        "light": "#1F51FF",
+        "usedFor": "Coloured text class .tg-cs-ct: story block labels, delivered item numbers."
+      },
+      "--ct2": {
+        "dark": "#FF3131",
+        "from": "(light ? theme.textLight : theme.textDark)[1]",
+        "light": "#D92525",
+        "usedFor": "Second coloured-text tone."
+      },
+      "--deep": {
+        "value": "#000000",
+        "from": "theme.pal.mahogany || theme.deep",
+        "usedFor": "Hero photo tint (.x-cs-tint); base of quote/results gradients (not shown here)."
+      },
+      "--deep-2": {
+        "value": "#1F51FF",
+        "from": "theme.pal.maroon || theme.deepLight || theme.a",
+        "usedFor": "Glow stop of quote/results gradients (not shown here)."
+      },
+      "--hi": {
+        "value": "#FF3131",
+        "from": "theme.hi || theme.b",
+        "usedFor": "Highlight (quote mark / results value; neither shown on this project); fallback for --label."
+      },
+      "--label": {
+        "dark": "color-mix(in oklch, #1F51FF 55%, #FFFFFF)",
+        "from": "light ? theme.labelLight : theme.labelDark",
+        "light": "#1F51FF",
+        "usedFor": "Label accent colour."
+      },
+      "--progress": {
+        "value": "linear-gradient(90deg, #1F51FF, #FF3131)",
+        "setOn": "document.documentElement",
+        "usedFor": "Top scroll-progress bar (.tg-progress)."
+      },
+      "unusedPaletteKeys": {
+        "pal.brick": "#1F51FF",
+        "pal.sand": "#E3E8F7"
+      },
+      "_note": "Set by applyTheme() on [data-cs-root]. light = default site theme; dark when toggled."
+    },
+    "rendered": {
+      "quote": null,
+      "story": {
+        "pull": null,
+        "heading": "A pro-grade tournament, set up in a day.",
+        "blocks": "data.story (labels OVERVIEW, OUTCOME)",
+        "sideImage": {
+          "alt": "",
+          "src": "assets/opt/league-swampy-education-v2.webp"
+        }
+      },
+      "delivered": {
+        "heading": "Every layer. One partner.",
+        "items": "data.delivered, numbered '01'..'04'",
+        "procuredThrough": null,
+        "_source": {
+          "heading": "r.deliveredTitle || 'Every layer. One partner.'"
+        }
+      },
+      "gallery": {
+        "heading": "Photos from the build",
+        "counter": "01 / 05",
+        "imageAlt": "Project photo {n} (1-5)",
+        "images": "data.gallery"
+      },
+      "hero": {
+        "lede": "A large-scale scholastic esports tournament hosted by Stafford MSD and UH-Downtown, bringing multiple districts together to compete.",
+        "mascot": "TEXSEF",
+        "variant": "photo hero (section.x-hero.x-cs-hero, shown when d.ready)",
+        "image": {
+          "alt": "TexSEF’s Swampy Conquest esports facility",
+          "src": "assets/opt/home-swampy-floor.webp"
+        },
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": {
+          "alt": "TexSEF’s Swampy Conquest logo",
+          "src": "assets/clients/texsef-dark.png"
+        },
+        "h1": "TexSEF’s Swampy Conquest",
+        "chips": [
+          {
+            "label": "TexSEF · Red, White & Blue",
+            "dots": [
+              "--a",
+              "--b"
+            ]
+          },
+          {
+            "label": "Event"
+          },
+          {
+            "label": "Houston, TX"
+          }
+        ],
+        "taglineChip": {
+          "label": "MULTI-DISTRICT TOURNAMENT",
+          "dots": [
+            "--a",
+            "--b"
+          ]
+        }
+      },
+      "facts": {
+        "cells": [
+          {
+            "chips": [
+              "Hardware Rental & Setup",
+              "On-Site Support",
+              "Network Optimization",
+              "Event Coordination"
+            ],
+            "heading": "Scope"
+          },
+          {
+            "partners": [
+              {
+                "name": "Dell",
+                "logo": "assets/oem/dell.png",
+                "maxHeight": "15px"
+              },
+              {
+                "name": "Alienware",
+                "logoDark": "assets/oem/alienware-dark.svg",
+                "logoLight": "assets/oem/alienware-light.svg",
+                "maxHeight": "13px"
+              },
+              {
+                "name": "MSI",
+                "logoDark": "assets/oem/msi-dark.png",
+                "logoLight": "assets/oem/msi-light.png",
+                "maxHeight": "23px"
+              }
+            ],
+            "heading": "Technology partners",
+            "columns": 2,
+            "logoFilter": {
+              "dark": "brightness(0) invert(1)",
+              "light": "brightness(0)"
+            }
+          },
+          {
+            "value": "Event",
+            "sub": "",
+            "heading": "Sector",
+            "_source": {
+              "value": "r.sector || { v: (r.meta || [])[0] || '', sub: '' }"
+            }
+          }
+        ],
+        "ariaLabel": "Project facts"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Muskogee",
+            "title": "City of Muskogee",
+            "loc": "MUSKOGEE, OK · COMMUNITY",
+            "img": "assets/muskogee-b.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      },
+      "results": null
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    }
+  },
+  {
+    "slug": "Project-Muskogee",
+    "key": "muskogee",
+    "order": 5,
+    "sourceFile": "Project-Muskogee.html",
+    "url": "https://tanches.gg/Project-Muskogee",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects",
+          "tone": "dark"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "muskogee"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": false,
+      "ready": true,
+      "source": "PROJECTS.muskogee literal (CaseStudy.dc.html line 328-341)"
+    },
+    "seo": {
+      "title": "City of Muskogee | TANCHES.GG",
+      "helmetTitle": "City of Muskogee | TANCHES.GG",
+      "description": "City of Muskogee: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-Muskogee",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "City of Muskogee | TANCHES.GG",
+      "ogDescription": "City of Muskogee: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-Muskogee",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "City of Muskogee | TANCHES.GG",
+      "twitterDescription": "City of Muskogee: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-Muskogee",
+              "description": "City of Muskogee: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "City of Muskogee | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-Muskogee",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "City of Muskogee",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-Muskogee",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "City of Muskogee",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "City of Muskogee: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "/Project-Muskogee",
+      "title": "City of Muskogee",
+      "loc": "MUSKOGEE, OK · COMMUNITY",
+      "img": "assets/muskogee-b.webp",
+      "lede": "Lenovo Legion gaming PCs for the Muskogee Esports Arena, sourced and shipped within a week while the rest of the market was out of stock.",
+      "meta": [
+        "Community",
+        "Muskogee, OK",
+        "2025"
+      ],
+      "tagline": "SHIPPED WITHIN A WEEK",
+      "theme": {
+        "a": "#03457F",
+        "b": "#0386D2",
+        "name": "Esports Arena · Navy & Azure",
+        "mascot": "MUSKOGEE",
+        "logoWhite": "assets/district-muskogee-white.png",
+        "logoColor": "assets/district-muskogee.png",
+        "deep": "#021B33",
+        "deepLight": "#03457F",
+        "textDark": [
+          "#5AB6F2",
+          "#0A93E0"
+        ],
+        "textLight": [
+          "#03457F",
+          "#0372B4"
+        ],
+        "labelDark": "#4FB0EE",
+        "labelLight": "#03457F"
+      },
+      "scope": [
+        "Hardware Procurement",
+        "Expedited Fulfillment"
+      ],
+      "sector": {
+        "v": "Municipal",
+        "sub": "City-owned public esports arena"
+      },
+      "quote": {
+        "who": "James Felder",
+        "role": "Director of Esports · City of Muskogee",
+        "text": "The difference was obvious from day one. Better communication, faster answers, and better service than we’ve had from any vendor. TANCHES.GG treats our program like it’s their own."
+      },
+      "storyTitle": "The right machines, when no one had them.",
+      "sideImg": "assets/muskogee-c.webp",
+      "story": [
+        {
+          "label": "OBJECTIVE",
+          "paras": [
+            "The City of Muskogee was opening the Muskogee Esports Arena, a public gaming space for the community. The room, the furniture, and the branding were taking shape. What the arena still needed was the machines to run it, and it needed them fast."
+          ]
+        },
+        {
+          "label": "CHALLENGE",
+          "paras": [
+            "The timing could not have been worse. NVIDIA was transitioning to its RTX 50 Series GPUs, and previous-generation inventory was clearing out faster than new cards could arrive. At the same time, an industry-wide chip shortage was squeezing supply at every tier. Gaming PCs that would normally ship in days were backordered for weeks, or gone entirely."
+          ]
+        },
+        {
+          "label": "APPROACH",
+          "paras": [
+            "Because the purchase was open market, we were not tied to a single contract catalog. We went straight to our manufacturer and distribution relationships, found allocation on Lenovo Legion gaming desktops, and pushed the order through on an expedited timeline. The full order shipped within a week."
+          ]
+        }
+      ],
+      "pull": "Out of stock everywhere. Shipped in a week.",
+      "partners": [
+        "Lenovo"
+      ],
+      "deliveredTitle": "One job. Done fast.",
+      "delivered": [
+        {
+          "title": "Open-Market Sourcing",
+          "body": "With no contract vehicle in play, we searched across our manufacturer and distribution channels to find inventory that actually existed, not just inventory on paper."
+        },
+        {
+          "title": "Lenovo Legion Gaming Desktops",
+          "body": "Lenovo Legion towers built for competitive play, ready to power every station in the arena."
+        },
+        {
+          "title": "Expedited Fulfillment",
+          "body": "We secured allocation and expedited the order through the supply chain, shipping the full order within a week of purchase."
+        }
+      ],
+      "gallery": [
+        "assets/muskogee-c.webp",
+        "assets/muskogee-b.webp",
+        "assets/muskogee-a.webp"
+      ],
+      "result": {
+        "v": "1 WK",
+        "l": "From order to shipped",
+        "sub": "During a GPU generation change and an industry-wide chip shortage."
+      },
+      "features": [
+        {
+          "title": "Sourced in a dry market",
+          "body": "While distributors were backordered, we located real Legion allocation and locked it in."
+        },
+        {
+          "title": "Full order fulfilled",
+          "body": "Every machine on the order shipped within the week."
+        },
+        {
+          "title": "Open-market flexibility",
+          "body": "No contract catalog to wait on, so we could go wherever the inventory was."
+        }
+      ],
+      "_source": {
+        "delivered/features/story": "source tuples converted to named objects as renderVals() maps them"
+      }
+    },
+    "cssVars": {
+      "--a": {
+        "value": "#03457F",
+        "from": "theme.a",
+        "usedFor": "Primary client accent: hero colour-chip dot 1; mascot word outline/fill sweep; left 70% of the pull-quote rule; start of --progress gradient."
+      },
+      "--b": {
+        "value": "#0386D2",
+        "from": "theme.b",
+        "usedFor": "Secondary client accent: hero colour-chip dot 2; right 30% of the pull-quote rule; end of --progress gradient; default for --hi."
+      },
+      "--ct": {
+        "dark": "#5AB6F2",
+        "from": "(light ? theme.textLight : theme.textDark)[0]",
+        "light": "#03457F",
+        "usedFor": "Coloured text class .tg-cs-ct: story block labels, sector value, delivered item numbers."
+      },
+      "--ct2": {
+        "dark": "#0A93E0",
+        "from": "(light ? theme.textLight : theme.textDark)[1]",
+        "light": "#0372B4",
+        "usedFor": "Second coloured-text tone."
+      },
+      "--deep": {
+        "value": "#021B33",
+        "from": "theme.pal.mahogany || theme.deep",
+        "usedFor": "Dark base of the testimonial band and results card radial gradients; hero photo tint."
+      },
+      "--deep-2": {
+        "value": "#03457F",
+        "from": "theme.pal.maroon || theme.deepLight || theme.a",
+        "usedFor": "Glow stop of the testimonial band and results card radial gradients."
+      },
+      "--hi": {
+        "value": "#0386D2",
+        "from": "theme.hi || theme.b",
+        "usedFor": "Highlight: big opening quote mark (.tg-cs-qmark) and results headline value (.tg-cs-result-v); fallback for --label."
+      },
+      "--label": {
+        "dark": "#4FB0EE",
+        "from": "light ? theme.labelLight : theme.labelDark",
+        "light": "#03457F",
+        "usedFor": "Label accent colour."
+      },
+      "--progress": {
+        "value": "linear-gradient(90deg, #03457F, #0386D2)",
+        "setOn": "document.documentElement",
+        "usedFor": "Top scroll-progress bar (.tg-progress)."
+      },
+      "_note": "Set by applyTheme() on [data-cs-root]. light = default site theme; dark when toggled."
+    },
+    "rendered": {
+      "quote": {
+        "name": "James Felder",
+        "role": "Director of Esports · City of Muskogee",
+        "text": "The difference was obvious from day one. Better communication, faster answers, and better service than we’ve had from any vendor. TANCHES.GG treats our program like it’s their own.",
+        "ariaLabel": "Client testimonial",
+        "plateLogo": {
+          "alt": "",
+          "ariaHidden": true,
+          "src": "assets/district-muskogee.png"
+        },
+        "qmark": "“"
+      },
+      "story": {
+        "pull": "Out of stock everywhere. Shipped in a week.",
+        "heading": "The right machines, when no one had them.",
+        "blocks": "data.story (labels OBJECTIVE, CHALLENGE, APPROACH)",
+        "sideImage": {
+          "alt": "",
+          "src": "assets/muskogee-c.webp"
+        }
+      },
+      "delivered": {
+        "heading": "One job. Done fast.",
+        "items": "data.delivered, numbered '01'..'03'",
+        "procuredThrough": null
+      },
+      "gallery": {
+        "heading": "Photos from the build",
+        "counter": "01 / 03",
+        "imageAlt": "Project photo {n} (1-3)",
+        "images": "data.gallery"
+      },
+      "hero": {
+        "lede": "Lenovo Legion gaming PCs for the Muskogee Esports Arena, sourced and shipped within a week while the rest of the market was out of stock.",
+        "mascot": "MUSKOGEE",
+        "variant": "photo hero (section.x-hero.x-cs-hero, shown when d.ready)",
+        "image": {
+          "alt": "City of Muskogee esports facility",
+          "src": "assets/muskogee-b.webp"
+        },
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": {
+          "alt": "City of Muskogee logo",
+          "src": "assets/district-muskogee-white.png"
+        },
+        "h1": "City of Muskogee",
+        "chips": [
+          {
+            "label": "Esports Arena · Navy & Azure",
+            "dots": [
+              "--a",
+              "--b"
+            ]
+          },
+          {
+            "label": "Community"
+          },
+          {
+            "label": "Muskogee, OK"
+          },
+          {
+            "label": "2025"
+          }
+        ],
+        "taglineChip": {
+          "label": "SHIPPED WITHIN A WEEK",
+          "dots": [
+            "--a",
+            "--b"
+          ]
+        }
+      },
+      "facts": {
+        "cells": [
+          {
+            "chips": [
+              "Hardware Procurement",
+              "Expedited Fulfillment"
+            ],
+            "heading": "Scope"
+          },
+          {
+            "partners": [
+              {
+                "name": "Lenovo",
+                "logo": "assets/oem/lenovo.png",
+                "maxHeight": "22px"
+              }
+            ],
+            "heading": "Technology partners",
+            "columns": 1,
+            "logoFilter": {
+              "dark": "brightness(0) invert(1)",
+              "light": "brightness(0)"
+            }
+          },
+          {
+            "value": "Municipal",
+            "sub": "City-owned public esports arena",
+            "heading": "Sector"
+          }
+        ],
+        "ariaLabel": "Project facts"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      },
+      "results": {
+        "features": "data.features",
+        "label": "From order to shipped",
+        "value": "1 WK",
+        "sub": "During a GPU generation change and an industry-wide chip shortage.",
+        "srHeading": "Results"
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    }
+  },
+  {
+    "slug": "Project-pleasantgrove",
+    "key": "pleasantgrove",
+    "order": 6,
+    "sourceFile": "Project-pleasantgrove.html",
+    "url": "https://tanches.gg/Project-pleasantgrove",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "pleasantgrove"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "Pleasant Grove ISD | TANCHES.GG",
+      "helmetTitle": "Pleasant Grove ISD | TANCHES.GG",
+      "description": "Pleasant Grove ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-pleasantgrove",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "Pleasant Grove ISD | TANCHES.GG",
+      "ogDescription": "Pleasant Grove ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-pleasantgrove",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "Pleasant Grove ISD | TANCHES.GG",
+      "twitterDescription": "Pleasant Grove ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-pleasantgrove",
+              "description": "Pleasant Grove ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "Pleasant Grove ISD | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-pleasantgrove",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "Pleasant Grove ISD",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-pleasantgrove",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "Pleasant Grove ISD",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "Pleasant Grove ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-pleasantgrove.dc.html",
+      "title": "Pleasant Grove ISD",
+      "loading": true,
+      "cardLogo": "assets/clients/pleasantgrove-light.png",
+      "loc": "TEXARKANA, TX · K-12",
+      "lede": "Project delivered.",
+      "meta": [
+        "K-12 Education",
+        "Texarkana, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-pleasantgrove.html; live URL is /Project-pleasantgrove)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "pleasantgrove",
+          "Pleasant Grove ISD",
+          "TEXARKANA, TX",
+          "K-12 Education",
+          "Texarkana, TX",
+          "assets/clients/pleasantgrove-light.png"
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "Pleasant Grove ISD",
+        "chips": [
+          {
+            "label": "K-12 Education"
+          },
+          {
+            "label": "Texarkana, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": {
+          "alt": "Pleasant Grove ISD",
+          "filter": {
+            "dark": "grayscale(1) brightness(0) invert(1)",
+            "light": "none"
+          },
+          "src": "assets/clients/pleasantgrove-light.png",
+          "_source": {
+            "filter": "pendingFilter: !L && !(r.theme && r.theme.logoWhite) ? 'grayscale(1) brightness(0) invert(1)' : 'none'",
+            "src": "pendingLogo: r.cardLogo (no theme)"
+          }
+        },
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        }
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  },
+  {
+    "slug": "Project-fortbend",
+    "key": "fortbend",
+    "order": 7,
+    "sourceFile": "Project-fortbend.html",
+    "url": "https://tanches.gg/Project-fortbend",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "fortbend"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "Fort Bend ISD | TANCHES.GG",
+      "helmetTitle": "Fort Bend ISD | TANCHES.GG",
+      "description": "Fort Bend ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-fortbend",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "Fort Bend ISD | TANCHES.GG",
+      "ogDescription": "Fort Bend ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-fortbend",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "Fort Bend ISD | TANCHES.GG",
+      "twitterDescription": "Fort Bend ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-fortbend",
+              "description": "Fort Bend ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "Fort Bend ISD | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-fortbend",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "Fort Bend ISD",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-fortbend",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "Fort Bend ISD",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "Fort Bend ISD: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-fortbend.dc.html",
+      "title": "Fort Bend ISD",
+      "loading": true,
+      "cardLogo": "",
+      "loc": "SUGAR LAND, TX · K-12",
+      "lede": "Project delivered.",
+      "meta": [
+        "K-12 Education",
+        "Sugar Land, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-fortbend.html; live URL is /Project-fortbend)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "fortbend",
+          "Fort Bend ISD",
+          "SUGAR LAND, TX",
+          "K-12 Education",
+          "Sugar Land, TX",
+          ""
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "Fort Bend ISD",
+        "chips": [
+          {
+            "label": "K-12 Education"
+          },
+          {
+            "label": "Sugar Land, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": null,
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        },
+        "logoNote": "cardLogo is '' so no logo is shown (hasCardLogo false)"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  },
+  {
+    "slug": "Project-uh",
+    "key": "uh",
+    "order": 8,
+    "sourceFile": "Project-uh.html",
+    "url": "https://tanches.gg/Project-uh",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "uh"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "University of Houston | TANCHES.GG",
+      "helmetTitle": "University of Houston | TANCHES.GG",
+      "description": "University of Houston: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-uh",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "University of Houston | TANCHES.GG",
+      "ogDescription": "University of Houston: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-uh",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "University of Houston | TANCHES.GG",
+      "twitterDescription": "University of Houston: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-uh",
+              "description": "University of Houston: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "University of Houston | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-uh",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "University of Houston",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-uh",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "University of Houston",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "University of Houston: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-uh.dc.html",
+      "title": "University of Houston",
+      "loading": true,
+      "cardLogo": "assets/clients/uh-light.png",
+      "loc": "HOUSTON, TX · HIGHER ED",
+      "lede": "Project delivered.",
+      "meta": [
+        "Higher Education",
+        "Houston, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-uh.html; live URL is /Project-uh)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "uh",
+          "University of Houston",
+          "HOUSTON, TX",
+          "Higher Education",
+          "Houston, TX",
+          "assets/clients/uh-light.png"
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "University of Houston",
+        "chips": [
+          {
+            "label": "Higher Education"
+          },
+          {
+            "label": "Houston, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": {
+          "alt": "University of Houston",
+          "filter": {
+            "dark": "grayscale(1) brightness(0) invert(1)",
+            "light": "none"
+          },
+          "src": "assets/clients/uh-light.png",
+          "_source": {
+            "filter": "pendingFilter: !L && !(r.theme && r.theme.logoWhite) ? 'grayscale(1) brightness(0) invert(1)' : 'none'",
+            "src": "pendingLogo: r.cardLogo (no theme)"
+          }
+        },
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        }
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  },
+  {
+    "slug": "Project-uhsl",
+    "key": "uhsl",
+    "order": 9,
+    "sourceFile": "Project-uhsl.html",
+    "url": "https://tanches.gg/Project-uhsl",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "uhsl"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "University of Houston at Sugar Land | TANCHES.GG",
+      "helmetTitle": "University of Houston at Sugar Land | TANCHES.GG",
+      "description": "University of Houston at Sugar Land: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-uhsl",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "University of Houston at Sugar Land | TANCHES.GG",
+      "ogDescription": "University of Houston at Sugar Land: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-uhsl",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "University of Houston at Sugar Land | TANCHES.GG",
+      "twitterDescription": "University of Houston at Sugar Land: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-uhsl",
+              "description": "University of Houston at Sugar Land: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "University of Houston at Sugar Land | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-uhsl",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "University of Houston at Sugar Land",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-uhsl",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "University of Houston at Sugar Land",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "University of Houston at Sugar Land: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-uhsl.dc.html",
+      "title": "University of Houston at Sugar Land",
+      "loading": true,
+      "cardLogo": "assets/clients/uh-light.png",
+      "loc": "SUGAR LAND, TX · HIGHER ED",
+      "lede": "Project delivered.",
+      "meta": [
+        "Higher Education",
+        "Sugar Land, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-uhsl.html; live URL is /Project-uhsl)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "uhsl",
+          "University of Houston at Sugar Land",
+          "SUGAR LAND, TX",
+          "Higher Education",
+          "Sugar Land, TX",
+          "assets/clients/uh-light.png"
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "University of Houston at Sugar Land",
+        "chips": [
+          {
+            "label": "Higher Education"
+          },
+          {
+            "label": "Sugar Land, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": {
+          "alt": "University of Houston at Sugar Land",
+          "filter": {
+            "dark": "grayscale(1) brightness(0) invert(1)",
+            "light": "none"
+          },
+          "src": "assets/clients/uh-light.png",
+          "_source": {
+            "filter": "pendingFilter: !L && !(r.theme && r.theme.logoWhite) ? 'grayscale(1) brightness(0) invert(1)' : 'none'",
+            "src": "pendingLogo: r.cardLogo (no theme)"
+          }
+        },
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        }
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  },
+  {
+    "slug": "Project-ust",
+    "key": "ust",
+    "order": 10,
+    "sourceFile": "Project-ust.html",
+    "url": "https://tanches.gg/Project-ust",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "ust"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "University of St. Thomas | TANCHES.GG",
+      "helmetTitle": "University of St. Thomas | TANCHES.GG",
+      "description": "University of St. Thomas: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-ust",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "University of St. Thomas | TANCHES.GG",
+      "ogDescription": "University of St. Thomas: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-ust",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "University of St. Thomas | TANCHES.GG",
+      "twitterDescription": "University of St. Thomas: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-ust",
+              "description": "University of St. Thomas: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "University of St. Thomas | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-ust",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "University of St. Thomas",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-ust",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "University of St. Thomas",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "University of St. Thomas: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-ust.dc.html",
+      "title": "University of St. Thomas",
+      "loading": true,
+      "cardLogo": "assets/clients/ust-light.png",
+      "loc": "HOUSTON, TX · HIGHER ED",
+      "lede": "Project delivered.",
+      "meta": [
+        "Higher Education",
+        "Houston, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-ust.html; live URL is /Project-ust)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "ust",
+          "University of St. Thomas",
+          "HOUSTON, TX",
+          "Higher Education",
+          "Houston, TX",
+          "assets/clients/ust-light.png"
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "University of St. Thomas",
+        "chips": [
+          {
+            "label": "Higher Education"
+          },
+          {
+            "label": "Houston, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": {
+          "alt": "University of St. Thomas",
+          "filter": {
+            "dark": "grayscale(1) brightness(0) invert(1)",
+            "light": "none"
+          },
+          "src": "assets/clients/ust-light.png",
+          "_source": {
+            "filter": "pendingFilter: !L && !(r.theme && r.theme.logoWhite) ? 'grayscale(1) brightness(0) invert(1)' : 'none'",
+            "src": "pendingLogo: r.cardLogo (no theme)"
+          }
+        },
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        }
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  },
+  {
+    "slug": "Project-navarro",
+    "key": "navarro",
+    "order": 11,
+    "sourceFile": "Project-navarro.html",
+    "url": "https://tanches.gg/Project-navarro",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "navarro"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "Navarro College | TANCHES.GG",
+      "helmetTitle": "Navarro College | TANCHES.GG",
+      "description": "Navarro College: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-navarro",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "Navarro College | TANCHES.GG",
+      "ogDescription": "Navarro College: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-navarro",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "Navarro College | TANCHES.GG",
+      "twitterDescription": "Navarro College: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-navarro",
+              "description": "Navarro College: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "Navarro College | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-navarro",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "Navarro College",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-navarro",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "Navarro College",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "Navarro College: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-navarro.dc.html",
+      "title": "Navarro College",
+      "loading": true,
+      "cardLogo": "",
+      "loc": "CORSICANA, TX · HIGHER ED",
+      "lede": "Project delivered.",
+      "meta": [
+        "Higher Education",
+        "Corsicana, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-navarro.html; live URL is /Project-navarro)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "navarro",
+          "Navarro College",
+          "CORSICANA, TX",
+          "Higher Education",
+          "Corsicana, TX",
+          ""
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "Navarro College",
+        "chips": [
+          {
+            "label": "Higher Education"
+          },
+          {
+            "label": "Corsicana, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": null,
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        },
+        "logoNote": "cardLogo is '' so no logo is shown (hasCardLogo false)"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  },
+  {
+    "slug": "Project-samsat",
+    "key": "samsat",
+    "order": 12,
+    "sourceFile": "Project-samsat.html",
+    "url": "https://tanches.gg/Project-samsat",
+    "components": [
+      {
+        "name": "SiteNav",
+        "props": {
+          "active": "projects"
+        }
+      },
+      {
+        "name": "CaseStudy",
+        "props": {
+          "project": "samsat"
+        }
+      },
+      {
+        "name": "ProjectCTA",
+        "props": {}
+      },
+      {
+        "name": "SiteFooter",
+        "props": {}
+      }
+    ],
+    "status": {
+      "loading": true,
+      "ready": false,
+      "source": "Generated by [[...]].forEach(([k, title, loc, cat, city, logo]) => { PROJECTS[k] = { loading: true, href: 'Project-' + k + '.dc.html', title, loc: loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase()), meta: [cat, city], lede: 'Project delivered.', cardLogo: logo, story: [] }; }) at CaseStudy.dc.html lines 344-351"
+    },
+    "seo": {
+      "title": "SAMSAT | TANCHES.GG",
+      "helmetTitle": "SAMSAT | TANCHES.GG",
+      "description": "SAMSAT: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "robots": "index, follow, max-image-preview:large",
+      "canonical": "https://tanches.gg/Project-samsat",
+      "themeColor": "#08080A",
+      "ogType": "website",
+      "ogSiteName": "TANCHES.GG",
+      "ogLocale": "en_US",
+      "ogTitle": "SAMSAT | TANCHES.GG",
+      "ogDescription": "SAMSAT: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "ogUrl": "https://tanches.gg/Project-samsat",
+      "ogImage": "https://tanches.gg/assets/og-logo.png",
+      "ogImageWidth": "1200",
+      "ogImageHeight": "1200",
+      "ogImageAlt": "TANCHES.GG lion mark",
+      "twitterCard": "summary",
+      "twitterTitle": "SAMSAT | TANCHES.GG",
+      "twitterDescription": "SAMSAT: esports program case study by TANCHES.GG covering scope, build, and results.",
+      "twitterImage": "https://tanches.gg/assets/og-logo.png",
+      "icons": [
+        {
+          "href": "/assets/favicon-32.png",
+          "rel": "icon",
+          "sizes": "32x32",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/favicon.png",
+          "rel": "icon",
+          "sizes": "512x512",
+          "type": "image/png"
+        },
+        {
+          "href": "/assets/apple-touch-icon.png",
+          "rel": "apple-touch-icon",
+          "sizes": "180x180"
+        }
+      ],
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "url": "https://tanches.gg/Project-samsat",
+              "description": "SAMSAT: esports program case study by TANCHES.GG covering scope, build, and results.",
+              "name": "SAMSAT | TANCHES.GG",
+              "@id": "https://tanches.gg/Project-samsat",
+              "@type": "WebPage",
+              "isPartOf": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "WebSite"
+              },
+              "publisher": {
+                "url": "https://tanches.gg/",
+                "name": "TANCHES.GG",
+                "@type": "Organization"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "name": "Home",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/",
+                  "position": 1
+                },
+                {
+                  "name": "Projects",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Projects",
+                  "position": 2
+                },
+                {
+                  "name": "SAMSAT",
+                  "@type": "ListItem",
+                  "item": "https://tanches.gg/Project-samsat",
+                  "position": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "noscript": {
+        "h1": "SAMSAT",
+        "links": [
+          {
+            "href": "mailto:contact@tanches.gg",
+            "label": "contact@tanches.gg"
+          },
+          {
+            "href": "/",
+            "label": "Home"
+          },
+          {
+            "href": "/Education",
+            "label": "Education"
+          },
+          {
+            "href": "/Community",
+            "label": "Community"
+          },
+          {
+            "href": "/Commercial",
+            "label": "Commercial"
+          },
+          {
+            "href": "/League",
+            "label": "Esports League"
+          },
+          {
+            "href": "/Technology",
+            "label": "Technology"
+          },
+          {
+            "href": "/Procurement",
+            "label": "Procurement & Funding"
+          },
+          {
+            "href": "/Projects",
+            "label": "Projects"
+          },
+          {
+            "href": "/Assessment",
+            "label": "Facility Readiness Assessment"
+          },
+          {
+            "href": "/About",
+            "label": "About"
+          },
+          {
+            "href": "/Team",
+            "label": "Team"
+          },
+          {
+            "href": "/brand",
+            "label": "Brand Center"
+          },
+          {
+            "href": "/Contact",
+            "label": "Contact"
+          }
+        ],
+        "p": [
+          "SAMSAT: esports program case study by TANCHES.GG covering scope, build, and results.",
+          "Call (281) 826-2437 or email contact@tanches.gg."
+        ],
+        "pHtml": [
+          null,
+          "Call (281) 826-2437 or email <a href=\"mailto:contact@tanches.gg\">contact@tanches.gg</a>."
+        ]
+      },
+      "other": {
+        "base": "/",
+        "charset": "utf-8",
+        "inlineScripts": [
+          "theme bootstrap: reads localStorage tg-theme-v2 (default \"light\") and sets data-theme=\"light\" on <html>",
+          "link fixer: rewrites any a[href*=\".dc.html\"] to the .html page (map {\"TANCHES Home\": \"index.html\"}); interval duplicated twice in the source"
+        ],
+        "inlineStyle": "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}*{-webkit-tap-highlight-color:transparent}@media (pointer:coarse),(max-width:820px){input,select,textarea{font-size:16px!important}}",
+        "lang": "en",
+        "scripts": [
+          "./support.js",
+          "/tracking.js",
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"
+        ],
+        "stylesheets": [
+          "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css",
+          "mobile.css"
+        ],
+        "viewport": "width=device-width, initial-scale=1"
+      }
+    },
+    "data": {
+      "href": "Project-samsat.dc.html",
+      "title": "SAMSAT",
+      "loading": true,
+      "cardLogo": "",
+      "loc": "SAN ANTONIO, TX · COMMUNITY",
+      "lede": "Project delivered.",
+      "meta": [
+        "Community",
+        "San Antonio, TX"
+      ],
+      "story": [],
+      "_source": {
+        "href": "'Project-' + k + '.dc.html' (resolved; the page link-fixer script rewrites .dc.html links to Project-samsat.html; live URL is /Project-samsat)",
+        "loc": "loc + ' · ' + ({ 'K-12 Education': 'K-12', 'Higher Education': 'HIGHER ED', 'Community': 'COMMUNITY' }[cat] || cat.toUpperCase())",
+        "forEachTuple": [
+          "samsat",
+          "SAMSAT",
+          "SAN ANTONIO, TX",
+          "Community",
+          "San Antonio, TX",
+          ""
+        ]
+      }
+    },
+    "cssVars": {
+      "_note": "No theme: applyTheme() removes --a/--b/--hi/--deep/--deep-2/--ct/--ct2/--label from [data-cs-root] and removes --progress, so .tg-case defaults from tokens/case.css apply: --a #E23869; --b #C92FD1; --hi var(--b); --deep #1A0B12; --deep-2 #3A1022; --ct var(--ink); --ct2 var(--ink-2); --label var(--hi). --progress falls back to var(--spectrum) (tokens/fixes.css)."
+    },
+    "rendered": {
+      "hero": {
+        "lede": "Project delivered.",
+        "mascot": null,
+        "variant": "plain hero (section.tg-cs-hero, shown when d.loading)",
+        "crumb": {
+          "href": "/Projects",
+          "label": "All projects"
+        },
+        "logo": null,
+        "h1": "SAMSAT",
+        "chips": [
+          {
+            "label": "Community"
+          },
+          {
+            "label": "San Antonio, TX"
+          }
+        ],
+        "_note": "No theme, so no colour chip and no mascot; hasHeroLogo false (no theme, no r.logo)."
+      },
+      "pending": {
+        "logo": null,
+        "heading": "Project delivered.",
+        "body": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+        "cta": {
+          "href": "/Projects",
+          "label": "Browse other projects",
+          "style": "ghost"
+        },
+        "logoNote": "cardLogo is '' so no logo is shown (hasCardLogo false)"
+      },
+      "more": {
+        "heading": "More projects",
+        "cta": {
+          "href": "/Projects",
+          "label": "View all projects",
+          "icon": "arrow-right svg"
+        },
+        "items": [
+          {
+            "href": "/Project-Stafford",
+            "title": "Stafford Municipal School District",
+            "loc": "STAFFORD, TX · K-12",
+            "img": "assets/opt/home-hero-stafford.webp"
+          },
+          {
+            "href": "/Project-Alvin",
+            "title": "Alvin College",
+            "loc": "ALVIN, TX · HIGHER ED",
+            "img": "assets/alvin-showcase.jpg"
+          },
+          {
+            "href": "/Project-Swampy",
+            "title": "TexSEF’s Swampy Conquest",
+            "loc": "HOUSTON, TX · EVENT",
+            "img": "assets/opt/home-swampy-floor.webp"
+          }
+        ],
+        "_source": {
+          "items": "Object.keys(PROJECTS).filter((k) => k !== key && !PROJECTS[k].loading).slice(0, 3)"
+        }
+      }
+    },
+    "templateStrings": {
+      "allProjectsCrumb": "All projects",
+      "defaultDeliveredTitle": "Every layer. One partner.",
+      "factHeadings": [
+        "Scope",
+        "Technology partners",
+        "Metrics",
+        "Sector"
+      ],
+      "factsAriaLabel": "Project facts",
+      "galleryAria": {
+        "fullscreen": "View fullscreen",
+        "next": "Next photo",
+        "prev": "Previous photo",
+        "thumb": "Show photo {n}"
+      },
+      "galleryCounter": "pad(gi + 1) + ' / ' + pad(n) (e.g. 01 / 12)",
+      "galleryHeading": "Photos from the build",
+      "galleryImageAlt": "Project photo {n}",
+      "heroImageAlt": "{title} esports facility",
+      "heroLogoAlt": "{title} logo",
+      "lightbox": {
+        "ariaLabel": "Photo viewer",
+        "close": "Close viewer",
+        "imageAlt": "Project photo enlarged"
+      },
+      "moreCta": {
+        "href": "/Projects",
+        "label": "View all projects",
+        "icon": "arrow-right svg (path M5 12h14 / m12 5 7 7-7 7)"
+      },
+      "moreHeading": "More projects",
+      "partnersMoreLabel": "'+' + (all.length - cap) + ' MORE' (only when more than 6 partners; none trigger it)",
+      "pendingBody": "We are still writing up this project. In the meantime, take a look at some of our other builds.",
+      "pendingCta": "Browse other projects",
+      "pendingHeading": "Project delivered.",
+      "procuredThrough": "Procured through",
+      "quoteAriaLabel": "Client testimonial",
+      "quoteMark": "“",
+      "resultsSrHeading": "Results",
+      "sectionOrder": [
+        "hero (photo when ready / plain when loading)",
+        "pending (loading only)",
+        "facts (ready only)",
+        "story (ready only)",
+        "quote (hasQuote: has quote, not loading, text not /^placeholder/i)",
+        "delivered (has delivered)",
+        "gallery (has gallery)",
+        "results (has result)",
+        "more projects (always)",
+        "lightbox dialog (when open)"
+      ]
+    },
+    "notes": "Lede and pending heading are both 'Project delivered.' so the phrase appears twice on the page."
+  }
+]

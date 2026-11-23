@@ -1,0 +1,225 @@
+{
+  "site": {
+    "name": "TANCHES.GG",
+    "origin": "https://tanches.gg",
+    "legalEntity": "TanChes Global Management, Inc.",
+    "phone": "(281) 826-2437",
+    "phoneHref": "tel:+12818262437",
+    "email": "contact@tanches.gg",
+    "emailHref": "mailto:contact@tanches.gg",
+    "address": "10804 Roark Road, Houston, TX 77099",
+    "addressHref": "https://maps.google.com/?q=10804+Roark+Road+Houston+TX+77099",
+    "themeColor": "#08080A",
+    "defaultTheme": "light",
+    "themeStorageKey": "tg-theme-v2",
+    "logo": {
+      "component": "TANCHESGGDesignSystem_550c61.Logo (from _ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js)",
+      "description": "Lion-in-hexagon mark (inlined in the bundle as a base64 PNG data URI MARK_SRC, native artwork 860x1044, plus a mono mask MARK_MASK_SRC) and a text wordmark rendered as \"[\" \"TANCHES\" \".\" \"GG\" \"]\" (brackets on by default). Variants: full | icon | wordmark. plate=true wraps the mark on a #0B0B0F rounded tile.",
+      "wordmarkParts": ["[", "TANCHES", ".", "GG", "]"],
+      "usages": [
+        {"where": "SiteNav", "variant": "full", "size": 15, "plate": true, "link": "/", "ariaLabel": "TANCHES.GG home"},
+        {"where": "SiteFooter", "variant": "full", "size": 18, "plate": true, "link": "/", "ariaLabel": "TANCHES.GG home"},
+        {"where": "ProjectCTA", "variant": "icon", "size": 56, "plate": true}
+      ]
+    },
+    "fonts": {
+      "source": "_ds/.../tokens/fonts.css",
+      "import": "https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap",
+      "display": "Sora",
+      "mono": "JetBrains Mono",
+      "note": "Substitution flag in fonts.css: the brand wordmark/UI font shipped as outlined vector paths (no font file provided); Sora + JetBrains Mono are stand-ins."
+    }
+  },
+  "primaryCtas": [
+    {"label": "Start Planning", "href": "/Contact", "where": "SiteNav desktop right (tg-btn--primary tg-btn--sm) and mobile menu bottom (full-width tg-btn--primary)"},
+    {"label": "Member Login", "href": "https://tel.rally.gg", "where": "SiteNav mobile menu only (tg-mnav-login)"},
+    {"label": "Not sure what you need? Try the readiness assessment.", "href": "/Assessment", "where": "ProjectCTA"},
+    {"label": "Submit", "where": "ProjectCTA form submit button"}
+  ],
+  "nav": {
+    "component": "SiteNav.dc.html",
+    "props": {
+      "active": {"options": ["home", "about", "education", "community", "commercial", "technology", "procurement", "projects", "contact", "league", "team"], "default": "home", "note": "An item is marked active (class is-on, aria-current=page) if its key === active OR any of its dropdown links' href (lowercased, minus leading slash) startsWith(active)."},
+      "tone": {"note": "tone=\"dark\" adds class is-ondark while not scrolled and mobile menu closed (transparent nav over dark hero)."}
+    },
+    "skipLink": {"label": "Skip to content", "href": "#main"},
+    "logo": {"href": "/", "ariaLabel": "TANCHES.GG home"},
+    "desktopBreakpoint": "window.innerWidth >= 1120 and not (hover: none)",
+    "ariaLabel": "Main",
+    "items": [
+      {
+        "key": "about", "label": "About", "href": "/About", "hasMenu": true,
+        "links": [
+          {"icon": "story", "title": "Story", "sub": "28 years of enterprise IT, now esports", "href": "/About"},
+          {"icon": "team", "title": "Team", "sub": "The people behind TANCHES.GG", "href": "/Team"},
+          {"icon": "brand", "title": "Brand Center", "sub": "Logos, colors, and the story of our mark", "href": "/brand"}
+        ]
+      },
+      {
+        "key": "solutions", "label": "Solutions", "href": "/Education", "hasMenu": true,
+        "links": [
+          {"icon": "edu", "title": "Education", "sub": "K-12, colleges, universities", "href": "/Education"},
+          {"icon": "com", "title": "Community", "sub": "Nonprofits, government, community centers", "href": "/Community"},
+          {"icon": "biz", "title": "Commercial", "sub": "LAN centers, hotels, casinos, healthcare", "href": "/Commercial"}
+        ]
+      },
+      {
+        "key": "services", "label": "Services", "href": "/Technology", "hasMenu": true,
+        "links": [
+          {"icon": "tech", "title": "Technology & Architecture", "sub": "Enterprise infrastructure on every build", "href": "/Technology"},
+          {"icon": "fund", "title": "Procurement & Funding", "sub": "Contracts, grants, leasing & HaaS", "href": "/Procurement"}
+        ]
+      },
+      {"key": "projects", "label": "Projects", "href": "/Projects", "hasMenu": false},
+      {"key": "contact", "label": "Contact", "href": "/Contact", "hasMenu": false},
+      {"key": "league", "label": "Esports League", "href": "/League", "hasMenu": false, "live": true, "liveNote": "Renders a pulsing .tg-live dot before the label."}
+    ],
+    "iconKey": {
+      "story": "lucide info (circle with i)",
+      "team": "lucide users",
+      "brand": "lucide palette",
+      "edu": "lucide graduation-cap",
+      "com": "lucide landmark (columns building)",
+      "biz": "lucide building-2",
+      "tech": "lucide server",
+      "fund": "lucide credit-card"
+    },
+    "right": {
+      "themeToggle": {"ariaLabelWhenLight": "Switch to dark mode", "ariaLabelWhenDark": "Switch to light mode", "icons": "sun / moon swap", "_source": {"themeLabel": "light ? 'Switch to dark mode' : 'Switch to light mode'"}},
+      "cta": {"label": "Start Planning", "href": "/Contact", "desktopOnly": true},
+      "mobileMenuButton": {"ariaLabel": "Menu", "mobileOnly": true}
+    },
+    "mobile": {
+      "groups": [
+        {"key": "home", "label": "Home", "href": "/"},
+        {"key": "about", "label": "About", "links": "same as items.about.links (title + sub)"},
+        {"key": "solutions", "label": "Solutions", "links": "same as items.solutions.links"},
+        {"key": "services", "label": "Services", "links": "same as items.services.links"},
+        {"key": "projects", "label": "Projects", "href": "/Projects"},
+        {"key": "league", "label": "Esports League", "href": "/League", "live": true}
+      ],
+      "note": "Contact is not a row in the mobile menu; the bottom 'Start Planning' button goes to /Contact. The group containing the active page is expanded by default (accordion).",
+      "footerLinks": [
+        {"label": "Member Login", "href": "https://tel.rally.gg"},
+        {"label": "Start Planning", "href": "/Contact", "style": "primary"}
+      ]
+    },
+    "behaviours": [
+      "Scroll progress bar (.tg-progress) scaled by scrollY / (scrollHeight - innerHeight).",
+      "Nav gets is-scrolled after scrollY > 24.",
+      "Escape closes the desktop menu and mobile menu.",
+      "Hover menus close 220ms after mouseleave.",
+      "Global reveal-on-scroll for [data-reveal] (fade + translateY(24px), or clip-path 'unveil'), count-up for [data-count] (1800ms easeOutExpo, data-dec decimals), parallax for elements with grad-glow backgrounds.",
+      "Theme toggle writes localStorage 'tg-theme-v2' and sets CSS custom properties from TG_LIGHT / TG_DARK maps; dispatches 'tg-theme' event."
+    ],
+    "globalFormHelpers": "SiteNav defines window.tgSend / tgFields / tgFormName / tgTrackLead / tgFormFail / tgAnchor, used by every form on the site. See forms.json#sharedSender."
+  },
+  "footer": {
+    "component": "SiteFooter.dc.html",
+    "brand": {
+      "logo": {"variant": "full", "size": 18, "plate": true, "href": "/", "ariaLabel": "TANCHES.GG home"},
+      "address": {"label": "10804 Roark Road, Houston, TX 77099", "href": "https://maps.google.com/?q=10804+Roark+Road+Houston+TX+77099", "target": "_blank"},
+      "phone": {"label": "(281) 826-2437", "href": "tel:+12818262437"},
+      "separator": " · ",
+      "email": {"label": "contact@tanches.gg", "href": "mailto:contact@tanches.gg"}
+    },
+    "socials": [
+      {"label": "LinkedIn", "href": "https://www.linkedin.com/showcase/tanches-gg/", "target": "_blank", "style": "tg-btn--ghost tg-btn--sm"},
+      {"label": "Instagram", "href": "https://www.instagram.com/tanches.gg/", "target": "_blank", "style": "tg-btn--ghost tg-btn--sm"}
+    ],
+    "columns": [
+      {"heading": "About", "ariaLabel": "About", "links": [
+        {"label": "Story", "href": "/About"},
+        {"label": "Team", "href": "/Team"},
+        {"label": "Brand Center", "href": "/brand"}
+      ]},
+      {"heading": "Solutions", "ariaLabel": "Solutions", "links": [
+        {"label": "Education", "href": "/Education"},
+        {"label": "Community", "href": "/Community"},
+        {"label": "Commercial", "href": "/Commercial"}
+      ]},
+      {"heading": "Services", "ariaLabel": "Services", "links": [
+        {"label": "Technology & Architecture", "href": "/Technology"},
+        {"label": "Procurement & Funding", "href": "/Procurement"},
+        {"label": "Readiness Assessment", "href": "/Assessment"}
+      ]},
+      {"heading": "Explore", "ariaLabel": "Explore", "links": [
+        {"label": "Home", "href": "/"},
+        {"label": "Projects", "href": "/Projects"},
+        {"label": "Esports League", "href": "/League"},
+        {"label": "Contact", "href": "/Contact"}
+      ]}
+    ],
+    "contracts": {
+      "label": "Purchasing contracts",
+      "items": ["DIR", "OMNIA Partners", "NCPA", "GSA", "E-Rate SPIN 143052684"]
+    },
+    "legal": "© 2026 TanChes Global Management, Inc. TANCHES.GG is the esports vertical of TanChes Global. All rights reserved.",
+    "backToTop": {"label": "Back to top", "href": "#main"},
+    "bigWordmark": {"text": "[TANCHES.GG]", "ariaHidden": true, "note": "Large decorative wordmark at the very bottom (.tg-foot-word)."}
+  },
+  "projectCTA": {
+    "component": "ProjectCTA.dc.html",
+    "id": "start",
+    "usedOn": ["home", "About", "Team", "Education", "Community", "Commercial", "Technology", "Procurement", "Projects", "League", "all 12 Project-* case studies"], "notUsedOn": ["Contact", "Assessment", "brand", "404"],
+    "image": {"src": "assets/cta-tournament.jpg", "alt": ""},
+    "logo": {"variant": "icon", "size": 56, "plate": true},
+    "heading": "Tell us about your project.",
+    "lede": "Share your space, goals, and budget. The first consultation is free.",
+    "nextSteps": {
+      "ariaLabel": "What happens next",
+      "items": [
+        {"num": "01", "title": "We reply", "body": "Within one business day."},
+        {"num": "02", "title": "Consultation", "body": "A free call about your space, goals, and budget."},
+        {"num": "03", "title": "Your plan", "body": "A scoped proposal with funding options."}
+      ]
+    },
+    "assessmentLink": {
+      "href": "/Assessment",
+      "title": "Not sure what you need? Try the readiness assessment.",
+      "body": "It takes about 5 minutes, and you get a free report."
+    },
+    "form": "See forms.json, form id \"project-cta\".",
+    "success": {
+      "chip": "Received",
+      "chipDotColor": "#1FA35B",
+      "heading": "Thank you.",
+      "body": "Your submission has been received. We'll reach out to schedule your no-cost consultation."
+    },
+    "formNote": "By submitting this form, you agree to our Terms & Privacy Policy."
+  },
+  "noscriptFallback": {
+    "note": "Every page carries the same <noscript> block: h1 = page name, p = meta description, then the contact line and link list below.",
+    "contactLine": "Call (281) 826-2437 or email contact@tanches.gg.",
+    "links": [
+      {"label": "Home", "href": "/"},
+      {"label": "Education", "href": "/Education"},
+      {"label": "Community", "href": "/Community"},
+      {"label": "Commercial", "href": "/Commercial"},
+      {"label": "Esports League", "href": "/League"},
+      {"label": "Technology", "href": "/Technology"},
+      {"label": "Procurement & Funding", "href": "/Procurement"},
+      {"label": "Projects", "href": "/Projects"},
+      {"label": "Facility Readiness Assessment", "href": "/Assessment"},
+      {"label": "About", "href": "/About"},
+      {"label": "Team", "href": "/Team"},
+      {"label": "Brand Center", "href": "/brand"},
+      {"label": "Contact", "href": "/Contact"}
+    ]
+  },
+  "sharedHead": {
+    "icons": [
+      {"rel": "icon", "type": "image/png", "sizes": "32x32", "href": "/assets/favicon-32.png"},
+      {"rel": "icon", "type": "image/png", "sizes": "512x512", "href": "/assets/favicon.png"},
+      {"rel": "apple-touch-icon", "sizes": "180x180", "href": "/assets/apple-touch-icon.png"}
+    ],
+    "faviconIco": "/favicon.ico (file exists at site root; not linked in <head>)",
+    "defaultOgImage": {"src": "https://tanches.gg/assets/og-logo.png", "width": 1200, "height": 1200, "alt": "TANCHES.GG lion mark"},
+    "twitterCard": "summary",
+    "ogSiteName": "TANCHES.GG",
+    "ogLocale": "en_US",
+    "titlePattern": "<Page> | TANCHES.GG",
+    "scripts": ["./support.js (dc runtime)", "/tracking.js (analytics/pixels, all IDs empty)", "_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/_ds_bundle.js"],
+    "stylesheets": ["_ds/tanches-gg-design-system-550c6138-870f-4e7a-b565-dc595119d974/styles.css", "mobile.css (not on every page; see notes.md)"]
+  }
+}
