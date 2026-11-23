@@ -263,9 +263,11 @@ Tactile, quiet at rest, the spectrum appears only on intent.
 - **Error / Disabled:** invalid fields take a red border after interaction; the form error is a tinted red panel with an email fallback link. Busy submit drops to 70% opacity.
 
 ### Navigation
-- **Style:** a floating pill bar (3.75rem tall, max 1200px) fixed 0.875rem from the top, glass fill with 22px blur and a fine inner top highlight. Bracketed wordmark lockup left, links centred (0.9375rem/560), theme toggle and a small primary action right.
+- **Style:** a floating pill bar (3.75rem tall, max 1200px) fixed 0.875rem from the top. Glass at rest: a light tint (34% white; 10% over the dark hero; smoky 38% in dark theme), 20px blur, a faint edge highlight and a very soft shadow. Bracketed wordmark lockup left (2.125rem tall), links centred, theme toggle and the primary action right.
+- **In use it solidifies:** hovering, keyboard focus inside or an open dropdown fades in a solid fill over 0.3s (white; #15161B in dark theme). Over the hero in light theme it turns solid white with dark type and the colour logo.
+- **Scroll:** the bar never resizes. Scrolling down slides the whole bar up out of view (0.5s); any scroll up slides it back. It stays put while a dropdown or the phone menu is open or keyboard focus is inside.
 - **States:** links get a line-tinted pill on hover and for the current page; dropdowns are glass-hi panels (20px radius) with a label and note per item, opening on hover-intent or click, closing on Escape.
-- **Over dark stages:** when the bar sits over any element marked `data-nav-tone="dark"` (the home hero) it re-scopes its tokens to dark glass with light type, regardless of theme.
+- **Over dark stages:** when the bar sits over any element marked `data-nav-tone="dark"` (the home hero) it re-scopes its tokens to light type on near-clear glass, regardless of theme.
 - **Mobile:** below 1080px links collapse into a glass sheet (26px radius) with grouped links and a full-width primary action; below 480px the bar's action hides.
 
 ### Hero Showcase (signature)

@@ -70,60 +70,76 @@ const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : pat
 </header>
 
 <style>
-  .nav-shell { position: fixed; inset: 0.875rem var(--gutter) auto; z-index: 50; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
-  /* Liquid glass: a clear, strongly blurred and saturated pane; a specular rim that is brightest at the top-left
-     and catches again at the bottom-right; a soft sheen across the top half; a short, soft shadow. */
+  .nav-shell { position: fixed; inset: 0.875rem var(--gutter) auto; z-index: 50; display: flex; flex-direction: column; align-items: center; pointer-events: none; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+  /* The bar keeps its size. Scrolling down slides the whole bar up out of view; any scroll up slides it back down */
+  .nav-shell.is-away { transform: translateY(calc(-100% - 1.5rem)); }
+  @media (prefers-reduced-motion: reduce) { .nav-shell { transition: none; } }
+  /* Glass at rest, solid in use (after Kyndryl): a lightly tinted pane with a 20px blur and a very soft shadow,
+     plus a faint edge highlight. Hovering, keyboard focus inside, or an open dropdown fades in a solid fill (0.3s). */
   .nav {
-    --lg-tint: linear-gradient(180deg, rgba(255, 255, 255, .62), rgba(255, 255, 255, .4));
-    --lg-filter: blur(18px) saturate(1.9) brightness(1.06);
-    --lg-rim: linear-gradient(155deg, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, .5) 22%, rgba(255, 255, 255, .12) 52%, rgba(255, 255, 255, .55) 100%);
-    --lg-sheen: rgba(255, 255, 255, .5);
-    --lg-shadow: 0 0 0 1px rgba(14, 16, 22, .06), 0 1px 2px rgba(14, 16, 22, .05), 0 12px 32px -14px rgba(14, 16, 22, .28);
+    --gl-tint: rgba(255, 255, 255, .34);
+    --gl-filter: blur(20px) saturate(1.4);
+    --gl-solid: #FFFFFF;
+    --gl-rim: linear-gradient(155deg, rgba(255, 255, 255, .8) 0%, rgba(255, 255, 255, .25) 40%, rgba(255, 255, 255, .45) 100%);
+    --gl-shadow: 0 0 0 1px rgba(14, 16, 22, .06), 0 4px 10px rgba(14, 16, 22, .06);
+    --gl-shadow-solid: 0 0 0 1px rgba(14, 16, 22, .06), 0 10px 28px -10px rgba(14, 16, 22, .22);
     position: relative; isolation: isolate;
     pointer-events: auto; width: min(100%, 1200px); height: 3.75rem; display: flex; align-items: center; gap: 1rem;
     padding: 0 .5rem 0 1.125rem; border-radius: 999px;
-    background: var(--lg-tint);
-    backdrop-filter: var(--lg-filter); -webkit-backdrop-filter: var(--lg-filter);
-    box-shadow: var(--lg-shadow);
-    transition: box-shadow .4s var(--ease-out);
+    background: var(--gl-tint);
+    backdrop-filter: var(--gl-filter); -webkit-backdrop-filter: var(--gl-filter);
+    box-shadow: var(--gl-shadow);
+    transition: box-shadow .3s ease-out;
   }
+  /* Faint edge highlight */
   .nav::before {
     content: ''; position: absolute; inset: 0; z-index: 1; border-radius: inherit; padding: 1px; pointer-events: none;
-    background: var(--lg-rim);
+    background: var(--gl-rim); transition: opacity .3s ease-out;
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
     mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   }
+  /* The solid fill, faded in while the bar is in use */
   .nav::after {
-    content: ''; position: absolute; inset: 1px; z-index: -1; border-radius: inherit; pointer-events: none;
-    background: linear-gradient(180deg, var(--lg-sheen) 0%, rgba(255, 255, 255, 0) 58%);
+    content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+    background: var(--gl-solid); opacity: 0; transition: opacity .3s ease-out;
   }
+  .nav:hover::after, .nav:has(:focus-visible)::after, .nav:has([aria-expanded='true'])::after { opacity: 1; }
+  .nav:hover::before, .nav:has(:focus-visible)::before, .nav:has([aria-expanded='true'])::before { opacity: 0; }
+  .nav:hover, .nav:has(:focus-visible), .nav:has([aria-expanded='true']) { box-shadow: var(--gl-shadow-solid); }
+  .nav :where(a, button, span, svg) { transition: color .3s ease-out, background-color .2s ease-out; }
   :global([data-theme='dark']) .nav {
-    --lg-tint: linear-gradient(180deg, rgba(44, 46, 54, .52), rgba(24, 25, 31, .44));
-    --lg-filter: blur(18px) saturate(1.8) brightness(.95);
-    --lg-rim: linear-gradient(155deg, rgba(255, 255, 255, .34) 0%, rgba(255, 255, 255, .14) 24%, rgba(255, 255, 255, .04) 52%, rgba(255, 255, 255, .18) 100%);
-    --lg-sheen: rgba(255, 255, 255, .07);
-    --lg-shadow: 0 0 0 1px rgba(0, 0, 0, .35), 0 12px 32px -12px rgba(0, 0, 0, .7);
+    --gl-tint: rgba(22, 23, 29, .38);
+    --gl-solid: #15161B;
+    --gl-rim: linear-gradient(155deg, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, .06) 40%, rgba(255, 255, 255, .12) 100%);
+    --gl-shadow: 0 0 0 1px rgba(0, 0, 0, .3), 0 4px 10px rgba(0, 0, 0, .2);
+    --gl-shadow-solid: 0 0 0 1px rgba(255, 255, 255, .06), 0 10px 28px -10px rgba(0, 0, 0, .7);
   }
-  /* Over a dark stage (the home hero) the bar is dark glass with light type, whatever the theme */
+  /* Over a dark stage (the home hero) the glass is nearly clear (10%) with light type, whatever the theme */
   .nav-shell.on-dark {
     --ink: #F4F5F7; --ink-2: #C6C9D1; --ink-3: #A6AAB4; --on-ink: #0E1016; --accent: #F2628C;
     --line: rgba(255, 255, 255, .12); --line-2: rgba(255, 255, 255, .24);
     --glass-hi: rgba(20, 21, 27, .88); --glass-line: rgba(255, 255, 255, .16);
     color: var(--ink);
   }
-  /* Over the photo: clear dark glass. The room behind is blurred and quietened (so the bar never looks busy),
-     and the bright rim and sheen are what make it read as a pane of glass. */
   .nav-shell.on-dark .nav {
-    --lg-tint: linear-gradient(180deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .03));
-    --lg-filter: blur(22px) saturate(1.7) brightness(.72);
-    --lg-rim: linear-gradient(155deg, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .2) 24%, rgba(255, 255, 255, .06) 52%, rgba(255, 255, 255, .3) 100%);
-    --lg-sheen: rgba(255, 255, 255, .1);
-    --lg-shadow: 0 0 0 .5px rgba(0, 0, 0, .4), 0 12px 36px -10px rgba(0, 0, 0, .55);
+    --gl-tint: rgba(255, 255, 255, .1);
+    --gl-filter: blur(20px) saturate(1.2);
+    --gl-rim: linear-gradient(155deg, rgba(255, 255, 255, .4) 0%, rgba(255, 255, 255, .1) 40%, rgba(255, 255, 255, .22) 100%);
+    --gl-shadow: 0 4px 10px rgba(0, 0, 0, .06);
   }
   .nav-shell.on-dark .logo-light { display: none; }
   .nav-shell.on-dark .logo-dark { display: block; }
+  /* In light mode, using the bar over the hero turns it solid white with dark type and the colour logo, like the rest of the site */
+  :global(html:not([data-theme='dark'])) .nav-shell.on-dark:has(.nav:hover, .nav :focus-visible, .nav [aria-expanded='true']) {
+    --ink: #0E1016; --ink-2: #464B57; --ink-3: #5C616D; --on-ink: #FFFFFF; --accent: #B81E4E;
+    --line: rgba(14, 16, 22, .10); --line-2: rgba(14, 16, 22, .18);
+    --glass-hi: rgba(255, 255, 255, .85); --glass-line: rgba(14, 16, 22, .10);
+  }
+  :global(html:not([data-theme='dark'])) .nav-shell.on-dark:has(.nav:hover, .nav :focus-visible, .nav [aria-expanded='true']) .logo-light { display: block; }
+  :global(html:not([data-theme='dark'])) .nav-shell.on-dark:has(.nav:hover, .nav :focus-visible, .nav [aria-expanded='true']) .logo-dark { display: none; }
+  :global(html:not([data-theme='dark'])) .nav-shell.on-dark .nav { --gl-shadow-solid: 0 10px 28px -10px rgba(0, 0, 0, .45); }
   .brand { display: flex; align-items: center; flex: none; }
-  .logo { height: 1.75rem; width: auto; }
+  .logo { height: 2.125rem; width: auto; }
   .logo-dark { display: none; }
   :global([data-theme='dark']) .logo-light { display: none; }
   :global([data-theme='dark']) .logo-dark { display: block; }
@@ -196,7 +212,7 @@ const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : pat
     let queued = 0;
     const check = () => {
       queued = 0;
-      const y = shell.getBoundingClientRect().top + 30;
+      const y = 44; // the bar's middle when it is showing (14px from the top + half its height)
       shell.classList.toggle('on-dark', zones.some((z) => { const r = z.getBoundingClientRect(); return r.top <= y && r.bottom >= y; }));
     };
     addEventListener('scroll', () => { if (!queued) queued = requestAnimationFrame(check); }, { passive: true });
@@ -239,6 +255,26 @@ const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : pat
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { const o = toggles.find((t) => t.getAttribute('aria-expanded') === 'true'); closeAll(); o?.focus(); } });
   document.addEventListener('click', (e) => { if (!(e.target as Element).closest('.menu-item')) closeAll(); });
+
+  // Scroll: the bar slides up out of view while scrolling down and back down on any scroll up (it never resizes).
+  // Never hides while a dropdown or the phone menu is open, or while keyboard focus is inside the bar.
+  const bar = document.querySelector<HTMLElement>('[data-nav]');
+  if (bar) {
+    let lastY = scrollY;
+    const busy = () =>
+      !!bar.querySelector('[aria-expanded="true"]') || !!bar.querySelector(':focus-visible');
+    const update = () => {
+      const y = Math.max(0, scrollY), dy = y - lastY;
+      if (y < 24 || busy()) bar.classList.remove('is-away');
+      else if (dy > 4) bar.classList.add('is-away');
+      else if (dy < -4) bar.classList.remove('is-away');
+      if (Math.abs(dy) > 4 || y < 24) lastY = y;
+    };
+    // Just class toggles, so it runs straight from the scroll event (no frame scheduling to fall behind)
+    addEventListener('scroll', update, { passive: true });
+    bar.addEventListener('focusin', () => { if (bar.querySelector(':focus-visible')) bar.classList.remove('is-away'); });
+    update();
+  }
 
   // Mobile sheet
   const mb = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
