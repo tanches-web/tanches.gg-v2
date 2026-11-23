@@ -40,7 +40,9 @@ const [pocRole, pocNote] = poc.eyebrow.split(' · ');
   <!-- Leadership: the two founders, presented large -->
   <section class="section lead-sec" aria-labelledby="lead-title">
     <div class="wrap">
-      <SectionHead id="lead-title" title={lead.heading} lede={lead.lede} />
+      <SectionHead id="lead-title" title={lead.heading}>
+        <p class="lede tanches" data-reveal>Tanaz and Chesley Choudhury: the <span class="g">TAN</span> and the <span class="g">CHES</span> in <span class="word">TANCHES</span>.</p>
+      </SectionHead>
       <ul class="leaders" role="list">
         {byGroup('leadership').map((p, i) => (
           <li class="leader" data-reveal>
@@ -98,7 +100,7 @@ const [pocRole, pocNote] = poc.eyebrow.split(' · ');
                 <a class="li-btn" href={p.linkedin} target="_blank" rel="noopener" aria-label={p.linkedinAriaLabel}><Icon name="linkedin" size={16} /></a>
               </div>
               <p class="spec role">{p.role}</p>
-              {p.bio && <p class="small m-bio">{p.bio}</p>}
+              {p.bio && (p as any).bioRendered !== false && <p class="small m-bio">{p.bio}</p>}
               <p class="fav"><span class="spec">Favorite game</span><span>{p.favoriteGame}</span></p>
             </div>
           </li>
@@ -115,11 +117,15 @@ const [pocRole, pocNote] = poc.eyebrow.split(' · ');
   .leaders { list-style: none; padding: 0; display: grid; gap: clamp(4rem, 8vw, 7rem); }
   .leader { display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
   .leader:nth-child(even) > :first-child { order: 2; }
+  .tanches .g { font-weight: 720; background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tanches .word { font-weight: 600; color: var(--ink); }
   .leader .body { font-size: var(--t-lede); line-height: 1.55; }
   .who { display: grid; gap: .6rem; justify-items: start; }
   .nameline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; }
   .leader .h3 { font-size: clamp(1.625rem, 1.2rem + 1.2vw, 2.25rem); letter-spacing: -0.03em; }
   .role { color: var(--ink-2); }
+  .tanches .g { font-weight: 720; background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tanches .word { font-weight: 600; color: var(--ink); }
   .leader .body { margin-top: .4rem; max-width: 52ch; }
   .fav { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .75rem; margin-top: .5rem; padding-top: .9rem; border-top: 1px solid var(--line); width: 100%; font-weight: 600; font-size: var(--t-small); }
   .li-btn { flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-2); color: var(--ink-2); text-decoration: none; transition: color .25s, border-color .25s, background-color .25s; }

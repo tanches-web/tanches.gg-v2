@@ -7,6 +7,7 @@ import PageHero from '../PageHero.astro';
 import SectionHead from '../SectionHead.astro';
 import Faq from '../Faq.astro';
 import ProjectCTA from '../ProjectCTA.astro';
+import CountUp from '../CountUp.astro';
 import Icon from '../Icon.astro';
 import LogoMarquee from '../LogoMarquee.astro';
 import edu from '../../content/pages/Education.json';
@@ -129,7 +130,7 @@ const assess = faq.cards[0];
         {why.stats.map((s: any) => (
           <div data-reveal>
             <dt>{s.label}</dt>
-            <dd class="num">{s.value}</dd>
+            <dd class="num"><CountUp value={s.value} /></dd>
           </div>
         ))}
       </dl>
@@ -164,7 +165,7 @@ const assess = faq.cards[0];
           <p class="cs-body">{csBody}</p>
           <ul class="cs-tags" role="list" aria-label="Scope">{cs.tags.map((t: string) => <li>{t}</li>)}</ul>
           <div class="cs-stat">
-            <span class="num">{csStat.value}</span>
+            <span class="num"><CountUp value={csStat.value} /></span>
             <span>{csStat.label}</span>
           </div>
           <figure class="cs-quote">

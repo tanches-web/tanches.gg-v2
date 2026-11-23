@@ -1,22 +1,24 @@
 ---
-// A team portrait in a 4:5 frame. The real photo shows first (we are a vendor first);
-// the character art (each person drawn into their favourite game) sits underneath and
-// is revealed on hover, or with the small frosted toggle on any device.
-// Framing offsets come from the source data (percent of the frame width).
+// A team portrait in a 4:5 frame. The character art (each person drawn into their favourite game) shows first.
+// On hover (or the small frosted toggle on any device) the art morphs into the real photo: it glides and scales
+// until its face sits exactly on the photo's face, then dissolves, leaving the photo already lined up beneath.
+// Leaving reverses it: the art fades back in over the photo, then glides home to its own framing.
+// Framing comes from the source data, % of the frame width: p* = photo, d* = art at rest, t* = art lined up with the photo.
 import Icon from '../Icon.astro';
-export interface Frame { pl: string; pt: string; pw: string; dl: string; dt: string; dw: string }
+export interface Frame { pl: string; pt: string; pw: string; dl: string; dt: string; dw: string; tl?: string; tt?: string; tw?: string }
 interface Props { name: string; photo: string; toon?: string; frame?: Frame; eager?: boolean; sizes?: string }
 const { name, photo, toon, frame, eager = false } = Astro.props;
 const at = (l?: string, t?: string, w?: string) => (l ? `left:${l};top:${t};width:${w}` : undefined);
 ---
 <div class="pt" data-portrait>
   <div class="frame">
-    <img class="ph" src={'/' + photo} alt={name} style={at(frame?.pl, frame?.pt, frame?.pw)} loading={eager ? 'eager' : 'lazy'} decoding="async" />
-    {toon && <img class="tn" src={'/' + toon} alt="" style={at(frame?.dl, frame?.dt, frame?.dw)} loading="lazy" decoding="async" />}
+    <img class="ph" src={'/' + photo} alt={name} style={at(frame?.pl, frame?.pt, frame?.pw)} loading="lazy" decoding="async" />
+    {toon && <img class="tn" src={'/' + toon} alt="" style={frame ? `--dl:${frame.dl};--dt:${frame.dt};--dw:${frame.dw};--tl:${frame.tl ?? frame.dl};--tt:${frame.tt ?? frame.dt};--tw:${frame.tw ?? frame.dw}` : undefined} loading={eager ? 'eager' : 'lazy'} decoding="async" />}
   </div>
   {toon && (
-    <button class="flip" type="button" aria-pressed="false" aria-label={`Show character art of ${name}`} data-name={name} hidden>
-      <Icon name="gamepad" size={18} />
+    <button class="flip" type="button" aria-pressed="false" aria-label={`Show photo of ${name}`} data-name={name} hidden>
+      <Icon name="user" size={18} class="i-photo" />
+      <Icon name="gamepad" size={18} class="i-toon" />
     </button>
   )}
 </div>
@@ -28,13 +30,29 @@ const at = (l?: string, t?: string, w?: string) => (l ? `left:${l};top:${t};widt
     background: var(--surface-2); box-shadow: var(--shadow-object); isolation: isolate;
   }
   .frame img { position: absolute; left: -12.5%; top: 0; width: 125%; max-width: none; height: auto; }
-  .ph { z-index: 1; transition: opacity .5s var(--ease-out), transform .9s var(--ease-out); }
-  .tn { z-index: 2; opacity: 0; transform: scale(1.04); transition: opacity .5s var(--ease-out), transform .9s var(--ease-out); }
-  .pt.is-toon .tn { opacity: 1; transform: none; }
-  @media (hover: hover) {
-    .pt:hover .tn { opacity: 1; transform: none; }
-    .pt.is-photo:hover .tn { opacity: 0; }
+  .ph { z-index: 1; }
+  /* At rest: the art in its own framing. Coming back, it fades in first, then glides home after 220ms. */
+  .tn {
+    z-index: 2; left: var(--dl, -12.5%); top: var(--dt, 0%); width: var(--dw, 125%); opacity: 1;
+    transition: opacity 320ms cubic-bezier(.4, 0, .2, 1) 0ms, left 480ms var(--ease-out) 220ms, top 480ms var(--ease-out) 220ms, width 480ms var(--ease-out) 220ms;
   }
+  /* Revealing: it glides onto the photo's face at once, and dissolves once it's lined up (460ms) */
+  .pt.is-photo .tn {
+    left: var(--tl); top: var(--tt); width: var(--tw); opacity: 0;
+    transition: opacity 320ms cubic-bezier(.4, 0, .2, 1) 460ms, left 480ms var(--ease-out) 0ms, top 480ms var(--ease-out) 0ms, width 480ms var(--ease-out) 0ms;
+  }
+  @media (hover: hover) {
+    .pt:hover .tn {
+      left: var(--tl); top: var(--tt); width: var(--tw); opacity: 0;
+      transition: opacity 320ms cubic-bezier(.4, 0, .2, 1) 460ms, left 480ms var(--ease-out) 0ms, top 480ms var(--ease-out) 0ms, width 480ms var(--ease-out) 0ms;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tn, .pt.is-photo .tn, .pt:hover .tn { transition: opacity 200ms linear; }
+  }
+  .flip :global(.i-toon) { display: none; }
+  .pt.is-photo .flip :global(.i-photo) { display: none; }
+  .pt.is-photo .flip :global(.i-toon) { display: block; }
   .flip {
     position: absolute; right: .75rem; bottom: .75rem; z-index: 3;
     width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center;
@@ -55,9 +73,8 @@ const at = (l?: string, t?: string, w?: string) => (l ? `left:${l};top:${t};widt
     btn.addEventListener('click', () => {
       const on = btn.getAttribute('aria-pressed') !== 'true';
       btn.setAttribute('aria-pressed', String(on));
-      btn.setAttribute('aria-label', (on ? 'Show photo of ' : 'Show character art of ') + name);
-      pt.classList.toggle('is-toon', on);
-      pt.classList.toggle('is-photo', !on);
+      btn.setAttribute('aria-label', (on ? 'Show character art of ' : 'Show photo of ') + name);
+      pt.classList.toggle('is-photo', on);
     });
   });
 </script>

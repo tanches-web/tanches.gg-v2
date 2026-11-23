@@ -4,6 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import ProjectCTA from '../components/ProjectCTA.astro';
 import LogoMarquee from '../components/LogoMarquee.astro';
 import Icon from '../components/Icon.astro';
+import CountUp from '../components/CountUp.astro';
 import BeforeAfter from '../components/about/BeforeAfter.astro';
 import Milestones from '../components/about/Milestones.astro';
 import page from '../content/pages/About.json';
@@ -58,9 +59,7 @@ const whyPlain = why.heading.replace('not a reseller.', '').trim();
       <aside class="founder">
         <figure class="f-photo photo" data-reveal>
           <img src={'/' + founder.image.src} alt={founder.image.alt} loading="lazy" decoding="async" />
-          <figcaption class="label-glass"><span class="dot" aria-hidden="true"></span>{founder.name}</figcaption>
         </figure>
-        <p class="spec f-role">{founder.role} · {founder.org}</p>
       </aside>
       <div class="l-copy">
         <h2 id="letter-title" class="h2" data-reveal>{letter.heading}</h2>
@@ -121,7 +120,7 @@ const whyPlain = why.heading.replace('not a reseller.', '').trim();
       </div>
       <dl class="figures">
         {why.stats.map((s: any) => (
-          <div data-reveal><dt>{s.label}</dt><dd class="num">{s.value}</dd></div>
+          <div data-reveal><dt>{s.label}</dt><dd class="num"><CountUp pre={s.prefix} to={Number(s.number)} dec={s.decimals} unit={s.suffix.replace(/[+%]$/, '')} mark={(s.suffix.match(/[+%]$/) ?? [''])[0]} /></dd></div>
         ))}
       </dl>
       <dl class="specs" data-reveal>
@@ -207,8 +206,6 @@ const whyPlain = why.heading.replace('not a reseller.', '').trim();
   .letter { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: start; }
   .founder { position: sticky; top: 7rem; display: grid; gap: 1rem; }
   .f-photo { position: relative; aspect-ratio: 4 / 5; }
-  .f-photo figcaption { position: absolute; left: 1rem; bottom: 1rem; }
-  .f-role { line-height: 1.6; }
   .l-copy { display: grid; gap: 1.75rem; }
   .l-quote p { font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.25rem); line-height: 1.25; letter-spacing: -0.025em; font-weight: 400; }
   .l-body { display: grid; gap: 1.1rem; color: var(--ink-2); max-width: 64ch; font-size: 1.0625rem; }

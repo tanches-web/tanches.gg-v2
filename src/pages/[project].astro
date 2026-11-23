@@ -1,6 +1,7 @@
 ---
 // Case study: the site's design language, worn in the client's colours.
 import Base from '../layouts/Base.astro';
+import CountUp from '../components/CountUp.astro';
 import Icon from '../components/Icon.astro';
 import Work from '../components/Work.astro';
 import ProjectCTA from '../components/ProjectCTA.astro';
@@ -99,7 +100,7 @@ const pendingLogo = r.pending?.logo;
                 </ul>
               )}
               {c.items && (
-                <dl class="metrics">{c.items.map((m: any) => <div><dt>{m.label}</dt><dd class="num">{m.value}</dd></div>)}</dl>
+                <dl class="metrics">{c.items.map((m: any) => <div><dt>{m.label}</dt><dd class="num"><CountUp value={m.value} /></dd></div>)}</dl>
               )}
               {c.value && <p class="sector">{c.value}{c.sub && <span class="small">{c.sub}</span>}</p>}
             </div>

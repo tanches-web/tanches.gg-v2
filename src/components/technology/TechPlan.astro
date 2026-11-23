@@ -1,4 +1,5 @@
 ---
+import CountUp from '../CountUp.astro';
 // The Technology hero object: the room render with every run drawn back to the network closet,
 // frosted labels pinned to the real features, then the infrastructure in numbers.
 // Wire and pin coordinates match the home Ecosystem's infrastructure layer (render pixels, 2048x1154).
@@ -48,7 +49,7 @@ const wires = [
   {stats.map((s) => (
     <div>
       <dt>{s.label}</dt>
-      <dd class="num">{s.value}</dd>
+      <dd class="num"><CountUp value={s.value} /></dd>
     </div>
   ))}
 </dl>

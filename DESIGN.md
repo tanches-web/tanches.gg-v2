@@ -285,7 +285,10 @@ One rounded frame on a sweep with a segmented glass control (Space, Infrastructu
 Education, Community and Commercial as one list beside one large photo. The chosen vertical is full ink with a spectrum rule beneath and opens to its audience line, description, tags and link; the others wait in grey with a rotated arrow. The photo of the chosen vertical fills a 32px-radius stage with its audience chip and an Explore pill. Hovering a name with a mouse, tapping it, or pressing Enter on it brings it forward; without JavaScript the first stays open and every name links to its page. Below 860px the photo leads and the list follows (`src/components/Verticals.astro`).
 
 ### Figures
-Proof figures are a four-column spec sheet: hairline rule above, light 380-weight numerals with tabular figures, small ink-2 labels, columns divided by hairlines.
+Proof figures are a four-column spec sheet: hairline rule above, light 380-weight numerals with tabular figures, small ink-2 labels, columns divided by hairlines. Every figure on the site counts up from zero the first time it scrolls into view, with its + or % set bold in the spectrum (`src/components/CountUp.astro`, which reads a value like "$5.5M+" or "50%+" as written; text values such as "24/7" stay as they are).
+
+### Team Portraits
+The character art shows first. On hover, or with the frosted toggle on touch screens, it glides until its face sits exactly on the photo's face (480ms), then dissolves (from 460ms) to the photo already lined up beneath; leaving fades it back in, then glides it home after 220ms. Per-person framing lives in Team.json (`frame`: photo, art at rest, art lined up).
 
 ### Call-to-action labels (current state)
 The `/Contact` action currently carries mixed labels pending a copy decision by the owner: "Start Planning" (nav bar and mobile sheet), "Book a free consultation" (hero and process section), "Start your project" (Ecosystem), "Book a call" (phone CTA bar), "Request my consultation" (form submit), plus "Ask for a reference" in the work section. Record any new `/Contact` action against this list until one label is chosen; this section records the shipped state, not a rule.

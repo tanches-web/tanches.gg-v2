@@ -1,0 +1,63 @@
+---
+// A figure that counts up from zero the first time it scrolls into view. The + or % carries the brand spectrum.
+// Screen readers get the final value; without JavaScript or with reduced motion the final number simply shows.
+// Figures that share a parent start one after another.
+// Pass the parts (pre, to, dec, unit, mark), or just value="$5.5M+" / "96%" / "50%+" and it is read for you;
+// a value that isn't a number (e.g. "24/7") is shown as written.
+interface Props { value?: string; pre?: string; to?: number; dec?: number; unit?: string; mark?: string }
+const p = Astro.props;
+const m = p.value != null ? /^(\$?)(\d+(?:\.\d+)?)([^\d+%]*?)([+%]*)$/.exec(p.value.trim()) : null;
+const pre = m ? m[1] : p.pre ?? '';
+const to = m ? Number(m[2]) : p.to;
+const dec = m ? (m[2].split('.')[1]?.length ?? 0) : p.dec ?? 0;
+const unit = m ? m[3] : p.unit ?? '';
+const mark = m ? m[4] : p.mark ?? '';
+const plain = to == null || Number.isNaN(to);
+const final = plain ? '' : to.toFixed(dec);
+---
+{plain ? <span>{p.value}</span> : <span class="countup">
+  <span class="sr-only">{pre}{final}{unit}{mark}</span>
+  <span aria-hidden="true">{pre}<span class="count" data-to={to} data-dec={dec}><span class="ghost">{final}</span><span class="n">{final}</span></span>{unit}{mark && <span class="mark">{mark}</span>}</span>
+</span>}
+
+<style>
+  /* The number keeps its final width while it counts, so nothing beside it shifts */
+  .count { display: inline-grid; justify-items: end; }
+  .count > * { grid-area: 1 / 1; }
+  .ghost { visibility: hidden; }
+  .mark { font-weight: 720; margin-left: .02em; background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; }
+</style>
+
+<script>
+  const counters = [...document.querySelectorAll<HTMLElement>('.countup .count')];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (counters.length && !still && 'IntersectionObserver' in window) {
+    const run = (el: HTMLElement, delay: number) => {
+      const n = el.querySelector<HTMLElement>('.n')!;
+      const to = Number(el.dataset.to), dec = Number(el.dataset.dec);
+      let t0 = 0;
+      const step = (t: number) => {
+        if (!t0) t0 = t;
+        const p = Math.min(1, Math.max(0, (t - t0 - delay) / 1600));
+        n.textContent = (to * (1 - Math.pow(1 - p, 4))).toFixed(dec);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    // Group by the list they sit in, so each row of figures counts together with a short stagger
+    const groups = new Map<Element, HTMLElement[]>();
+    counters.forEach((el) => {
+      el.querySelector<HTMLElement>('.n')!.textContent = (0).toFixed(Number(el.dataset.dec));
+      const g = el.closest('dl, ul, ol') ?? el;
+      groups.set(g, [...(groups.get(g) ?? []), el]);
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        (groups.get(e.target) ?? []).forEach((el, i) => run(el, i * 120));
+      });
+    }, { threshold: 0.4 });
+    groups.forEach((_, g) => io.observe(g));
+  }
+</script>
