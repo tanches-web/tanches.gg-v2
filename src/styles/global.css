@@ -25,8 +25,8 @@
   --ink-3: #5C616D;
   --line: rgba(14, 16, 22, 0.10);
   --line-2: rgba(14, 16, 22, 0.18);
-  --glass: rgba(255, 255, 255, 0.78);
-  --glass-line: rgba(14, 16, 22, 0.12);
+  --glass: rgba(255, 255, 255, 0.64);
+  --glass-line: rgba(14, 16, 22, 0.10);
   --glass-hi: rgba(255, 255, 255, 0.85);
   --accent: #B81E4E;            /* text-safe rose for links and focus */
   --on-ink: #FFFFFF;
@@ -68,8 +68,8 @@
   --ink-3: #9196A1;
   --line: rgba(255, 255, 255, 0.10);
   --line-2: rgba(255, 255, 255, 0.18);
-  --glass: rgba(22, 23, 29, 0.74);
-  --glass-line: rgba(255, 255, 255, 0.16);
+  --glass: rgba(22, 23, 29, 0.62);
+  --glass-line: rgba(255, 255, 255, 0.12);
   --glass-hi: rgba(36, 38, 46, 0.85);
   --accent: #F2628C;
   --on-ink: #0E1016;
