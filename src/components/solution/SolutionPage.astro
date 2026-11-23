@@ -198,15 +198,17 @@ const assess = faq.cards[0];
             <span class="label-glass"><span class="dot" aria-hidden="true"></span>{cur.tags[0]}</span>
           </div>
         </div>
-        <ol class="tracks" role="list" data-reveal>
-          {cur.cards.map((t: any, i: number) => (
-            <li>
-              <span class="spec n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+        <ul class="tracks" role="list" data-reveal>
+          {cur.cards.map((t: any) => (
+            <li class="track">
+              <span class="t-icon" aria-hidden="true"><Icon name={(t.icon ?? '').replace(/^lucide\s+/, '')} size={22} /></span>
               <h3 class="t-name">{t.title}</h3>
-              <p class="t-roles"><span class="sr-only">Careers: </span>{t.tags.join(' · ')}</p>
+              <ul class="t-roles" role="list" aria-label={`Careers in ${t.title}`}>
+                {t.tags.map((r: string) => <li>{r}</li>)}
+              </ul>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )}
@@ -373,10 +375,40 @@ const assess = faq.cards[0];
   .cur-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.5rem 4rem; align-items: end; margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
   .cur-lede { display: grid; gap: 1.25rem; justify-items: start; }
   .cur-lede .label-glass { font-size: .8125rem; }
-  .tracks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: repeat(5, auto); column-gap: clamp(2rem, 5vw, 4.5rem); border-top: 1px solid var(--line-2); }
-  .tracks li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1.15fr); gap: 1rem; align-items: baseline; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
-  .t-name { font-size: 1.0625rem; font-weight: 640; letter-spacing: -0.01em; line-height: 1.3; }
-  .t-roles { font-size: var(--t-small); color: var(--ink-2); }
+  /* Career tracks: five across on wide screens, each a card with a hexagon icon tile (after the lion mark),
+     the track, and its roles as a short dotted list. The tile takes the spectrum when the card is hovered. */
+  .tracks { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(.75rem, 1.4vw, 1.25rem); }
+  .track {
+    display: grid; align-content: start; gap: .9rem; padding: clamp(1.25rem, 1.8vw, 1.6rem); border-radius: 22px;
+    background: var(--surface); border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(14, 16, 22, .03);
+    transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out), border-color .3s;
+  }
+  .track:hover { transform: translateY(-3px); border-color: var(--line-2); box-shadow: var(--shadow-float); }
+  .t-icon {
+    width: 3.25rem; height: 3.25rem; display: grid; place-items: center; margin-bottom: .35rem;
+    clip-path: polygon(25% 4%, 75% 4%, 100% 50%, 75% 96%, 25% 96%, 0 50%);
+    background: var(--surface-2); color: var(--accent); transition: background .35s, color .35s;
+  }
+  .track:hover .t-icon { background: var(--spectrum); color: #fff; }
+  .t-name { font-size: 1.1875rem; font-weight: 680; letter-spacing: -0.02em; line-height: 1.2; text-wrap: balance; }
+  .t-roles { list-style: none; padding: 0; margin: 0; display: grid; gap: .35rem; font-size: .9375rem; color: var(--ink-2); line-height: 1.4; }
+  .t-roles li { position: relative; padding-left: 1rem; }
+  .t-roles li::before { content: ''; position: absolute; left: 0; top: .55em; width: .35rem; height: .35rem; border-radius: 50%; background: var(--spectrum); }
+  :root[data-theme='dark'] .track { background: var(--surface-2); }
+  :root[data-theme='dark'] .t-icon { background: rgba(255, 255, 255, .06); }
+  @media (max-width: 1180px) { .tracks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 860px) { .tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) {
+    /* Phones keep two across with tighter cards, so ten tracks stay a short scroll */
+    .tracks { gap: .6rem; }
+    .track { padding: 1rem; gap: .6rem; border-radius: 18px; }
+    .t-icon { width: 2.75rem; height: 2.75rem; margin-bottom: .1rem; }
+    .t-name { font-size: 1rem; }
+    .t-roles { font-size: .8125rem; gap: .25rem; }
+    .t-roles li { padding-left: .8rem; }
+  }
+  @media (max-width: 330px) { .tracks { grid-template-columns: minmax(0, 1fr); } }
+  @media (prefers-reduced-motion: reduce) { .track, .track:hover { transform: none; } }
 
   /* Funding */
   .fund-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
@@ -447,7 +479,6 @@ const assess = faq.cards[0];
     .cs-photo { min-height: 0; aspect-ratio: 16 / 10; }
     .cs-photo img { position: static; }
     .cs-photo::after { background: linear-gradient(180deg, transparent 60%, color-mix(in srgb, var(--cd) 70%, transparent)); }
-    .tracks { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; }
   }
   @media (max-width: 760px) {
     .figs { grid-template-columns: 1fr; }
@@ -456,8 +487,6 @@ const assess = faq.cards[0];
     .rows div { grid-template-columns: 1fr; gap: .35rem; }
     .solo .ways .rows { grid-template-columns: 1fr; }
     .solo .ways .rows div { padding: 1.1rem 0 !important; border-left: 0 !important; border-bottom: 1px solid var(--line); }
-    .tracks li { grid-template-columns: 2.25rem minmax(0, 1fr); }
-    .t-roles { grid-column: 2; }
     .season, .format { grid-template-columns: 1fr; }
     .format div + div { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.14); }
     .contracts ul { grid-template-columns: 1fr 1fr; }

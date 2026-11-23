@@ -292,6 +292,9 @@ Proof figures are a four-column spec sheet: hairline rule above, light 380-weigh
 ### Team Portraits
 The character art shows first. On hover, or with the frosted toggle on touch screens, it glides until its face sits exactly on the photo's face (480ms), then dissolves (from 460ms) to the photo already lined up beneath; leaving fades it back in, then glides it home after 220ms. Per-person framing lives in Team.json (`frame`: photo, art at rest, art lined up).
 
+### Career Tracks
+On Education and Community, the curriculum tracks are a grid of cards (five across, three on tablets, two on phones). Each card has its Lucide icon in a hexagon tile (an echo of the lion mark) tinted in the text-safe rose, the track name, and its roles as a short list with spectrum dots. Hovering a card lifts it and fills the tile with the spectrum.
+
 ### Case Study Gallery
 Each finished case study ends with 10 to 15 photos from the build (none repeating the hero or side image) in a snapping strip. Drag it sideways with a mouse, swipe on touch, or use the arrows and arrow keys. Selecting a photo opens a full-screen viewer on a dark blurred backdrop with a counter, previous, next and close; arrow keys and swipes step through, Escape or a click outside closes and leaves the strip on that photo.
 
