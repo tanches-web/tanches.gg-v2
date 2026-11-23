@@ -1462,7 +1462,13 @@
         "assets/alvin/alvin-08.jpg",
         "assets/alvin/alvin-09.jpg",
         "assets/alvin/alvin-10.jpg",
-        "assets/alvin/alvin-11.jpg"
+        "assets/alvin/alvin-11.jpg",
+        "assets/alvin/alvin-12.jpg",
+        "assets/alvin/alvin-13.jpg",
+        "assets/alvin/alvin-14.jpg",
+        "assets/alvin/alvin-15.jpg",
+        "assets/alvin/alvin-16.jpg",
+        "assets/alvin/alvin-17.jpg"
       ],
       "_source": {
         "delivered/story": "source tuples converted to named objects as renderVals() maps them"
@@ -2036,7 +2042,18 @@
         "assets/opt/home-swampy-floor.webp",
         "assets/opt/league-swampy-conquest-v2.webp",
         "assets/opt/league-swampy-community-v2.webp",
-        "assets/opt/league-swampy-commercial-v2.webp"
+        "assets/opt/league-swampy-commercial-v2.webp",
+        "assets/swampy/swampy-01.jpg",
+        "assets/swampy/swampy-02.jpg",
+        "assets/swampy/swampy-03.jpg",
+        "assets/swampy/swampy-04.jpg",
+        "assets/swampy/swampy-05.jpg",
+        "assets/swampy/swampy-06.jpg",
+        "assets/swampy/swampy-07.jpg",
+        "assets/swampy/swampy-08.jpg",
+        "assets/swampy/swampy-09.jpg",
+        "assets/swampy/swampy-10.jpg",
+        "assets/swampy/swampy-11.jpg"
       ],
       "_source": {
         "gallery": "['league-swampy-hero-v2', 'home-swampy-floor', 'league-swampy-conquest-v2', 'league-swampy-community-v2', 'league-swampy-commercial-v2'].map((f) => 'assets/opt/' + f + '.webp')",

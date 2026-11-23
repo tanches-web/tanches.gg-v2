@@ -188,11 +188,29 @@ const pendingLogo = r.pending?.logo;
               <button class="icon-round" data-next aria-label="Next photo"><Icon name="chevron-right" /></button>
             </div>
           </div>
-          <ul class="strip" role="list" data-strip tabindex="0" aria-label="Project photos">
+          <ul class="strip" role="list" data-strip tabindex="0" aria-label="Project photos. Drag or use the arrows to browse; select a photo to enlarge it.">
             {gallery.map((g, i) => (
-              <li><img src={g} alt={`Project photo ${i + 1}`} loading="lazy" decoding="async" /></li>
+              <li>
+                <button class="shot-btn" type="button" data-open={i} aria-label={`Enlarge photo ${i + 1} of ${gallery.length}`}>
+                  <img src={g} alt={`Project photo ${i + 1}`} loading="lazy" decoding="async" draggable="false" />
+                  <span class="zoom" aria-hidden="true"><Icon name="plus" size={16} /></span>
+                </button>
+              </li>
             ))}
           </ul>
+          <dialog class="lb" data-lightbox aria-label="Photo viewer">
+            <figure class="lb-stage">
+              <img class="lb-img" alt="" data-lb-img />
+            </figure>
+            <div class="lb-bar">
+              <span class="spec num lb-count" data-lb-count aria-live="polite"></span>
+              <div class="lb-btns">
+                <button class="lb-btn" type="button" data-lb-prev aria-label="Previous photo"><Icon name="chevron-left" /></button>
+                <button class="lb-btn" type="button" data-lb-next aria-label="Next photo"><Icon name="chevron-right" /></button>
+                <button class="lb-btn" type="button" data-lb-close aria-label="Close photo viewer"><Icon name="x" /></button>
+              </div>
+            </div>
+          </dialog>
         </section>
       )}
     </>
@@ -346,7 +364,36 @@ const pendingLogo = r.pending?.logo;
   .strip { list-style: none; margin: 0; display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 max(var(--gutter), calc((100vw - var(--max)) / 2)) 2rem; scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2)); }
   .strip::-webkit-scrollbar { display: none; }
   .strip li { flex: none; width: min(78vw, 760px); aspect-ratio: 3 / 2; border-radius: var(--radius); overflow: hidden; scroll-snap-align: start; background: var(--surface-2); box-shadow: var(--shadow-float); }
-  .strip img { width: 100%; height: 100%; object-fit: cover; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; transition: transform .7s var(--ease-out); }
+  /* Mouse: grab and drag the strip sideways */
+  .strip { cursor: grab; }
+  .strip.dragging { cursor: grabbing; scroll-snap-type: none; }
+  .strip.dragging .shot-btn { pointer-events: none; }
+  .shot-btn { position: relative; display: block; width: 100%; height: 100%; padding: 0; cursor: zoom-in; border-radius: inherit; overflow: hidden; }
+  .shot-btn:hover img { transform: scale(1.025); }
+  .shot-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .zoom {
+    position: absolute; right: .9rem; bottom: .9rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center;
+    color: #fff; background: rgba(14, 16, 22, .5); border: 1px solid rgba(255, 255, 255, .3);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); opacity: 0; transform: scale(.9); transition: opacity .25s, transform .3s var(--ease-out);
+  }
+  .shot-btn:hover .zoom, .shot-btn:focus-visible .zoom { opacity: 1; transform: none; }
+  @media (hover: none) { .zoom { opacity: 1; transform: none; } }
+
+  /* Photo viewer: the photo as large as the screen allows, on a dark blurred backdrop */
+  .lb { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; overflow: hidden; }
+  .lb::backdrop { background: rgba(6, 7, 10, .9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .lb[open] { display: grid; grid-template-rows: minmax(0, 1fr) auto; }
+  .lb-stage { margin: 0; display: grid; place-items: center; padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.5rem) 0; min-height: 0; touch-action: pan-y; }
+  .lb-img { max-width: 100%; max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom)); width: auto; height: auto; object-fit: contain; border-radius: 14px; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .8); user-select: none; -webkit-user-drag: none; }
+  @media (prefers-reduced-motion: no-preference) { .lb[open] .lb-img { animation: lb-in .45s var(--ease-out) both; } }
+  @keyframes lb-in { from { opacity: 0; transform: scale(.97); } }
+  .lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 3vw, 2.5rem) calc(1rem + env(safe-area-inset-bottom)); }
+  .lb-count { color: rgba(255, 255, 255, .75); }
+  .lb-btns { display: flex; gap: .5rem; }
+  .lb-btn { width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; color: #fff; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .22); transition: background-color .2s, border-color .2s; }
+  .lb-btn:hover { background: rgba(255, 255, 255, .18); border-color: rgba(255, 255, 255, .45); }
+  .lb-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
   /* Pending */
   .pend { display: grid; justify-items: center; text-align: center; gap: 1.25rem; padding: clamp(2rem, 4vw, 3rem); border-radius: 32px; background: var(--surface); border: 1px solid var(--line); }
@@ -391,5 +438,68 @@ const pendingLogo = r.pending?.logo;
     });
     let raf = 0;
     strip.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { count.textContent = `${String(current() + 1).padStart(2, '0')} / ${total}`; }); }, { passive: true });
+
+    // Drag to scroll with a mouse (touch and trackpads already scroll natively). A drag never opens the viewer.
+    let downX = 0, startLeft = 0, dragging = false, pid = -1;
+    strip.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      downX = e.clientX; startLeft = strip.scrollLeft; dragging = false; pid = e.pointerId;
+    });
+    strip.addEventListener('pointermove', (e) => {
+      if (e.pointerId !== pid) return;
+      const dx = e.clientX - downX;
+      if (!dragging && Math.abs(dx) > 6) { dragging = true; strip.classList.add('dragging'); strip.setPointerCapture(pid); }
+      if (dragging) strip.scrollLeft = startLeft - dx;
+    });
+    const endDrag = (e: PointerEvent) => {
+      if (e.pointerId !== pid) return;
+      pid = -1;
+      if (!dragging) return;
+      strip.classList.remove('dragging');
+      go(current()); // settle on the nearest photo
+      setTimeout(() => { dragging = false; }, 0);
+    };
+    strip.addEventListener('pointerup', endDrag);
+    strip.addEventListener('pointercancel', endDrag);
+
+    // Photo viewer
+    const dlg = g.querySelector<HTMLDialogElement>('[data-lightbox]');
+    if (!dlg) return;
+    const big = dlg.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const lbCount = dlg.querySelector<HTMLElement>('[data-lb-count]')!;
+    const imgs = items.map((li) => li.querySelector('img')!);
+    let at = 0;
+    const show = (i: number) => {
+      at = (i + imgs.length) % imgs.length;
+      big.src = imgs[at].currentSrc || imgs[at].src; big.alt = imgs[at].alt;
+      lbCount.textContent = `${String(at + 1).padStart(2, '0')} / ${total}`;
+      big.style.animation = 'none'; void big.offsetWidth; big.style.animation = '';
+      // Warm the neighbours so stepping through is instant
+      [at + 1, at - 1].forEach((k) => { const im = imgs[(k + imgs.length) % imgs.length]; if (im.loading === 'lazy') im.loading = 'eager'; });
+    };
+    g.querySelectorAll<HTMLButtonElement>('[data-open]').forEach((b) => b.addEventListener('click', (e) => {
+      if (dragging) { e.preventDefault(); return; }
+      show(Number(b.dataset.open)); dlg.showModal();
+    }));
+    dlg.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(at - 1));
+    dlg.querySelector('[data-lb-next]')!.addEventListener('click', () => show(at + 1));
+    dlg.querySelector('[data-lb-close]')!.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(at + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(at - 1); }
+    });
+    // Clicking outside the photo closes; swiping left or right steps through
+    dlg.addEventListener('click', (e) => { if (e.target === dlg || (e.target as HTMLElement).classList.contains('lb-stage')) dlg.close(); });
+    let sx = 0, sy = 0;
+    dlg.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    dlg.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(at + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    dlg.addEventListener('close', () => {
+      // Leave the strip on the photo you were looking at, and put focus back on it
+      go(at);
+      g.querySelector<HTMLElement>(`[data-open="${at}"]`)?.focus({ preventScroll: true });
+    });
   });
 </script>

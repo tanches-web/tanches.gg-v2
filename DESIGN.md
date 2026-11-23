@@ -290,6 +290,9 @@ Proof figures are a four-column spec sheet: hairline rule above, light 380-weigh
 ### Team Portraits
 The character art shows first. On hover, or with the frosted toggle on touch screens, it glides until its face sits exactly on the photo's face (480ms), then dissolves (from 460ms) to the photo already lined up beneath; leaving fades it back in, then glides it home after 220ms. Per-person framing lives in Team.json (`frame`: photo, art at rest, art lined up).
 
+### Case Study Gallery
+Each finished case study ends with 10 to 15 photos from the build (none repeating the hero or side image) in a snapping strip. Drag it sideways with a mouse, swipe on touch, or use the arrows and arrow keys. Selecting a photo opens a full-screen viewer on a dark blurred backdrop with a counter, previous, next and close; arrow keys and swipes step through, Escape or a click outside closes and leaves the strip on that photo.
+
 ### Call-to-action labels (current state)
 The `/Contact` action currently carries mixed labels pending a copy decision by the owner: "Start Planning" (nav bar and mobile sheet), "Book a free consultation" (hero and process section), "Start your project" (Ecosystem), "Book a call" (phone CTA bar), "Request my consultation" (form submit), plus "Ask for a reference" in the work section. Record any new `/Contact` action against this list until one label is chosen; this section records the shipped state, not a rule.
 
