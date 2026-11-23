@@ -210,7 +210,7 @@ Case-study pages and work tiles carry each client's palette through custom prope
 
 Content sits in a centred column of 1280px max with a fluid gutter (1rem→2.5rem); a 760px narrow column serves long-form text. Sections are separated by a fluid vertical rhythm (5.5rem→10rem); consecutive sections share one gap rather than doubling it, and a `tight` variant uses 60% of it.
 
-Section heads come in three layouts: split (heading left, lede right, bottom-aligned, collapsing below 960px), centred stack, and left stack. Content grids favour asymmetric two-column splits (1.35fr/1fr work grid with a lead tile spanning two rows; 1fr/1.05fr copy and collage; 0.9fr/1.1fr process with a sticky head) over rows of identical cards. The solutions lineup is three columns divided by hairlines rather than boxed.
+Section heads come in three layouts: split (heading left, lede right, bottom-aligned, collapsing below 960px), centred stack, and left stack. Content grids favour asymmetric two-column splits (1.35fr/1fr work grid with a lead tile spanning two rows; 1fr/1.05fr copy and collage; 0.9fr/1.1fr process with a sticky head) over rows of identical cards. The solutions section shows one vertical in focus at a time (see Verticals Focus).
 
 The home hero is a full-viewport stage inset by 0.75rem (0.5rem on phones) with its content aligned to the page grid. Breakpoints in use: 1100px (hero caption compacts), 1080px (nav collapses to a sheet), 960px (two-column grids stack), 860px (hero restacks, work grid to one column), 760px (figures to two columns, mobile CTA bar appears), 560px (phone layouts: hero lede moves below the stage, form to one column), 380px.
 
@@ -279,6 +279,10 @@ A glass pill with a spectrum dot, 0.875rem/600, used to call out parts of a phot
 
 ### Ecosystem Tour (signature)
 One rounded frame on a sweep with a segmented glass control (Space, Infrastructure, Program) and a side panel of expandable rows. Space shows the eye-level room with hotspot pins; Infrastructure switches to the overhead render (iso-dark.png) and draws cable runs from the network closet to each system, with pins on the real displays, station pods and the two shoutcast rooms on the right, plus a ceiling speaker (sound cone onto its zone) and a ceiling camera (field of view over the station pods) drawn at ceiling height; Program pulls the camera back so the room becomes one site among many on a network.
+
+### Verticals Focus
+
+Education, Community and Commercial as one list beside one large photo. The chosen vertical is full ink with a spectrum rule beneath and opens to its audience line, description, tags and link; the others wait in grey with a rotated arrow. The photo of the chosen vertical fills a 32px-radius stage with its audience chip and an Explore pill. Hovering a name with a mouse, tapping it, or pressing Enter on it brings it forward; without JavaScript the first stays open and every name links to its page. Below 860px the photo leads and the list follows (`src/components/Verticals.astro`).
 
 ### Figures
 Proof figures are a four-column spec sheet: hairline rule above, light 380-weight numerals with tabular figures, small ink-2 labels, columns divided by hairlines.

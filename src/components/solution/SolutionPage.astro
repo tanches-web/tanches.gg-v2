@@ -402,7 +402,8 @@ const assess = faq.cards[0];
 
   /* League (fixed light-on-photo colours, as on the home page) */
   .league { position: relative; min-height: min(96vh, 900px); display: grid; align-items: end; overflow: hidden; isolation: isolate; color: #F2F3F5; }
-  .league-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  /* Same treatment as the home page: the photo is softened and pushed back behind the card */
+  .league-bg { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; object-fit: cover; z-index: -2; filter: blur(6px) saturate(1.1) brightness(.8); transform: scale(1.04); }
   .league::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,11,14,.15) 0%, rgba(10,11,14,.3) 40%, rgba(10,11,14,.85) 100%); }
   .league-inner { position: relative; padding-block: clamp(5.5rem, 9vw, 8rem) clamp(3rem, 7vw, 6rem); }
   .status { position: absolute; top: clamp(1.5rem, 3vw, 2.5rem); left: 0; max-width: 100%; white-space: normal; color: #F2F3F5; background: rgba(18, 19, 24, .5); border-color: rgba(255, 255, 255, .16); padding-left: .8rem; }
@@ -411,7 +412,7 @@ const assess = faq.cards[0];
   @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(226,56,105,0); } }
   .league-card {
     max-width: 720px; display: grid; gap: 1.25rem; justify-items: start; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 28px;
-    background: rgba(18, 19, 24, .58); border: 1px solid rgba(255, 255, 255, .14);
+    background: rgba(18, 19, 24, .55); border: 1px solid rgba(255, 255, 255, .14);
     backdrop-filter: blur(24px) saturate(1.4); -webkit-backdrop-filter: blur(24px) saturate(1.4);
   }
   .league-card .h2 { font-size: clamp(2rem, 1.3rem + 2.4vw, 3.25rem); }

@@ -76,18 +76,19 @@ const isActive = (href?: string) => !!href && (href === '/' ? path === '/' : pat
     padding: 0 .5rem 0 1.125rem; border-radius: 999px;
     background: var(--glass); border: 1px solid var(--glass-line);
     backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6);
-    box-shadow: 0 1px 0 rgba(255,255,255,.5) inset, 0 10px 30px -18px rgba(14,16,22,.35);
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 1px 3px rgba(14,16,22,.06), 0 14px 36px -16px rgba(14,16,22,.32);
     transition: box-shadow .4s var(--ease-out), background-color .3s;
   }
-  :global([data-theme='dark']) .nav { box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 10px 30px -14px rgba(0,0,0,.7); }
+  :global([data-theme='dark']) .nav { box-shadow: 0 1px 0 rgba(255,255,255,.1) inset, 0 14px 36px -14px rgba(0,0,0,.8); }
   /* Over a dark stage (the home hero) the bar is dark glass with light type, whatever the theme */
   .nav-shell.on-dark {
     --ink: #F4F5F7; --ink-2: #C6C9D1; --ink-3: #A6AAB4; --on-ink: #0E1016; --accent: #F2628C;
     --line: rgba(255, 255, 255, .12); --line-2: rgba(255, 255, 255, .24);
-    --glass: rgba(14, 16, 22, .36); --glass-hi: rgba(20, 21, 27, .88); --glass-line: rgba(255, 255, 255, .16);
+    --glass: rgba(255, 255, 255, .2); --glass-hi: rgba(20, 21, 27, .88); --glass-line: rgba(255, 255, 255, .34);
     color: var(--ink);
   }
-  .nav-shell.on-dark .nav { box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 10px 30px -14px rgba(0, 0, 0, .6); }
+  /* Over the photo the bar is frosted light glass with a bright edge, so it reads as a bar rather than melting into the room */
+  .nav-shell.on-dark .nav { backdrop-filter: blur(26px) saturate(1.5); -webkit-backdrop-filter: blur(26px) saturate(1.5); box-shadow: 0 1px 0 rgba(255, 255, 255, .22) inset, 0 14px 40px -12px rgba(0, 0, 0, .7); }
   .nav-shell.on-dark .logo-light { display: none; }
   .nav-shell.on-dark .logo-dark { display: block; }
   .brand { display: flex; align-items: center; flex: none; }

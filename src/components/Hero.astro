@@ -237,7 +237,8 @@ tabindex={li === 0 ? 0 : -1}
     .caps { animation-delay: .7s; }
     .dock { animation-delay: .82s; }
   }
-  @keyframes open { from { opacity: 0; clip-path: inset(3% 3% 6% 3% round 40px); } to { opacity: 1; clip-path: inset(0 round 28px); } }
+  /* The stage is dark from the first frame (no fade), so the light nav type over it is never on a pale page */
+  @keyframes open { from { clip-path: inset(0 2.5% 5% 2.5% round 40px); } to { clip-path: inset(0 round 28px); } }
   @keyframes arrive { from { opacity: 0; transform: translateY(22px); filter: blur(8px); } }
 
   @media (max-width: 1100px) {

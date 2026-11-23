@@ -20,6 +20,7 @@ import Process from '../components/Process.astro';
 import Faq from '../components/Faq.astro';
 import ProjectCTA from '../components/ProjectCTA.astro';
 import Icon from '../components/Icon.astro';
+import Verticals from '../components/Verticals.astro';
 import LogoMarquee from '../components/LogoMarquee.astro';
 import home from '../content/pages/home.json';
 import projectData from '../content/projects.json';
@@ -75,27 +76,14 @@ const partners = home.unrenderedData.oemLogos_mOem.map((p: any) => ({ name: p.na
 
   <Ecosystem />
 
-  <!-- Solutions as a lineup: find your environment -->
+  <!-- Solutions: one vertical in focus at a time; find your environment -->
   <section class="section lineup-sec sweep soft-top" id="solutions" aria-labelledby="sol-title">
     <div class="wrap">
       <div class="center head">
         <h2 id="sol-title" class="h2" data-reveal>Built for <strong>schools, cities, and businesses.</strong></h2>
         <p class="lede" data-reveal>{sec('solutions').lede}</p>
       </div>
-      <ul class="lineup" role="list">
-        {solutions.map((s: any) => (
-          <li data-reveal>
-            <a href={s.links[0].href} class="lu">
-              <div class="lu-img photo"><img src={s.image.src} alt={s.image.alt} loading="lazy" decoding="async" /></div>
-              <h3 class="h3">{s.title}</h3>
-              <p class="spec">{s.meta}</p>
-              <p class="small lu-body">{s.body}</p>
-              <ul class="tags" role="list">{s.tags.map((t: string) => <li>{t}</li>)}</ul>
-              <span class="link">{s.links[0].label} <Icon name="arrow-right" /></span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <Verticals items={solutions} />
     </div>
   </section>
 
@@ -202,18 +190,8 @@ const partners = home.unrenderedData.oemLogos_mOem.map((p: any) => ({ name: p.na
   .ref-q { font-size: var(--t-h3); font-weight: 420; letter-spacing: -0.02em; line-height: 1.2; max-width: 22ch; text-wrap: balance; }
   .btns { display: flex; flex-wrap: wrap; gap: .75rem; }
 
-  /* Lineup */
+  /* Solutions */
   .lineup-sec { padding-top: clamp(3.5rem, 6vw, 5.5rem) !important; }
-  /* Equal padding on every column (so the three photos match), pulled back out so the outer edges sit on the page grid */
-  .lineup { --lu-pad: clamp(1rem, 2.5vw, 2.25rem); list-style: none; padding: 0; margin-inline: calc(-1 * var(--lu-pad)); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
-  .lineup > li + li { border-left: 1px solid var(--line); }
-  .lu { display: grid; gap: .75rem; padding: 0 var(--lu-pad); text-decoration: none; height: 100%; align-content: start; }
-  .lu-img { aspect-ratio: 4 / 3; margin-bottom: .75rem; transition: transform .7s var(--ease-out); }
-  .lu:hover .lu-img { transform: translateY(-4px); }
-  .lu-body { min-height: 4.8em; }
-  .tags { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; }
-  .tags li { font-size: .8125rem; font-weight: 560; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
-  .lu .link { margin-top: .5rem; }
 
   /* Why */
   .why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
@@ -274,9 +252,6 @@ const partners = home.unrenderedData.oemLogos_mOem.map((p: any) => ({ name: p.na
     .proc-head { position: static; }
     .proc-head .btns { display: none; }
     .proc-after { display: flex; }
-    .lineup { grid-template-columns: 1fr; gap: 3rem; margin-inline: 0; }
-    .lineup > li + li { border-left: 0; }
-    .lu { padding: 0 !important; }
     .season { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {

@@ -1,0 +1,165 @@
+---
+// The three verticals, one in focus at a time: a list on the left (the chosen one opens to its description,
+// tags and link; the others stay quiet) and a large photo of that vertical on the right.
+// Without JavaScript the first vertical is open and every name still links to its page.
+import Icon from './Icon.astro';
+export interface Vertical {
+  title: string; meta: string; body: string; tags: string[];
+  image: { src: string; alt: string };
+  links: { label: string; href: string }[];
+}
+interface Props { items: Vertical[] }
+const { items } = Astro.props;
+const id = (i: number, part: string) => `vert-${part}-${i}`;
+---
+<div class="verticals" data-verticals>
+  <div class="stage" data-reveal>
+    {items.map((v, i) => (
+      <figure class:list={['shot', { on: i === 0 }]} data-shot={i} aria-hidden={i === 0 ? undefined : 'true'}>
+        <img src={v.image.src} alt={v.image.alt} loading="lazy" decoding="async" />
+      </figure>
+    ))}
+    <div class="scrim" aria-hidden="true"></div>
+    {items.map((v, i) => (
+      <div class:list={['cap', { on: i === 0 }]} data-cap={i} inert={i === 0 ? undefined : true}>
+        <span class="label-glass"><span class="dot" aria-hidden="true"></span>{v.meta}</span>
+        <a class="explore" href={v.links[0].href}>Explore {v.title} <Icon name="arrow-right" size={18} /></a>
+      </div>
+    ))}
+  </div>
+
+  <ul class="list" role="list">
+    {items.map((v, i) => (
+      <li class:list={['item', { on: i === 0 }]} data-item={i}>
+        <h3 class="head">
+          <button class="btn-v" type="button" id={id(i, 'btn')} aria-expanded={i === 0 ? 'true' : 'false'} aria-controls={id(i, 'panel')} data-pick={i}>
+            <span class="num spec">0{i + 1}</span>
+            <span class="name">{v.title}</span>
+          </button>
+        </h3>
+        <a class="go" href={v.links[0].href} aria-label={v.links[0].label}><Icon name="arrow-right" size={18} /></a>
+        <div class="panel" id={id(i, 'panel')} role="region" aria-labelledby={id(i, 'btn')} inert={i === 0 ? undefined : true}>
+          <div class="panel-in">
+            <p class="spec">{v.meta}</p>
+            <p class="body">{v.body}</p>
+            <ul class="tags" role="list">{v.tags.map((t) => <li>{t}</li>)}</ul>
+            <a class="link" href={v.links[0].href}>{v.links[0].label} <Icon name="arrow-right" /></a>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .verticals { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(2rem, 4.5vw, 4.5rem); align-items: center; }
+
+  /* List: the chosen vertical is full ink with a spectrum rule beneath; the others wait in grey */
+  .list { grid-column: 1; grid-row: 1; list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
+  .item { position: relative; border-bottom: 1px solid var(--line); }
+  .item::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--spectrum);
+    transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease-out);
+  }
+  .item.on::after { transform: scaleX(1); }
+  .head { margin: 0; font: inherit; }
+  .btn-v {
+    width: 100%; display: grid; grid-template-columns: 3rem minmax(0, 1fr); align-items: baseline;
+    padding: clamp(1.1rem, 2vw, 1.6rem) 4rem clamp(1.1rem, 2vw, 1.6rem) 0; text-align: left; cursor: pointer;
+  }
+  .num { color: var(--ink-3); transition: color .4s; }
+  .name { font-size: clamp(2rem, 1.2rem + 2.6vw, 3.5rem); font-weight: 640; letter-spacing: -0.035em; line-height: 1.05; color: var(--ink-3); transition: color .4s; }
+  .item.on .num { color: var(--accent); }
+  .item.on .name, .btn-v:hover .name { color: var(--ink); }
+  .btn-v:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+  .go {
+    position: absolute; right: 0; top: clamp(1.05rem, 1.9vw, 1.6rem); width: 3rem; height: 3rem; border-radius: 50%;
+    display: grid; place-items: center; color: var(--ink); border: 1px solid var(--line-2); background: var(--surface);
+    transition: background-color .3s, color .3s, border-color .3s, transform .45s var(--ease-out);
+  }
+  .go :global(svg) { transform: rotate(-45deg); transition: transform .45s var(--ease-out); }
+  .item.on .go { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .item.on .go :global(svg), .go:hover :global(svg) { transform: none; }
+
+  /* The open panel: height eases open, content fades up */
+  .panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s var(--ease-out); }
+  .item.on .panel { grid-template-rows: 1fr; }
+  .panel-in { overflow: hidden; min-height: 0; padding-left: 3rem; display: grid; gap: .85rem; justify-items: start; }
+  .panel-in > * { opacity: 0; transform: translateY(8px); transition: opacity .45s var(--ease-out), transform .55s var(--ease-out); }
+  .item.on .panel-in > * { opacity: 1; transform: none; transition-delay: .18s; }
+  .panel-in .spec { margin-top: -.35rem; }
+  .panel-in .body { color: var(--ink-2); max-width: 46ch; line-height: 1.55; }
+  .panel-in .link { margin: .1rem 0 1.6rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; list-style: none; padding: 0; margin: 0; }
+  .tags li { font-size: .8125rem; font-weight: 560; padding: .25rem .65rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+
+  /* Stage: the chosen vertical's photo, large, with its audience and the way in */
+  .stage {
+    grid-column: 2; grid-row: 1; position: relative; aspect-ratio: 1 / 1.02; border-radius: 32px; overflow: hidden; isolation: isolate;
+    background: #0B0C10; box-shadow: var(--shadow-object);
+  }
+  /* The new photo fades in on top of the old one, which leaves only once it's covered (no dip through black) */
+  .shot { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(1.05); transition: opacity .3s linear .8s, transform 1.4s var(--ease-out); }
+  .shot.on { z-index: 1; opacity: 1; transform: none; transition: opacity .8s var(--ease-out), transform 1.4s var(--ease-out); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+  .scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(8, 9, 12, 0) 52%, rgba(8, 9, 12, .72) 100%); }
+  .cap {
+    position: absolute; z-index: 2; left: clamp(1rem, 2vw, 1.5rem); right: clamp(1rem, 2vw, 1.5rem); bottom: clamp(1rem, 2vw, 1.5rem);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem;
+    opacity: 0; transform: translateY(10px); transition: opacity .45s var(--ease-out), transform .55s var(--ease-out); pointer-events: none;
+  }
+  .cap.on { opacity: 1; transform: none; transition-delay: .2s; pointer-events: auto; }
+  .cap .label-glass { font-size: .8125rem; color: #F4F5F7; background: rgba(14, 16, 22, .55); border-color: rgba(255, 255, 255, .18); }
+  .explore {
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 2.875rem; padding: 0 1.15rem; border-radius: 999px;
+    font-weight: 640; font-size: .9375rem; color: #fff; text-decoration: none;
+    background: rgba(14, 16, 22, .55); border: 1px solid rgba(255, 255, 255, .3);
+    backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    transition: background-color .25s, border-color .25s;
+  }
+  .explore:hover { background: rgba(14, 16, 22, .78); border-color: rgba(255, 255, 255, .55); }
+  .explore :global(svg) { transition: transform .35s var(--ease-out); }
+  .explore:hover :global(svg) { transform: translateX(3px); }
+  .explore:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .panel, .panel-in > *, .shot, .cap, .item::after { transition: none; }
+  }
+  @media (max-width: 860px) {
+    /* Phones and tablets: the photo leads, the list follows */
+    .verticals { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    .stage { grid-column: 1; grid-row: 1; aspect-ratio: 16 / 11; border-radius: 24px; }
+    .list { grid-column: 1; grid-row: 2; }
+    .btn-v { grid-template-columns: 2.25rem minmax(0, 1fr); padding-right: 3.5rem; }
+    .panel-in { padding-left: 2.25rem; }
+    .go { width: 2.75rem; height: 2.75rem; }
+    .cap .label-glass { display: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-verticals]').forEach((root) => {
+    const items = [...root.querySelectorAll<HTMLElement>('[data-item]')];
+    const shots = [...root.querySelectorAll<HTMLElement>('[data-shot]')];
+    const caps = [...root.querySelectorAll<HTMLElement>('[data-cap]')];
+    let current = 0;
+    const pick = (i: number) => {
+      if (i === current) return;
+      current = i;
+      items.forEach((el, k) => {
+        const on = k === i;
+        el.classList.toggle('on', on);
+        el.querySelector('.btn-v')!.setAttribute('aria-expanded', String(on));
+        el.querySelector<HTMLElement>('.panel')!.inert = !on;
+      });
+      shots.forEach((el, k) => { el.classList.toggle('on', k === i); if (k === i) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', 'true'); });
+      caps.forEach((el, k) => { el.classList.toggle('on', k === i); el.inert = k !== i; });
+    };
+    root.querySelectorAll<HTMLButtonElement>('[data-pick]').forEach((b) => {
+      const i = Number(b.dataset.pick);
+      b.addEventListener('click', () => pick(i));
+      // A mouse resting on a name brings that vertical forward; touch and keyboard choose with a tap or Enter
+      b.addEventListener('pointerenter', (e) => { if ((e as PointerEvent).pointerType === 'mouse') pick(i); });
+    });
+  });
+</script>
